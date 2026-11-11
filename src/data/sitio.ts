@@ -177,7 +177,9 @@ export const MARCAS: Marca[] = [
       { slug: 'sport-touring', nombre: 'Sport / Touring', h1: 'Motos deportivas y touring MITT', imagen: 'mitt-sport-touring', urlAntigua: '/sport-touring-mitt-motors-motodest/',
         intro: 'Naked y deportivas MITT de 125 cc, la 775R de 82 CV y la GT-K para viajar.' },
       { slug: 'adventure', nombre: 'Adventure', h1: 'Motos trail MITT', imagen: 'mitt-adventure', urlAntigua: '/motos-adventure-mitt-motors-motodest/',
-        intro: 'Trail MITT para carnet A1 y A2: la Desert 125 y la TT 555 bicilíndrica.' },
+        intro: 'Trail MITT para carnet A1 y A2: la Desert 125, la MT 125 con maletas y la TT 555 bicilíndrica.' },
+      { slug: 'atv', nombre: 'Quads', h1: 'Quads MITT', imagen: 'mitt-atv', urlAntigua: '',
+        intro: 'Quads MITT para ocio y trabajo: el 275 4x2, el 330 4x4 con cabestrante y el 460 EPS con dirección asistida.' },
     ],
   },
 ];

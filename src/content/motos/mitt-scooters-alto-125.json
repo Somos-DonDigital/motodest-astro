@@ -1,0 +1,37 @@
+{
+  "nombre": "Alto 125",
+  "marca": "mitt",
+  "categoria": "scooters",
+  "slug": "alto-125",
+  "precio": null,
+  "precioDesde": false,
+  "imagenes": [
+    {
+      "src": "mitt/mitt-alto-125.webp",
+      "color": "Blanco",
+      "hex": "#eef0f2"
+    }
+  ],
+  "ficha": {
+    "cilindrada": "125 cc",
+    "motor": "Monocilíndrico, 4 tiempos, refrigeración líquida",
+    "potencia": "10,8 kW (15 CV) a 8.500 rpm",
+    "par": "12,3 Nm a 6.500 rpm",
+    "cambio": "Variable continua / Reductora en 2 etapas",
+    "alimentacion": "Inyección electrónica BOSCH",
+    "arranque": "Eléctrico",
+    "chasis": "Multitubular de acero",
+    "suspDel": "Horquilla telescópica hidráulica de 33 mm",
+    "suspTras": "Doble amortiguador hidráulico con ajuste de precarga",
+    "frenos": "CBS – Disco de 240 mm / CBS – Disco de 240 mm",
+    "neumaticos": "100/80-16 / 120/80-16",
+    "alturaAsiento": "810 mm",
+    "peso": "144 kg en orden de marcha",
+    "deposito": "7,4 l",
+    "dimensiones": "2.022 x 740 x 1.415 mm",
+    "equipamiento": "Panel de instrumentos: Digital con Mirror-Link"
+  },
+  "fuenteFicha": "https://mittmotors.com/vehiculo/mitt-alto-125",
+  "destacada": false,
+  "orden": 106
+}

@@ -1,0 +1,37 @@
+{
+  "nombre": "ATV 275 4x2",
+  "marca": "mitt",
+  "categoria": "atv",
+  "slug": "atv-275",
+  "precio": 3999,
+  "precioDesde": false,
+  "imagenes": [
+    {
+      "src": "mitt/mitt-atv-275.webp",
+      "color": "Negro y lima",
+      "hex": "#c8e01e"
+    }
+  ],
+  "ficha": {
+    "cilindrada": "224,2 cc",
+    "motor": "Monocilíndrico, 4 tiempos, refrigeración aire",
+    "potencia": "11 kW (15 CV) a 7.000 rpm",
+    "par": "15 Nm a 6.000 rpm",
+    "cambio": "CVT, Cadena (F/ N / R) 4x2",
+    "alimentacion": "Carburación",
+    "arranque": "Eléctrico",
+    "chasis": "Doble cuna cerrada",
+    "suspDel": "Independiente doble trapecio con amortiguadores regulables",
+    "suspTras": "Amortiguador regulable",
+    "frenos": "Doble disco 160 mm / Disco 220 mm",
+    "neumaticos": "23/7-10 / 22/10-10",
+    "alturaAsiento": "810 mm",
+    "peso": "190 kg en vacío",
+    "deposito": "12 l",
+    "dimensiones": "1.935 x 1.100 x 1.250 mm",
+    "equipamiento": "Panel de instrumentos: LCD"
+  },
+  "fuenteFicha": "https://mittmotors.com/vehiculo/mitt-275-atv-2",
+  "destacada": false,
+  "orden": 500
+}

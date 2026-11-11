@@ -1,0 +1,37 @@
+{
+  "nombre": "ATV 330 4x4",
+  "marca": "mitt",
+  "categoria": "atv",
+  "slug": "atv-330-4x4",
+  "precio": 5199,
+  "precioDesde": false,
+  "imagenes": [
+    {
+      "src": "mitt/mitt-atv-330-4x4.webp",
+      "color": "Azul y lima",
+      "hex": "#1f5fd0"
+    }
+  ],
+  "ficha": {
+    "cilindrada": "270,5 cc",
+    "motor": "Monocilíndrico, 4 tiempos, refrigeración líquida",
+    "potencia": "17 kW (23 CV) a 5.500 rpm",
+    "par": "24,5 Nm a 5.500 rpm",
+    "cambio": "CVT, Automático (H / L / N / R) / 4x4",
+    "alimentacion": "Carburación",
+    "arranque": "Eléctrico",
+    "chasis": "Tubular de acero",
+    "suspDel": "Independiente, dobles trapecios",
+    "suspTras": "Amortiguador regulable",
+    "frenos": "Discos / Disco",
+    "neumaticos": "24/8-10 / 24/10-10",
+    "alturaAsiento": "820 mm",
+    "peso": "≥ 290 kg en vacío",
+    "deposito": "≥ 14 l",
+    "dimensiones": "2.050 x 1.186 x 1.260 mm",
+    "equipamiento": "Cabestrante: Eléctrico; Panel de instrumentos: Pantalla LED"
+  },
+  "fuenteFicha": "https://mittmotors.com/vehiculo/mitt-330-atv-4x4",
+  "destacada": false,
+  "orden": 501
+}

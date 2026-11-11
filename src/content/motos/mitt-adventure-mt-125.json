@@ -1,0 +1,38 @@
+{
+  "nombre": "MT 125",
+  "marca": "mitt",
+  "categoria": "adventure",
+  "slug": "mt-125",
+  "precio": null,
+  "precioDesde": false,
+  "imagenes": [
+    {
+      "src": "mitt/mitt-mt-125.webp",
+      "color": "Rojo",
+      "hex": "#c0262d"
+    }
+  ],
+  "ficha": {
+    "cilindrada": "125 cc",
+    "motor": "Monocilíndrico, 4 tiempos, 4 Válvulas - SOHC, refrigeración líquida",
+    "potencia": "11 kW (15 CV) a 9.750 rpm",
+    "par": "11,5 Nm a 8.000 rpm",
+    "cambio": "Cadena / Manual 6 velocidades",
+    "alimentacion": "Inyección electrónica",
+    "arranque": "Eléctrico",
+    "chasis": "Multitubular de acero",
+    "suspDel": "Horquilla invertida hidráulica de 160 mm",
+    "suspTras": "Amortiguador hidráulico regulable en precarga de 50 mm",
+    "frenos": "ABS – Disco de 200 mm / Disco de 200 mm",
+    "neumaticos": "90/90-19 / 110/90-17",
+    "alturaAsiento": "830 mm",
+    "peso": "148 kg en orden de marcha",
+    "deposito": "13,5 l",
+    "dimensiones": "2.005 x 950 x 1.370 mm",
+    "carga": "150 kg",
+    "equipamiento": "Panel de instrumentos: LCD"
+  },
+  "fuenteFicha": "https://mittmotors.com/vehiculo/mitt-mt-125",
+  "destacada": false,
+  "orden": 301
+}

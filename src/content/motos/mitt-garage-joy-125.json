@@ -1,0 +1,36 @@
+{
+  "nombre": "Joy 125",
+  "marca": "mitt",
+  "categoria": "garage",
+  "slug": "joy-125",
+  "precio": null,
+  "precioDesde": false,
+  "imagenes": [
+    {
+      "src": "mitt/mitt-joy-125.webp",
+      "color": "Negro",
+      "hex": "#202124"
+    }
+  ],
+  "ficha": {
+    "cilindrada": "125 cc",
+    "motor": "Monocilíndrico, 4 tiempos, refrigeración líquida",
+    "potencia": "10,5 kW (15 CV) a 9.500 rpm",
+    "par": "10,5 Nm a 7.500 rpm",
+    "cambio": "Cadena, cambio manual de 6 velocidades",
+    "alimentacion": "EFI (DELPHI Systems)",
+    "arranque": "Eléctrico",
+    "chasis": "Multitubular de acero",
+    "suspension": "Horquilla hidráulica de 41 mm / Doble amortiguador hidráulico regulable de precarga",
+    "frenos": "CBS - Disco de 300 mm / Disco de 260 mm",
+    "neumaticos": "120/80-16 / 150/80-16",
+    "alturaAsiento": "760 mm",
+    "peso": "155 kg en orden de marcha",
+    "deposito": "13 l",
+    "dimensiones": "2.230 x 885 x 1.125 mm",
+    "equipamiento": "Panel de instrumentos: LCD"
+  },
+  "fuenteFicha": "https://mittmotors.com/vehiculo/mitt-joy-125",
+  "destacada": false,
+  "orden": 205
+}

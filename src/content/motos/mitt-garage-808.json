@@ -5,7 +5,13 @@
   "slug": "808",
   "precio": 8299,
   "precioDesde": false,
-  "imagenes": [],
+  "imagenes": [
+    {
+      "src": "mitt/mitt-808.webp",
+      "color": "Negro",
+      "hex": "#202124"
+    }
+  ],
   "ficha": {
     "motor": "Bicilíndrico en V, 4 tiempos",
     "cilindrada": "800 cc",

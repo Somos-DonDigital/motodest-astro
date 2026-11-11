@@ -1,0 +1,36 @@
+{
+  "nombre": "ADV Pro 125",
+  "marca": "mitt",
+  "categoria": "scooters",
+  "slug": "adv-pro-125",
+  "precio": null,
+  "precioDesde": false,
+  "imagenes": [
+    {
+      "src": "mitt/mitt-adv-pro-125.webp",
+      "color": "Arena",
+      "hex": "#d8cdb4"
+    }
+  ],
+  "ficha": {
+    "cilindrada": "125 cc",
+    "motor": "Monocilíndrico, 4 tiempos, refrigeración líquida",
+    "potencia": "8,5 kW (14 CV) a 8.000 rpm",
+    "par": "12 Nm a 6.000 rpm",
+    "cambio": "Variable continua / Reductora en 2 etapas",
+    "alimentacion": "Inyección electrónica",
+    "arranque": "Eléctrico",
+    "chasis": "Multitubular de acero",
+    "suspension": "Horquilla hidráulica / Doble amortiguador hidráulico",
+    "frenos": "ABS – Disco de 220 mm / ABS – Disco de 220 mm",
+    "neumaticos": "100/80-14 / 120/70-14",
+    "alturaAsiento": "820 mm",
+    "peso": "131 kg en orden de marcha",
+    "deposito": "8,5 l",
+    "dimensiones": "1.935 x 761 x 1.336 mm",
+    "equipamiento": "Panel de instrumentos: TFT de 7” antideslumbrante con Mirror-Link, 2 modos de visualización, navegación mediante app, lectura de DTC’s y 4 páginas de diagnóstico; Control de tracción: Desconectable; Sistema start & stop: Desconectable"
+  },
+  "fuenteFicha": "https://mittmotors.com/vehiculo/mitt-adv-pro-125",
+  "destacada": false,
+  "orden": 105
+}

@@ -1,0 +1,37 @@
+{
+  "nombre": "ATV 460 EPS 4x4",
+  "marca": "mitt",
+  "categoria": "atv",
+  "slug": "atv-460-eps",
+  "precio": null,
+  "precioDesde": false,
+  "imagenes": [
+    {
+      "src": "mitt/mitt-atv-460-eps.webp",
+      "color": "Gris",
+      "hex": "#5c5f63"
+    }
+  ],
+  "ficha": {
+    "cilindrada": "390,8 cc",
+    "motor": "Monocilíndrico, 4 tiempos, refrigeración líquida",
+    "potencia": "19,06 kW (32 CV) a 6.500 rpm",
+    "par": "32,25 Nm a 5.000 rpm",
+    "cambio": "CVT, Correa (L/H/N/R/P) / 4x4",
+    "alimentacion": "Inyección",
+    "arranque": "Eléctrico",
+    "chasis": "Tubular de acero",
+    "suspDel": "Independiente doble trapecio con amortiguadores regulables",
+    "suspTras": "Independiente doble trapecio con amortiguadores regulables",
+    "frenos": "Doble disco 220 mm / Doble disco 197 mm",
+    "neumaticos": "25/8-12 / 25/10-12",
+    "alturaAsiento": "850 mm",
+    "peso": "433 kg en orden de marcha",
+    "deposito": "17 l",
+    "dimensiones": "2.314 x 1.130 x 1.370 mm",
+    "equipamiento": "Panel de instrumentos: Digital LCD"
+  },
+  "fuenteFicha": "https://mittmotors.com/vehiculo/mitt-460-eps",
+  "destacada": false,
+  "orden": 502
+}
