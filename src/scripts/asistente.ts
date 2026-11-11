@@ -30,7 +30,7 @@ function iniciar(raiz: HTMLElement) {
   const CLAVE = 'motodest-asistente';
 
   let datos: Datos | null = null;
-  let estado: { paso?: string; lead?: { nombre?: string; tel?: string; interes?: string }; fin?: { precio?: number; moto?: string } } = {};
+  let estado: { carnet?: string; paso?: string; lead?: { nombre?: string; tel?: string; interes?: string }; fin?: { precio?: number; moto?: string } } = {};
   let historial: Msg[] = [];
   let ultimosChips: Chip[] = [];
 
@@ -52,7 +52,7 @@ function iniciar(raiz: HTMLElement) {
       if (m.i) { const im = document.createElement('img'); im.src = m.i; im.alt = ''; im.loading = 'lazy'; a.append(im); }
       const s = document.createElement('span'); s.textContent = `${m.m} · ${m.c}`;
       const n = document.createElement('strong'); n.textContent = m.n;
-      const b = document.createElement('b'); b.textContent = m.pt;
+      const b = document.createElement('b'); b.textContent = m.p && datos ? `Financiada desde ${euros(mesDesde(m.p))}/mes` : 'Te preparamos la financiación';
       a.append(s, n, b); cont.append(a);
     });
     return cont;
@@ -81,7 +81,12 @@ function iniciar(raiz: HTMLElement) {
       }
       chipsEl.append(el);
     });
-    if (!reducir && cs.length) gsap.from(chipsEl.children, { y: 8, opacity: 0, duration: 0.25, stagger: 0.03 });
+    if (historial.length > 1 && !cs.some((c) => c.a === 'lead-cancelar' || c.a === 'menu')) {
+      const r = document.createElement('button'); r.type = 'button'; r.className = 'chip--reinicio'; r.textContent = '↻ Volver a empezar';
+      r.addEventListener('click', () => reiniciar());
+      chipsEl.append(r);
+    }
+    if (!reducir && chipsEl.children.length) gsap.from(chipsEl.children, { y: 8, opacity: 0, duration: 0.25, stagger: 0.03 });
     guardar();
   }
   async function bot(html: string, motos?: Moto[]) {
@@ -96,15 +101,15 @@ function iniciar(raiz: HTMLElement) {
   // ---------- Menús ----------
   const waChip = (t = 'Hola, escribo desde la web de Motodest.'): Chip => ({ t: 'WhatsApp', url: waUrl(t), wa: true });
   const menu = (): Chip[] => [
-    { t: 'Buscar moto', a: 'buscar' }, { t: 'Precios y financiación', a: 'financiacion' }, { t: 'Qué moto con mi carnet', a: 'carnet' },
-    { t: 'Pedir una prueba o que me llaméis', a: 'llamadme' }, { t: 'Horario y dirección', a: 'horario' }, waChip(),
+    { t: 'Buscar moto', a: 'buscar' }, { t: '¿Cuánto me sale al mes?', a: 'financiacion' }, { t: '¿Qué moto puedo llevar?', a: 'carnet' },
+    { t: 'Que me llaméis', a: 'llamadme' }, { t: 'Horario y dirección', a: 'horario' }, waChip(),
   ];
   async function saludo() {
     const d = await cargar();
     const mp = motoPagina && (d.motos.find((m) => `${m.m} ${m.n}` === motoPagina) ?? d.motos.find((m) => motoPagina.endsWith(m.n)));
     if (mp) {
       await bot(`¡Hola! Soy Dest, el asistente de Motodest. ¿Te cuento más de la <b>${esc(motoPagina)}</b>?`);
-      chips([{ t: 'Precio y cuota', a: `cuota ${mp.n}` }, { t: 'Colores', a: `colores ${mp.n}` }, { t: 'Quiero probarla', a: 'llamadme' }, { t: 'Ver otras', a: 'buscar' }, waChip(`Hola, me interesa la ${motoPagina}.`)]);
+      chips([{ t: '¿Cuánto me sale al mes?', a: `cuota ${mp.n}` }, { t: 'Colores', a: `colores ${mp.n}` }, { t: 'Quiero probarla', a: 'llamadme' }, { t: 'Ver otras motos', a: 'buscar' }, waChip(`Hola, me interesa la ${motoPagina}.`)]);
       estado.fin = { precio: mp.p ?? undefined, moto: mp.n };
     } else {
       await bot('¡Hola! Soy Dest, el asistente de Motodest, concesionario oficial Fantic, Beta, CFMOTO y MITT en Barbate. ¿En qué te ayudo?');
@@ -148,18 +153,25 @@ function iniciar(raiz: HTMLElement) {
     return out;
   };
 
-  // ---------- Financiación ----------
+  // ---------- Financiación (al cliente le enseñamos cuota, no precio) ----------
+  function mesDesde(precio: number) { const f = datos!.fin; return cuota(precio, 0, Math.max(...f.plazos), f.tin); }
   function cuota(precio: number, entrada: number, n: number, tin: number) {
     const c = Math.max(0, precio - entrada), r = tin / 100 / 12;
     return r === 0 ? c / n : (c * r) / (1 - Math.pow(1 + r, -n));
   }
-  async function responderCuota(precio: number, moto: string | undefined, entrada = 0) {
+  async function responderCuota(precio: number, moto: string | undefined, entrada = 0, propio = false) {
     const d = await cargar();
-    const filas = [24, 48, 72, d.fin.def].filter((v, i, a) => a.indexOf(v) === i && d.fin.plazos.includes(v)).sort((a, b) => a - b)
-      .map((n) => `• ${n} meses: <b>${euros(cuota(precio, entrada, n, d.fin.tin), 2)}/mes</b>`).join('\n');
-    await bot(`${moto ? `${esc(moto)}, ` : ''}${euros(precio)}${entrada ? ` con ${euros(entrada)} de entrada` : ' sin entrada'}:\n${filas}\n\n<small>Cálculo orientativo${d.fin.ok ? '' : ' con un TIN provisional'}; sujeto a estudio de la financiera.</small>`);
+    const plazos = [36, 48, 72, 96].filter((n) => d.fin.plazos.includes(n));
+    const filas = plazos.map((n) => `• ${n} meses: <b>${euros(cuota(precio, entrada, n, d.fin.tin), 0)}/mes</b>`).join('\n');
+    const quien = moto ? `la ${esc(moto)}` : propio ? `una moto de ${euros(precio)}` : 'tu moto';
+    await bot(`Financiada ${entrada ? `con ${euros(entrada)} de entrada` : 'sin entrada'}, ${quien} te sale a:\n${filas}\n\n<small>Cuota orientativa, sujeta a estudio de la financiera.</small>`);
     estado.fin = { precio, moto };
-    chips([{ t: 'Con 1.000 € de entrada', a: `entrada 1000` }, { t: 'Con 2.000 € de entrada', a: `entrada 2000` }, { t: 'Quiero que me llaméis', a: 'llamadme' }, { t: 'Calculadora completa', url: '/#financiacion' }, waChip(`Hola, quiero información de financiación${moto ? ` para la ${moto}` : ''}.`)]);
+    chips([
+      ...(entrada ? [{ t: 'Sin entrada', a: 'entrada 0' }] : []),
+      ...[1000, 2000, 3000].filter((e) => e !== entrada && e < precio * 0.5).slice(0, 2).map((e) => ({ t: `Con ${euros(e)} de entrada`, a: `entrada ${e}` })),
+      { t: 'Me interesa, llamadme', a: 'llamadme' },
+      waChip(`Hola, quiero información de financiación${moto ? ` para la ${moto}` : ''}.`),
+    ]);
   }
 
   // ---------- Recogida de datos (que le llamemos) ----------
@@ -192,22 +204,55 @@ function iniciar(raiz: HTMLElement) {
       const j = await r.json().catch(() => ({ ok: r.ok }));
       if (!j.ok) throw new Error();
       await bot(`¡Hecho, ${esc(l.nombre!.split(' ')[0])}! Te llamamos lo antes posible en horario de tienda. Si es urgente, escríbenos por WhatsApp.`);
-      estado = {}; chips([waChip(`Hola, soy ${l.nombre}. Acabo de dejar mis datos en el asistente de la web.`), { t: 'Volver al inicio', a: 'menu' }]);
+      estado = {}; chips([waChip(`Hola, soy ${l.nombre}. Acabo de dejar mis datos en el asistente de la web.`), { t: '↻ Volver a empezar', a: 'menu' }]);
     } catch {
       await bot(`No he podido enviarlo ahora mismo. Llámanos al <a href="tel:${datos!.empresa.tel.replace(/\s/g, '')}">${datos!.empresa.telv}</a> o escríbenos por WhatsApp.`);
-      estado.paso = undefined; chips([waChip(`Hola, soy ${l.nombre} (${l.tel}). Me interesa: ${l.interes}.`), { t: 'Volver al inicio', a: 'menu' }]);
+      estado.paso = undefined; chips([waChip(`Hola, soy ${l.nombre} (${l.tel}). Me interesa: ${l.interes}.`), { t: '↻ Volver a empezar', a: 'menu' }]);
     }
+  }
+
+  // ---------- Carnets y tipos ----------
+  const moto = (m: Moto) => !['atv', 'buggies'].includes(m.cs);
+  const competicion = (m: Moto) => ['motocross', 'trial'].includes(m.cs);
+  const CARNETS: Record<string, { texto: string; puede: (m: Moto) => boolean }> = {
+    am: { texto: 'Con el AM (desde los 15 años) puedes llevar ciclomotores de hasta 50 cc.', puede: (m) => moto(m) && (m.cc ?? 999) <= 50 && !competicion(m) },
+    a1: { texto: 'Con el A1 (desde los 16 años) puedes llevar motos de hasta 125 cc y 11 kW (15 CV).', puede: (m) => moto(m) && (m.cc ?? 999) <= 125 && (m.cc ?? 0) > 50 && (m.cv ?? 0) <= 15.5 && !competicion(m) },
+    b: { texto: 'Con el B de coche y 3 años de antigüedad puedes llevar en España motos de hasta 125 cc y 15 CV. Además, los quads y buggies homologados se conducen con el B.', puede: (m) => (moto(m) ? (m.cc ?? 999) <= 125 && (m.cc ?? 0) > 50 && (m.cv ?? 0) <= 15.5 && !competicion(m) : true) },
+    a2: { texto: 'Con el A2 (desde los 18 años) puedes llevar motos de hasta 35 kW (47,6 CV). Te enseño las que lo cumplen de serie; muchas más potentes tienen versión limitada para el A2, pregúntanos por ellas.', puede: (m) => moto(m) && !competicion(m) && ((m.cv ?? 999) <= 47.6 || ((m.cc ?? 999) <= 125 && (m.cc ?? 0) > 50)) },
+    a: { texto: 'Con el A puedes llevar cualquier moto, sin límite de potencia.', puede: (m) => moto(m) && !competicion(m) },
+    no: { texto: 'Sin carnet puedes usar motos de competición (motocross y trial) en circuitos y zonas autorizadas. Para la calle, lo más rápido es el AM desde los 15 años o el A1 desde los 16. Si tienes el B de coche con 3 años de antigüedad, ya puedes llevar 125 cc.', puede: (m) => competicion(m) },
+  };
+  const GRUPOS: { k: string; n: string; f: (m: Moto) => boolean }[] = [
+    { k: 'scooter', n: 'Scooter', f: (m) => m.cs === 'scooters' },
+    { k: 'naked', n: 'Naked y deportiva', f: (m) => /stealth|sport-touring/.test(m.cs) || (m.cs === 'motos' && /NK|SR/.test(m.n)) },
+    { k: 'trail', n: 'Trail y viaje', f: (m) => /adventure|alp/.test(m.cs) || (m.cs === 'motos' && /MT|Dual/.test(m.n)) },
+    { k: 'custom', n: 'Custom y clásica', f: (m) => /garage|caballero/.test(m.cs) || /Bobber/.test(m.n) },
+    { k: 'campo', n: 'Campo (enduro, motard)', f: (m) => /enduro|motard|rally|minibike/.test(m.cs) },
+    { k: 'competicion', n: 'Motocross y trial', f: (m) => competicion(m) },
+    { k: 'quad', n: 'Quad', f: (m) => m.cs === 'atv' },
+    { k: 'buggy', n: 'Buggy y UTV', f: (m) => m.cs === 'buggies' },
+  ];
+  const NOMBRE_CARNET: Record<string, string> = { am: 'AM', a1: 'A1', b: 'B', a2: 'A2', a: 'A', no: 'sin carnet' };
+  async function mostrarCarnet(c: string, t: string, d: Datos) {
+    const info = CARNETS[c]; const g = GRUPOS.find((x) => x.k === t);
+    const lista = d.motos.filter((m) => info.puede(m) && (!g || g.f(m)));
+    const r = g ? conPrecio(lista).slice(0, 10) : variado(lista);
+    await bot(r.length ? `${g ? g.n : 'Las más económicas'} para el ${NOMBRE_CARNET[c]}${lista.length > r.length ? ` (te enseño ${r.length} de ${lista.length})` : ''}:` : 'De ese tipo no tengo ninguna para tu carnet.', r);
+    const otros = GRUPOS.filter((x) => x.k !== t && d.motos.some((m) => info.puede(m) && x.f(m))).slice(0, 4);
+    chips([...otros.map((x) => ({ t: x.n, a: `carnet-tipo ${c} ${x.k}` })), { t: '¿Cuánto me sale al mes?', a: 'financiacion' }, { t: 'Que me llaméis', a: 'llamadme' }]);
   }
 
   // ---------- Motor de respuestas ----------
   async function responder(texto: string) {
     const d = await cargar();
     const q = norm(texto);
-    if (q === 'lead-cancelar') { estado = {}; await bot('Sin problema, no he guardado nada. ¿Te ayudo con otra cosa?'); chips(menu()); return; }
-    if (q === 'lead-enviar') { await enviarLead(); return; }
+    const raw = texto.trim();
+    if (raw === 'lead-cancelar') { estado = {}; await bot('Sin problema, no he guardado nada. ¿Te ayudo con otra cosa?'); chips(menu()); return; }
+    if (raw === 'lead-enviar') { await enviarLead(); return; }
     if (estado.paso?.startsWith('lead-') && estado.paso !== 'lead-ok') { await pasoLead(texto.trim()); return; }
 
-    if (q === 'menu' || /^(hola|buenas|buenos dias|buenas tardes|hey|ey)\b/.test(q) && q.split(' ').length <= 3) {
+    if (q === 'menu') { await reiniciar(); return; }
+    if (/^(hola|buenas|buenos dias|buenas tardes|hey|ey)\b/.test(q) && q.split(' ').length <= 3) {
       await bot('¿En qué te ayudo?'); chips(menu()); return;
     }
     if (/^(gracias|ok|vale|perfecto|genial)\b/.test(q)) { await bot('¡A ti! Si necesitas algo más, aquí estoy.'); chips(menu()); return; }
@@ -236,19 +281,31 @@ function iniciar(raiz: HTMLElement) {
 
     // Entrada para la cuota en curso
     const entradaM = q.match(/entrada (?:de )?(\d[\d ]*)/);
-    if (entradaM && estado.fin?.precio) { await responderCuota(estado.fin.precio, estado.fin.moto, Number(entradaM[1].replace(/\s/g, ''))); return; }
+    if (entradaM && estado.fin?.precio) { await responderCuota(estado.fin.precio, estado.fin.moto, Number(entradaM[1].replace(/\s/g, '')), !estado.fin.moto); return; }
 
-    // Carnet
-    if (/(carnet|permiso|licencia|\bb\b|\ba1\b|\ba2\b|\bam\b)/.test(q) && !/(colores?)/.test(q)) {
-      let filtro: ((m: Moto) => boolean) | null = null; let txt = '';
-      if (/\bam\b|ciclomotor|16 anos|15 anos/.test(q)) { filtro = (m) => (m.cc ?? 999) <= 50; txt = 'Con el carnet AM puedes llevar ciclomotores de hasta 50 cc:'; }
-      else if (/\ba1\b|\bb\b|coche|turismo/.test(q)) { filtro = (m) => (m.cc ?? 999) <= 125 && (m.cc ?? 0) > 50 && !['atv', 'buggies'].includes(m.cs); txt = /\ba1\b/.test(q) ? 'Con el A1 puedes llevar motos de hasta 125 cc y 15 CV:' : 'Con el carnet B y 3 años de antigüedad puedes llevar motos de hasta 125 cc (en España). Estas son algunas:'; }
-      else if (/\ba2\b/.test(q)) { filtro = (m) => (m.cv ?? 999) <= 47.6 && (m.cc ?? 0) > 125 && !['atv', 'buggies'].includes(m.cs); txt = 'Con el A2 puedes llevar motos de hasta 35 kW (47,6 CV). Estas encajan de serie:'; }
-      if (!filtro) { await bot('¿Qué carnet tienes?'); chips([{ t: 'Carnet B (coche)', a: 'carnet b' }, { t: 'A1', a: 'carnet a1' }, { t: 'A2', a: 'carnet a2' }, { t: 'A', a: 'buscar' }, { t: 'AM', a: 'carnet am' }]); return; }
-      const r = variado(d.motos.filter(filtro));
-      await bot(`${txt}`, r);
-      await bot('Muchas motos de más potencia también tienen versión limitada para el A2: pregúntanos.');
-      chips([{ t: 'Precios y cuota', a: 'financiacion' }, { t: 'Que me llaméis', a: 'llamadme' }, waChip()]); return;
+    // ---------- Carnet: 1) qué carnet  2) qué tipo de moto  3) modelos ----------
+    if (raw.startsWith('carnet-tipo ')) {
+      const [, c, t] = raw.split(' ');
+      await mostrarCarnet(c, t, d); return;
+    }
+    if (raw.startsWith('carnet-sel ')) {
+      const c = raw.split(' ')[1]; estado.carnet = c;
+      const info = CARNETS[c];
+      const posibles = d.motos.filter(info.puede);
+      const tipos = GRUPOS.filter((g) => posibles.some(g.f));
+      await bot(info.texto);
+      if (!tipos.length) { chips([{ t: 'Que me llaméis', a: 'llamadme' }, waChip()]); return; }
+      await bot(`Tengo ${posibles.length} modelos que puedes llevar. ¿Qué tipo buscas?`);
+      chips([...tipos.map((g) => ({ t: `${g.n} (${posibles.filter(g.f).length})`, a: `carnet-tipo ${c} ${g.k}` })), { t: `Ver las ${Math.min(posibles.length, 10)} más económicas`, a: `carnet-tipo ${c} todas` }]);
+      return;
+    }
+    const pideCarnet = /(carnet|permiso|licencia)/.test(q) || /^(b|a1|a2|a|am)$/.test(q);
+    if (pideCarnet && !/colou?r/.test(q)) {
+      const c = /\bam\b|ciclomotor|15 anos|16 anos/.test(q) ? 'am' : /\ba1\b/.test(q) ? 'a1' : /\ba2\b/.test(q) ? 'a2' : /\bb\b|coche|turismo/.test(q) ? 'b' : /\ba\b/.test(q) ? 'a' : /(no tengo|sin carnet|sacar)/.test(q) ? 'no' : '';
+      if (c) { await responder(`carnet-sel ${c}`); return; }
+      await bot('Te digo qué puedes llevar. ¿Qué carnet tienes?');
+      chips([{ t: 'B de coche (con 3 años)', a: 'carnet-sel b' }, { t: 'A1', a: 'carnet-sel a1' }, { t: 'A2', a: 'carnet-sel a2' }, { t: 'A (sin límite)', a: 'carnet-sel a' }, { t: 'AM (ciclomotor)', a: 'carnet-sel am' }, { t: 'Aún no tengo', a: 'carnet-sel no' }]);
+      return;
     }
 
     // Presupuesto: «hasta 5000», «menos de 4.000 €»
@@ -257,9 +314,9 @@ function iniciar(raiz: HTMLElement) {
       const tope = Number(pres[2].replace(/\s/g, ''));
       const tipo = TIPOS.find(([re]) => re.test(q));
       const r = conPrecio(d.motos.filter((m) => m.p != null && m.p <= tope && (!tipo || tipo[1](m)))).reverse().slice(0, 10);
-      if (r.length) await bot(`Por ${euros(tope)} o menos${tipo ? ` en ${tipo[2]}` : ''} tienes estas:`, r);
+      if (r.length) await bot(`Dentro de tu presupuesto${tipo ? ` en ${tipo[2]}` : ''} tienes estas:`, r);
       else await bot(`Con ese presupuesto${tipo ? ` en ${tipo[2]}` : ''} no tengo modelos con precio publicado. Llámanos y lo vemos, a veces hay ofertas o unidades de ocasión.`);
-      chips([{ t: 'Calcular cuota', a: 'financiacion' }, { t: 'Que me llaméis', a: 'llamadme' }, waChip()]); return;
+      chips([{ t: '¿Cuánto me sale al mes?', a: 'financiacion' }, { t: 'Que me llaméis', a: 'llamadme' }, waChip()]); return;
     }
 
     // Marca
@@ -271,7 +328,7 @@ function iniciar(raiz: HTMLElement) {
     if (/colou?r/.test(q) && modelos.length) {
       const m = modelos[0];
       await bot(`La ${esc(m.m)} ${esc(m.n)} está en: ${m.col.length ? m.col.map(esc).join(', ') : 'consúltanos los colores disponibles'}.`, [m]);
-      chips([{ t: 'Precio y cuota', a: `cuota ${m.n}` }, { t: 'Quiero probarla', a: 'llamadme' }, waChip(`Hola, me interesa la ${m.m} ${m.n}.`)]); return;
+      chips([{ t: '¿Cuánto me sale al mes?', a: `cuota ${m.n}` }, { t: 'Quiero probarla', a: 'llamadme' }, waChip(`Hola, me interesa la ${m.m} ${m.n}.`)]); return;
     }
     // Cuota / financiación
     if (/(financ|cuota|plazo|mensual|al mes|pagar|entrada)/.test(q)) {
@@ -279,12 +336,13 @@ function iniciar(raiz: HTMLElement) {
       if (modelos.length === 1 || (modelos.length && /cuota /.test(q))) {
         const m = modelos[0];
         if (m.p) { await responderCuota(m.p, `${m.m} ${m.n}`); return; }
-        await bot(`La ${esc(m.n)} es «Consultar precio»: dinos qué te interesa y te preparamos la cuota.`); chips([{ t: 'Que me llaméis', a: 'llamadme' }, waChip(`Hola, quiero precio y financiación de la ${m.n}.`)]); return;
+        await bot(`La financiación de la ${esc(m.n)} te la preparamos a medida. Déjanos tu teléfono y te llamamos con la cuota.`); chips([{ t: 'Que me llaméis', a: 'llamadme' }, waChip(`Hola, quiero precio y financiación de la ${m.n}.`)]); return;
       }
-      if (cifra) { await responderCuota(Number(cifra[1].replace(/\s/g, '')), undefined); return; }
+      if (cifra) { await responderCuota(Number(cifra[1].replace(/\s/g, '')), undefined, 0, true); return; }
       if (estado.fin?.precio) { await responderCuota(estado.fin.precio, estado.fin.moto); return; }
-      await bot('Financiamos tu moto a tu medida, con o sin entrada. Dime el modelo o el precio (por ejemplo «cuota 800NK» o «cuota 6000») y te calculo cuánto sale al mes.');
-      chips([{ t: 'Cuota de 5.000 €', a: 'cuota 5000' }, { t: 'Cuota de 8.000 €', a: 'cuota 8000' }, { t: 'Calculadora completa', url: '/#financiacion' }]); return;
+      await bot('Te digo cuánto te sale al mes, con o sin entrada. ¿Qué moto te gusta? Escribe el modelo (por ejemplo «800NK» o «Caballero 500») o elige qué buscas.');
+      estado.paso = 'cuota-modelo';
+      chips([{ t: 'Scooter', a: 'scooter' }, { t: 'Naked', a: 'naked' }, { t: 'Trail', a: 'trail' }, { t: 'Custom', a: 'custom' }, { t: 'Quad', a: 'quad' }, { t: 'Enduro', a: 'enduro' }]); return;
     }
     // Por tipo (y marca si la hay), afinando con el resto de palabras si encajan
     if (tipo) {
@@ -292,13 +350,14 @@ function iniciar(raiz: HTMLElement) {
       const cifras = q.match(/\b\d{3,4}\b/g)?.filter((c) => c !== '4000');
       const fino = cifras?.length ? base.filter((m) => cifras.some((c) => norm(m.n).includes(c))) : [];
       const r = marca ? conPrecio(fino.length ? fino : base).slice(0, 10) : variado(fino.length ? fino : base);
-      if (r.length) { await bot(`Estas son nuestras ${tipo[2]}${marca ? ` de ${marca.n}` : ''}:`, r); chips([{ t: 'Qué moto con mi carnet', a: 'carnet' }, { t: 'Precios y financiación', a: 'financiacion' }, { t: 'Que me llaméis', a: 'llamadme' }]); return; }
+      if (r.length) { await bot(`Aquí tienes ${tipo[2]}${marca ? ` de ${marca.n}` : ''}. Toca una para verla:`, r); chips([{ t: '¿Qué moto puedo llevar?', a: 'carnet' }, { t: '¿Cuánto me sale al mes?', a: 'financiacion' }, { t: 'Que me llaméis', a: 'llamadme' }]); return; }
     }
     // Buscar por modelo concreto
     if (modelos.length && !(marca && modelos.length > 6)) {
       const uno = modelos.length === 1 ? modelos[0] : null;
-      await bot(uno ? `Aquí tienes la ${esc(uno.m)} ${esc(uno.n)}: ${esc(uno.pt)}.` : 'Esto es lo que tengo:', modelos);
-      chips(uno ? [{ t: 'Calcular cuota', a: `cuota ${uno.n}` }, { t: 'Colores', a: `colores ${uno.n}` }, { t: 'Quiero probarla', a: 'llamadme' }, waChip(`Hola, me interesa la ${uno.m} ${uno.n}.`)] : [{ t: 'Precios y financiación', a: 'financiacion' }, { t: 'Que me llaméis', a: 'llamadme' }]);
+      if (uno && estado.paso === 'cuota-modelo' && uno.p) { estado.paso = undefined; await responderCuota(uno.p, `${uno.m} ${uno.n}`); return; }
+      await bot(uno ? `Aquí tienes la ${esc(uno.m)} ${esc(uno.n)}. Toca la tarjeta para ver fotos y ficha.` : 'Esto es lo que tengo. Toca una para ver fotos y ficha:', modelos);
+      chips(uno ? [{ t: '¿Cuánto me sale al mes?', a: `cuota ${uno.n}` }, { t: 'Colores', a: `colores ${uno.n}` }, { t: 'Quiero probarla', a: 'llamadme' }, waChip(`Hola, me interesa la ${uno.m} ${uno.n}.`)] : [{ t: '¿Cuánto me sale al mes?', a: 'financiacion' }, { t: 'Que me llaméis', a: 'llamadme' }]);
       return;
     }
     if (marca) {
@@ -324,6 +383,12 @@ function iniciar(raiz: HTMLElement) {
     await responder(mapa[accion] ?? accion);
   }
 
+  async function reiniciar() {
+    historial = []; estado = {}; lista.innerHTML = ''; chipsEl.innerHTML = '';
+    try { sessionStorage.removeItem(CLAVE); } catch { /* */ }
+    await saludo();
+  }
+
   // ---------- Apertura y cierre ----------
   let abierto = false;
   async function abrir() {
@@ -332,6 +397,7 @@ function iniciar(raiz: HTMLElement) {
     panel.hidden = false; abrirBtn.setAttribute('aria-expanded', 'true');
     if (!reducir) gsap.fromTo(panel, { y: 30, opacity: 0, scale: 0.96, transformOrigin: '100% 100%' }, { y: 0, opacity: 1, scale: 1, duration: 0.35, ease: 'power3.out' });
     if (!lista.children.length) {
+      await cargar().catch(() => null);
       restaurar();
       if (historial.length) { historial.forEach((m) => pintar(m, false)); chips(ultimosChips); }
       else await saludo();
@@ -346,7 +412,7 @@ function iniciar(raiz: HTMLElement) {
   }
   abrirBtn.addEventListener('click', () => (abierto ? cerrar() : abrir()));
   $('[data-cerrar]').addEventListener('click', cerrar);
-  $('[data-reiniciar]').addEventListener('click', async () => { historial = []; estado = {}; lista.innerHTML = ''; try { sessionStorage.removeItem(CLAVE); } catch { /* */ } await saludo(); });
+  $('[data-reiniciar]').addEventListener('click', reiniciar);
   document.addEventListener('keydown', (e) => { if (e.key === 'Escape' && abierto) cerrar(); });
   form.addEventListener('submit', async (e) => {
     e.preventDefault();
