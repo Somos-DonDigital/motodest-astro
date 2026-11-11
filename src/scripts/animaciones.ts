@@ -50,6 +50,19 @@ function iniciar() {
   });
   gsap.from('.historia__txt > *', { x: -30, opacity: 0, duration: 0.8, ease: 'power3.out', stagger: 0.1, scrollTrigger: { trigger: '.historia', start: 'top 75%', once: true } });
 
+  // Paneles de marcas: el que tocas se abre (GSAP anima el ancho)
+  document.querySelectorAll<HTMLElement>('[data-paneles]').forEach((c) => {
+    const ps = [...c.querySelectorAll<HTMLElement>('.panel')];
+    const escritorio = matchMedia('(min-width: 901px)');
+    const abrir = (p: HTMLElement) => {
+      if (!escritorio.matches || p.classList.contains('activo')) return;
+      ps.forEach((x) => x.classList.toggle('activo', x === p));
+      ps.forEach((x) => gsap.to(x, { flexGrow: x === p ? 4 : 1, duration: 0.8, ease: 'power3.inOut' }));
+    };
+    ps.forEach((p) => { p.addEventListener('mouseenter', () => abrir(p)); p.addEventListener('focus', () => abrir(p)); });
+    gsap.from(ps, { yPercent: 30, opacity: 0, duration: 0.9, ease: 'power3.out', stagger: 0.12, clearProps: 'transform,opacity', scrollTrigger: { trigger: c, start: 'top 80%', once: true } });
+  });
+
   // Cinta de marcas de equipación: movimiento continuo, se para al pasar el ratón
   document.querySelectorAll<HTMLElement>('[data-cinta]').forEach((c) => {
     const pista = c.querySelector<HTMLElement>('.cinta__pista')!;
