@@ -23,7 +23,8 @@ const relacionadas = (await getCollection('motos', (x) => x.data.marca === m.mar
   .sort((a, b) => Math.abs(a.data.orden - m.orden) - Math.abs(b.data.orden - m.orden)).slice(0, 4);
 const tel = EMPRESA.telefono.replace(/\s/g, '');
 const wa = `https://wa.me/${EMPRESA.whatsapp}?text=${encodeURIComponent(`Hola, me interesa la ${nombre}.`)}`;
-const imgs = m.imagenes.map(imgMoto);
+const imgs = m.imagenes.map((i) => imgMoto(i.src));
+const variantes = m.imagenes.map((i) => i.color);
 const imgsSchema = await Promise.all(imgs.map(async (i) => new URL((await getImage({ src: i, width: 1200, format: 'jpg' })).src, Astro.site).toString()));
 
 const producto: Record<string, unknown> = {
@@ -35,6 +36,7 @@ const producto: Record<string, unknown> = {
   description: descripcion,
   url: new URL(urlMoto(m), Astro.site).toString(),
   ...(imgsSchema.length ? { image: imgsSchema } : {}),
+  ...(variantes.length > 1 ? { color: variantes.join(', ') } : {}),
   ...(m.precio != null
     ? { offers: { '@type': 'Offer', priceCurrency: 'EUR', price: m.precio, url: new URL(urlMoto(m), Astro.site).toString(), itemCondition: 'https://schema.org/NewCondition', seller: { '@id': `${Astro.site!.toString().replace(/\/$/, '')}/#negocio` } } }
     : {}),
@@ -53,17 +55,21 @@ const producto: Record<string, unknown> = {
       <div class="galeria__principal">
         {imgs.length
           ? imgs.map((src, i) => (
-              <Image src={src} alt={`${nombre}${imgs.length > 1 ? ` (${i + 1} de ${imgs.length})` : ''}`} widths={[480, 800, 1200]} sizes="(max-width: 900px) 92vw, 55vw" loading={i === 0 ? 'eager' : 'lazy'} fetchpriority={i === 0 ? 'high' : 'auto'} class:list={['galeria__img', { activa: i === 0 }]} data-i={i} />
+              <Image src={src} alt={`${nombre}${imgs.length > 1 ? ` en color ${m.imagenes[i].color.toLowerCase()}` : ''}`} widths={[480, 800, 1200]} sizes="(max-width: 900px) 92vw, 55vw" loading={i === 0 ? 'eager' : 'lazy'} fetchpriority={i === 0 ? 'high' : 'auto'} class:list={['galeria__img', { activa: i === 0 }]} data-i={i} />
             ))
           : <div class="galeria__sin">Foto próximamente</div>}
       </div>
       {imgs.length > 1 && (
-        <div class="galeria__minis" role="group" aria-label="Elegir foto">
-          {imgs.map((src, i) => (
-            <button type="button" class:list={['galeria__mini', { activa: i === 0 }]} data-i={i} aria-label={`Ver foto ${i + 1}`} aria-pressed={i === 0 ? 'true' : 'false'}>
-              <Image src={src} alt="" width={120} layout="fixed" />
-            </button>
-          ))}
+        <div class="galeria__colores">
+          <p class="galeria__etq">Color: <strong class="galeria__nombre">{m.imagenes[0].color}</strong></p>
+          <div class="galeria__minis" role="group" aria-label="Elegir color">
+            {imgs.map((src, i) => (
+              <button type="button" class:list={['galeria__mini', { activa: i === 0 }]} data-i={i} data-color={m.imagenes[i].color} aria-label={m.imagenes[i].color} aria-pressed={i === 0 ? 'true' : 'false'}>
+                <Image src={src} alt="" width={120} layout="fixed" />
+                <span class="galeria__punto" style={`--c:${m.imagenes[i].hex}`}></span>
+              </button>
+            ))}
+          </div>
         </div>
       )}
     </div>
@@ -115,6 +121,7 @@ const producto: Record<string, unknown> = {
     b.addEventListener('click', () => {
       const i = b.dataset.i;
       document.querySelectorAll('.galeria__img').forEach((img) => img.classList.toggle('activa', (img as HTMLElement).dataset.i === i));
+      const n = document.querySelector('.galeria__nombre'); if (n) n.textContent = b.dataset.color ?? '';
       document.querySelectorAll('.galeria__mini').forEach((x) => {
         x.classList.toggle('activa', x === b);
         x.setAttribute('aria-pressed', String(x === b));
@@ -129,7 +136,11 @@ const producto: Record<string, unknown> = {
   .galeria__principal :global(.galeria__img) { grid-area: 1 / 1; width: 100%; height: 100%; object-fit: contain; opacity: 0; transition: opacity 0.25s; }
   .galeria__principal :global(.galeria__img.activa) { opacity: 1; }
   .galeria__sin { color: var(--gris); }
-  .galeria__minis { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 12px; }
+  .galeria__colores { margin-top: 14px; }
+  .galeria__etq { margin-bottom: 8px; font-size: var(--fs-peq); }
+  .galeria__minis { display: flex; flex-wrap: wrap; gap: 10px; }
+  .galeria__mini { position: relative; }
+  .galeria__punto { position: absolute; right: -6px; top: -6px; width: 20px; height: 20px; border-radius: 50%; background: var(--c); border: 2px solid #fff; box-shadow: 0 0 0 1px var(--borde); }
   .galeria__mini { border: 2px solid var(--borde); border-radius: 8px; background: #fff; padding: 4px; cursor: pointer; }
   .galeria__mini.activa { border-color: var(--naranja); }
   .galeria__mini :global(img) { width: 96px; height: 58px; object-fit: contain; }

@@ -7,6 +7,8 @@ Uso: python3 -I scripts/generar_catalogo.py <carpeta_imagenes_wp>
 Las imágenes se copian a src/assets/motos/ (Astro las optimiza en el build).
 """
 import json, os, re, shutil, sys, unicodedata
+sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
+from colores import color_final
 
 RAIZ = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 WP = sys.argv[1] if len(sys.argv) > 1 else os.path.join(RAIZ, '..', 'wp-media')
@@ -114,8 +116,14 @@ def main():
                     destino = f'{marca}/{slug(os.path.splitext(base)[0])}{ext}'
                     os.makedirs(os.path.join(img_dir, marca), exist_ok=True)
                     shutil.copyfile(os.path.join(WP, i), os.path.join(img_dir, destino))
-                    imagenes.append(destino)
+                    color, hexa = color_final(os.path.join(img_dir, destino), destino)
+                    imagenes.append({'src': destino, 'color': color, 'hex': hexa})
                 if not imagenes: avisos.append(f'SIN FOTO {marca} {nombre}')
+                # Si se repite un nombre de color, se numeran
+                vistos = {}
+                for im in imagenes:
+                    vistos[im['color']] = vistos.get(im['color'], 0) + 1
+                    if vistos[im['color']] > 1: im['color'] += f" {vistos[im['color']]}"
                 s = slug(nombre)
                 data = {'nombre': nombre, 'marca': marca, 'categoria': cat, 'slug': s,
                         'precio': precio, 'precioDesde': desde, 'imagenes': imagenes, 'ficha': ficha,

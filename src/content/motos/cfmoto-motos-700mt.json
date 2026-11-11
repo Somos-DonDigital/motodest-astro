@@ -6,8 +6,16 @@
   "precio": 7499,
   "precioDesde": false,
   "imagenes": [
-    "cfmoto/img-moto-700mt-cfmoto-motodest-scaled.webp",
-    "cfmoto/img-700mt-a-cfmoto-motodest-scaled.webp"
+    {
+      "src": "cfmoto/img-moto-700mt-cfmoto-motodest-scaled.webp",
+      "color": "Negro",
+      "hex": "#272727"
+    },
+    {
+      "src": "cfmoto/img-700mt-a-cfmoto-motodest-scaled.webp",
+      "color": "Blanco",
+      "hex": "#cac9c9"
+    }
   ],
   "ficha": {
     "motor": "Bicilíndrico en línea, 4 tiempos, refrigeración líquida, DOHC",

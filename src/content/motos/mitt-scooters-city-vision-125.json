@@ -6,8 +6,16 @@
   "precio": 2599,
   "precioDesde": false,
   "imagenes": [
-    "mitt/img-mitt-city-vision-125-negra-mitt-motors-motodest-scaled.webp",
-    "mitt/img-mitt-city-vision-125-gris-mitt-motors-motodest-scaled.webp"
+    {
+      "src": "mitt/img-mitt-city-vision-125-negra-mitt-motors-motodest-scaled.webp",
+      "color": "Negro",
+      "hex": "#343338"
+    },
+    {
+      "src": "mitt/img-mitt-city-vision-125-gris-mitt-motors-motodest-scaled.webp",
+      "color": "Gris",
+      "hex": "#7e7c7f"
+    }
   ],
   "ficha": {
     "motor": "Monocilíndrico 4 tiempos, 2 válvulas, refrigeración líquida",

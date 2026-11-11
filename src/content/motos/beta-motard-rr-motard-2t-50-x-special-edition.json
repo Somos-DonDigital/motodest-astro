@@ -6,7 +6,11 @@
   "precio": null,
   "precioDesde": false,
   "imagenes": [
-    "beta/imgi-8-rr-50-2t-x-scaled-1.webp"
+    {
+      "src": "beta/imgi-8-rr-50-2t-x-scaled-1.webp",
+      "color": "Negro",
+      "hex": "#48494a"
+    }
   ],
   "ficha": {
     "motor": "Monocilíndrico 2 tiempos, refrigerado por líquido",

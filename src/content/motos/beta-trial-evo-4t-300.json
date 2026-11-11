@@ -6,7 +6,11 @@
   "precio": 8449,
   "precioDesde": false,
   "imagenes": [
-    "beta/imgi-7-evo-300-4t-my-2025-2-scaled-1.webp"
+    {
+      "src": "beta/imgi-7-evo-300-4t-my-2025-2-scaled-1.webp",
+      "color": "Rojo",
+      "hex": "#b64632"
+    }
   ],
   "ficha": {
     "motor": "Monocilíndrico 4 tiempos, refrigerado por líquido, DOHC 4 válvulas",

@@ -6,8 +6,16 @@
   "precio": 3399,
   "precioDesde": false,
   "imagenes": [
-    "mitt/img-mitt-nk-125-va-mitt-motors-motodest-scaled.webp",
-    "mitt/img-mitt-nk-125-nr-mitt-motors-motodest-scaled.webp"
+    {
+      "src": "mitt/img-mitt-nk-125-va-mitt-motors-motodest-scaled.webp",
+      "color": "Verde",
+      "hex": "#949e27"
+    },
+    {
+      "src": "mitt/img-mitt-nk-125-nr-mitt-motors-motodest-scaled.webp",
+      "color": "Rojo",
+      "hex": "#ab3e44"
+    }
   ],
   "ficha": {
     "motor": "Monocilíndrico 4 tiempos",

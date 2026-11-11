@@ -6,8 +6,16 @@
   "precio": 11299,
   "precioDesde": false,
   "imagenes": [
-    "mitt/img-gt-k-azul-mitt-motors-motodest-scaled.webp",
-    "mitt/img-gt-k-negra-mitt-motors-motodest-scaled.webp"
+    {
+      "src": "mitt/img-gt-k-azul-mitt-motors-motodest-scaled.webp",
+      "color": "Azul",
+      "hex": "#0d4393"
+    },
+    {
+      "src": "mitt/img-gt-k-negra-mitt-motors-motodest-scaled.webp",
+      "color": "Negro",
+      "hex": "#26262a"
+    }
   ],
   "ficha": {
     "motor": "Bicilíndrico en línea, 4 tiempos, 4 válvulas por cilindro DOHC",

@@ -6,7 +6,11 @@
   "precio": 11549,
   "precioDesde": false,
   "imagenes": [
-    "fantic/moto-fantic-xxf-450-2026-motodest.webp"
+    {
+      "src": "fantic/moto-fantic-xxf-450-2026-motodest.webp",
+      "color": "Rojo",
+      "hex": "#c02b3e"
+    }
   ],
   "ficha": {
     "motor": "Monocilíndrico 4 tiempos, refrigerado por líquido, 4 válvulas DOHC, cilindro inclinado hacia atrás",

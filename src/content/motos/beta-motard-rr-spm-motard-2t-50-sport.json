@@ -6,7 +6,11 @@
   "precio": 4299,
   "precioDesde": false,
   "imagenes": [
-    "beta/imgi-62-rr-50-2t-sport-black-2048x1213-1.webp"
+    {
+      "src": "beta/imgi-62-rr-50-2t-sport-black-2048x1213-1.webp",
+      "color": "Negro",
+      "hex": "#343536"
+    }
   ],
   "ficha": {
     "motor": "Monocilíndrico 2 tiempos, refrigerado por líquido",

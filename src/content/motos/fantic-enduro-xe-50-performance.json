@@ -6,8 +6,16 @@
   "precio": 4149,
   "precioDesde": false,
   "imagenes": [
-    "fantic/moto-fantic-xe-50-performance-motodest.webp",
-    "fantic/img-fantic-xe-50-performance-roja-enduro-motodest.webp"
+    {
+      "src": "fantic/moto-fantic-xe-50-performance-motodest.webp",
+      "color": "Verde",
+      "hex": "#95aa43"
+    },
+    {
+      "src": "fantic/img-fantic-xe-50-performance-roja-enduro-motodest.webp",
+      "color": "Rojo",
+      "hex": "#b22b3b"
+    }
   ],
   "ficha": {
     "motor": "Monocilíndrico 2 tiempos, refrigerado por líquido",

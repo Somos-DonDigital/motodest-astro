@@ -6,7 +6,11 @@
   "precio": 5699,
   "precioDesde": false,
   "imagenes": [
-    "beta/imgi-9-rr-125-4t-t-black-scaled-1.webp"
+    {
+      "src": "beta/imgi-9-rr-125-4t-t-black-scaled-1.webp",
+      "color": "Negro",
+      "hex": "#353536"
+    }
   ],
   "ficha": {
     "motor": "Monocilíndrico 4 tiempos, refrigerado por líquido",

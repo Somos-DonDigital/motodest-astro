@@ -6,9 +6,21 @@
   "precio": 21299,
   "precioDesde": false,
   "imagenes": [
-    "cfmoto/img-u10proxl-r-cfmoto-motodest-scaled.webp",
-    "cfmoto/img-u10proxl-v-cfmoto-motodest-scaled.webp",
-    "cfmoto/img-u10proxl-g-cfmoto-motodest-scaled.webp"
+    {
+      "src": "cfmoto/img-u10proxl-r-cfmoto-motodest-scaled.webp",
+      "color": "Rojo",
+      "hex": "#c43c4a"
+    },
+    {
+      "src": "cfmoto/img-u10proxl-v-cfmoto-motodest-scaled.webp",
+      "color": "Verde",
+      "hex": "#44714a"
+    },
+    {
+      "src": "cfmoto/img-u10proxl-g-cfmoto-motodest-scaled.webp",
+      "color": "Camuflaje",
+      "hex": "#495139"
+    }
   ],
   "ficha": {
     "motor": "Tricilíndrico, 4 tiempos, refrigeración líquida, DOHC",

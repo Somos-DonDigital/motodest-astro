@@ -6,10 +6,26 @@
   "precio": 3499,
   "precioDesde": true,
   "imagenes": [
-    "mitt/img-mitt-gt-max-125-330-roja-mitt-motors-motodest-scaled.webp",
-    "mitt/img-mitt-gt-max-125-330-avn-mitt-motors-motodest-scaled.webp",
-    "mitt/img-mitt-gt-max-125-330-froja-mitt-motors-motodest-scaled.webp",
-    "mitt/img-mitt-gt-max-125-330-naranja-mitt-motors-motodest-scaled.webp"
+    {
+      "src": "mitt/img-mitt-gt-max-125-330-roja-mitt-motors-motodest-scaled.webp",
+      "color": "Rojo",
+      "hex": "#d3141b"
+    },
+    {
+      "src": "mitt/img-mitt-gt-max-125-330-avn-mitt-motors-motodest-scaled.webp",
+      "color": "Azul",
+      "hex": "#334958"
+    },
+    {
+      "src": "mitt/img-mitt-gt-max-125-330-froja-mitt-motors-motodest-scaled.webp",
+      "color": "Rojo oscuro",
+      "hex": "#8a2231"
+    },
+    {
+      "src": "mitt/img-mitt-gt-max-125-330-naranja-mitt-motors-motodest-scaled.webp",
+      "color": "Naranja",
+      "hex": "#ee7326"
+    }
   ],
   "ficha": {
     "motor": "Monocilíndrico 4 tiempos (datos de la versión 125)",

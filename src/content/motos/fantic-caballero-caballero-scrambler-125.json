@@ -6,8 +6,16 @@
   "precio": 5899,
   "precioDesde": false,
   "imagenes": [
-    "fantic/img-moto-scrambler-125-black-fantic-motodest.webp",
-    "fantic/img-moto-scrambler-125-roja-fantic-motodest.webp"
+    {
+      "src": "fantic/img-moto-scrambler-125-black-fantic-motodest.webp",
+      "color": "Negro",
+      "hex": "#1c1d1d"
+    },
+    {
+      "src": "fantic/img-moto-scrambler-125-roja-fantic-motodest.webp",
+      "color": "Rojo",
+      "hex": "#8c121e"
+    }
   ],
   "ficha": {
     "motor": "Monocilíndrico 4 tiempos, refrigerado por líquido",

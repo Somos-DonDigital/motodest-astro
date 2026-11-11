@@ -6,7 +6,11 @@
   "precio": 9299,
   "precioDesde": false,
   "imagenes": [
-    "mitt/img-mitt-808-big-foot-mitt-motors-motodest-scaled.webp"
+    {
+      "src": "mitt/img-mitt-808-big-foot-mitt-motors-motodest-scaled.webp",
+      "color": "Azul",
+      "hex": "#344350"
+    }
   ],
   "ficha": {
     "motor": "Bicilíndrico en V, 4 tiempos",

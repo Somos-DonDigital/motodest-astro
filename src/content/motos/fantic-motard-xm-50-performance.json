@@ -6,9 +6,21 @@
   "precio": 4149,
   "precioDesde": false,
   "imagenes": [
-    "fantic/xm-50-performance-motard-motodest.webp",
-    "fantic/fantic-xm-performance-50cc-rosa-motodest.webp",
-    "fantic/fantic-xm-performance-50cc-roja-motodest.webp"
+    {
+      "src": "fantic/xm-50-performance-motard-motodest.webp",
+      "color": "Verde",
+      "hex": "#93a747"
+    },
+    {
+      "src": "fantic/fantic-xm-performance-50cc-rosa-motodest.webp",
+      "color": "Rosa",
+      "hex": "#bb2a99"
+    },
+    {
+      "src": "fantic/fantic-xm-performance-50cc-roja-motodest.webp",
+      "color": "Rojo",
+      "hex": "#a62b38"
+    }
   ],
   "ficha": {
     "motor": "Monocilíndrico 2 tiempos, refrigerado por líquido",

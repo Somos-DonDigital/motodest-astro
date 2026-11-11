@@ -6,7 +6,11 @@
   "precio": 1759,
   "precioDesde": false,
   "imagenes": [
-    "beta/img-7-minitrial16-my2021-gallery.webp"
+    {
+      "src": "beta/img-7-minitrial16-my2021-gallery.webp",
+      "color": "Rojo",
+      "hex": "#bc5841"
+    }
   ],
   "ficha": {
     "motor": "Eléctrico 750 W, 36 V",

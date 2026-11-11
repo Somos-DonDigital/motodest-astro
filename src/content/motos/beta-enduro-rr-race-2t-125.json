@@ -6,7 +6,11 @@
   "precio": 10349,
   "precioDesde": false,
   "imagenes": [
-    "beta/imgi-14-rr-race-125-2t-my26-scaled-1.webp"
+    {
+      "src": "beta/imgi-14-rr-race-125-2t-my26-scaled-1.webp",
+      "color": "Rojo",
+      "hex": "#ce433b"
+    }
   ],
   "ficha": {
     "motor": "Monocilíndrico 2 tiempos, refrigerado por líquido",

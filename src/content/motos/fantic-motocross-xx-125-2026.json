@@ -6,7 +6,11 @@
   "precio": 8949,
   "precioDesde": false,
   "imagenes": [
-    "fantic/moto-fantic-xx-125-2026-motodest.webp"
+    {
+      "src": "fantic/moto-fantic-xx-125-2026-motodest.webp",
+      "color": "Rojo",
+      "hex": "#c72e40"
+    }
   ],
   "ficha": {
     "motor": "Monocilíndrico 2 tiempos, refrigerado por líquido, admisión por láminas y válvula de escape YPVS",

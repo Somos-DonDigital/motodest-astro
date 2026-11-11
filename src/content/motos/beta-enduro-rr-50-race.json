@@ -6,7 +6,11 @@
   "precio": 5049,
   "precioDesde": false,
   "imagenes": [
-    "beta/imgi-125-rr-50-2t-race-2-1030x601-1.webp"
+    {
+      "src": "beta/imgi-125-rr-50-2t-race-2-1030x601-1.webp",
+      "color": "Rojo",
+      "hex": "#cd2b27"
+    }
   ],
   "ficha": {
     "motor": "Monocilíndrico 2 tiempos, refrigerado por líquido",

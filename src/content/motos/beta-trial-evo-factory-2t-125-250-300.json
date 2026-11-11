@@ -6,7 +6,11 @@
   "precio": 8649,
   "precioDesde": true,
   "imagenes": [
-    "beta/imgi-8-evo-factory-2t-gallery-1-1.webp"
+    {
+      "src": "beta/imgi-8-evo-factory-2t-gallery-1-1.webp",
+      "color": "Azul",
+      "hex": "#2666a3"
+    }
   ],
   "ficha": {
     "motor": "Monocilíndrico 2 tiempos, refrigerado por líquido, admisión por láminas al cárter, cárteres de magnesio",

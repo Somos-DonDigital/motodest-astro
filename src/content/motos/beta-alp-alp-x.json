@@ -6,7 +6,11 @@
   "precio": 7249,
   "precioDesde": false,
   "imagenes": [
-    "beta/imgi-8-alpx-side.webp"
+    {
+      "src": "beta/imgi-8-alpx-side.webp",
+      "color": "Negro",
+      "hex": "#454649"
+    }
   ],
   "ficha": {
     "motor": "Monocilíndrico 4 tiempos, refrigerado por líquido, doble árbol de levas",

@@ -6,9 +6,21 @@
   "precio": 8299,
   "precioDesde": false,
   "imagenes": [
-    "cfmoto/img-moto-675sr-r-cfmoto-motodest-scaled.webp",
-    "cfmoto/img-675srr-n-cfmoto-motodest-scaled.webp",
-    "cfmoto/img-675srr-g-cfmoto-motodest-scaled.webp"
+    {
+      "src": "cfmoto/img-moto-675sr-r-cfmoto-motodest-scaled.webp",
+      "color": "Blanco",
+      "hex": "#c2c3c4"
+    },
+    {
+      "src": "cfmoto/img-675srr-n-cfmoto-motodest-scaled.webp",
+      "color": "Negro",
+      "hex": "#252525"
+    },
+    {
+      "src": "cfmoto/img-675srr-g-cfmoto-motodest-scaled.webp",
+      "color": "Gris",
+      "hex": "#878787"
+    }
   ],
   "ficha": {
     "motor": "Tricilíndrico en línea, 4 tiempos, refrigerado por líquido, DOHC",

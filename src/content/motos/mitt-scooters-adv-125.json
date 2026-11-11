@@ -6,8 +6,16 @@
   "precio": 3499,
   "precioDesde": false,
   "imagenes": [
-    "mitt/img-mitt-adv-125-azul-mitt-motors-motodest-scaled.webp",
-    "mitt/img-mitt-adv-125-gris-mitt-motors-motodest-scaled.webp"
+    {
+      "src": "mitt/img-mitt-adv-125-azul-mitt-motors-motodest-scaled.webp",
+      "color": "Azul",
+      "hex": "#265580"
+    },
+    {
+      "src": "mitt/img-mitt-adv-125-gris-mitt-motors-motodest-scaled.webp",
+      "color": "Gris",
+      "hex": "#7f7d82"
+    }
   ],
   "ficha": {
     "motor": "Monocilíndrico 4 tiempos",

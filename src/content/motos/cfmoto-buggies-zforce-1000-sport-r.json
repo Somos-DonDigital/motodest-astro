@@ -6,9 +6,21 @@
   "precio": 19299,
   "precioDesde": false,
   "imagenes": [
-    "cfmoto/img-zf1000sport-na-cfmoto-motodest-scaled.png",
-    "cfmoto/img-zf1000-tierra-cfmoto-motodest-scaled.png",
-    "cfmoto/img-zf1000-negra-cfmoto-motodest-scaled.png"
+    {
+      "src": "cfmoto/img-zf1000sport-na-cfmoto-motodest-scaled.png",
+      "color": "Naranja",
+      "hex": "#ea8b5c"
+    },
+    {
+      "src": "cfmoto/img-zf1000-tierra-cfmoto-motodest-scaled.png",
+      "color": "Tierra",
+      "hex": "#98885e"
+    },
+    {
+      "src": "cfmoto/img-zf1000-negra-cfmoto-motodest-scaled.png",
+      "color": "Negro",
+      "hex": "#282828"
+    }
   ],
   "ficha": {
     "motor": "Bicilíndrico en V, 4 tiempos, refrigeración líquida, SOHC 8 válvulas",

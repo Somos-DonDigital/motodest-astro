@@ -6,9 +6,21 @@
   "precio": 6999,
   "precioDesde": false,
   "imagenes": [
-    "mitt/img-mitt-tt-555-azul-motodest-scaled.webp",
-    "mitt/img-mitt-tt-555-maletas-motodest-scaled.jpg",
-    "mitt/img-mitt-tt-555-negra-motodest-scaled.webp"
+    {
+      "src": "mitt/img-mitt-tt-555-azul-motodest-scaled.webp",
+      "color": "Azul",
+      "hex": "#3e6582"
+    },
+    {
+      "src": "mitt/img-mitt-tt-555-maletas-motodest-scaled.jpg",
+      "color": "Gris con maletas",
+      "hex": "#868386"
+    },
+    {
+      "src": "mitt/img-mitt-tt-555-negra-motodest-scaled.webp",
+      "color": "Negro",
+      "hex": "#302e34"
+    }
   ],
   "ficha": {
     "motor": "Bicilíndrico 4 tiempos, 8 válvulas DOHC",

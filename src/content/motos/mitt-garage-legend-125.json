@@ -6,7 +6,11 @@
   "precio": 3099,
   "precioDesde": false,
   "imagenes": [
-    "mitt/img-mitt-legend-125-mitt-garage-motors-motodest-scaled.webp"
+    {
+      "src": "mitt/img-mitt-legend-125-mitt-garage-motors-motodest-scaled.webp",
+      "color": "Negro",
+      "hex": "#3b3b3e"
+    }
   ],
   "ficha": {
     "motor": "Monocilíndrico 4 tiempos SOHC, refrigerado por aire",

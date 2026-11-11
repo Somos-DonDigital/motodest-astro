@@ -6,7 +6,11 @@
   "precio": 5699,
   "precioDesde": false,
   "imagenes": [
-    "beta/imgi-7-beta-2026-125x-grey-scaled-1.webp"
+    {
+      "src": "beta/imgi-7-beta-2026-125x-grey-scaled-1.webp",
+      "color": "Gris",
+      "hex": "#7e7e7e"
+    }
   ],
   "ficha": {
     "motor": "Monocilíndrico 4 tiempos, refrigerado por líquido",

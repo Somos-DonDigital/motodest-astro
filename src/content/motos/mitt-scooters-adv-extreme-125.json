@@ -6,7 +6,11 @@
   "precio": 3999,
   "precioDesde": false,
   "imagenes": [
-    "mitt/img-mitt-adv-extreme-125-azul-mitt-motors-motodest-scaled.webp"
+    {
+      "src": "mitt/img-mitt-adv-extreme-125-azul-mitt-motors-motodest-scaled.webp",
+      "color": "Azul",
+      "hex": "#a06c30"
+    }
   ],
   "ficha": {
     "motor": "Monocilíndrico 4 tiempos",

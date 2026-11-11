@@ -6,7 +6,11 @@
   "precio": 7999,
   "precioDesde": false,
   "imagenes": [
-    "beta/imgi-108-xtrainer-my2026-1-1500x928-1.webp"
+    {
+      "src": "beta/imgi-108-xtrainer-my2026-1-1500x928-1.webp",
+      "color": "Rojo",
+      "hex": "#c6372e"
+    }
   ],
   "ficha": {
     "motor": "Monocilíndrico 2 tiempos, refrigerado por líquido",

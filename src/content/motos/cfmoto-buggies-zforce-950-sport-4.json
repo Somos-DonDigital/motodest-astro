@@ -6,9 +6,21 @@
   "precio": 19799,
   "precioDesde": false,
   "imagenes": [
-    "cfmoto/img-zf950s4-r-cfmoto-motodest-scaled.webp",
-    "cfmoto/img-zf950s4-a-cfmoto-motodest-scaled.webp",
-    "cfmoto/img-zf950s4-n-cfmoto-motodest-scaled.png"
+    {
+      "src": "cfmoto/img-zf950s4-r-cfmoto-motodest-scaled.webp",
+      "color": "Rojo",
+      "hex": "#cc2c29"
+    },
+    {
+      "src": "cfmoto/img-zf950s4-a-cfmoto-motodest-scaled.webp",
+      "color": "Azul",
+      "hex": "#215186"
+    },
+    {
+      "src": "cfmoto/img-zf950s4-n-cfmoto-motodest-scaled.png",
+      "color": "Negro",
+      "hex": "#242525"
+    }
   ],
   "ficha": {
     "motor": "Bicilíndrico en V, 4 tiempos, refrigeración líquida",

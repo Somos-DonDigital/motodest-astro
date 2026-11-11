@@ -6,7 +6,11 @@
   "precio": 10949,
   "precioDesde": false,
   "imagenes": [
-    "fantic/moto-fantic-xef-250-2026-enduro-motodest.webp"
+    {
+      "src": "fantic/moto-fantic-xef-250-2026-enduro-motodest.webp",
+      "color": "Rojo",
+      "hex": "#c02a3c"
+    }
   ],
   "ficha": {
     "motor": "Monocilíndrico 4 tiempos, refrigerado por líquido, 4 válvulas DOHC, cilindro inclinado hacia atrás",

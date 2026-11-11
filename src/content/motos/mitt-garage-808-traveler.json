@@ -6,7 +6,11 @@
   "precio": 12299,
   "precioDesde": false,
   "imagenes": [
-    "mitt/img-mitt-808-traveler-mitt-motors-motodest-scaled.webp"
+    {
+      "src": "mitt/img-mitt-808-traveler-mitt-motors-motodest-scaled.webp",
+      "color": "Negro",
+      "hex": "#383d44"
+    }
   ],
   "ficha": {
     "motor": "Bicilíndrico en V, 4 tiempos",

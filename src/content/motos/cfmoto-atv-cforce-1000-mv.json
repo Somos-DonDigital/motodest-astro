@@ -6,8 +6,16 @@
   "precio": 14299,
   "precioDesde": false,
   "imagenes": [
-    "cfmoto/img-cforce1000mv-motodest-scaled.webp",
-    "cfmoto/img-cforce1000mv-azul-motodest-scaled.webp"
+    {
+      "src": "cfmoto/img-cforce1000mv-motodest-scaled.webp",
+      "color": "Rojo",
+      "hex": "#bb2131"
+    },
+    {
+      "src": "cfmoto/img-cforce1000mv-azul-motodest-scaled.webp",
+      "color": "Azul",
+      "hex": "#3d6082"
+    }
   ],
   "ficha": {
     "motor": "Bicilíndrico en V, 4 tiempos, refrigeración líquida, SOHC 8 válvulas",

@@ -6,9 +6,21 @@
   "precio": 11799,
   "precioDesde": false,
   "imagenes": [
-    "cfmoto/img-cfatv850t-azul-motodest-scaled.webp",
-    "cfmoto/img-cfatv850t-naranja-motodest-scaled.webp",
-    "cfmoto/img-cfatv850t-gris-motodest-scaled.webp"
+    {
+      "src": "cfmoto/img-cfatv850t-azul-motodest-scaled.webp",
+      "color": "Azul",
+      "hex": "#576e82"
+    },
+    {
+      "src": "cfmoto/img-cfatv850t-naranja-motodest-scaled.webp",
+      "color": "Naranja",
+      "hex": "#ce4721"
+    },
+    {
+      "src": "cfmoto/img-cfatv850t-gris-motodest-scaled.webp",
+      "color": "Gris",
+      "hex": "#878685"
+    }
   ],
   "ficha": {
     "motor": "Bicilíndrico en V, 4 tiempos, refrigeración líquida, SOHC 8 válvulas",

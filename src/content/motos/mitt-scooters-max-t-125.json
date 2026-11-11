@@ -6,9 +6,21 @@
   "precio": 2999,
   "precioDesde": false,
   "imagenes": [
-    "mitt/img-mitt-max-t-azul-mitt-motors-motodest-scaled.webp",
-    "mitt/img-mitt-max-t-mitt-motors-motodest-scaled.webp",
-    "mitt/img-mitt-max-t-negra-mitt-motors-motodest-scaled.webp"
+    {
+      "src": "mitt/img-mitt-max-t-azul-mitt-motors-motodest-scaled.webp",
+      "color": "Azul",
+      "hex": "#3f5972"
+    },
+    {
+      "src": "mitt/img-mitt-max-t-mitt-motors-motodest-scaled.webp",
+      "color": "Gris",
+      "hex": "#6e6e77"
+    },
+    {
+      "src": "mitt/img-mitt-max-t-negra-mitt-motors-motodest-scaled.webp",
+      "color": "Negro",
+      "hex": "#2f2d34"
+    }
   ],
   "ficha": {
     "motor": "Monocilíndrico 4 tiempos",

@@ -6,7 +6,11 @@
   "precio": 9849,
   "precioDesde": false,
   "imagenes": [
-    "beta/imgi-12-view-01-rr-x-pro-2t-250300.webp"
+    {
+      "src": "beta/imgi-12-view-01-rr-x-pro-2t-250300.webp",
+      "color": "Rojo",
+      "hex": "#cf3c34"
+    }
   ],
   "ficha": {
     "motor": "Monocilíndrico 2 tiempos, refrigerado por líquido",

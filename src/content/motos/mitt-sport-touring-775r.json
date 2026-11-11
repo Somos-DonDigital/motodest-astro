@@ -6,9 +6,21 @@
   "precio": 7799,
   "precioDesde": false,
   "imagenes": [
-    "mitt/img-775r-an-mitt-motors-motodest-scaled.webp",
-    "mitt/img-775r-amarilla-mitt-motors-motodest-scaled.webp",
-    "mitt/img-775r-roja-mitt-motors-motodest-scaled.webp"
+    {
+      "src": "mitt/img-775r-an-mitt-motors-motodest-scaled.webp",
+      "color": "Verde",
+      "hex": "#446748"
+    },
+    {
+      "src": "mitt/img-775r-amarilla-mitt-motors-motodest-scaled.webp",
+      "color": "Amarillo",
+      "hex": "#f5ba0f"
+    },
+    {
+      "src": "mitt/img-775r-roja-mitt-motors-motodest-scaled.webp",
+      "color": "Rojo",
+      "hex": "#dd2632"
+    }
   ],
   "ficha": {
     "motor": "Bicilíndrico en línea, 4 tiempos, 4 válvulas por cilindro DOHC",

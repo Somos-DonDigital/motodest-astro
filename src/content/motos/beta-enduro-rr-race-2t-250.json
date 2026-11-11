@@ -6,7 +6,11 @@
   "precio": 10549,
   "precioDesde": false,
   "imagenes": [
-    "beta/imgi-94-rr-race-300-2t-my26-1500x1014-1.webp"
+    {
+      "src": "beta/imgi-94-rr-race-300-2t-my26-1500x1014-1.webp",
+      "color": "Rojo",
+      "hex": "#d64e3f"
+    }
   ],
   "ficha": {
     "motor": "Monocilíndrico 2 tiempos, refrigerado por líquido",

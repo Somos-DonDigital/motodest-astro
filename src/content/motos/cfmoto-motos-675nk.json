@@ -6,8 +6,16 @@
   "precio": 6495,
   "precioDesde": true,
   "imagenes": [
-    "cfmoto/img-moto-675nk-cfmoto-motodest-scaled.webp",
-    "cfmoto/img-675nk-b-cfmoto-motodest-scaled.webp"
+    {
+      "src": "cfmoto/img-moto-675nk-cfmoto-motodest-scaled.webp",
+      "color": "Blanco",
+      "hex": "#c8c8c8"
+    },
+    {
+      "src": "cfmoto/img-675nk-b-cfmoto-motodest-scaled.webp",
+      "color": "Gris",
+      "hex": "#818081"
+    }
   ],
   "ficha": {
     "motor": "Tricilíndrico en línea, 4 tiempos, DOHC",

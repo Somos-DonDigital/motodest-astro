@@ -6,8 +6,16 @@
   "precio": 4649,
   "precioDesde": false,
   "imagenes": [
-    "fantic/moto-fantic-xe-50-competition-enduro-motodest.webp",
-    "fantic/img-moto-fantic-xe-50-competition-verde-motodest.webp"
+    {
+      "src": "fantic/moto-fantic-xe-50-competition-enduro-motodest.webp",
+      "color": "Rojo",
+      "hex": "#a22535"
+    },
+    {
+      "src": "fantic/img-moto-fantic-xe-50-competition-verde-motodest.webp",
+      "color": "Verde",
+      "hex": "#93a745"
+    }
   ],
   "ficha": {
     "motor": "Monocilíndrico 2 tiempos, refrigerado por líquido",

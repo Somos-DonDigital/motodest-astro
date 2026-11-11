@@ -1,14 +1,12 @@
 ---
-import { Image } from 'astro:assets';
 import { MARCAS, EMPRESA } from '../data/sitio';
-import { imgSitio } from '../lib/imagenes';
 const año = new Date().getFullYear();
 const d = EMPRESA.direccion;
 ---
 <footer class="pie">
   <div class="contenedor pie__rejilla">
     <div>
-      <Image src={imgSitio('logo-motodest')} alt="Motodest" width={180} layout="fixed" />
+      <img src="/logo-motodest.svg" alt="Motodest" width="200" height="30" loading="lazy" />
       <p class="pie__txt">Concesionario oficial Fantic, Beta, CFMOTO y MITT en Barbate (Cádiz).</p>
       <address class="pie__txt">
         {d.calle}<br />{d.cp} {d.localidad} ({d.provincia})<br />

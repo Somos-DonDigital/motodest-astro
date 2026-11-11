@@ -6,8 +6,16 @@
   "precio": 8199,
   "precioDesde": false,
   "imagenes": [
-    "cfmoto/img-cforce625-motodest-scaled.webp",
-    "cfmoto/img-cforce625-gris-motodest-scaled.webp"
+    {
+      "src": "cfmoto/img-cforce625-motodest-scaled.webp",
+      "color": "Azul",
+      "hex": "#174f7a"
+    },
+    {
+      "src": "cfmoto/img-cforce625-gris-motodest-scaled.webp",
+      "color": "Gris",
+      "hex": "#828180"
+    }
   ],
   "ficha": {
     "motor": "Monocilíndrico, 4 válvulas, SOHC, refrigeración líquida",

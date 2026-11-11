@@ -6,7 +6,11 @@
   "precio": 2349,
   "precioDesde": false,
   "imagenes": [
-    "beta/imgi-10-minicross-e-my-2022-mod.webp"
+    {
+      "src": "beta/imgi-10-minicross-e-my-2022-mod.webp",
+      "color": "Rojo",
+      "hex": "#ad2b32"
+    }
   ],
   "ficha": {
     "motor": "Eléctrico, 48 V",

@@ -6,7 +6,11 @@
   "precio": 4799,
   "precioDesde": false,
   "imagenes": [
-    "beta/imgi-68-rr-50-2t-track-blue-2048x1195-1.webp"
+    {
+      "src": "beta/imgi-68-rr-50-2t-track-blue-2048x1195-1.webp",
+      "color": "Azul",
+      "hex": "#3768b6"
+    }
   ],
   "ficha": {
     "motor": "Monocilíndrico 2 tiempos, refrigerado por líquido",

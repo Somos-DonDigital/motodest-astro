@@ -6,8 +6,16 @@
   "precio": 10499,
   "precioDesde": false,
   "imagenes": [
-    "cfmoto/img-moto-800mt-x-cfmoto-motodest-scaled.webp",
-    "cfmoto/img-800mtx-a-cfmoto-motodest-scaled.webp"
+    {
+      "src": "cfmoto/img-moto-800mt-x-cfmoto-motodest-scaled.webp",
+      "color": "Negro",
+      "hex": "#272727"
+    },
+    {
+      "src": "cfmoto/img-800mtx-a-cfmoto-motodest-scaled.webp",
+      "color": "Azul",
+      "hex": "#1f5881"
+    }
   ],
   "ficha": {
     "motor": "Bicilíndrico en línea, refrigeración líquida, 8 válvulas DOHC",

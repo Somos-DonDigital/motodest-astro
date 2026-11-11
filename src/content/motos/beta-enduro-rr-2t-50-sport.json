@@ -6,7 +6,11 @@
   "precio": 4599,
   "precioDesde": false,
   "imagenes": [
-    "beta/imgi-122-rr-50-2t-sport-red-1500x875-1.webp"
+    {
+      "src": "beta/imgi-122-rr-50-2t-sport-red-1500x875-1.webp",
+      "color": "Rojo",
+      "hex": "#bc211f"
+    }
   ],
   "ficha": {
     "motor": "Monocilíndrico 2 tiempos, refrigerado por líquido",

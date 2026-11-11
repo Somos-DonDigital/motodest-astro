@@ -6,7 +6,11 @@
   "precio": 9799,
   "precioDesde": false,
   "imagenes": [
-    "fantic/imgweb-moto-fantic-caballero-travel-700-motodest.webp"
+    {
+      "src": "fantic/imgweb-moto-fantic-caballero-travel-700-motodest.webp",
+      "color": "Rojo",
+      "hex": "#a92133"
+    }
   ],
   "ficha": {
     "motor": "Bicilíndrico 4 tiempos, refrigerado por líquido",

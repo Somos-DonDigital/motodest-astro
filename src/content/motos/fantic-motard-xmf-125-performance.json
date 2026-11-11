@@ -6,9 +6,21 @@
   "precio": 5399,
   "precioDesde": false,
   "imagenes": [
-    "fantic/img-xmf-125-verde-motard-fantic-motodest.webp",
-    "fantic/img-xmf-125-rosa-motard-fantic-motodest.webp",
-    "fantic/img-xmf-125-roja-motard-fantic-motodest.webp"
+    {
+      "src": "fantic/img-xmf-125-verde-motard-fantic-motodest.webp",
+      "color": "Verde",
+      "hex": "#95a642"
+    },
+    {
+      "src": "fantic/img-xmf-125-rosa-motard-fantic-motodest.webp",
+      "color": "Rosa",
+      "hex": "#bf25a1"
+    },
+    {
+      "src": "fantic/img-xmf-125-roja-motard-fantic-motodest.webp",
+      "color": "Rojo",
+      "hex": "#bf1f2b"
+    }
   ],
   "ficha": {
     "motor": "Monocilíndrico 4 tiempos, refrigerado por líquido",

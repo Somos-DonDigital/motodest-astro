@@ -6,7 +6,11 @@
   "precio": 9299,
   "precioDesde": false,
   "imagenes": [
-    "fantic/img-moto-fantic-caballero-deluxe-700-motodest.webp"
+    {
+      "src": "fantic/img-moto-fantic-caballero-deluxe-700-motodest.webp",
+      "color": "Amarillo",
+      "hex": "#bd9f45"
+    }
   ],
   "ficha": {
     "motor": "Bicilíndrico 4 tiempos, refrigerado por líquido",

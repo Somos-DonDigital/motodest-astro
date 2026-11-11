@@ -6,7 +6,11 @@
   "precio": 2499,
   "precioDesde": false,
   "imagenes": [
-    "mitt/img-mitt-rt-50-125-mitt-motors-motodest-scaled.webp"
+    {
+      "src": "mitt/img-mitt-rt-50-125-mitt-motors-motodest-scaled.webp",
+      "color": "Amarillo",
+      "hex": "#b3ba21"
+    }
   ],
   "ficha": {
     "motor": "Monocilíndrico 4 tiempos",

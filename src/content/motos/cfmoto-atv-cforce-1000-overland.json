@@ -6,8 +6,16 @@
   "precio": 14599,
   "precioDesde": false,
   "imagenes": [
-    "cfmoto/img-cfatv1000over-tierra-motodest-scaled.webp",
-    "cfmoto/img-cfatv1000over-bosque-motodest-scaled.webp"
+    {
+      "src": "cfmoto/img-cfatv1000over-tierra-motodest-scaled.webp",
+      "color": "Tierra",
+      "hex": "#a9936f"
+    },
+    {
+      "src": "cfmoto/img-cfatv1000over-bosque-motodest-scaled.webp",
+      "color": "Verde bosque",
+      "hex": "#4d865c"
+    }
   ],
   "ficha": {
     "motor": "Bicilíndrico en V, 4 tiempos, refrigeración líquida, SOHC 8 válvulas",

@@ -6,7 +6,11 @@
   "precio": 3459,
   "precioDesde": false,
   "imagenes": [
-    "beta/imgi-9-minitrialxl-my2021-gallery.webp"
+    {
+      "src": "beta/imgi-9-minitrialxl-my2021-gallery.webp",
+      "color": "Rojo",
+      "hex": "#b2443d"
+    }
   ],
   "ficha": {
     "motor": "Eléctrico 1.350 W, 48 V",

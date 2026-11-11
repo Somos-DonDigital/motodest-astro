@@ -6,8 +6,16 @@
   "precio": 5399,
   "precioDesde": false,
   "imagenes": [
-    "fantic/moto-fantic-xef-125-performance-motodest.webp",
-    "fantic/moto-fantic-xef-125-roja-enduro-motodest.jpg"
+    {
+      "src": "fantic/moto-fantic-xef-125-performance-motodest.webp",
+      "color": "Verde",
+      "hex": "#93a646"
+    },
+    {
+      "src": "fantic/moto-fantic-xef-125-roja-enduro-motodest.jpg",
+      "color": "Rojo",
+      "hex": "#a0333d"
+    }
   ],
   "ficha": {
     "motor": "Monocilíndrico 4 tiempos, refrigerado por líquido",

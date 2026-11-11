@@ -6,8 +6,16 @@
   "precio": 7899,
   "precioDesde": false,
   "imagenes": [
-    "fantic/img-moto-rally-500-beige-fantic-motodest.webp",
-    "fantic/img-moto-rally-500-verde-fantic-motodest.webp"
+    {
+      "src": "fantic/img-moto-rally-500-beige-fantic-motodest.webp",
+      "color": "Beige",
+      "hex": "#ad9068"
+    },
+    {
+      "src": "fantic/img-moto-rally-500-verde-fantic-motodest.webp",
+      "color": "Verde",
+      "hex": "#395235"
+    }
   ],
   "ficha": {
     "motor": "Monocilíndrico 4 tiempos, refrigerado por líquido, 4 válvulas DOHC",

@@ -6,7 +6,11 @@
   "precio": 3799,
   "precioDesde": false,
   "imagenes": [
-    "mitt/img-mitt-gp2-125-nv-mitt-motors-motodest-scaled.webp"
+    {
+      "src": "mitt/img-mitt-gp2-125-nv-mitt-motors-motodest-scaled.webp",
+      "color": "Verde",
+      "hex": "#a7bc20"
+    }
   ],
   "ficha": {
     "motor": "Monocilíndrico 4 tiempos",

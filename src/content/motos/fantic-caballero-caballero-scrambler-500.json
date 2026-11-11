@@ -6,8 +6,16 @@
   "precio": 7399,
   "precioDesde": false,
   "imagenes": [
-    "fantic/img-scrambler-500-caballero-fantic-motodest.webp",
-    "fantic/imgweb-scrambler-500-azul-fantic-caballero-motodest.webp"
+    {
+      "src": "fantic/img-scrambler-500-caballero-fantic-motodest.webp",
+      "color": "Rojo",
+      "hex": "#8f1320"
+    },
+    {
+      "src": "fantic/imgweb-scrambler-500-azul-fantic-caballero-motodest.webp",
+      "color": "Azul",
+      "hex": "#2970b0"
+    }
   ],
   "ficha": {
     "motor": "Monocilíndrico 4 tiempos, refrigerado por líquido, 4 válvulas DOHC",

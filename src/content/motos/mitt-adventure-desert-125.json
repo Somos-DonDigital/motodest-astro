@@ -6,8 +6,16 @@
   "precio": 3799,
   "precioDesde": false,
   "imagenes": [
-    "mitt/img-mittdesert-125-motodest-scaled.webp",
-    "mitt/img-mittdesert-125-dorado-motodest-scaled.webp"
+    {
+      "src": "mitt/img-mittdesert-125-motodest-scaled.webp",
+      "color": "Negro",
+      "hex": "#2b2a2f"
+    },
+    {
+      "src": "mitt/img-mittdesert-125-dorado-motodest-scaled.webp",
+      "color": "Dorado",
+      "hex": "#9e7f5a"
+    }
   ],
   "ficha": {
     "motor": "Monocilíndrico 4 tiempos, 4 válvulas SOHC, refrigeración líquida",

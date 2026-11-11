@@ -6,8 +6,16 @@
   "precio": 19299,
   "precioDesde": false,
   "imagenes": [
-    "cfmoto/img-u6ev-v-cfmoto-motodest-scaled.webp",
-    "cfmoto/img-u6ev-a-cfmoto-motodest-scaled.webp"
+    {
+      "src": "cfmoto/img-u6ev-v-cfmoto-motodest-scaled.webp",
+      "color": "Verde",
+      "hex": "#3d3c3b"
+    },
+    {
+      "src": "cfmoto/img-u6ev-a-cfmoto-motodest-scaled.webp",
+      "color": "Azul",
+      "hex": "#3d3e3e"
+    }
   ],
   "ficha": {
     "motor": "Eléctrico síncrono de imanes permanentes",

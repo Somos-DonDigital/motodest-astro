@@ -6,7 +6,11 @@
   "precio": 6299,
   "precioDesde": false,
   "imagenes": [
-    "fantic/img-moto-rally-125-beige-fantic-motodest.webp"
+    {
+      "src": "fantic/img-moto-rally-125-beige-fantic-motodest.webp",
+      "color": "Beige",
+      "hex": "#aa8d67"
+    }
   ],
   "ficha": {
     "motor": "Monocilíndrico 4 tiempos, refrigerado por líquido",

@@ -6,9 +6,21 @@
   "precio": 4099,
   "precioDesde": false,
   "imagenes": [
-    "mitt/img-mitt-gp1-125-an-mitt-motors-motodest-scaled.webp",
-    "mitt/img-mitt-gp1-125-na-mitt-motors-motodest-scaled.webp",
-    "mitt/img-mitt-gp1-125-ra-mitt-motors-motodest-scaled.webp"
+    {
+      "src": "mitt/img-mitt-gp1-125-an-mitt-motors-motodest-scaled.webp",
+      "color": "Amarillo",
+      "hex": "#c5ca1e"
+    },
+    {
+      "src": "mitt/img-mitt-gp1-125-na-mitt-motors-motodest-scaled.webp",
+      "color": "Azul",
+      "hex": "#1c5a88"
+    },
+    {
+      "src": "mitt/img-mitt-gp1-125-ra-mitt-motors-motodest-scaled.webp",
+      "color": "Rojo",
+      "hex": "#ba2f2e"
+    }
   ],
   "ficha": {
     "motor": "Monocilíndrico 4 tiempos",

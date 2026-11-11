@@ -6,8 +6,16 @@
   "precio": null,
   "precioDesde": false,
   "imagenes": [
-    "cfmoto/img-uf1000xl-t-cfmoto-motodest-scaled.png",
-    "cfmoto/img-uf1000xl-a-cfmoto-motodest-scaled.png"
+    {
+      "src": "cfmoto/img-uf1000xl-t-cfmoto-motodest-scaled.png",
+      "color": "Beige",
+      "hex": "#b9a67b"
+    },
+    {
+      "src": "cfmoto/img-uf1000xl-a-cfmoto-motodest-scaled.png",
+      "color": "Azul",
+      "hex": "#1c416b"
+    }
   ],
   "ficha": {
     "motor": "Bicilíndrico en V, 4 tiempos, SOHC 8 válvulas, refrigeración líquida",

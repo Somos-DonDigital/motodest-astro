@@ -6,7 +6,11 @@
   "precio": 6199,
   "precioDesde": false,
   "imagenes": [
-    "fantic/moto-fantic-enduro-xef-125-competition-motodest.webp"
+    {
+      "src": "fantic/moto-fantic-enduro-xef-125-competition-motodest.webp",
+      "color": "Rojo",
+      "hex": "#982029"
+    }
   ],
   "ficha": {
     "motor": "Monocilíndrico 4 tiempos, refrigerado por líquido",

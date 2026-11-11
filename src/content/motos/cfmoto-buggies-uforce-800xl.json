@@ -6,9 +6,21 @@
   "precio": 17299,
   "precioDesde": false,
   "imagenes": [
-    "cfmoto/img-uf800xl-t-cfmoto-motodest-scaled.webp",
-    "cfmoto/img-uf800xl-a-cfmoto-motodest-scaled.webp",
-    "cfmoto/img-uf800xl-n-cfmoto-motodest-scaled.webp"
+    {
+      "src": "cfmoto/img-uf800xl-t-cfmoto-motodest-scaled.webp",
+      "color": "Tierra",
+      "hex": "#886f4c"
+    },
+    {
+      "src": "cfmoto/img-uf800xl-a-cfmoto-motodest-scaled.webp",
+      "color": "Azul",
+      "hex": "#2e5e89"
+    },
+    {
+      "src": "cfmoto/img-uf800xl-n-cfmoto-motodest-scaled.webp",
+      "color": "Negro",
+      "hex": "#414140"
+    }
   ],
   "ficha": {
     "motor": "Bicilíndrico en V, 4 tiempos, refrigeración líquida, SOHC 8 válvulas",

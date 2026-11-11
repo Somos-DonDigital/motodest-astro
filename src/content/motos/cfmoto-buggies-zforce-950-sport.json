@@ -6,8 +6,16 @@
   "precio": 17299,
   "precioDesde": false,
   "imagenes": [
-    "cfmoto/img-zf950sport-cfmoto-motodest-scaled.png",
-    "cfmoto/img-zf950sport-n-cfmoto-motodest-scaled.png"
+    {
+      "src": "cfmoto/img-zf950sport-cfmoto-motodest-scaled.png",
+      "color": "Gris",
+      "hex": "#909092"
+    },
+    {
+      "src": "cfmoto/img-zf950sport-n-cfmoto-motodest-scaled.png",
+      "color": "Negro",
+      "hex": "#242526"
+    }
   ],
   "ficha": {
     "motor": "Bicilíndrico en V, 4 tiempos, refrigeración líquida",

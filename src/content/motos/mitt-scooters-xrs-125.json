@@ -6,8 +6,16 @@
   "precio": 2599,
   "precioDesde": false,
   "imagenes": [
-    "mitt/img-mitt-xrs-50-125-mitt-motors-motodest-scaled.webp",
-    "mitt/img-mitt-xrs-50-125-gris-mitt-motors-motodest-scaled.webp"
+    {
+      "src": "mitt/img-mitt-xrs-50-125-mitt-motors-motodest-scaled.webp",
+      "color": "Negro",
+      "hex": "#313135"
+    },
+    {
+      "src": "mitt/img-mitt-xrs-50-125-gris-mitt-motors-motodest-scaled.webp",
+      "color": "Gris",
+      "hex": "#6a6c75"
+    }
   ],
   "ficha": {
     "motor": "Monocilíndrico 4 tiempos, refrigerado por aire",

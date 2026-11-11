@@ -6,7 +6,11 @@
   "precio": 11499,
   "precioDesde": false,
   "imagenes": [
-    "beta/imgi-8-rx-4t-my-2026.jpg"
+    {
+      "src": "beta/imgi-8-rx-4t-my-2026.jpg",
+      "color": "Rojo",
+      "hex": "#d33d30"
+    }
   ],
   "ficha": {
     "motor": "Monocilíndrico 4 tiempos, refrigerado por líquido",

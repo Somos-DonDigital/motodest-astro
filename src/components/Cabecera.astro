@@ -1,13 +1,11 @@
 ---
-import { Image } from 'astro:assets';
 import { MARCAS, EMPRESA } from '../data/sitio';
-import { imgSitio } from '../lib/imagenes';
 const ruta = Astro.url.pathname;
 ---
 <header class="cab">
   <div class="cab__barra contenedor">
     <a href="/" class="cab__logo" aria-label="Motodest, ir al inicio">
-      <Image src={imgSitio('logo-motodest')} alt="Motodest" width={190} loading="eager" fetchpriority="high" layout="fixed" />
+      <img src="/logo-motodest.svg" alt="Motodest" width="190" height="28" />
     </a>
     <button class="cab__toggle" aria-expanded="false" aria-controls="menu-principal">
       <span class="sr-only">Abrir menú</span>

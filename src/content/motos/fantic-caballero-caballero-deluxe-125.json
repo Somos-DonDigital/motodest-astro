@@ -6,7 +6,11 @@
   "precio": 5999,
   "precioDesde": false,
   "imagenes": [
-    "fantic/img-moto-deluxe-125-gris-caballero-fantic.webp"
+    {
+      "src": "fantic/img-moto-deluxe-125-gris-caballero-fantic.webp",
+      "color": "Gris",
+      "hex": "#918f8d"
+    }
   ],
   "ficha": {
     "motor": "Monocilíndrico 4 tiempos, refrigerado por líquido",

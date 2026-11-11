@@ -6,8 +6,16 @@
   "precio": 4649,
   "precioDesde": false,
   "imagenes": [
-    "fantic/xm-50-competition-motard-motodest.webp",
-    "fantic/xm-50-competition-verde-fantic-motodest.webp"
+    {
+      "src": "fantic/xm-50-competition-motard-motodest.webp",
+      "color": "Rojo",
+      "hex": "#a82939"
+    },
+    {
+      "src": "fantic/xm-50-competition-verde-fantic-motodest.webp",
+      "color": "Verde",
+      "hex": "#92a742"
+    }
   ],
   "ficha": {
     "motor": "Monocilíndrico 2 tiempos, refrigerado por líquido",

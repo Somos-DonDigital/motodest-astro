@@ -6,7 +6,11 @@
   "precio": 13299,
   "precioDesde": false,
   "imagenes": [
-    "cfmoto/img-uf600-t-cfmoto-motodest-scaled.png"
+    {
+      "src": "cfmoto/img-uf600-t-cfmoto-motodest-scaled.png",
+      "color": "Negro",
+      "hex": "#3a3a39"
+    }
   ],
   "ficha": {
     "motor": "Monocilíndrico, 4 válvulas, SOHC, refrigeración líquida",

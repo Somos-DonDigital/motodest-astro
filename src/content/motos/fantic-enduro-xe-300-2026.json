@@ -6,7 +6,11 @@
   "precio": 11199,
   "precioDesde": false,
   "imagenes": [
-    "fantic/moto-fantic-xe-300-2026-enduro-motodest.webp"
+    {
+      "src": "fantic/moto-fantic-xe-300-2026-enduro-motodest.webp",
+      "color": "Rojo",
+      "hex": "#c6293c"
+    }
   ],
   "ficha": {
     "motor": "Monocilíndrico 2 tiempos, refrigerado por líquido, admisión por láminas y válvula de escape electrónica",

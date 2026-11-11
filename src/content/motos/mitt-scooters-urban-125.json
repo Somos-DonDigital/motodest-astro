@@ -6,8 +6,16 @@
   "precio": 2399,
   "precioDesde": false,
   "imagenes": [
-    "mitt/img-mitt-urban-125-azul-mitt-motors-motodest-scaled.webp",
-    "mitt/img-mitt-urban-125-gris-mitt-motors-motodest-scaled.webp"
+    {
+      "src": "mitt/img-mitt-urban-125-azul-mitt-motors-motodest-scaled.webp",
+      "color": "Azul",
+      "hex": "#084166"
+    },
+    {
+      "src": "mitt/img-mitt-urban-125-gris-mitt-motors-motodest-scaled.webp",
+      "color": "Gris",
+      "hex": "#797a7c"
+    }
   ],
   "ficha": {
     "motor": "Monocilíndrico 4 tiempos",

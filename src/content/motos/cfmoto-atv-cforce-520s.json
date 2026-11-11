@@ -6,8 +6,16 @@
   "precio": 6899,
   "precioDesde": false,
   "imagenes": [
-    "cfmoto/img-cforce520s-gris-motodest-scaled.webp",
-    "cfmoto/img-cforce520s-verde-motodest-scaled.webp"
+    {
+      "src": "cfmoto/img-cforce520s-gris-motodest-scaled.webp",
+      "color": "Gris",
+      "hex": "#7f7d7e"
+    },
+    {
+      "src": "cfmoto/img-cforce520s-verde-motodest-scaled.webp",
+      "color": "Verde",
+      "hex": "#375234"
+    }
   ],
   "ficha": {
     "motor": "Monocilíndrico 4 tiempos, refrigeración líquida",

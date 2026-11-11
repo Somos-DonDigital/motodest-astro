@@ -6,8 +6,16 @@
   "precio": 7599,
   "precioDesde": false,
   "imagenes": [
-    "fantic/img-moto-deluxe-500-naranja-fantic-motodest.webp",
-    "fantic/img-moto-deluxe-500-gris-fantic-motodest.webp"
+    {
+      "src": "fantic/img-moto-deluxe-500-naranja-fantic-motodest.webp",
+      "color": "Naranja",
+      "hex": "#ae6c1c"
+    },
+    {
+      "src": "fantic/img-moto-deluxe-500-gris-fantic-motodest.webp",
+      "color": "Gris",
+      "hex": "#90908f"
+    }
   ],
   "ficha": {
     "motor": "Monocilíndrico 4 tiempos, refrigerado por líquido, 4 válvulas DOHC",

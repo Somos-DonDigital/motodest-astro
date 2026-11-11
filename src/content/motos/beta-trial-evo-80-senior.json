@@ -6,7 +6,11 @@
   "precio": 4649,
   "precioDesde": false,
   "imagenes": [
-    "beta/imgi-11-evo-80-my-25-senior-v2.webp"
+    {
+      "src": "beta/imgi-11-evo-80-my-25-senior-v2.webp",
+      "color": "Rojo",
+      "hex": "#ba4035"
+    }
   ],
   "ficha": {
     "motor": "Monocilíndrico 2 tiempos, refrigerado por líquido, admisión por láminas al cárter",

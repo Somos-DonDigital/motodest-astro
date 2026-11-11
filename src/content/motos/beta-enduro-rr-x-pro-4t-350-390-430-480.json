@@ -6,7 +6,11 @@
   "precio": 11099,
   "precioDesde": true,
   "imagenes": [
-    "beta/imgi-72-view-02-rr-x-pro-4t-1536x864-1.webp"
+    {
+      "src": "beta/imgi-72-view-02-rr-x-pro-4t-1536x864-1.webp",
+      "color": "Rojo",
+      "hex": "#d34338"
+    }
   ],
   "ficha": {
     "motor": "Monocilíndrico 4 tiempos, refrigerado por líquido",

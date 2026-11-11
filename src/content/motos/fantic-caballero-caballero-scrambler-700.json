@@ -6,8 +6,16 @@
   "precio": 9299,
   "precioDesde": false,
   "imagenes": [
-    "fantic/img-fantic-caballero-scrambler-700-azul.webp",
-    "fantic/img-fantic-caballero-scrambler-700-roja.webp"
+    {
+      "src": "fantic/img-fantic-caballero-scrambler-700-azul.webp",
+      "color": "Azul",
+      "hex": "#0a639b"
+    },
+    {
+      "src": "fantic/img-fantic-caballero-scrambler-700-roja.webp",
+      "color": "Rojo",
+      "hex": "#9b1326"
+    }
   ],
   "ficha": {
     "motor": "Bicilíndrico 4 tiempos, refrigerado por líquido",

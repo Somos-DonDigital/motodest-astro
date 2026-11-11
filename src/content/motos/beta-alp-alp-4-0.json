@@ -6,7 +6,11 @@
   "precio": 7249,
   "precioDesde": false,
   "imagenes": [
-    "beta/imgi-7-alp-4-0-new-rear-fender-1-scaled-1.webp"
+    {
+      "src": "beta/imgi-7-alp-4-0-new-rear-fender-1-scaled-1.webp",
+      "color": "Rojo",
+      "hex": "#c7473d"
+    }
   ],
   "ficha": {
     "motor": "Monocilíndrico 4 tiempos, refrigerado por líquido, doble árbol de levas",

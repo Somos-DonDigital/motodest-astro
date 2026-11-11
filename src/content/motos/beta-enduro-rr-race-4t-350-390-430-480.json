@@ -6,7 +6,11 @@
   "precio": 11549,
   "precioDesde": false,
   "imagenes": [
-    "beta/imgi-99-rr-race-350-4t-my26-1536x950-1.webp"
+    {
+      "src": "beta/imgi-99-rr-race-350-4t-my26-1536x950-1.webp",
+      "color": "Rojo",
+      "hex": "#ce4433"
+    }
   ],
   "ficha": {
     "motor": "Monocilíndrico 4 tiempos, refrigerado por líquido",

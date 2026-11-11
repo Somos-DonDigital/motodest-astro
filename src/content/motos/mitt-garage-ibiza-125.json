@@ -6,7 +6,11 @@
   "precio": 2799,
   "precioDesde": false,
   "imagenes": [
-    "mitt/img-mitt-ibiza-125-mitt-motors-motodest-scaled.webp"
+    {
+      "src": "mitt/img-mitt-ibiza-125-mitt-motors-motodest-scaled.webp",
+      "color": "Naranja",
+      "hex": "#9b6c27"
+    }
   ],
   "ficha": {
     "motor": "Monocilíndrico 4 tiempos",

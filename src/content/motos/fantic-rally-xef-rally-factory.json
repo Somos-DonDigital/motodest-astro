@@ -6,7 +6,11 @@
   "precio": null,
   "precioDesde": false,
   "imagenes": [
-    "fantic/moto-fantic-xef-rally-factory-motodest.webp"
+    {
+      "src": "fantic/moto-fantic-xef-rally-factory-motodest.webp",
+      "color": "Rojo",
+      "hex": "#9f1426"
+    }
   ],
   "ficha": {
     "motor": "Monocilíndrico 4 tiempos, refrigerado por líquido, 4 válvulas DOHC",
