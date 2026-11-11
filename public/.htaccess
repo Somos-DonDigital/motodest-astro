@@ -1,15 +1,17 @@
-# motodest.es (Astro, estático)
+# motodest.com (Astro, estático)
 Options -Indexes
+ServerSignature Off
 DirectoryIndex index.html
 ErrorDocument 404 /404.html
 
 <IfModule mod_rewrite.c>
 RewriteEngine On
 
-# HTTPS y sin www
+# HTTPS y dominio único (sin tocar la validación SSL)
+RewriteCond %{REQUEST_URI} !^/\.well-known/
 RewriteCond %{HTTPS} off [OR]
-RewriteCond %{HTTP_HOST} ^www\. [NC]
-RewriteRule ^(.*)$ https://motodest.es/$1 [R=301,L]
+RewriteCond %{HTTP_HOST} !^motodest\.com$ [NC]
+RewriteRule ^(.*)$ https://motodest.com/$1 [R=301,L]
 
 # Redirecciones de las URLs de WordPress (23)
 RewriteRule ^concesionario-oficial-fantic/?$ /fantic/ [R=301,L]
@@ -47,11 +49,16 @@ RewriteRule ^(.*)$ /$1/ [R=301,L]
 </IfModule>
 
 <IfModule mod_headers.c>
+# VISTA PREVIA: quitar esta línea el día del lanzamiento
+Header always set X-Robots-Tag "noindex, nofollow"
 Header always set X-Content-Type-Options "nosniff"
 Header always set Referrer-Policy "strict-origin-when-cross-origin"
 Header always set X-Frame-Options "SAMEORIGIN"
 Header always set Permissions-Policy "camera=(), microphone=(), geolocation=()"
 Header always set Strict-Transport-Security "max-age=31536000"
+Header always set Content-Security-Policy "default-src 'self'; script-src 'self' 'unsafe-inline'; style-src 'self' 'unsafe-inline'; img-src 'self' data:; font-src 'self'; connect-src 'self'; form-action 'self'; frame-ancestors 'self'; base-uri 'self'; object-src 'none'; upgrade-insecure-requests"
+Header always set Cross-Origin-Opener-Policy "same-origin"
+Header unset X-Powered-By
 <FilesMatch "\.(js|css|woff2|webp|avif|jpg|jpeg|png|svg|ico)$">
 Header set Cache-Control "public, max-age=31536000, immutable"
 </FilesMatch>
@@ -63,3 +70,11 @@ Header set Cache-Control "public, max-age=0, must-revalidate"
 <IfModule mod_deflate.c>
 AddOutputFilterByType DEFLATE text/html text/css text/plain text/xml application/javascript application/json application/xml image/svg+xml
 </IfModule>
+
+# Archivos que nunca deben servirse
+<FilesMatch "(^\.|\.(md|json|yml|yaml|lock|log|sh|sql|bak|env)$)">
+Require all denied
+</FilesMatch>
+<FilesMatch "^(manifest\.webmanifest)$">
+Require all granted
+</FilesMatch>

@@ -1,11 +1,11 @@
 <?php
-// Envío del formulario de contacto de motodest.es
+// Envío del formulario de contacto de motodest.com
 // Va en el propio hosting (cPanel). Si el servidor no entrega bien con mail(),
 // cambiar a SMTP autenticado de la cuenta contacto@.
 declare(strict_types=1);
 
 const DESTINO   = 'contacto@motodest.com';
-const REMITENTE = 'web@motodest.es';   // Debe existir o estar autorizado en el SPF del dominio
+const REMITENTE = 'web@motodest.com';   // Debe existir o estar autorizado en el SPF del dominio
 const GRACIAS   = '/gracias/';
 
 function volver(string $url): never { header('Location: ' . $url, true, 303); exit; }
@@ -40,7 +40,7 @@ if ($nombre === '' || $telefono === '' || $email === '' || !$privacidad) {
 }
 
 $asunto = 'Consulta web' . ($moto ? " - $moto" : '') . " - $nombre";
-$cuerpo = "Nueva consulta desde motodest.es\n\n"
+$cuerpo = "Nueva consulta desde motodest.com\n\n"
         . "Nombre: $nombre\nTeléfono: $telefono\nEmail: $email\n"
         . "Moto: " . ($moto ?: '-') . "\nPágina: $origen\n"
         . "Acepta comunicaciones comerciales: " . ($comercial ? 'Sí' : 'No') . "\n\n"
@@ -51,7 +51,7 @@ $cabeceras = implode("\r\n", [
     'From: Web Motodest <' . REMITENTE . '>',
     'Reply-To: ' . $nombre . ' <' . $email . '>',
     'Content-Type: text/plain; charset=UTF-8',
-    'X-Mailer: motodest.es',
+    'X-Mailer: motodest.com',
 ]);
 
 $ok = mail(DESTINO, '=?UTF-8?B?' . base64_encode($asunto) . '?=', $cuerpo, $cabeceras, '-f' . REMITENTE);
