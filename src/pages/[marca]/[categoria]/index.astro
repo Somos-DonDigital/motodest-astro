@@ -75,7 +75,7 @@ const descripcion = `${cat.h1} en Barbate (Cádiz): ${motos.length} modelos${des
   /* Palabra gigante de la categoría detrás de las motos, a lo ancho de la fila */
   .fila::before {
     content: attr(data-palabra); position: absolute; left: 50%; z-index: 0; pointer-events: none;
-    top: calc((100cqi - max(28px, 3vw)) / 2 * 0.3125); transform: translate(-50%, -50%);
+    top: calc((100cqi - max(28px, 3vw)) / 2 * 0.3125); transform: translate(calc(-50% + var(--desp, 0%)), -50%);
     font-family: var(--fuente-texto); font-weight: 900; text-transform: uppercase; line-height: 1; white-space: nowrap; letter-spacing: -0.02em;
     font-size: min(calc(100cqi / (var(--n) * 0.64)), 30cqi); color: rgb(11 1 62 / 0.07);
   }

@@ -20,7 +20,7 @@ const nombre = nombreCompleto(m);
 <article class="fc">
   <a href={urlMoto(m)} class="fc__img" tabindex="-1" aria-hidden="true" data-palabra={palabra} style={`--n:${palabra.length}`}>
     {m.imagenes.length
-      ? m.imagenes.map((im, i) => <Image src={imgMoto(im.src)} alt={`${nombre} en color ${im.color.toLowerCase()}`} widths={[480, 720, 960, 1200]} sizes="(max-width: 900px) 94vw, 46vw" loading={cargaPrioritaria && i === 0 ? 'eager' : 'lazy'} fetchpriority={cargaPrioritaria && i === 0 ? 'high' : undefined} class:list={['fc__foto', { activa: i === 0 }]} data-i={i} />)
+      ? m.imagenes.map((im, i) => <Image format="avif" src={imgMoto(im.src)} alt={`${nombre} en color ${im.color.toLowerCase()}`} widths={[480, 720, 960, 1200]} sizes="(max-width: 900px) 94vw, 46vw" loading={cargaPrioritaria && i === 0 ? 'eager' : 'lazy'} fetchpriority={cargaPrioritaria && i === 0 ? 'high' : undefined} class:list={['fc__foto', { activa: i === 0 }]} data-i={i} />)
       : <span class="fc__sinfoto">Foto próximamente</span>}
   </a>
   <div class="fc__cuerpo">

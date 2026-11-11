@@ -7,12 +7,12 @@
   "precioDesde": false,
   "imagenes": [
     {
-      "src": "cfmoto/img-uf1000xl-t-cfmoto-motodest-scaled.png",
+      "src": "cfmoto/img-uf1000xl-t-cfmoto-motodest-scaled.webp",
       "color": "Beige",
       "hex": "#b9a67b"
     },
     {
-      "src": "cfmoto/img-uf1000xl-a-cfmoto-motodest-scaled.png",
+      "src": "cfmoto/img-uf1000xl-a-cfmoto-motodest-scaled.webp",
       "color": "Azul",
       "hex": "#1c416b"
     }

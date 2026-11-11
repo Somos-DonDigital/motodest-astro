@@ -11,7 +11,7 @@ const varias = diapos.length > 1;
   <div class="carr__pista" data-pista>
     {diapos.map((d, i) => (
       <div class="carr__diapo" role={varias ? 'group' : undefined} aria-roledescription={varias ? 'diapositiva' : undefined} aria-label={varias ? `${i + 1} de ${diapos.length}` : undefined}>
-        <Image src={imgSitio(d.img)} alt={d.alt ?? d.titulo} widths={[640, 960, 1440, 2000]} sizes="100vw" loading={i === 0 ? 'eager' : 'lazy'} fetchpriority={i === 0 ? 'high' : 'auto'} class="carr__img" style={d.pos ? `object-position:${d.pos}` : undefined} />
+        <Image format="avif" src={imgSitio(d.img)} alt={d.alt ?? d.titulo} widths={[640, 960, 1440, 2000]} sizes="100vw" loading={i === 0 ? 'eager' : 'lazy'} fetchpriority={i === 0 ? 'high' : 'auto'} class="carr__img" style={d.pos ? `object-position:${d.pos}` : undefined} />
         <div class="carr__capa contenedor">
           {i === 0 && h1 ? <h1 class="carr__tit">{d.titulo}<span class="sr-only"> · {h1}</span></h1> : <p class="carr__tit">{d.titulo}</p>}
           {d.texto && <p class="carr__txt">{d.texto}</p>}

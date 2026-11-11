@@ -7,12 +7,12 @@
   "precioDesde": false,
   "imagenes": [
     {
-      "src": "mitt/img-mitt-gts-125-azul-mitt-motors-motodest-scaled.jpg",
+      "src": "mitt/img-mitt-gts-125-azul-mitt-motors-motodest-scaled.webp",
       "color": "Azul",
       "hex": "#144d72"
     },
     {
-      "src": "mitt/img-mitt-gts-125-negro-mitt-motors-motodest-scaled.jpg",
+      "src": "mitt/img-mitt-gts-125-negro-mitt-motors-motodest-scaled.webp",
       "color": "Negro",
       "hex": "#2a2c32"
     }

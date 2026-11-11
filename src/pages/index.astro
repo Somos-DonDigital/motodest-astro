@@ -42,17 +42,17 @@ const nombresAcc: Record<string, string> = { 'acc-ls2': 'LS2', 'acc-airoh': 'Air
   </Fragment>
 
   <section class="concesionario">
-    <h2 class="tit-seccion tit-seccion--izq">Concesionario oficial</h2>
+    <h2 class="tit-seccion">Concesionario oficial</h2>
     <div class="franjas">
       {MARCAS.map((m) => (
         <a class="franja" href={`/${m.slug}/`}>
-          <Image src={imgSitio(franjas[m.slug])} alt={`Motos ${m.nombre} en Motodest`} widths={[400, 640, 900]} sizes="(max-width: 700px) 50vw, 25vw" class="franja__img" />
+          <Image format="avif" src={imgSitio(franjas[m.slug])} alt={`Motos ${m.nombre} en Motodest`} widths={[400, 640, 900]} sizes="(max-width: 700px) 50vw, 25vw" class="franja__img" />
           <span class="franja__txt">{m.nombre}</span>
         </a>
       ))}
     </div>
     <a class="banner" href="/fantic/caballero/">
-      <Image src={imgSitio('banner-caballero')} alt="Fantic Caballero" widths={[640, 1000]} sizes="100vw" class="banner__img" />
+      <Image format="avif" src={imgSitio('banner-caballero')} alt="Fantic Caballero" widths={[640, 1000]} sizes="100vw" class="banner__img" />
       <span class="banner__sello">Caballero</span>
       <span class="banner__ver">Ver la gama →</span>
     </a>
@@ -84,7 +84,7 @@ const nombresAcc: Record<string, string> = { 'acc-ls2': 'LS2', 'acc-airoh': 'Air
     <div class="servicios">
       {servicios.map((s) => (
         <a class="servicio" href="#contacto">
-          <Image src={imgSitio(s.img)} alt={s.titulo} widths={[480, 720, 960]} sizes="(max-width: 700px) 100vw, 34vw" class="servicio__img" />
+          <Image format="avif" src={imgSitio(s.img)} alt={s.titulo} widths={[480, 720, 960]} sizes="(max-width: 700px) 100vw, 34vw" class="servicio__img" />
           <span class="servicio__txt"><strong>{s.titulo}</strong><span>{s.texto}</span></span>
         </a>
       ))}
@@ -94,7 +94,7 @@ const nombresAcc: Record<string, string> = { 'acc-ls2': 'LS2', 'acc-airoh': 'Air
   <section class="marcas-acc">
     <h2 class="tit-seccion marcas-acc__tit">Nuestras marcas</h2>
     <ul class="marcas-acc__lista">
-      {accesorios.map((a) => <li><Image src={imgSitio(a)} alt={nombresAcc[a]} widths={[240, 360]} sizes="(max-width: 700px) 45vw, 15vw" /></li>)}
+      {accesorios.map((a) => <li><Image format="avif" src={imgSitio(a)} alt={nombresAcc[a]} widths={[240, 360]} sizes="(max-width: 700px) 45vw, 15vw" /></li>)}
     </ul>
   </section>
 

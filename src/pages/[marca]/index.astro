@@ -56,7 +56,7 @@ const historiaImg = marca.slug === 'fantic' ? 'historia-fantic-2' : marca.histor
         <span>o llámanos al <a class="tel" href={`tel:${tel}`}>{EMPRESA.telefonoVisible}</a></span>
       </div>
     </div>
-    <Image src={imgSitio(historiaImg)} alt={marca.nombre} widths={[640, 960, 1400]} sizes="(max-width: 860px) 100vw, 63vw" class="historia__img" />
+    <Image format="avif" src={imgSitio(historiaImg)} alt={marca.nombre} widths={[640, 960, 1400]} sizes="(max-width: 860px) 100vw, 63vw" class="historia__img" />
   </section>
 
   <section class="gama" id="gama">
@@ -64,7 +64,7 @@ const historiaImg = marca.slug === 'fantic' ? 'historia-fantic-2' : marca.histor
     <div class="gama__franjas" style={`--n:${marca.categorias.length}`}>
       {marca.categorias.map((c) => (
         <a class="gama__item" href={`/${marca.slug}/${c.slug}/`}>
-          <Image src={imgSitio(c.imagen)} alt={c.h1} widths={[300, 480, 720]} sizes="(max-width: 700px) 50vw, 20vw" class="gama__img" />
+          <Image format="avif" src={imgSitio(c.imagen)} alt={c.h1} widths={[300, 480, 720]} sizes="(max-width: 700px) 50vw, 20vw" class="gama__img" />
           <span class="gama__txt"><strong>{c.nombre}</strong><small>{contar(c.slug)} modelos</small></span>
         </a>
       ))}
@@ -85,7 +85,7 @@ const historiaImg = marca.slug === 'fantic' ? 'historia-fantic-2' : marca.histor
 <style>
   .historia { display: grid; grid-template-columns: 37fr 63fr; background: #000; color: #fff; min-height: clamp(360px, 42vw, 620px); }
   .historia__txt { position: relative; padding: max(32px, 3vw) max(24px, 3vw) max(80px, 7vw) max(4vw, calc((100vw - var(--ancho)) / 2)); }
-  .historia__txt::after { content: ''; position: absolute; right: -6vw; bottom: max(24px, 3vw); width: clamp(160px, 18vw, 300px); height: 34px; background: url('/trazo-naranja.svg') no-repeat center / 100% 100%; z-index: 2; }
+  .historia__txt::after { content: ''; position: absolute; right: -6vw; bottom: max(24px, 3vw); width: clamp(160px, 18vw, 300px); height: 34px; background: url('/huella.webp') no-repeat center / contain; z-index: 2; }
   .historia h2 { font-family: var(--fuente-texto); font-weight: 700; font-size: clamp(1.3rem, 1.8vw, 1.8rem); }
   .historia p { font-size: var(--fs-peq); color: #ddd; }
   .historia .tel { color: #fff; }

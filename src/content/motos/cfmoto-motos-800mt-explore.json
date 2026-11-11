@@ -7,12 +7,12 @@
   "precioDesde": false,
   "imagenes": [
     {
-      "src": "cfmoto/img-moto-800mt-explore-cfmoto-motodest.png",
+      "src": "cfmoto/img-moto-800mt-explore-cfmoto-motodest.webp",
       "color": "Blanco",
       "hex": "#cacaca"
     },
     {
-      "src": "cfmoto/img-800mt-n-cfmoto-motodest.png",
+      "src": "cfmoto/img-800mt-n-cfmoto-motodest.webp",
       "color": "Negro",
       "hex": "#272727"
     }

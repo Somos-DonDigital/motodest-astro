@@ -29,7 +29,8 @@
 }
 
 *, *::before, *::after { box-sizing: border-box; }
-html { -webkit-text-size-adjust: 100%; scroll-behavior: smooth; }
+html { -webkit-text-size-adjust: 100%; scroll-behavior: smooth; overflow-x: clip; }
+body { overflow-x: clip; }
 body {
   margin: 0;
   font-family: var(--fuente-texto);
@@ -43,6 +44,7 @@ img { max-width: 100%; height: auto; display: block; }
 a { color: inherit; }
 h1, h2, h3, h4 { font-family: var(--fuente-titulos); font-weight: 600; line-height: 1.1; letter-spacing: 0.02em; margin: 0 0 0.5em; text-transform: uppercase; }
 h1 { font-size: var(--fs-h1); }
+h2, h3 { font-family: var(--fuente-texto); font-weight: 800; letter-spacing: 0; }
 h2 { font-size: var(--fs-h2); }
 h3 { font-size: var(--fs-h3); }
 p { margin: 0 0 1em; }
@@ -101,8 +103,9 @@ p { margin: 0 0 1em; }
 .deco::after { bottom: -10px; left: 1vw; transform: scale(0.6); transform-origin: bottom left; }
 .deco > * { position: relative; z-index: 1; }
 
-/* Título de sección como en el diseño: centrado con el trazo naranja */
-.tit-seccion { position: relative; text-align: center; font-size: clamp(1.3rem, 2vw, 2rem); margin-bottom: max(24px, 2.4vw); }
-.tit-seccion::after { content: ''; position: absolute; top: 50%; right: max(4vw, calc(50% - 34ch)); width: clamp(70px, 9vw, 140px); height: 14px; transform: translateY(-50%); background: url('/trazo-naranja.svg') no-repeat center / contain; }
-.tit-seccion--izq::after { right: auto; left: max(4vw, calc(50% - 34ch)); }
-@media (max-width: 700px) { .tit-seccion::after { display: none; } }
+/* Título de sección como en el diseño: Cairo en negrita con la huella de neumático naranja detrás */
+.tit-seccion { position: relative; isolation: isolate; width: fit-content; max-width: 92vw; margin: 0 auto max(24px, 2.4vw); text-align: center; font-family: var(--fuente-texto); font-weight: 800; letter-spacing: 0; color: var(--azul); font-size: clamp(1.5rem, 2.6vw, 2.6rem); line-height: 1.05; }
+.marcas-acc .tit-seccion, .seccion--azul .tit-seccion { color: #fff; }
+.tit-seccion::after { content: ''; position: absolute; z-index: -1; left: calc(100% - 1.4em); top: 54%; width: clamp(150px, 20vw, 340px); aspect-ratio: 900 / 146; transform: translateY(-50%); background: url('/huella.webp') no-repeat left center / contain; pointer-events: none; }
+.tit-seccion--izq::after { left: auto; right: calc(100% - 1.4em); transform: translateY(-50%) scaleX(-1); }
+@media (max-width: 700px) { .tit-seccion::after { left: auto; right: -2vw; width: 46vw; opacity: 0.85; } .tit-seccion--izq::after { right: auto; left: -2vw; } }

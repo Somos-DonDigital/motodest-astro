@@ -7,12 +7,12 @@
   "precioDesde": false,
   "imagenes": [
     {
-      "src": "cfmoto/img-zf950sport-cfmoto-motodest-scaled.png",
+      "src": "cfmoto/img-zf950sport-cfmoto-motodest-scaled.webp",
       "color": "Gris",
       "hex": "#909092"
     },
     {
-      "src": "cfmoto/img-zf950sport-n-cfmoto-motodest-scaled.png",
+      "src": "cfmoto/img-zf950sport-n-cfmoto-motodest-scaled.webp",
       "color": "Negro",
       "hex": "#242526"
     }
