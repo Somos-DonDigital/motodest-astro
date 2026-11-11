@@ -1,7 +1,7 @@
 ---
 import { getCollection } from 'astro:content';
 import Base from '../../../layouts/Base.astro';
-import TarjetaMoto from '../../../components/TarjetaMoto.astro';
+import FichaCategoria from '../../../components/FichaCategoria.astro';
 import Formulario from '../../../components/Formulario.astro';
 import { MARCAS, EMPRESA, type Marca, type Categoria } from '../../../data/sitio';
 import { imgSitio } from '../../../lib/imagenes';
@@ -14,6 +14,10 @@ const { marca, cat } = Astro.props as { marca: Marca; cat: Categoria };
 const motos = (await getCollection('motos', (m) => m.data.marca === marca.slug && m.data.categoria === cat.slug)).sort((a, b) => a.data.orden - b.data.orden);
 const precios = motos.map((m) => m.data.precio).filter((p): p is number => p != null);
 const desde = precios.length ? Math.min(...precios) : null;
+const FONDO: Record<string, string> = { 'cfmoto/motos': 'CFMOTO', 'cfmoto/buggies': 'UTV', 'mitt/sport-touring': 'Touring' };
+const palabra = (FONDO[`${marca.slug}/${cat.slug}`] ?? cat.nombre.split(/[\s/]+/)[0]).toUpperCase();
+const filas: (typeof motos)[] = [];
+for (let i = 0; i < motos.length; i += 2) filas.push(motos.slice(i, i + 2));
 const tel = EMPRESA.telefono.replace(/\s/g, '');
 const descripcion = `${cat.h1} en Barbate (Cádiz): ${motos.length} modelos${desde ? ` desde ${euros(desde)}` : ''}. ${cat.intro}`.slice(0, 300);
 ---
@@ -38,8 +42,12 @@ const descripcion = `${cat.h1} en Barbate (Cádiz): ${motos.length} modelos${des
   <section class="seccion">
     <div class="contenedor">
       <h2 class="sr-only">Modelos</h2>
-      <div class="rejilla rejilla--motos">
-        {motos.map((m, i) => <TarjetaMoto moto={m} cargaPrioritaria={i < 3} />)}
+      <div class="filas filas--anchas">
+        {filas.map((fila, f) => (
+          <div class="fila" data-palabra={palabra} style={`--n:${palabra.length}`}>
+            {fila.map((m, i) => <FichaCategoria moto={m} palabra={palabra} cargaPrioritaria={f === 0} />)}
+          </div>
+        ))}
       </div>
       <p class="nota">Precios con la moto matriculada, IVA incluido. Pregúntanos por promociones y financiación.</p>
       <div class="cta-linea">
@@ -62,6 +70,20 @@ const descripcion = `${cat.h1} en Barbate (Cádiz): ${motos.length} modelos${des
 </Base>
 <style>
   .cab-cat { background: var(--gris-claro); padding-block: max(28px, 3vw) max(36px, 4vw); }
+  .filas { display: grid; gap: max(56px, 6vw); }
+  .fila { position: relative; display: grid; grid-template-columns: 1fr 1fr; gap: max(28px, 3vw); container-type: inline-size; isolation: isolate; }
+  /* Palabra gigante de la categoría detrás de las motos, a lo ancho de la fila */
+  .fila::before {
+    content: attr(data-palabra); position: absolute; left: 50%; z-index: 0; pointer-events: none;
+    top: calc((100cqi - max(28px, 3vw)) / 2 * 0.3125); transform: translate(-50%, -50%);
+    font-family: var(--fuente-texto); font-weight: 900; text-transform: uppercase; line-height: 1; white-space: nowrap; letter-spacing: -0.02em;
+    font-size: min(calc(100cqi / (var(--n) * 0.64)), 30cqi); color: rgb(11 1 62 / 0.07);
+  }
+  @media (max-width: 900px) {
+    .fila { grid-template-columns: 1fr; gap: max(56px, 6vw); }
+    .fila::before { display: none; }
+    .filas--anchas :global(.fc__img::before) { display: block !important; }
+  }
   .nota { color: var(--gris); font-size: var(--fs-peq); margin-top: 24px; }
   .otras { list-style: none; padding: 0; margin: 0; display: flex; flex-wrap: wrap; gap: 12px; }
 </style>

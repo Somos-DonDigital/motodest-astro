@@ -1,0 +1,95 @@
+---
+// Moto en grande para las páginas de categoría (diseño de la diseñadora: foto grande,
+// palabra de la categoría de fondo, colores, precio, CTA y datos clave con línea).
+import { Image } from 'astro:assets';
+import { imgMoto } from '../lib/imagenes';
+import { precioTexto, urlMoto, nombreCompleto, type Moto } from '../lib/formato';
+interface Props { moto: Moto; palabra: string; cargaPrioritaria?: boolean }
+const { moto, palabra, cargaPrioritaria = false } = Astro.props;
+const m = moto.data;
+const varios = m.imagenes.length > 1;
+const CAMPOS: [string, string][] = [
+  ['motor', 'Motor'], ['cilindrada', 'Cilindrada'], ['potencia', 'Potencia'],
+  ['alturaAsiento', 'Altura de asiento'], ['peso', 'Peso'], ['autonomia', 'Autonomía'],
+  ['bateria', 'Batería'], ['deposito', 'Depósito'], ['traccion', 'Tracción'],
+];
+const datos = CAMPOS.filter(([k]) => m.ficha[k]).slice(0, 4).map(([k, t]) => [t, m.ficha[k]]);
+const nombre = nombreCompleto(m);
+---
+<article class="fc">
+  <a href={urlMoto(m)} class="fc__img" tabindex="-1" aria-hidden="true" data-palabra={palabra} style={`--n:${palabra.length}`}>
+    {m.imagenes.length
+      ? m.imagenes.map((im, i) => <Image src={imgMoto(im.src)} alt={`${nombre} en color ${im.color.toLowerCase()}`} widths={[480, 720, 960, 1200]} sizes="(max-width: 900px) 94vw, 46vw" loading={cargaPrioritaria && i === 0 ? 'eager' : 'lazy'} fetchpriority={cargaPrioritaria && i === 0 ? 'high' : undefined} class:list={['fc__foto', { activa: i === 0 }]} data-i={i} />)
+      : <span class="fc__sinfoto">Foto próximamente</span>}
+  </a>
+  <div class="fc__cuerpo">
+    <div class="fc__colores" role={varios ? 'group' : undefined} aria-label={varios ? 'Colores disponibles' : undefined}>
+      {m.imagenes.map((im, i) => varios
+        ? <button type="button" class:list={['fc__color', { activa: i === 0 }]} data-i={i} style={`--c:${im.hex}`} title={im.color} aria-label={`Ver en ${im.color.toLowerCase()}`} aria-pressed={i === 0 ? 'true' : 'false'}></button>
+        : <span class="fc__color activa" style={`--c:${im.hex}`} title={im.color}></span>)}
+      <span class="fc__nomcolor">{m.imagenes[0]?.color}</span>
+    </div>
+    <h2 class="fc__nombre"><a href={urlMoto(m)}>{nombre}</a></h2>
+    <p class="fc__precio">{precioTexto(m)}</p>
+    <p class="fc__nota"><span></span>Financiación disponible</p>
+    <div class="fc__acciones">
+      <a class="btn" href={urlMoto(m)}>Ver ficha completa</a>
+      <a class="btn btn--borde fc__comercial" href="#contacto" data-moto={nombre}>Hablar con un comercial</a>
+    </div>
+    {datos.length > 0 && (
+      <dl class="fc__datos">
+        {datos.map(([t, v]) => <div><dt>{t}</dt><dd>{v}</dd></div>)}
+      </dl>
+    )}
+  </div>
+</article>
+<script>
+  document.addEventListener('click', (e) => {
+    const c = (e.target as HTMLElement).closest<HTMLAnchorElement>('.fc__comercial');
+    if (c) {
+      const campo = document.querySelector<HTMLInputElement>('input[name="moto_libre"]');
+      if (campo) campo.value = c.dataset.moto ?? '';
+      return;
+    }
+    const b = (e.target as HTMLElement).closest<HTMLButtonElement>('button.fc__color');
+    if (!b) return;
+    const card = b.closest('.fc')!;
+    card.querySelectorAll<HTMLElement>('.fc__foto').forEach((img) => img.classList.toggle('activa', img.dataset.i === b.dataset.i));
+    card.querySelectorAll('.fc__color').forEach((x) => { x.classList.toggle('activa', x === b); x.setAttribute('aria-pressed', String(x === b)); });
+    const n = card.querySelector('.fc__nomcolor');
+    if (n) n.textContent = b.title;
+  });
+</script>
+<style>
+  .fc { display: flex; flex-direction: column; min-width: 0; }
+  .fc__img { position: relative; display: grid; aspect-ratio: 16 / 10; text-decoration: none; container-type: inline-size; overflow: hidden; }
+  /* Palabra de fondo por tarjeta (solo móvil/tablet; en escritorio va a lo ancho de la fila) */
+  .fc__img::before {
+    content: attr(data-palabra); grid-area: 1 / 1; place-self: center; z-index: 0;
+    font-family: var(--fuente-texto); font-weight: 900; text-transform: uppercase; line-height: 1; white-space: nowrap;
+    font-size: min(calc(100cqi / (var(--n) * 0.66)), 62cqi); color: rgb(11 1 62 / 0.07); letter-spacing: -0.02em;
+  }
+  .fc__img :global(img) { grid-area: 1 / 1; position: relative; z-index: 1; width: 100%; height: 100%; object-fit: contain; mix-blend-mode: multiply; transition: opacity 0.25s, transform 0.35s; }
+  .fc__img :global(.fc__foto:not(.activa)) { opacity: 0; }
+  .fc:hover .fc__img :global(img) { transform: scale(1.03); }
+  .fc__sinfoto { grid-area: 1 / 1; place-self: center; color: var(--gris); font-size: var(--fs-peq); z-index: 1; }
+  :global(.filas--anchas) .fc__img::before { display: none; }
+
+  .fc__cuerpo { padding-top: max(14px, 1.2vw); display: flex; flex-direction: column; flex: 1; }
+  .fc__colores { display: flex; align-items: center; gap: 8px; min-height: 30px; margin-bottom: 10px; flex-wrap: wrap; }
+  .fc__color { width: 28px; height: 28px; border-radius: 4px; background: var(--c); border: 2px solid #fff; box-shadow: 0 0 0 1px var(--borde); padding: 0; }
+  button.fc__color { cursor: pointer; }
+  .fc__color.activa { box-shadow: 0 0 0 2px var(--naranja); }
+  .fc__nomcolor { font-size: var(--fs-peq); color: var(--gris); margin-left: 4px; }
+  .fc__nombre { font-size: clamp(1.4rem, 2.2vw, 2.2rem); margin: 0 0 0.25em; }
+  .fc__nombre a { text-decoration: none; color: var(--azul); }
+  .fc__nombre a:hover { color: var(--naranja); }
+  .fc__precio { font-weight: 800; font-size: clamp(1.5rem, 2.2vw, 2.2rem); color: var(--azul); margin: 0 0 6px; line-height: 1.1; }
+  .fc__nota { display: flex; align-items: center; gap: 8px; color: #1f8a3a; font-size: var(--fs-peq); margin: 0 0 16px; }
+  .fc__nota span { width: 9px; height: 9px; border-radius: 50%; background: #2fb34f; }
+  .fc__acciones { display: flex; flex-wrap: wrap; gap: 10px; margin-bottom: max(20px, 2vw); }
+  .fc__datos { display: grid; grid-template-columns: 1fr 1fr; gap: 18px max(18px, 2vw); margin: auto 0 0; }
+  .fc__datos div { border-top: 2px solid var(--azul); padding-top: 8px; }
+  .fc__datos dt { font-family: var(--fuente-texto); font-weight: 700; text-transform: uppercase; letter-spacing: 0.04em; font-size: var(--fs-peq); color: var(--azul); }
+  .fc__datos dd { margin: 4px 0 0; font-size: var(--fs-peq); color: #333; }
+</style>
