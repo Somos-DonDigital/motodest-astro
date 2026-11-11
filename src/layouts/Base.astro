@@ -4,7 +4,7 @@ import '../styles/global.css';
 import { getImage } from 'astro:assets';
 import Cabecera from '../components/Cabecera.astro';
 import Pie from '../components/Pie.astro';
-import BotonWhatsapp from '../components/BotonWhatsapp.astro';
+import Asistente from '../components/Asistente.astro';
 import { EMPRESA } from '../data/sitio';
 import { imgSitio } from '../lib/imagenes';
 import type { ImageMetadata } from 'astro';
@@ -19,9 +19,10 @@ interface Props {
   noindex?: boolean;
   tipoOg?: 'website' | 'product';
   superpuesta?: boolean;
+  moto?: string;
 }
 
-const { titulo, descripcion, imagen, migas = [], schema = [], noindex = false, tipoOg = 'website', superpuesta = false } = Astro.props;
+const { titulo, descripcion, imagen, migas = [], schema = [], noindex = false, tipoOg = 'website', superpuesta = false, moto = '' } = Astro.props;
 const site = Astro.site!.toString().replace(/\/$/, '');
 const canonical = new URL(Astro.url.pathname, Astro.site).toString();
 const tituloCompleto = titulo.includes('Motodest') ? titulo : `${titulo} | Motodest`;
@@ -112,7 +113,7 @@ const todosSchemas = [negocio, ...migasSchema, ...schema];
       <slot />
     </main>
     <Pie />
-    <BotonWhatsapp />
+    <Asistente moto={moto} />
     <script>import '../scripts/animaciones.ts';</script>
   </body>
 </html>

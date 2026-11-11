@@ -8,7 +8,18 @@ const DESTINO   = 'contacto@motodest.com';
 const REMITENTE = 'web@motodest.com';   // Debe existir o estar autorizado en el SPF del dominio
 const GRACIAS   = '/gracias/';
 
-function volver(string $url): never { header('Location: ' . $url, true, 303); exit; }
+$json = str_contains($_SERVER['HTTP_ACCEPT'] ?? '', 'application/json');
+function volver(string $url): never {
+    global $json;
+    if ($json) { header('Content-Type: application/json'); echo '{"ok":true}'; exit; }
+    header('Location: ' . $url, true, 303); exit;
+}
+function fallo(int $code, string $txt): never {
+    global $json;
+    http_response_code($code);
+    if ($json) { header('Content-Type: application/json'); echo json_encode(['ok' => false, 'error' => $txt]); exit; }
+    echo $txt; exit;
+}
 function limpio(string $k, int $max = 200): string {
     $v = trim((string)($_POST[$k] ?? ''));
     $v = str_replace(["\r", "\n", "%0a", "%0d"], ' ', $v);
@@ -16,6 +27,7 @@ function limpio(string $k, int $max = 200): string {
 }
 
 if ($_SERVER['REQUEST_METHOD'] !== 'POST') { http_response_code(405); exit; }
+$canal = limpio('canal', 20) === 'asistente' ? 'asistente' : 'formulario';
 
 // Antispam: campo trampa y tiempo mínimo entre envíos por IP
 if (!empty($_POST['web'])) volver(GRACIAS);
@@ -33,15 +45,14 @@ $mensaje  = mb_substr(strip_tags(trim((string)($_POST['mensaje'] ?? ''))), 0, 20
 $privacidad = !empty($_POST['privacidad']);
 $comercial  = !empty($_POST['comercial']);
 
-if ($nombre === '' || $telefono === '' || $email === '' || !$privacidad) {
-    http_response_code(400);
-    echo 'Faltan datos obligatorios. Vuelve atrás y revisa el formulario.';
-    exit;
+// En el asistente el email es opcional: basta con nombre y teléfono
+if ($nombre === '' || $telefono === '' || ($email === '' && $canal !== 'asistente') || !$privacidad) {
+    fallo(400, 'Faltan datos obligatorios. Vuelve atrás y revisa el formulario.');
 }
 
-$asunto = 'Consulta web' . ($moto ? " - $moto" : '') . " - $nombre";
+$asunto = ($canal === 'asistente' ? 'Asistente web' : 'Consulta web') . ($moto ? " - $moto" : '') . " - $nombre";
 $cuerpo = "Nueva consulta desde motodest.com\n\n"
-        . "Nombre: $nombre\nTeléfono: $telefono\nEmail: $email\n"
+        . "Canal: $canal\nNombre: $nombre\nTeléfono: $telefono\nEmail: " . ($email ?: '-') . "\n"
         . "Moto: " . ($moto ?: '-') . "\nPágina: $origen\n"
         . "Acepta comunicaciones comerciales: " . ($comercial ? 'Sí' : 'No') . "\n\n"
         . "Mensaje:\n" . ($mensaje ?: '-') . "\n\n"
@@ -49,11 +60,11 @@ $cuerpo = "Nueva consulta desde motodest.com\n\n"
 
 $cabeceras = implode("\r\n", [
     'From: Web Motodest <' . REMITENTE . '>',
-    'Reply-To: ' . $nombre . ' <' . $email . '>',
+    'Reply-To: ' . ($email ? $nombre . ' <' . $email . '>' : DESTINO),
     'Content-Type: text/plain; charset=UTF-8',
     'X-Mailer: motodest.com',
 ]);
 
 $ok = mail(DESTINO, '=?UTF-8?B?' . base64_encode($asunto) . '?=', $cuerpo, $cabeceras, '-f' . REMITENTE);
-if (!$ok) { http_response_code(500); echo 'No se ha podido enviar. Llámanos al 630 55 34 94.'; exit; }
+if (!$ok) fallo(500, 'No se ha podido enviar. Llámanos al 630 55 34 94.');
 volver(GRACIAS);

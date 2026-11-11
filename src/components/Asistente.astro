@@ -1,0 +1,102 @@
+---
+// Asistente de la web ("Dest"): gratuito, sin servicios externos, funciona en el navegador
+// con el catálogo de /asistente.json. Si no sabe algo, deriva a WhatsApp o al teléfono.
+import { EMPRESA } from '../data/sitio';
+interface Props { moto?: string }
+const { moto = '' } = Astro.props;
+const wa = `https://wa.me/${EMPRESA.whatsapp}?text=${encodeURIComponent('Hola, escribo desde la web de Motodest.')}`;
+---
+<div class="asis" data-asis data-moto={moto}>
+  <div class="asis__aviso" data-aviso hidden>
+    <button type="button" class="asis__aviso-x" aria-label="Cerrar aviso" data-cerrar-aviso>×</button>
+    <p data-aviso-txt>{moto ? `¿Te cuento más de la ${moto}?` : '¿Te ayudo a encontrar tu moto?'}</p>
+  </div>
+  <button type="button" class="asis__abrir" aria-expanded="false" aria-controls="asis-panel" data-abrir>
+    <span class="sr-only">Abrir el asistente</span>
+    <svg class="asis__casco" viewBox="0 0 48 48" width="34" height="34" aria-hidden="true">
+      <path fill="#fff" d="M24 7C13.5 7 6 14.6 6 24.5V31c0 1.7 1.3 3 3 3h7.5l2.2 4.3c.5 1 1.6 1.7 2.7 1.7H38c2.2 0 4-1.8 4-4v-9.3C42 15 34 7 24 7Z"/>
+      <path fill="#0b013e" d="M21 21h17.6c.9 0 1.5.9 1.2 1.7l-1.6 4.4c-.3.8-1.1 1.4-2 1.4H21c-1.2 0-2.1-1-2.1-2.1v-3.3c0-1.2 1-2.1 2.1-2.1Z"/>
+      <path fill="#f47b29" d="M9 18.5c2.6-5.2 8-8.6 14.6-8.6v4.6c-5.3 0-9.4 2.3-11.6 6.4L9 18.5Z"/>
+    </svg>
+    <span class="asis__punto" aria-hidden="true"></span>
+  </button>
+
+  <section class="asis__panel" id="asis-panel" role="dialog" aria-label="Asistente de Motodest" hidden data-panel>
+    <header class="asis__cab">
+      <span class="asis__avatar" aria-hidden="true">
+        <svg viewBox="0 0 48 48" width="28" height="28"><path fill="#fff" d="M24 7C13.5 7 6 14.6 6 24.5V31c0 1.7 1.3 3 3 3h7.5l2.2 4.3c.5 1 1.6 1.7 2.7 1.7H38c2.2 0 4-1.8 4-4v-9.3C42 15 34 7 24 7Z"/><path fill="#0b013e" d="M21 21h17.6c.9 0 1.5.9 1.2 1.7l-1.6 4.4c-.3.8-1.1 1.4-2 1.4H21c-1.2 0-2.1-1-2.1-2.1v-3.3c0-1.2 1-2.1 2.1-2.1Z"/></svg>
+      </span>
+      <span class="asis__quien"><strong>Dest</strong><small><i></i> Asistente de Motodest</small></span>
+      <button type="button" class="asis__reiniciar" aria-label="Empezar de nuevo" title="Empezar de nuevo" data-reiniciar>
+        <svg viewBox="0 0 24 24" width="18" height="18" aria-hidden="true"><path fill="none" stroke="currentColor" stroke-width="2" d="M20 12a8 8 0 1 1-2.3-5.7M20 4v4h-4"/></svg>
+      </button>
+      <button type="button" class="asis__cerrar" aria-label="Cerrar el asistente" data-cerrar>×</button>
+    </header>
+    <div class="asis__mensajes" data-mensajes aria-live="polite"></div>
+    <div class="asis__chips" data-chips></div>
+    <form class="asis__form" data-form autocomplete="off">
+      <label class="sr-only" for="asis-txt">Escribe tu pregunta</label>
+      <input id="asis-txt" type="text" maxlength="200" placeholder="Escribe aquí: «quad 4x4», «moto para el carnet B»…" data-txt />
+      <button type="submit" aria-label="Enviar"><svg viewBox="0 0 24 24" width="20" height="20" aria-hidden="true"><path fill="currentColor" d="M3 20.5 21 12 3 3.5l2.6 7.2L15 12l-9.4 1.3L3 20.5Z"/></svg></button>
+    </form>
+    <p class="asis__pie">¿Prefieres hablar con una persona? <a href={wa} target="_blank" rel="noopener">WhatsApp</a> o <a href={`tel:${EMPRESA.telefono.replace(/\s/g, '')}`}>{EMPRESA.telefonoVisible}</a></p>
+  </section>
+</div>
+
+<script>
+  import '../scripts/asistente.ts';
+</script>
+
+<style>
+  .asis { position: fixed; right: max(16px, 1.6vw); bottom: max(16px, 1.6vw); z-index: 60; font-size: 15px; }
+  .asis__abrir { position: relative; width: 64px; height: 64px; border-radius: 50%; border: 0; cursor: pointer; display: grid; place-items: center; background: var(--naranja); box-shadow: 0 12px 30px rgb(11 1 62 / 0.35); transition: transform 0.2s; }
+  .asis__abrir:hover { transform: scale(1.06); }
+  .asis__abrir[aria-expanded='true'] { transform: scale(0.9); }
+  .asis__punto { position: absolute; top: 4px; right: 4px; width: 14px; height: 14px; border-radius: 50%; background: #2fb34f; border: 2px solid #fff; }
+  .asis__aviso { position: absolute; right: 0; bottom: 78px; width: max-content; max-width: 260px; background: #fff; color: var(--azul); padding: 12px 34px 12px 14px; box-shadow: 0 12px 30px rgb(11 1 62 / 0.2); font-weight: 600; }
+  .asis__aviso p { margin: 0; line-height: 1.35; cursor: pointer; }
+  .asis__aviso::after { content: ''; position: absolute; right: 24px; bottom: -8px; border: 8px solid transparent; border-top-color: #fff; border-bottom: 0; }
+  .asis__aviso-x { position: absolute; top: 4px; right: 6px; border: 0; background: none; font-size: 18px; color: var(--gris); cursor: pointer; }
+  .asis__panel { position: absolute; right: 0; bottom: 78px; width: min(390px, calc(100vw - 32px)); height: min(620px, calc(100dvh - 120px)); display: flex; flex-direction: column; background: #fff; box-shadow: 0 24px 60px rgb(11 1 62 / 0.35); overflow: hidden; }
+  .asis__panel[hidden] { display: none; }
+  .asis__cab { display: flex; align-items: center; gap: 10px; padding: 12px 12px 12px 14px; background: var(--azul); color: #fff; }
+  .asis__avatar { width: 40px; height: 40px; border-radius: 50%; background: var(--naranja); display: grid; place-items: center; flex: none; }
+  .asis__quien { display: grid; line-height: 1.2; flex: 1; }
+  .asis__quien small { color: #cfcce3; font-size: 12px; display: flex; align-items: center; gap: 6px; }
+  .asis__quien i { width: 8px; height: 8px; border-radius: 50%; background: #2fb34f; }
+  .asis__cerrar, .asis__reiniciar { border: 0; background: none; color: #fff; cursor: pointer; font-size: 26px; line-height: 1; padding: 4px 6px; }
+  .asis__reiniciar { display: grid; place-items: center; opacity: 0.8; }
+  .asis__cerrar:hover, .asis__reiniciar:hover { color: var(--naranja); }
+  .asis__mensajes { flex: 1; overflow-y: auto; padding: 16px 14px; display: flex; flex-direction: column; gap: 10px; background: var(--gris-claro); overscroll-behavior: contain; }
+  .asis__mensajes > :global(*) { flex-shrink: 0; }
+  .asis__mensajes :global(.m) { max-width: 88%; padding: 10px 13px; line-height: 1.45; white-space: pre-line; }
+  .asis__mensajes :global(.m--bot) { align-self: flex-start; background: #fff; color: var(--texto); border-left: 3px solid var(--naranja); }
+  .asis__mensajes :global(.m--yo) { align-self: flex-end; background: var(--azul); color: #fff; }
+  .asis__mensajes :global(.m a) { color: var(--naranja); font-weight: 700; }
+  .asis__mensajes :global(.m--escribiendo) { display: flex; gap: 4px; padding: 14px; }
+  .asis__mensajes :global(.m--escribiendo span) { width: 7px; height: 7px; border-radius: 50%; background: var(--gris); animation: asisPunto 1s infinite; }
+  .asis__mensajes :global(.m--escribiendo span:nth-child(2)) { animation-delay: 0.15s; }
+  .asis__mensajes :global(.m--escribiendo span:nth-child(3)) { animation-delay: 0.3s; }
+  @keyframes asisPunto { 0%, 60%, 100% { opacity: 0.3; transform: none; } 30% { opacity: 1; transform: translateY(-3px); } }
+  .asis__mensajes :global(.motos) { align-self: stretch; display: grid; grid-auto-flow: column; grid-auto-columns: 74%; gap: 8px; overflow-x: auto; padding-bottom: 4px; scroll-snap-type: x mandatory; }
+  .asis__mensajes :global(.mc) { scroll-snap-align: start; background: #fff; display: grid; text-decoration: none; color: var(--texto); border: 1px solid var(--borde); }
+  .asis__mensajes :global(.mc img) { width: 100%; aspect-ratio: 16 / 10; object-fit: contain; padding: 6px; background: #fff; }
+  .asis__mensajes :global(.mc span) { padding: 0 10px; font-size: 13px; color: var(--gris); }
+  .asis__mensajes :global(.mc strong) { padding: 0 10px; color: var(--azul); }
+  .asis__mensajes :global(.mc b) { padding: 2px 10px 10px; color: var(--naranja); }
+  .asis__chips { display: flex; flex-wrap: wrap; gap: 6px; padding: 8px 12px; background: var(--gris-claro); border-top: 1px solid var(--borde); }
+  .asis__chips:empty { display: none; }
+  .asis__chips :global(button), .asis__chips :global(a) { border: 1px solid var(--azul); background: #fff; color: var(--azul); padding: 6px 11px; font: inherit; font-size: 13px; font-weight: 600; cursor: pointer; text-decoration: none; }
+  .asis__chips :global(button:hover), .asis__chips :global(a:hover) { background: var(--naranja); border-color: var(--naranja); color: #fff; }
+  .asis__chips :global(.chip--wa) { border-color: #25d366; color: #128c4b; }
+  .asis__form { display: flex; border-top: 1px solid var(--borde); }
+  .asis__form input { flex: 1; border: 0; padding: 14px; font: inherit; font-size: 15px; min-width: 0; }
+  .asis__form input:focus { outline: none; }
+  .asis__form button { border: 0; background: var(--naranja); color: #fff; width: 52px; cursor: pointer; }
+  .asis__pie { margin: 0; padding: 8px 12px 10px; font-size: 12px; color: var(--gris); text-align: center; }
+  .asis__pie a { color: var(--azul); font-weight: 700; }
+  @media (max-width: 520px) {
+    .asis__panel { position: fixed; inset: 0; width: auto; height: 100dvh; }
+    .asis__abrir { width: 58px; height: 58px; }
+  }
+</style>
