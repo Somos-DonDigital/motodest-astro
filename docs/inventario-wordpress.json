@@ -1,0 +1,196 @@
+{
+  "_nota": "Extraído del WordPress de motodest.es el 2026-11-11. Rutas de imagen relativas a https://motodest.es/wp-content/uploads/. Las fichas técnicas del WordPress NO se copian: eran texto de relleno repetido en todos los modelos.",
+  "marcas": [
+    {
+      "marca": "Fantic", "url": "/concesionario-oficial-fantic/",
+      "categorias": [
+        { "nombre": "Rally", "url": "/motos-fantic-rally-motodest/", "modelos": [
+          ["XEF Rally Factory", "Por determinar", ["2026/01/moto-fantic-xef-rally-factory-motodest.webp"]],
+          ["XEF Rally 2025", "Por determinar", ["2026/01/moto-fantic-xef-rally-2025-motodest.webp"]]
+        ]},
+        { "nombre": "Enduro", "url": "/motos-fantic-enduro-motodest/", "modelos": [
+          ["XEF 125 Performance", "5.399 €", ["2026/01/moto-fantic-xef-125-performance-motodest.webp", "2026/01/moto-fantic-xef-125-roja-enduro-motodest.jpg"]],
+          ["XEF 125 Competition", "6.199 €", ["2026/01/moto-fantic-enduro-xef-125-competition-motodest.webp", "2026/01/img-xmf-125-verde-motard-fantic-motodest.webp"]],
+          ["XE 50 Performance", "4.149 €", ["2026/01/moto-fantic-xe-50-performance-motodest.webp", "2026/01/img-fantic-xe-50-performance-roja-enduro-motodest.webp"]],
+          ["XE 50 Competition", "4.649 €", ["2026/01/moto-fantic-xe-50-competition-enduro-motodest.webp", "2026/01/img-moto-fantic-xe-50-competition-verde-motodest.webp"]],
+          ["XEF 250 2026", "6.199 €", ["2026/01/moto-fantic-xef-250-2026-enduro-motodest.webp"]],
+          ["XEF 310 2026", "11.299 €", ["2026/01/moto-fantic-xef-310-2026-enduro-motodest.webp"]],
+          ["XEF 450 2026", "12.149 €", ["2026/01/moto-fantic-xef-450-2026-enduro-motodest.webp"]],
+          ["XE 125 2026", "10.249 €", ["2026/01/moto-fantic-xe-125-2026-enduro-motodest.webp"]],
+          ["XE 300 2026", "11.199 €", ["2026/01/moto-fantic-xe-300-2026-enduro-motodest.webp"]]
+        ]},
+        { "nombre": "Caballero", "url": "/motos-fantic-caballero-motodest/", "modelos": [
+          ["Caballero Scrambler 700", "9.299 €", ["2026/01/img-fantic-caballero-scrambler-700-azul.webp", "2026/01/img-fantic-caballero-scrambler-700-roja.webp"]],
+          ["Caballero Deluxe 700", "9.299 €", ["2026/01/img-moto-fantic-caballero-deluxe-700-motodest.webp"]],
+          ["Caballero Travel 700", "9.799 €", ["2026/01/imgweb-moto-fantic-caballero-travel-700-motodest.webp"]],
+          ["Caballero Scrambler 500", "7.399 €", ["2026/01/img-scrambler-500-caballero-fantic-motodest.webp", "2026/01/imgweb-scrambler-500-azul-fantic-caballero-motodest.webp"]],
+          ["Caballero Deluxe 500", "7.599 €", ["2026/01/img-moto-deluxe-500-naranja-fantic-motodest.webp", "2026/01/img-moto-deluxe-500-gris-fantic-motodest.webp"]],
+          ["Caballero Rally 500", "7.899 €", ["2026/01/img-moto-rally-500-beige-fantic-motodest.webp", "2026/01/img-moto-rally-500-verde-fantic-motodest.webp"]],
+          ["Caballero Deluxe 125", "5.999 €", ["2026/01/img-moto-deluxe-125-gris-caballero-fantic.webp"]],
+          ["Caballero Scrambler 125", "5.899 €", ["2026/01/img-moto-scrambler-125-black-fantic-motodest.webp", "2026/01/img-moto-scrambler-125-roja-fantic-motodest.webp"]],
+          ["Caballero Rally 125", "6.299 €", ["2026/01/img-moto-rally-125-beige-fantic-motodest.webp"]]
+        ]},
+        { "nombre": "Motard", "url": "/concesionario-oficial-motard-motodest/", "modelos": [
+          ["XM 50 Competition", "4.649 €", ["2025/11/XM-50-COMPETITION_MOTARD__MOTODEST.webp", "2026/01/xm-50-competition-verde-fantic-motodest.webp"]],
+          ["XM 50 Performance", "4.149 €", ["2025/11/XM-50-PERFORMANCE_MOTARD-MOTODEST.webp", "2026/01/fantic-xm-performance-50cc-rosa-motodest.webp", "2026/01/fantic-xm-performance-50cc-roja-motodest.webp"]],
+          ["XMF 125 Competition", "6.199 €", ["2026/01/img-xmf-125-competition-roja-motard-fantic-motodest.webp", "2026/01/img-xmf-125-competition-verde-motard-fantic-motodest.webp"]],
+          ["XMF 125 Performance", "5.399 €", ["2026/01/img-xmf-125-verde-motard-fantic-motodest.webp", "2026/01/img-xmf-125-rosa-motard-fantic-motodest.webp", "2026/01/img-xmf-125-roja-motard-fantic-motodest.webp"]]
+        ]},
+        { "nombre": "Motocross", "url": "/motos-fantic-motocross-motodest/", "modelos": [
+          ["XXF 250 2026", "10.649 €", ["2026/01/MOTO-FANTIC-XXF-250-2026-MOTODEST.webp"]],
+          ["XXF 450 2026", "11.549 €", ["2026/01/MOTO-FANTIC-XXF-450-2026-MOTODEST.webp"]],
+          ["XX 125 2026", "8.949 €", ["2026/01/moto-fantic-xx-125-2026-motodest.webp"]],
+          ["XX 250 2026", "9.899 €", ["2026/01/moto-fantic-xx-250-2026-motodest.webp"]]
+        ]}
+      ]
+    },
+    {
+      "marca": "Beta", "url": "/concesionario-oficial-beta/",
+      "categorias": [
+        { "nombre": "Enduro", "url": "/motos-enduro-betamotor-motodest/", "modelos": [
+          ["RR 4T 125 Enduro T X Special Edition", "5.699 €", ["2026/01/imgi_7_BETA-2026-125X-ENDURO-GREY-scaled-1.webp"]],
+          ["RR 4T 125 R", "6.099 €", ["2026/01/imgi_8_RR-125-4T-R-2-scaled-1.webp"]],
+          ["RR 4T 125 T", "5.699 €", ["2026/01/imgi_9_RR-125-4T-T_black-scaled-1.webp"]],
+          ["RR X-Pro 2T 125", "9.699 €", ["2026/01/imgi_10_View_01_RR-X-PRO-2T-125.webp"]],
+          ["RR X-Pro 2T 200", "9.999 €", ["2026/01/imgi_11_View_01_RR-X-PRO-2T-200.webp"]],
+          ["RR X-Pro 2T 250/300", "9.849 €", ["2026/01/imgi_12_View_01_RR-X-PRO-2T-250300.webp"]],
+          ["RR X-Pro 4T 350/390/430/480", "11.399 €", ["2026/01/imgi_72_View_02_RR-X-PRO-4T-1536x864-1.webp"]],
+          ["RR Race 2T 125", "10.349 €", ["2026/01/imgi_14_RR-Race-125-2T-My26-scaled-1.webp"]],
+          ["RR Race 2T 200", "10.649 €", ["2026/01/imgi_87_RR-Race-200-2T-My26-1500x1014-1.webp"]],
+          ["RR Race 2T 250", "10.549 €", ["2026/01/imgi_94_RR-Race-300-2T-My26-1500x1014-1.webp"]],
+          ["RR Race 4T 350/390/430/480", "11.549 €", ["2026/01/imgi_99_RR-Race-350-4T-My26-1536x950-1.webp"]],
+          ["Xtrainer 250", "Por determinar", ["2026/01/imgi_108_XTRAINER-My2026-1-1500x928-1.webp"]],
+          ["Xtrainer 300", "7.999 €", ["2026/01/imgi_108_XTRAINER-My2026-1-1500x928-1.webp"]],
+          ["RR 2T 50", "4.149 €", ["2026/01/imgi_115_RR-50-2T_red-1500x875-1.webp"]],
+          ["RR 2T 50 Sport", "4.599 €", ["2026/01/imgi_122_RR-50-2T-SPORT_red-1500x875-1.webp"]],
+          ["RR 50 Race", "5.049 €", ["2026/01/imgi_125_RR-50-2T-RACE-2-1030x601-1.webp"]]
+        ]},
+        { "nombre": "MX", "url": "/motos-mx-betamotor-motodest/", "modelos": [
+          ["RX 300 2T", "9.849 €", ["2026/01/imgi_7_RX-350-2T-My-2026-1-scaled-1.webp"]],
+          ["RX 250 2T", "10.199 €", ["2026/01/imgi_7_RX-350-2T-My-2026-1-scaled-1.webp"]],
+          ["RX 450 4T", "11.499 €", ["2026/01/imgi_8_RX-4T-My-2026.jpg"]]
+        ]},
+        { "nombre": "Trial", "url": "/motos-trial-betamotor-motodest/", "modelos": [
+          ["EVO 4T 300", "8.449 €", ["2026/01/imgi_7_EVO-300-4T-MY-2025-2-scaled-1.webp"]],
+          ["EVO Factory 2T 125/250/300", "8.799 €", ["2026/01/imgi_8_EVO-Factory-2T-Gallery_1-1.webp"]],
+          ["EVO Factory 4T 300", "9.549 €", ["2026/01/imgi_9_EVO-FACTORY-300-4T-MY-2025-3-scaled-1.webp"]],
+          ["EVO 80 Junior", "4.299 €", ["2026/01/imgi_10_EVO-80-My-25-Junior.webp"]],
+          ["EVO 80 Senior", "4.649 €", ["2026/01/imgi_11_EVO-80-My-25-Senior-v2.webp"]]
+        ]},
+        { "nombre": "Motard", "url": "/motos-motard-betamotor-motodest/", "modelos": [
+          ["RR 125 4T Motard T X Special Edition", "5.699 €", ["2026/01/imgi_7_BETA-2026-125X-GREY-scaled-1.webp"]],
+          ["RR Motard 2T 50 X Special Edition", "Por determinar", ["2026/01/imgi_8_RR-50-2T-X-scaled-1.webp"]],
+          ["RR Motard 125 T 4T", "5.699 €", ["2026/01/imgi_9_RR-125-4T-T_red-scaled-1.webp"]],
+          ["RR Motard 125 R", "6.099 €", ["2026/01/imgi_10_RR-125-4T-R-2-scaled-1.webp"]],
+          ["RR Motard 2T 50", "Por determinar", ["2026/01/imgi_11_RR-50-2T_white-scaled-1.webp"]],
+          ["RR SPM Motard 2T 50 Sport", "4.299 €", ["2026/01/imgi_62_RR-50-2T-SPORT_black-2048x1213-1.webp"]],
+          ["RR SPM Motard 2T 50 Track", "4.799 €", ["2026/01/imgi_68_RR-50-2T-TRACK_blue-2048x1195-1.webp"]]
+        ]},
+        { "nombre": "ALP", "url": "/motos-alp-betamotor-motodest/", "modelos": [
+          ["ALP 4.0", "7.249 €", ["2026/01/imgi_7_ALP-4.0_new-rear-fender-1-scaled-1.webp"]],
+          ["ALP X", "7.249 €", ["2026/01/imgi_8_AlpX-side.webp"]]
+        ]},
+        { "nombre": "Minibike", "url": "/minibike-betamotor-motodest/", "modelos": [
+          ["Minitrial Electric 16\"", "1.759 €", ["2026/01/img_7_Minitrial16-MY2021_Gallery.webp"]],
+          ["Minitrial Electric 20\"", "2.099 €", ["2026/01/imgi_8_Minitrial20-MY2021_Gallery.webp"]],
+          ["Minitrial Electric 20\" XL", "3.459 €", ["2026/01/imgi_9_MinitrialXL-MY2021_Gallery.webp"]],
+          ["Minicross E 36V", "1.899 €", ["2026/01/imgi_10_Minicross-E-My-2022_MOD.webp"]],
+          ["Minicross E 48V", "2.349 €", ["2026/01/imgi_10_Minicross-E-My-2022_MOD.webp"]]
+        ]}
+      ]
+    },
+    {
+      "marca": "CFMOTO", "url": "/concesionario-oficial-cf-moto/",
+      "categorias": [
+        { "nombre": "Motos", "url": "/motos-cfmoto-motodest/", "modelos": [
+          ["1000MT-X", null, ["2026/01/IMG-1000MT-X-CFMOTO-MOTODEST-scaled.webp", "2026/01/img-1000mtx-p-cfmoto-motodest-scaled.webp", "2026/01/img-1000mtx-vn-cfmoto-motodest-scaled.webp"]],
+          ["450MT", "Desde 6.799 €", ["2026/01/img-450mt-cfmoto-motodest-scaled.webp", "2026/01/img-450mt-a-cfmoto-motodest-scaled.webp"]],
+          ["700MT", "Desde 6.195 €", ["2026/01/img-moto-700mt-cfmoto-motodest-scaled.webp", "2026/01/img-700mt-a-cfmoto-motodest-scaled.webp"]],
+          ["800MT-X", "Desde 9.495 €", ["2026/01/img-moto-800mt-x-cfmoto-motodest-scaled.webp", "2026/01/img-800mtx-a-cfmoto-motodest-scaled.webp"]],
+          ["800MT Explore", "Desde 10.995 €", ["2026/01/IMG-MOTO-800MT-EXPLORE-CFMOTO-MOTODEST.png", "2026/01/img-800mt-n-cfmoto-motodest.png"]],
+          ["125NK", "Desde 3.395 €", ["2026/01/img-moto-125nk-cfmoto-motodest-scaled.webp", "2026/01/img-125nk-n-cfmoto-motodest-scaled.webp"]],
+          ["675NK", "Desde 6.495 €", ["2026/01/img-moto-675nk-cfmoto-motodest-scaled.webp", "2026/01/img-675nk-b-cfmoto-motodest-scaled.webp"]],
+          ["675SR-R", "Desde 7.995 €", ["2026/01/img-moto-675SR-R-cfmoto-motodest-scaled.webp", "2026/01/img-675srr-n-cfmoto-motodest-scaled.webp", "2026/01/img-675srr-g-cfmoto-motodest-scaled.webp"]]
+        ]},
+        { "nombre": "ATV", "url": "/atv-cfmoto-motodest/", "modelos": [
+          ["CFORCE 1000 MV", "Desde 12.995 €", ["2026/01/IMG-CFORCE1000MV-MOTODEST-scaled.webp", "2026/01/IMG-CFORCE1000MV-AZUL-MOTODEST-scaled.webp"]],
+          ["CFORCE 520S", "Desde 6.795 €", ["2026/01/IMG-CFORCE520S-GRIS-MOTODEST-scaled.webp", "2026/01/IMG-CFORCE520S-VERDE-MOTODEST-scaled.webp"]],
+          ["CFORCE 520L", "Desde 7.395 €", ["2026/01/IMG-CFORCE520L-NARANJA-MOTODEST-scaled.png", "2026/01/IMG-CFORCE520L-GRIS-MOTODEST-scaled.webp"]],
+          ["CFORCE 625", "Desde 7.895 €", ["2026/01/IMG-CFORCE625-MOTODEST-scaled.webp", "2026/01/IMG-CFORCE625-GRIS-MOTODEST-scaled.webp"]],
+          ["CFORCE 850 Touring", "Desde 11.495 €", ["2026/01/IMG-CFATV850T-AZUL-MOTODEST-scaled.webp", "2026/01/IMG-CFATV850T-NARANJA-MOTODEST-scaled.webp", "2026/01/IMG-CFATV850T-GRIS-MOTODEST-scaled.webp"]],
+          ["CFORCE 1000 Touring", "Desde 12.995 €", ["2026/01/IMG-CFATV1000-NARANJA-MOTODEST-scaled.png", "2026/01/IMG-CFATV1000-AZUL-MOTODEST-scaled.webp"]],
+          ["CFORCE 1000 Overland", "Desde 14.295 €", ["2026/01/IMG-CFATV1000OVER-TIERRA-MOTODEST-scaled.webp", "2026/01/IMG-CFATV1000OVER-BOSQUE-MOTODEST-scaled.webp"]]
+        ]},
+        { "nombre": "Buggies", "url": "/buggies-cfmoto-motodest/", "modelos": [
+          ["ZFORCE 950 Sport", "Desde 16.995 €", ["2026/01/IMG-ZF950SPORT-CFMOTO-MOTODEST-scaled.png", "2026/01/IMG-ZF950SPORT-N-CFMOTO-MOTODEST-scaled.png"]],
+          ["ZFORCE 1000 Sport-R", "Desde 17.995 €", ["2026/01/IMG-ZF1000SPORT-NA-CFMOTO-MOTODEST-scaled.png", "2026/01/IMG-ZF1000-TIERRA-CFMOTO-MOTODEST-scaled.png", "2026/01/IMG-ZF1000-NEGRA-CFMOTO-MOTODEST-scaled.png"]],
+          ["ZFORCE 950 Sport 4", "Desde 19.495 €", ["2026/01/IMG-ZF950S4-R-CFMOTO-MOTODEST-scaled.webp", "2026/01/IMG-ZF950S4-A-CFMOTO-MOTODEST-scaled.webp", "2026/01/IMG-ZF950S4-N-CFMOTO-MOTODEST-scaled.png"]],
+          ["UFORCE U6 EV", "16.995 €", ["2026/01/img-u6ev-v-cfmoto-motodest-scaled.webp", "2026/01/img-u6ev-a-cfmoto-motodest-scaled.webp"]],
+          ["UFORCE U10 Pro & Highland", "Desde 19.995 €", ["2026/01/img-u10ph-r-cfmoto-motodest-scaled.webp", "2026/01/img-u10ph-v-cfmoto-motodest-scaled.webp", "2026/01/img-u10ph-cmf-cfmoto-motodest-scaled.webp"]],
+          ["UFORCE U10 Pro XL", "Desde 20.995 €", ["2026/01/img-u10proxl-r-cfmoto-motodest-scaled.webp", "2026/01/img-u10proxl-v-cfmoto-motodest-scaled.webp", "2026/01/img-u10proxl-g-cfmoto-motodest-scaled.webp"]],
+          ["UFORCE 600", "Desde 11.995 €", ["2026/01/img-uf600-t-cfmoto-motodest-scaled.png"]],
+          ["UFORCE 800XL", "Desde 16.996 €", ["2026/01/img-uF800xl-T-cfmoto-motodest-scaled.webp", "2026/01/img-uF800xl-A-cfmoto-motodest-scaled.webp", "2026/01/img-uF800xl-N-cfmoto-motodest-scaled.webp"]],
+          ["UFORCE 1000", "Desde 16.495 €", ["2026/01/img-uF1000-T-cfmoto-motodest-scaled.png"]],
+          ["UFORCE 1000XL", "Desde 19.494 €", ["2026/01/img-uF1000xl-T-cfmoto-motodest-scaled.png", "2026/01/img-uF1000xl-A-cfmoto-motodest-scaled.png"]]
+        ]}
+      ]
+    },
+    {
+      "marca": "MITT", "url": "/concesionario-oficial-mitt/",
+      "categorias": [
+        { "nombre": "Scooters", "url": "/scooters-mitt-motodest/", "modelos": [
+          ["XRS 125", "2.599 €", ["2026/01/IMG-MITT-XRS-50-125-MITT-MOTORS-MOTODEST-scaled.webp", "2026/02/IMG-MITT-XRS-50-125-GRIS-MITT-MOTORS-MOTODEST-scaled.webp"]],
+          ["RT 125", "2.449 €", ["2026/02/IMG-MITT-RT-50-125-MITT-MOTORS-MOTODEST-scaled.webp"]],
+          ["T-ROX 125", "3.399 €", ["2026/02/IMG-MITT-T-ROX-125-MITT-MOTORS-MOTODEST-scaled.webp", "2026/02/IMG-MITT-T-ROX-125-NEGRA-MITT-MOTORS-MOTODEST-scaled.webp", "2026/02/IMG-MITT-T-ROX-125-GRIS-MITT-MOTORS-MOTODEST-scaled.webp"]],
+          ["MAX-T 125", "2.999 €", ["2026/02/IMG-MITT-MAX-T-AZUL-MITT-MOTORS-MOTODEST-scaled.webp", "2026/02/IMG-MITT-MAX-T-MITT-MOTORS-MOTODEST-scaled.webp", "2026/02/IMG-MITT-MAX-T-NEGRA-MITT-MOTORS-MOTODEST-scaled.webp"]],
+          ["City Vision 125", "2.599 €", ["2026/02/IMG-MITT-CITY-VISION-125-NEGRA-MITT-MOTORS-MOTODEST-scaled.webp", "2026/02/IMG-MITT-CITY-VISION-125-GRIS-MITT-MOTORS-MOTODEST-scaled.webp"]],
+          ["ADV 125", "3.499 €", ["2026/02/IMG-MITT-ADV-125-AZUL-MITT-MOTORS-MOTODEST-scaled.webp", "2026/02/IMG-MITT-ADV-125-GRIS-MITT-MOTORS-MOTODEST-scaled.webp"]],
+          ["ADV Extreme 125", "3.999 €", ["2026/02/IMG-MITT-ADV-EXTREME-125-AZUL-MITT-MOTORS-MOTODEST-scaled.webp"]],
+          ["GTS 125", "2.599 €", ["2026/02/IMG-MITT-GTS-125-AZUL-MITT-MOTORS-MOTODEST-scaled.jpeg", "2026/02/IMG-MITT-GTS-125-NEGRO-MITT-MOTORS-MOTODEST-scaled.jpeg"]],
+          ["Urban 125", "2.399 €", ["2026/02/IMG-MITT-URBAN-125-AZUL-MITT-MOTORS-MOTODEST-scaled.webp", "2026/02/IMG-MITT-URBAN-125-GRIS-MITT-MOTORS-MOTODEST-scaled.webp"]],
+          ["GT-MAX 125/330", "3.499 € (125)", ["2026/02/IMG-MITT-GT-MAX-125-330-ROJA-MITT-MOTORS-MOTODEST-scaled.webp", "2026/02/IMG-MITT-GT-MAX-125-330-AVN-MITT-MOTORS-MOTODEST-scaled.webp", "2026/02/IMG-MITT-GT-MAX-125-330-FROJA-MITT-MOTORS-MOTODEST-scaled.webp", "2026/02/IMG-MITT-GT-MAX-125-330-NARANJA-MITT-MOTORS-MOTODEST-scaled.webp"]]
+        ]},
+        { "nombre": "Garage", "url": "/garage-mitt-motodest/", "modelos": [
+          ["Ibiza 125", "2.799 €", ["2026/02/IMG-MITT-IBIZA-125-MITT-MOTORS-MOTODEST-scaled.webp"]],
+          ["Legend 125", "3.099 €", ["2026/02/IMG-MITT-LEGEND-125-MITT-GARAGE-MOTORS-MOTODEST-scaled.webp"]],
+          ["808", "8.299 €", ["2026/02/IMG-MITT-LEGEND-125-MITT-GARAGE-MOTORS-MOTODEST-scaled.webp"]],
+          ["808 Traveler", "12.299 €", ["2026/02/IMG-MITT-808-TRAVELER-MITT-MOTORS-MOTODEST-scaled.webp"]],
+          ["808 Big Foot", "9.299 €", ["2026/02/IMG-MITT-808-BIG-FOOT-MITT-MOTORS-MOTODEST-scaled.webp"]]
+        ]},
+        { "nombre": "Sport / Touring", "url": "/sport-touring-mitt-motors-motodest/", "modelos": [
+          ["NK 125 Brembo", "3.499 €", ["2026/02/IMG-MITT-NK-125-MITT-MOTORS-MOTODEST-scaled.webp"]],
+          ["NK 125", "3.399 €", ["2026/02/IMG-MITT-NK-125-VA-MITT-MOTORS-MOTODEST-scaled.webp", "2026/02/IMG-MITT-NK-125-NR-MITT-MOTORS-MOTODEST-scaled.webp"]],
+          ["GP1 125", "4.099 €", ["2026/02/IMG-MITT-GP1-125-AN-MITT-MOTORS-MOTODEST-scaled.webp", "2026/02/IMG-MITT-GP1-125-NA-MITT-MOTORS-MOTODEST-scaled.webp", "2026/02/IMG-MITT-GP1-125-RA-MITT-MOTORS-MOTODEST-scaled.webp"]],
+          ["GP2 125", "3.799 €", ["2026/02/IMG-MITT-GP2-125-NV-MITT-MOTORS-MOTODEST-scaled.webp"]],
+          ["775R", "7.799 €", ["2026/02/IMG-775R-AN-MITT-MOTORS-MOTODEST-scaled.webp", "2026/02/IMG-775R-AMARILLA-MITT-MOTORS-MOTODEST-scaled.webp", "2026/02/IMG-775R-ROJA-MITT-MOTORS-MOTODEST-scaled.webp"]],
+          ["GT-K", "11.299 €", ["2026/02/IMG-GT-K-AZUL-MITT-MOTORS-MOTODEST-scaled.webp", "2026/02/IMG-GT-K-NEGRA-MITT-MOTORS-MOTODEST-scaled.webp"]]
+        ]},
+        { "nombre": "Adventure", "url": "/motos-adventure-mitt-motors-motodest/", "modelos": [
+          ["Desert 125", "3.799 €", ["2026/02/img-mittdesert-125-motodest-scaled.webp", "2026/02/img-mittdesert-125-DORADO-motodest-scaled.webp"]],
+          ["TT 555", "6.999 €", ["2026/02/img-mitt-tt-555-azul-motodest-scaled.webp", "2026/02/img-mitt-tt-555-maletas-motodest-scaled.jpeg", "2026/02/img-mitt-tt-555-negra-motodest-scaled.webp"]]
+        ]}
+      ]
+    }
+  ],
+  "otrosRecursos": {
+    "logo": "2025/11/logotipo_motodest_negativo.webp",
+    "fuenteTitulos": "2025/11/Death-Star.woff2",
+    "homeHero": ["2025/11/CFORCE_625_TOURIN_MOTODEST.webp", "2025/11/CFMOTO_GFORCE_625_TOURING_EPS.webp"],
+    "homeMarcas": ["2025/11/Fantic_Motodest.webp", "2025/11/BETA_MOTOS_CADIZ_BARBATE_MOTODEST.webp", "2025/11/CFMOTO_MOTODEST_CADIZ_BABRBATE.webp", "2025/11/MITT_125_MOTODEST_CAdiz_BARBATE-scaled.webp"],
+    "homeServicios": ["2025/11/MOTOS_DE_ALQUILER_EN_BARBATE_CADIZ_MOTODEST.webp", "2025/11/TIENDA_BOUTIQUE_MOTODEST_BARBATE.webp", "2025/11/MOTOS_DE_SEGUNDA_MANO_BARBATE_MOTODEST.webp"],
+    "homeMarcasAccesorios": ["2025/11/LS2_MOTODEST_MOTODEST.webp", "2025/11/AIROH_MOTODEST.webp", "2025/11/SP_CONNECT_MOTODEST.webp", "2025/11/SHAD_MOTODEST.webp", "2025/11/LIQUI_MOLI_MOTODEST.webp", "2025/11/KOMOBI_MOTODEST.webp", "2025/11/ALPINESTARS_MOTODEST.webp"],
+    "huella": "2025/12/huella_motodest_2.svg",
+    "vector": "2025/11/Vector.svg",
+    "fantic": ["2025/12/bg-1-fantic-motodest-scaled.webp", "2025/12/fantic-caballero-500-motodest.webp", "2025/12/img-grid-gama-fantic-rally.webp", "2025/12/img-grid-gama-fantic-enduro.webp", "2025/12/img-grid-gama-fantic-caballero.webp", "2025/12/img-grid-gama-fantic-motard.webp", "2025/12/img-grid-gama-fantic-motocross.webp"],
+    "beta": ["2025/12/BG_HERO_BETA_1_MOTODEST.webp", "2025/12/SECTION_HISTORY_PAGE_BETA_MOTODEST.webp", "2025/12/RR-XPRO-300-2T_BETA_MOTOR_MOTODEST.webp", "2025/12/MX_BETA_MOTOR_MOTODEST.webp", "2025/12/EVO-Factory-2025_TRIAL_BETA_MOTOR_MOTODEST.webp", "2025/12/MOTARD_BETA_MOTOR_MOTODEST.webp", "2025/12/ALP_BETA_MOTOR_MOTODEST.webp", "2025/12/MINIBIKE_BETA_MOTOR_MOTODEST.webp"],
+    "cfmoto": ["2026/01/BG_CONCESIONARIO_OFICIAL_CFMOTO_MOTODEST_EXPLORER.webp", "2026/01/BG_CONCESIONARIO_OFICIAL_CFMOTO_MOTODEST-scaled.webp", "2026/01/CONCESIONARIO_OFICIAL_CFMOTO_C_BUGGIES_MOTODEST-scaled.webp", "2026/01/CONCESIONARIO_OFICIAL_CFMOTO_BUGGIES_MOTODEST.webp", "2026/01/concesionario_oficial_cfmoto-motos-motodest.webp"],
+    "mitt": ["2026/01/bg-concesionario-oficial-mitt-motodest.webp", "2026/01/bg-h-concesionario-oficial-mitt-motodest-scaled.webp", "2025/11/SCOOTERS_MITT_MOTODEST.webp", "2025/11/GARAGE_MITT_MOTODEST.webp", "2025/11/SPORT_MITT_MOTODEST.jpg", "2025/11/ADVENTURE_MITT_MOTODEST.webp"]
+  },
+  "marca": { "colorPrimario": "#0B013E", "colorAcento": "#F47B29", "fuenteTitulos": "Death Star", "fuenteTexto": "Cairo" },
+  "contacto": {
+    "email": "contacto@motodest.com",
+    "telefono": "+34 630 55 34 94",
+    "direccion": "Av. de la Mar, 114, 11160 Barbate (Cádiz)",
+    "horario": { "lunesViernes": "10:00-14:00 y 17:00-20:00", "sabado": "10:00-13:00", "domingo": "Cerrado" }
+  }
+}
