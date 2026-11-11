@@ -5,7 +5,7 @@
 - Plugins: Dynamic.ooo, Dynamic Visibility, JetTabs, Perfmatters, All-in-One WP Migration y Child Theme Configurator.
 - Sin plugin de SEO.
 - 24 páginas publicadas. 1 entrada de ejemplo («WordPress felizmente alojado en Webempresa»). 282 archivos multimedia.
-- Las motos no son un tipo de contenido: cada categoría es una página de Elementor con tarjetas montadas a mano. En total hay 113 modelos.
+- Las motos no son un tipo de contenido: cada categoría es una página de Elementor con tarjetas montadas a mano. En total hay 114 modelos.
 - La home carga 37 hojas de estilo y pesa 136 KB de HTML.
 
 ## Errores de contenido
