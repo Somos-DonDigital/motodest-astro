@@ -1,0 +1,29 @@
+{
+  "nombre": "GP2 125",
+  "marca": "mitt",
+  "categoria": "sport-touring",
+  "slug": "gp2-125",
+  "precio": 3799,
+  "precioDesde": false,
+  "imagenes": [
+    "mitt/img-mitt-gp2-125-nv-mitt-motors-motodest-scaled.webp"
+  ],
+  "ficha": {
+    "motor": "Monocilíndrico 4 tiempos",
+    "cilindrada": "125 cc",
+    "potencia": "10,5 kW (14,1 CV) a 8.750 rpm",
+    "par": "12 Nm a 7.850 rpm",
+    "cambio": "Manual de 6 velocidades, transmisión por cadena",
+    "alimentacion": "Inyección electrónica",
+    "suspDel": "Horquilla telescópica",
+    "suspTras": "Monoamortiguador con ajuste de precarga",
+    "frenos": "Frenada combinada CBS, disco de 299 mm / disco de 240 mm",
+    "neumaticos": "110/70-16 / 140/70-16",
+    "alturaAsiento": "760 mm",
+    "peso": "155 kg en vacío",
+    "deposito": "10 l"
+  },
+  "fuenteFicha": "https://mittmotors.com/vehiculo/mitt-gp2-125",
+  "destacada": false,
+  "orden": 203
+}

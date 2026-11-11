@@ -1,0 +1,26 @@
+{
+  "nombre": "Legend 125",
+  "marca": "mitt",
+  "categoria": "garage",
+  "slug": "legend-125",
+  "precio": 3099,
+  "precioDesde": false,
+  "imagenes": [
+    "mitt/img-mitt-legend-125-mitt-garage-motors-motodest-scaled.webp"
+  ],
+  "ficha": {
+    "motor": "Monocilíndrico 4 tiempos SOHC, refrigerado por aire",
+    "cilindrada": "125 cc",
+    "potencia": "10 CV a 8.000 rpm",
+    "cambio": "5 velocidades",
+    "suspDel": "Horquilla invertida",
+    "suspTras": "Doble amortiguador hidráulico",
+    "frenos": "Frenada combinada CBS, disco / disco",
+    "neumaticos": "4.00-17 / 4.50-17",
+    "alturaAsiento": "775 mm",
+    "peso": "136 kg"
+  },
+  "fuenteFicha": "https://www.mundomotero.com/motos/mitt/125-legend",
+  "destacada": false,
+  "orden": 101
+}

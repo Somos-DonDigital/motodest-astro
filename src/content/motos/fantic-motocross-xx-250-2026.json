@@ -1,0 +1,28 @@
+{
+  "nombre": "XX 250 2026",
+  "marca": "fantic",
+  "categoria": "motocross",
+  "slug": "xx-250-2026",
+  "precio": 9899,
+  "precioDesde": false,
+  "imagenes": [
+    "fantic/moto-fantic-xx-250-2026-motodest.webp"
+  ],
+  "ficha": {
+    "motor": "Monocilíndrico 2 tiempos, refrigerado por líquido, admisión por láminas y válvula YPVS",
+    "cilindrada": "249 cc",
+    "cambio": "5 velocidades",
+    "alimentacion": "Carburador Keihin ø38",
+    "chasis": "Semidoble cuna",
+    "suspDel": "KYB ø48 mm regulable, 300 mm de recorrido",
+    "suspTras": "KYB regulable, 315 mm de recorrido",
+    "frenos": "Disco ø270 mm / disco ø240 mm",
+    "neumaticos": "80/100-21 / 110/90-19",
+    "alturaAsiento": "970 mm",
+    "peso": "98 kg en seco",
+    "deposito": "9 l"
+  },
+  "fuenteFicha": "https://fantic.com/es-es/moto/motocross/xx-250-_f1a6o",
+  "destacada": false,
+  "orden": 403
+}

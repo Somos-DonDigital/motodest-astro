@@ -1,0 +1,32 @@
+{
+  "nombre": "TT 555",
+  "marca": "mitt",
+  "categoria": "adventure",
+  "slug": "tt-555",
+  "precio": 6999,
+  "precioDesde": false,
+  "imagenes": [
+    "mitt/img-mitt-tt-555-azul-motodest-scaled.webp",
+    "mitt/img-mitt-tt-555-maletas-motodest-scaled.jpg",
+    "mitt/img-mitt-tt-555-negra-motodest-scaled.webp"
+  ],
+  "ficha": {
+    "motor": "Bicilíndrico 4 tiempos, 8 válvulas DOHC",
+    "cilindrada": "471 cc",
+    "potencia": "35 kW (47 CV) a 8.500 rpm",
+    "par": "44,5 Nm a 7.000 rpm",
+    "cambio": "Transmisión por cadena",
+    "alimentacion": "Inyección Bosch",
+    "suspDel": "Horquilla invertida regulable en precarga y compresión",
+    "suspTras": "Amortiguador regulable en precarga y compresión",
+    "frenos": "ABS, doble disco flotante / disco de 240 mm",
+    "neumaticos": "110/80-19 / 150/70-17 sin cámara",
+    "alturaAsiento": "810 mm",
+    "peso": "205 kg en vacío",
+    "deposito": "21 l",
+    "equipamiento": "Parabrisas regulable"
+  },
+  "fuenteFicha": "https://mittmotors.com/vehiculo/mitt-tt-555",
+  "destacada": false,
+  "orden": 301
+}

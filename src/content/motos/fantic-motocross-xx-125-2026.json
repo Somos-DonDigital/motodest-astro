@@ -1,0 +1,28 @@
+{
+  "nombre": "XX 125 2026",
+  "marca": "fantic",
+  "categoria": "motocross",
+  "slug": "xx-125-2026",
+  "precio": 8949,
+  "precioDesde": false,
+  "imagenes": [
+    "fantic/moto-fantic-xx-125-2026-motodest.webp"
+  ],
+  "ficha": {
+    "motor": "Monocilíndrico 2 tiempos, refrigerado por líquido, admisión por láminas y válvula de escape YPVS",
+    "cilindrada": "125 cc",
+    "cambio": "6 velocidades",
+    "alimentacion": "Carburador Keihin PWK38S",
+    "chasis": "Semidoble cuna de aluminio",
+    "suspDel": "KYB ø48 mm regulable, 300 mm de recorrido",
+    "suspTras": "KYB regulable, 315 mm de recorrido",
+    "frenos": "Disco ø270 mm / disco ø240 mm",
+    "neumaticos": "80/100-21 / 100/90-19",
+    "alturaAsiento": "975 mm",
+    "peso": "90 kg en seco",
+    "deposito": "9 l"
+  },
+  "fuenteFicha": "https://fantic.com/es-es/moto/motocross/xx-125_y41nk",
+  "destacada": false,
+  "orden": 402
+}

@@ -1,0 +1,30 @@
+{
+  "nombre": "XRS 125",
+  "marca": "mitt",
+  "categoria": "scooters",
+  "slug": "xrs-125",
+  "precio": 2599,
+  "precioDesde": false,
+  "imagenes": [
+    "mitt/img-mitt-xrs-50-125-mitt-motors-motodest-scaled.webp",
+    "mitt/img-mitt-xrs-50-125-gris-mitt-motors-motodest-scaled.webp"
+  ],
+  "ficha": {
+    "motor": "Monocilíndrico 4 tiempos, refrigerado por aire",
+    "cilindrada": "125 cc",
+    "potencia": "6,9 kW (9,3 CV) a 8.500 rpm",
+    "par": "8,8 Nm a 6.000 rpm",
+    "cambio": "Automático CVT",
+    "alimentacion": "Inyección electrónica",
+    "suspDel": "Horquilla telescópica",
+    "suspTras": "Doble amortiguador",
+    "frenos": "Frenada combinada CBS, disco de 220 mm / disco de 180 mm",
+    "neumaticos": "CST 130/60-13 / 120/70-12",
+    "alturaAsiento": "780 mm",
+    "peso": "110 kg en vacío",
+    "deposito": "4,1 l"
+  },
+  "fuenteFicha": "https://mittmotors.com/vehiculo/mitt-xrs-50-125",
+  "destacada": false,
+  "orden": 0
+}

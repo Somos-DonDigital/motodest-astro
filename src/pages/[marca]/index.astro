@@ -1,0 +1,99 @@
+---
+import { Image } from 'astro:assets';
+import { getCollection } from 'astro:content';
+import Base from '../../layouts/Base.astro';
+import TarjetaMoto from '../../components/TarjetaMoto.astro';
+import Formulario from '../../components/Formulario.astro';
+import { MARCAS, EMPRESA, type Marca } from '../../data/sitio';
+import { imgSitio } from '../../lib/imagenes';
+
+export function getStaticPaths() {
+  return MARCAS.map((m) => ({ params: { marca: m.slug }, props: { marca: m } }));
+}
+const { marca } = Astro.props as { marca: Marca };
+const motos = (await getCollection('motos', (m) => m.data.marca === marca.slug)).sort((a, b) => a.data.orden - b.data.orden);
+const contar = (c: string) => motos.filter((m) => m.data.categoria === c).length;
+const destacadas = [...motos.filter((m) => m.data.destacada), ...marca.categorias.map((c) => motos.find((m) => m.data.categoria === c.slug && !m.data.destacada)!)].filter(Boolean).slice(0, 4);
+const tel = EMPRESA.telefono.replace(/\s/g, '');
+---
+<Base
+  titulo={`${marca.h1} | Motodest Barbate`}
+  descripcion={`${marca.h1}: ${marca.lema} Precios, fichas técnicas oficiales y financiación en Motodest.`}
+  imagen={imgSitio(marca.hero)}
+  migas={[{ nombre: marca.nombre, url: `/${marca.slug}/` }]}
+  schema={[{
+    '@context': 'https://schema.org', '@type': 'ItemList', name: `Gama ${marca.nombre} en Motodest`,
+    itemListElement: marca.categorias.map((c, i) => ({ '@type': 'ListItem', position: i + 1, name: c.h1, url: new URL(`/${marca.slug}/${c.slug}/`, Astro.site).toString() })),
+  }]}
+>
+  <section class="mhero">
+    <Image src={imgSitio(marca.hero)} alt={`${marca.nombre} en Motodest`} class="mhero__img" widths={[640, 960, 1600]} sizes="100vw" loading="eager" fetchpriority="high" layout="full-width" />
+    <div class="mhero__capa contenedor">
+      <span class="antetitulo">Concesionario oficial</span>
+      <h1>{marca.h1}</h1>
+      <p class="mhero__txt">{marca.lema}</p>
+      <div class="cta-linea">
+        <a class="btn" href="#gama">Ver la gama</a>
+        <a class="btn btn--borde" href={`tel:${tel}`}>Llámanos al {EMPRESA.telefonoVisible}</a>
+      </div>
+    </div>
+  </section>
+
+  <section class="seccion" id="gama">
+    <div class="contenedor">
+      <span class="antetitulo">La gama {marca.nombre}</span>
+      <h2>Elige tu tipo de moto</h2>
+      <div class="rejilla rejilla--cats">
+        {marca.categorias.map((c) => (
+          <a class="cat" href={`/${marca.slug}/${c.slug}/`}>
+            <Image src={imgSitio(c.imagen)} alt={c.h1} widths={[300, 480]} sizes="(max-width: 700px) 46vw, 260px" class="cat__img" />
+            <span class="cat__txt"><strong>{c.nombre}</strong><span>{contar(c.slug)} modelos</span></span>
+          </a>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <section class="seccion seccion--gris">
+    <div class="contenedor">
+      <span class="antetitulo">Destacadas</span>
+      <h2>Motos {marca.nombre} destacadas</h2>
+      <div class="rejilla rejilla--motos">
+        {destacadas.map((m) => <TarjetaMoto moto={m} />)}
+      </div>
+    </div>
+  </section>
+
+  <section class="seccion">
+    <div class="contenedor historia">
+      <Image src={imgSitio(marca.historiaImg)} alt={`${marca.nombre}`} widths={[480, 800, 1100]} sizes="(max-width: 860px) 92vw, 50vw" class="historia__img" />
+      <div>
+        <h2>{marca.historiaTitulo}</h2>
+        {marca.historia.map((p) => <p>{p}</p>)}
+        <p>En Motodest somos concesionario oficial {marca.nombre} en Barbate: te asesoramos, preparamos tu moto y te acompañamos en el mantenimiento.</p>
+        <div class="cta-linea">
+          <a class="btn" href="#contacto">Pide información</a>
+          <span>o llámanos al <a class="tel" href={`tel:${tel}`}>{EMPRESA.telefonoVisible}</a></span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <Formulario titulo={`¿Te interesa una ${marca.nombre}?`} />
+</Base>
+<style>
+  .mhero { position: relative; color: #fff; min-height: min(70vh, 680px); display: grid; align-items: end; overflow: hidden; background: var(--azul); }
+  .mhero :global(.mhero__img) { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; }
+  .mhero::after { content: ''; position: absolute; inset: 0; background: linear-gradient(0deg, rgb(11 1 62 / 0.92), rgb(11 1 62 / 0.2) 70%); }
+  .mhero__capa { position: relative; z-index: 1; padding-block: max(44px, 5vw); }
+  .mhero__txt { font-size: clamp(1.05rem, 1.4vw, 1.35rem); color: #e7e5f4; max-width: 52ch; }
+  .cat { position: relative; display: block; border-radius: var(--radio); overflow: hidden; text-decoration: none; background: var(--gris-claro); }
+  .cat :global(.cat__img) { width: 100%; aspect-ratio: 3 / 4; object-fit: cover; transition: transform 0.35s; }
+  .cat:hover :global(.cat__img) { transform: scale(1.05); }
+  .cat__txt { position: absolute; inset: auto 0 0; padding: 40px 16px 16px; color: #fff; background: linear-gradient(0deg, rgb(11 1 62 / 0.9), transparent); display: grid; }
+  .cat__txt strong { font-family: var(--fuente-titulos); text-transform: uppercase; font-size: clamp(1.05rem, 1.4vw, 1.4rem); }
+  .cat__txt span { font-size: var(--fs-peq); }
+  .historia { display: grid; grid-template-columns: 1fr 1fr; gap: max(28px, 4vw); align-items: center; }
+  .historia :global(.historia__img) { border-radius: var(--radio); width: 100%; aspect-ratio: 4 / 3; object-fit: cover; }
+  @media (max-width: 860px) { .historia { grid-template-columns: 1fr; } }
+</style>

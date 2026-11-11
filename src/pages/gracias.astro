@@ -1,0 +1,11 @@
+---
+import Base from '../layouts/Base.astro';
+import { EMPRESA } from '../data/sitio';
+---
+<Base titulo="Consulta recibida" descripcion="Hemos recibido tu consulta." noindex>
+  <section class="seccion"><div class="contenedor prosa">
+    <h1>Consulta recibida</h1>
+    <p class="intro">Gracias. Te llamaremos lo antes posible. Si lo prefieres, llámanos al <a href={`tel:${EMPRESA.telefono.replace(/\s/g, '')}`}>{EMPRESA.telefonoVisible}</a>.</p>
+    <a class="btn" href="/">Volver al inicio</a>
+  </div></section>
+</Base>

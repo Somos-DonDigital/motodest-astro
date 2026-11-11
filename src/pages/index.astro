@@ -1,0 +1,145 @@
+---
+import { Image } from 'astro:assets';
+import { getCollection } from 'astro:content';
+import Base from '../layouts/Base.astro';
+import TarjetaMoto from '../components/TarjetaMoto.astro';
+import Formulario from '../components/Formulario.astro';
+import { MARCAS, EMPRESA } from '../data/sitio';
+import { imgSitio } from '../lib/imagenes';
+
+const motos = await getCollection('motos');
+const destacadas = motos.filter((m) => m.data.destacada).sort((a, b) => MARCAS.findIndex((x) => x.slug === a.data.marca) - MARCAS.findIndex((x) => x.slug === b.data.marca) || a.data.orden - b.data.orden);
+const contar = (marca: string) => motos.filter((m) => m.data.marca === marca).length;
+const tel = EMPRESA.telefono.replace(/\s/g, '');
+
+const servicios = [
+  { img: 'alquiler', titulo: 'Motos de alquiler', texto: 'Alquiler de motos en Barbate. Consúltanos los modelos y las fechas disponibles.' },
+  { img: 'boutique', titulo: 'Tienda boutique', texto: 'Cascos, equipación y accesorios de marcas como LS2, Airoh, Alpinestars o Shad.' },
+  { img: 'segunda-mano', titulo: 'Segunda mano', texto: 'Motos de ocasión revisadas. Pregúntanos qué unidades tenemos disponibles.' },
+];
+const accesorios = ['acc-ls2', 'acc-airoh', 'acc-alpinestars', 'acc-shad', 'acc-sp-connect', 'acc-liqui-moli', 'acc-komobi'];
+const nombresAcc: Record<string, string> = { 'acc-ls2': 'LS2', 'acc-airoh': 'Airoh', 'acc-alpinestars': 'Alpinestars', 'acc-shad': 'Shad', 'acc-sp-connect': 'SP Connect', 'acc-liqui-moli': 'Liqui Moly', 'acc-komobi': 'Komobi' };
+---
+<Base
+  titulo="Motodest | Concesionario oficial Fantic, Beta, CFMOTO y MITT en Barbate"
+  descripcion="Concesionario oficial de motos en Barbate (Cádiz): Fantic, Beta, CFMOTO y MITT. Motos, quads y buggies nuevos con financiación, alquiler, segunda mano y boutique."
+>
+  <section class="hero">
+    <Image src={imgSitio('hero-675nk')} alt="CFMOTO 675NK en Motodest" class="hero__img" widths={[640, 960, 1420]} sizes="100vw" loading="eager" fetchpriority="high" layout="full-width" />
+    <div class="hero__capa contenedor">
+      <span class="antetitulo">Barbate · Cádiz</span>
+      <h1>Concesionario oficial de motos en Barbate</h1>
+      <p class="hero__txt">Fantic, Beta, CFMOTO y MITT: motos, quads y buggies nuevos con asesoramiento cercano y financiación a tu medida.</p>
+      <div class="cta-linea">
+        <a class="btn" href="#destacadas">Ver motos</a>
+        <a class="btn btn--borde" href={`tel:${tel}`}>Llámanos al {EMPRESA.telefonoVisible}</a>
+      </div>
+    </div>
+  </section>
+
+  <section class="seccion" id="destacadas">
+    <div class="contenedor">
+      <span class="antetitulo">Motos destacadas</span>
+      <h2>Nuestras motos</h2>
+      <p class="intro">Una selección de la gama que tenemos en Motodest. Entra en cada moto para ver la ficha técnica oficial y el precio.</p>
+      <div class="rejilla rejilla--motos">
+        {destacadas.map((m, i) => <TarjetaMoto moto={m} cargaPrioritaria={i < 2} />)}
+      </div>
+      <div class="cta-linea">
+        <a class="btn" href="/contacto/">Pide información</a>
+        <span>o llámanos al <a class="tel" href={`tel:${tel}`}>{EMPRESA.telefonoVisible}</a></span>
+      </div>
+    </div>
+  </section>
+
+  <section class="seccion seccion--gris">
+    <div class="contenedor">
+      <span class="antetitulo">Concesionario oficial</span>
+      <h2>Nuestras marcas</h2>
+      <div class="rejilla marcas">
+        {MARCAS.map((m) => (
+          <a class="marca" href={`/${m.slug}/`}>
+            <Image src={imgSitio(m.logoImg)} alt={`Motos ${m.nombre} en Motodest`} widths={[400, 640]} sizes="(max-width: 700px) 92vw, 320px" class="marca__img" />
+            <div class="marca__txt">
+              <h3>{m.nombre}</h3>
+              <p>{contar(m.slug)} modelos · {m.categorias.map((c) => c.nombre).join(', ')}</p>
+              <span class="marca__ver">Descubre los modelos →</span>
+            </div>
+          </a>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <section class="seccion seccion--azul financia">
+    <div class="contenedor financia__in">
+      <div>
+        <span class="antetitulo">Financiación</span>
+        <h2>Financiación a tu medida</h2>
+        <p class="intro">Te preparamos un plan de pago adaptado a lo que necesitas, sin compromiso. Cuéntanos qué moto te interesa y te damos la cuota.</p>
+      </div>
+      <div class="cta-linea">
+        <a class="btn" href="/contacto/">Calcular mi cuota</a>
+        <span>o llámanos al <a class="tel" href={`tel:${tel}`}>{EMPRESA.telefonoVisible}</a></span>
+      </div>
+    </div>
+  </section>
+
+  <section class="seccion">
+    <div class="contenedor">
+      <span class="antetitulo">Nuestros servicios</span>
+      <h2>Mucho más que venta</h2>
+      <div class="rejilla servicios">
+        {servicios.map((s) => (
+          <article class="servicio">
+            <Image src={imgSitio(s.img)} alt={s.titulo} widths={[400, 640]} sizes="(max-width: 700px) 92vw, 420px" class="servicio__img" />
+            <div class="servicio__txt">
+              <h3>{s.titulo}</h3>
+              <p>{s.texto}</p>
+              <a class="servicio__ver" href="/contacto/">Pregúntanos →</a>
+            </div>
+          </article>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <section class="seccion seccion--gris accesorios">
+    <div class="contenedor">
+      <h2 class="accesorios__tit">Marcas de equipación y accesorios</h2>
+      <ul class="accesorios__lista">
+        {accesorios.map((a) => <li><Image src={imgSitio(a)} alt={nombresAcc[a]} widths={[200, 320]} sizes="(max-width: 700px) 40vw, 180px" /></li>)}
+      </ul>
+    </div>
+  </section>
+
+  <Formulario titulo="¿Buscas moto? Te asesoramos" />
+</Base>
+
+<style>
+  .hero { position: relative; color: #fff; min-height: min(88vh, 860px); display: grid; align-items: end; overflow: hidden; background: var(--azul); }
+  .hero :global(.hero__img) { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; }
+  .hero::after { content: ''; position: absolute; inset: 0; background: linear-gradient(0deg, rgb(11 1 62 / 0.92) 0%, rgb(11 1 62 / 0.45) 45%, rgb(11 1 62 / 0) 75%); }
+  .hero__capa { position: relative; z-index: 1; padding-block: max(48px, 6vw); }
+  .hero h1 { max-width: 18ch; }
+  .hero__txt { font-size: clamp(1.05rem, 1.4vw, 1.4rem); max-width: 52ch; color: #e7e5f4; }
+  .marcas { grid-template-columns: repeat(auto-fit, minmax(min(100%, 280px), 1fr)); }
+  .marca { background: #fff; border-radius: var(--radio); overflow: hidden; text-decoration: none; display: flex; flex-direction: column; transition: box-shadow 0.2s, transform 0.2s; }
+  .marca:hover { box-shadow: 0 18px 40px rgb(11 1 62 / 0.12); transform: translateY(-3px); }
+  .marca :global(.marca__img) { aspect-ratio: 4 / 3; width: 100%; object-fit: cover; }
+  .marca__txt { padding: 18px 20px 22px; }
+  .marca__txt p { color: var(--gris); font-size: var(--fs-peq); }
+  .marca__ver, .servicio__ver { color: var(--naranja); font-weight: 700; text-decoration: none; }
+  .financia__in { display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 24px; }
+  .financia .cta-linea { margin-top: 0; }
+  .financia .tel { color: #fff; }
+  .servicios { grid-template-columns: repeat(auto-fit, minmax(min(100%, 280px), 1fr)); }
+  .servicio { border-radius: var(--radio); overflow: hidden; border: 1px solid var(--borde); }
+  .servicio :global(.servicio__img) { aspect-ratio: 4 / 3; width: 100%; object-fit: cover; }
+  .servicio__txt { padding: 18px 20px 22px; }
+  .accesorios { padding-block: max(36px, 4vw); }
+  .accesorios__tit { font-size: var(--fs-h3); text-align: center; }
+  .accesorios__lista { list-style: none; padding: 0 0 6px; margin: 24px 0 0; display: grid; grid-auto-flow: column; grid-auto-columns: minmax(140px, 1fr); gap: max(12px, 1.2vw); overflow-x: auto; scroll-snap-type: x mandatory; }
+  .accesorios__lista li { scroll-snap-align: start; }
+  .accesorios__lista :global(img) { width: 100%; aspect-ratio: 3 / 4; object-fit: cover; border-radius: var(--radio); }
+</style>

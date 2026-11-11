@@ -1,0 +1,25 @@
+{
+  "nombre": "Minitrial Electric 20\"",
+  "marca": "beta",
+  "categoria": "minibike",
+  "slug": "minitrial-electric-20-pulgadas",
+  "precio": 2099,
+  "precioDesde": false,
+  "imagenes": [
+    "beta/imgi-8-minitrial20-my2021-gallery.webp"
+  ],
+  "ficha": {
+    "motor": "Eléctrico 750 W, 36 V",
+    "bateria": "3 baterías de plomo de 12 V en serie, 9 Ah",
+    "autonomia": "2 h a velocidad constante",
+    "chasis": "Duraluminio",
+    "suspDel": "Hidráulica ø25 mm con ajuste de muelle",
+    "suspTras": "Monoamortiguador con ajuste de aire",
+    "frenos": "Hidráulicos, disco ø160 mm",
+    "alturaAsiento": "550 mm",
+    "peso": "25,5 kg"
+  },
+  "fuenteFicha": "https://www.betamotor.com/es/motocicletas/moto-minitrial-electric-20/",
+  "destacada": false,
+  "orden": 501
+}

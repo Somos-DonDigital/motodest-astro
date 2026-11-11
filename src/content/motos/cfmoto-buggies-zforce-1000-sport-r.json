@@ -1,0 +1,29 @@
+{
+  "nombre": "ZFORCE 1000 Sport-R",
+  "marca": "cfmoto",
+  "categoria": "buggies",
+  "slug": "zforce-1000-sport-r",
+  "precio": 19299,
+  "precioDesde": false,
+  "imagenes": [
+    "cfmoto/img-zf1000sport-na-cfmoto-motodest-scaled.png",
+    "cfmoto/img-zf1000-tierra-cfmoto-motodest-scaled.png",
+    "cfmoto/img-zf1000-negra-cfmoto-motodest-scaled.png"
+  ],
+  "ficha": {
+    "motor": "Bicilíndrico en V, 4 tiempos, refrigeración líquida, SOHC 8 válvulas",
+    "cilindrada": "963 cc",
+    "cambio": "Automático CVT por correa",
+    "traccion": "4x2 / 4x4 con bloqueo de diferencial",
+    "alimentacion": "Inyección Bosch",
+    "suspension": "Recorrido de 340 mm delante y 395 mm detrás",
+    "frenos": "Discos hidráulicos",
+    "neumaticos": "Llantas de aleación de 14\"",
+    "equipamiento": "Dirección asistida (EPS), jaula antivuelco con certificación ROPS",
+    "deposito": "36,5 l",
+    "plazas": "2"
+  },
+  "fuenteFicha": "https://cfmotocolombia.com/wp-content/uploads/2024/04/FichaTecnicaZFORCE1000SPORTR.pdf",
+  "destacada": false,
+  "orden": 201
+}

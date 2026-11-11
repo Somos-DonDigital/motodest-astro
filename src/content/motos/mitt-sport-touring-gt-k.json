@@ -1,0 +1,29 @@
+{
+  "nombre": "GT-K",
+  "marca": "mitt",
+  "categoria": "sport-touring",
+  "slug": "gt-k",
+  "precio": 11299,
+  "precioDesde": false,
+  "imagenes": [
+    "mitt/img-gt-k-azul-mitt-motors-motodest-scaled.webp",
+    "mitt/img-gt-k-negra-mitt-motors-motodest-scaled.webp"
+  ],
+  "ficha": {
+    "motor": "Bicilíndrico en línea, 4 tiempos, 4 válvulas por cilindro DOHC",
+    "cilindrada": "730 cc",
+    "potencia": "59 kW (82 CV) a 8.000 rpm",
+    "par": "72 Nm a 6.900 rpm",
+    "cambio": "Transmisión por cadena",
+    "alimentacion": "Inyección Bosch",
+    "suspDel": "Horquilla invertida de 41 mm, regulable en compresión y extensión",
+    "suspTras": "Amortiguador central con precarga regulable",
+    "frenos": "ABS, doble disco de 298 mm con pinzas radiales Brembo de 4 pistones / disco de 220 mm Brembo",
+    "neumaticos": "120/70 ZR17 / 180/55 ZR17",
+    "alturaAsiento": "780 mm",
+    "peso": "225 kg en vacío"
+  },
+  "fuenteFicha": "https://mittmotors.com/vehiculo/mitt-gt-k",
+  "destacada": false,
+  "orden": 205
+}

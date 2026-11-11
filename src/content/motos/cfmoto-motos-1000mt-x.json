@@ -1,0 +1,31 @@
+{
+  "nombre": "1000MT-X",
+  "marca": "cfmoto",
+  "categoria": "motos",
+  "slug": "1000mt-x",
+  "precio": null,
+  "precioDesde": false,
+  "imagenes": [
+    "cfmoto/img-1000mt-x-cfmoto-motodest-scaled.webp",
+    "cfmoto/img-1000mtx-p-cfmoto-motodest-scaled.webp",
+    "cfmoto/img-1000mtx-vn-cfmoto-motodest-scaled.webp"
+  ],
+  "ficha": {
+    "motor": "Bicilíndrico en línea, refrigeración líquida, 8 válvulas DOHC",
+    "cilindrada": "946,2 cc",
+    "potencia": "113 CV a 8.500 rpm",
+    "par": "105 Nm a 6.250 rpm",
+    "cambio": "6 velocidades, embrague antirrebote",
+    "alimentacion": "Inyección electrónica",
+    "suspDel": "Horquilla invertida KYB de 48 mm, totalmente regulable",
+    "suspTras": "Monoamortiguador KYB totalmente regulable",
+    "frenos": "Doble disco de 320 mm con pinzas radiales Brembo / disco de 260 mm Brembo, ABS en curva Bosch",
+    "neumaticos": "Pirelli STR 90/90 R21 / 150/70 R18",
+    "alturaAsiento": "830 / 870 mm",
+    "peso": "222 kg en vacío",
+    "deposito": "22,5 l"
+  },
+  "fuenteFicha": "https://cfmoto.es/moto/1000mt-x",
+  "destacada": false,
+  "orden": 0
+}

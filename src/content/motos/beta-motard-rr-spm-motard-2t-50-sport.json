@@ -1,0 +1,29 @@
+{
+  "nombre": "RR SPM Motard 2T 50 Sport",
+  "marca": "beta",
+  "categoria": "motard",
+  "slug": "rr-spm-motard-2t-50-sport",
+  "precio": 4299,
+  "precioDesde": false,
+  "imagenes": [
+    "beta/imgi-62-rr-50-2t-sport-black-2048x1213-1.webp"
+  ],
+  "ficha": {
+    "motor": "Monocilíndrico 2 tiempos, refrigerado por líquido",
+    "cilindrada": "49,7 cc",
+    "cambio": "6 velocidades",
+    "alimentacion": "Carburador",
+    "chasis": "Doble cuna de acero",
+    "suspDel": "Horquilla hidráulica ø40 mm",
+    "suspTras": "Monoamortiguador",
+    "frenos": "Disco Wave ø260 mm",
+    "neumaticos": "100/80-17 / 130/70-17",
+    "alturaAsiento": "885 mm (840 mm en la versión Low Seat)",
+    "peso": "85 kg",
+    "deposito": "6,5 l",
+    "arranque": "A pedal"
+  },
+  "fuenteFicha": "https://www.betamotor.com/es/motocicletas/rr-motard-2t-50-sport/",
+  "destacada": false,
+  "orden": 305
+}

@@ -1,0 +1,29 @@
+{
+  "nombre": "RX 250 2T",
+  "marca": "beta",
+  "categoria": "motocross",
+  "slug": "rx-250-2t",
+  "precio": 10199,
+  "precioDesde": false,
+  "imagenes": [
+    "beta/imgi-7-rx-350-2t-my-2026-1-scaled-1.webp"
+  ],
+  "ficha": {
+    "motor": "Monocilíndrico 2 tiempos, refrigerado por líquido",
+    "cilindrada": "249,3 cc",
+    "cambio": "5 velocidades",
+    "alimentacion": "Carburador Keihin PWK 38",
+    "chasis": "Doble cuna de acero al molibdeno",
+    "suspDel": "Horquilla hidráulica ø48 mm",
+    "suspTras": "Monoamortiguador KYB con bieletas progresivas",
+    "frenos": "Disco Wave ø260 mm, pinza flotante de doble pistón / disco Wave ø240 mm",
+    "neumaticos": "80/100-21 / 110/90-19",
+    "alturaAsiento": "945 mm",
+    "peso": "100 kg",
+    "deposito": "7 l",
+    "arranque": "Eléctrico"
+  },
+  "fuenteFicha": "https://www.betamotor.com/es/motocicletas/rx-2t-250-my26/",
+  "destacada": false,
+  "orden": 101
+}

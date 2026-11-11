@@ -1,0 +1,29 @@
+{
+  "nombre": "RR Motard 2T 50 X Special Edition",
+  "marca": "beta",
+  "categoria": "motard",
+  "slug": "rr-motard-2t-50-x-special-edition",
+  "precio": null,
+  "precioDesde": false,
+  "imagenes": [
+    "beta/imgi-8-rr-50-2t-x-scaled-1.webp"
+  ],
+  "ficha": {
+    "motor": "Monocilíndrico 2 tiempos, refrigerado por líquido",
+    "cilindrada": "49,7 cc",
+    "cambio": "6 velocidades",
+    "alimentacion": "Carburador",
+    "chasis": "Doble cuna de acero",
+    "suspDel": "Horquilla hidráulica ø37 mm",
+    "suspTras": "Monoamortiguador",
+    "frenos": "Disco ø260 mm / disco ø220 mm",
+    "neumaticos": "100/80-17 / 130/70-17",
+    "alturaAsiento": "885 mm",
+    "peso": "85 kg",
+    "deposito": "6,5 l",
+    "arranque": "A pedal"
+  },
+  "fuenteFicha": "https://www.betamotor.com/es/motocicletas/rr-motard-2t-50-x-special-edition/",
+  "destacada": false,
+  "orden": 301
+}

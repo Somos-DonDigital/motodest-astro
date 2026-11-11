@@ -1,0 +1,28 @@
+{
+  "nombre": "RR 4T 125 R",
+  "marca": "beta",
+  "categoria": "enduro",
+  "slug": "rr-4t-125-r",
+  "precio": 6099,
+  "precioDesde": false,
+  "imagenes": [
+    "beta/imgi-8-rr-125-4t-r-2-scaled-1.webp"
+  ],
+  "ficha": {
+    "motor": "Monocilíndrico 4 tiempos, refrigerado por líquido",
+    "cilindrada": "124,66 cc",
+    "cambio": "6 velocidades",
+    "alimentacion": "Inyección Eldor",
+    "chasis": "Doble cuna de acero desdoblada sobre el escape",
+    "suspDel": "Horquilla invertida hidráulica ø41 mm",
+    "suspTras": "Monoamortiguador con ajuste de precarga",
+    "frenos": "Disco ø260 mm con sistema CBS / disco ø220 mm",
+    "neumaticos": "90/90-21 / 120/90-18",
+    "alturaAsiento": "920 mm",
+    "peso": "107 kg",
+    "deposito": "7,5 l"
+  },
+  "fuenteFicha": "https://www.betamotor.com/es/motocicletas/rr-4t-125r/",
+  "destacada": false,
+  "orden": 1
+}

@@ -1,0 +1,28 @@
+{
+  "nombre": "800MT Explore",
+  "marca": "cfmoto",
+  "categoria": "motos",
+  "slug": "800mt-explore",
+  "precio": 11499,
+  "precioDesde": false,
+  "imagenes": [
+    "cfmoto/img-moto-800mt-explore-cfmoto-motodest.png",
+    "cfmoto/img-800mt-n-cfmoto-motodest.png"
+  ],
+  "ficha": {
+    "motor": "Bicilíndrico en línea, refrigeración líquida, 8 válvulas DOHC",
+    "cilindrada": "799 cc",
+    "potencia": "67 kW (91 CV) a 9.250 rpm",
+    "par": "75 Nm a 8.000 rpm",
+    "cambio": "6 velocidades, embrague antirrebote, cambio rápido bidireccional",
+    "alimentacion": "Inyección electrónica, acelerador electrónico",
+    "frenos": "Doble disco de 320 mm con pinza radial J.Juan / disco de 260 mm, ABS en curva",
+    "neumaticos": "110/80 R19 / 150/70 R17",
+    "alturaAsiento": "825 mm",
+    "peso": "231 kg en orden de marcha, sin maletas",
+    "deposito": "19 l"
+  },
+  "fuenteFicha": "https://cfmoto.es/moto/800mt-explore",
+  "destacada": true,
+  "orden": 4
+}

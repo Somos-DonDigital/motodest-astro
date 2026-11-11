@@ -1,0 +1,32 @@
+{
+  "nombre": "Caballero Deluxe 500",
+  "marca": "fantic",
+  "categoria": "caballero",
+  "slug": "caballero-deluxe-500",
+  "precio": 7599,
+  "precioDesde": false,
+  "imagenes": [
+    "fantic/img-moto-deluxe-500-naranja-fantic-motodest.webp",
+    "fantic/img-moto-deluxe-500-gris-fantic-motodest.webp"
+  ],
+  "ficha": {
+    "motor": "Monocilíndrico 4 tiempos, refrigerado por líquido, 4 válvulas DOHC",
+    "cilindrada": "463 cc",
+    "potencia": "44 CV a 8.000 rpm",
+    "par": "42 Nm a 7.000 rpm",
+    "cambio": "6 velocidades",
+    "alimentacion": "Inyección electrónica, Ride by Wire ø46 mm",
+    "chasis": "Monoviga de acero CrMo",
+    "suspDel": "Horquilla invertida ø41 mm",
+    "suspTras": "Monoamortiguador con ajuste de precarga",
+    "frenos": "Disco flotante ø320 mm / disco ø230 mm",
+    "neumaticos": "Pirelli Scorpion Rally STR 110/80-19 / 140/80-17",
+    "alturaAsiento": "820 mm",
+    "peso": "150 kg en seco",
+    "deposito": "12 l",
+    "homologacion": "Euro 5+"
+  },
+  "fuenteFicha": "https://fantic.com/es-es/moto/caballero/deluxe-500-_x0632",
+  "destacada": false,
+  "orden": 204
+}

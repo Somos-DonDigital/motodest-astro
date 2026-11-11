@@ -1,0 +1,28 @@
+{
+  "nombre": "Ibiza 125",
+  "marca": "mitt",
+  "categoria": "garage",
+  "slug": "ibiza-125",
+  "precio": 2799,
+  "precioDesde": false,
+  "imagenes": [
+    "mitt/img-mitt-ibiza-125-mitt-motors-motodest-scaled.webp"
+  ],
+  "ficha": {
+    "motor": "Monocilíndrico 4 tiempos",
+    "cilindrada": "125 cc",
+    "potencia": "9,3 kW (12,5 CV) a 9.500 rpm",
+    "cambio": "Manual de 5 velocidades, transmisión por cadena",
+    "alimentacion": "Inyección electrónica Delphi",
+    "suspDel": "Horquilla telescópica",
+    "suspTras": "Doble amortiguador hidráulico",
+    "frenos": "Frenada combinada CBS, disco / disco",
+    "neumaticos": "120/70-12 / 130/70-12",
+    "alturaAsiento": "720 mm",
+    "peso": "102 kg en vacío",
+    "deposito": "9 l"
+  },
+  "fuenteFicha": "https://mittmotors.com/vehiculo/mitt-ibiza-125",
+  "destacada": false,
+  "orden": 100
+}

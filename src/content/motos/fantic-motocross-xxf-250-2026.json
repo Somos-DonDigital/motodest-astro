@@ -1,0 +1,28 @@
+{
+  "nombre": "XXF 250 2026",
+  "marca": "fantic",
+  "categoria": "motocross",
+  "slug": "xxf-250-2026",
+  "precio": 10649,
+  "precioDesde": false,
+  "imagenes": [
+    "fantic/moto-fantic-xxf-250-2026-motodest.webp"
+  ],
+  "ficha": {
+    "motor": "Monocilíndrico 4 tiempos, refrigerado por líquido, 4 válvulas DOHC, cilindro inclinado hacia atrás",
+    "cilindrada": "250 cc",
+    "cambio": "5 velocidades",
+    "alimentacion": "Inyección",
+    "chasis": "Perimetral de aluminio",
+    "suspDel": "KYB ø48 mm regulable, 310 mm de recorrido",
+    "suspTras": "KYB regulable, 317 mm de recorrido",
+    "frenos": "Disco ø270 mm / disco ø240 mm",
+    "neumaticos": "80/100-21 / 100/90-19",
+    "alturaAsiento": "970 mm",
+    "peso": "101 kg en orden de marcha",
+    "deposito": "6,2 l"
+  },
+  "fuenteFicha": "https://fantic.com/es-es/moto/motocross/xxf-250-_4m75e",
+  "destacada": false,
+  "orden": 400
+}

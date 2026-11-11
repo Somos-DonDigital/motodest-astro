@@ -1,0 +1,29 @@
+{
+  "nombre": "RT 125",
+  "marca": "mitt",
+  "categoria": "scooters",
+  "slug": "rt-125",
+  "precio": 2499,
+  "precioDesde": false,
+  "imagenes": [
+    "mitt/img-mitt-rt-50-125-mitt-motors-motodest-scaled.webp"
+  ],
+  "ficha": {
+    "motor": "Monocilíndrico 4 tiempos",
+    "cilindrada": "125 cc",
+    "potencia": "6,5 kW (9 CV) a 7.500 rpm",
+    "par": "8,6 Nm a 6.000 rpm",
+    "cambio": "Automático CVT",
+    "alimentacion": "Inyección electrónica",
+    "suspDel": "Horquilla telescópica",
+    "suspTras": "Doble amortiguador",
+    "frenos": "Frenada combinada CBS, disco / disco",
+    "neumaticos": "3.50-10 / 3.50-10",
+    "alturaAsiento": "760 mm",
+    "peso": "102 kg en vacío",
+    "deposito": "6,5 l"
+  },
+  "fuenteFicha": "https://mittmotors.com/vehiculo/mitt-rt-50-125",
+  "destacada": false,
+  "orden": 1
+}

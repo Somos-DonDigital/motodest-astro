@@ -1,0 +1,27 @@
+{
+  "nombre": "EVO 4T 300",
+  "marca": "beta",
+  "categoria": "trial",
+  "slug": "evo-4t-300",
+  "precio": 8449,
+  "precioDesde": false,
+  "imagenes": [
+    "beta/imgi-7-evo-300-4t-my-2025-2-scaled-1.webp"
+  ],
+  "ficha": {
+    "motor": "Monocilíndrico 4 tiempos, refrigerado por líquido, DOHC 4 válvulas",
+    "cilindrada": "297,3 cc",
+    "alimentacion": "Carburador",
+    "chasis": "Monoviga de aluminio hidroconformado",
+    "suspDel": "Horquilla hidráulica ø38 mm, 165 mm de recorrido",
+    "suspTras": "Monoamortiguador, 180 mm de recorrido",
+    "frenos": "Disco ø185 mm / disco ø160 mm",
+    "neumaticos": "2.75-21 / 4.00 R18",
+    "alturaAsiento": "660 mm",
+    "deposito": "2,8 l",
+    "arranque": "A pedal"
+  },
+  "fuenteFicha": "https://www.inmoto.it/listino-nuovo/marche/beta/evo-4t-300",
+  "destacada": false,
+  "orden": 200
+}

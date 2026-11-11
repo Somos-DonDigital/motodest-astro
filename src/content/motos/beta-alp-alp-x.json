@@ -1,0 +1,29 @@
+{
+  "nombre": "ALP X",
+  "marca": "beta",
+  "categoria": "alp",
+  "slug": "alp-x",
+  "precio": 7249,
+  "precioDesde": false,
+  "imagenes": [
+    "beta/imgi-8-alpx-side.webp"
+  ],
+  "ficha": {
+    "motor": "Monocilíndrico 4 tiempos, refrigerado por líquido, doble árbol de levas",
+    "cilindrada": "348 cc",
+    "cambio": "6 velocidades",
+    "alimentacion": "Inyección electrónica Eldor",
+    "chasis": "Perimetral de acero con motor colgado",
+    "suspDel": "Horquilla hidráulica ø43 mm",
+    "suspTras": "Monoamortiguador con ajuste de precarga",
+    "frenos": "Disco ø290 mm / disco ø220 mm",
+    "neumaticos": "100/90-19 / 140/80-17",
+    "alturaAsiento": "855 mm",
+    "peso": "142 kg",
+    "deposito": "11 l",
+    "arranque": "Eléctrico"
+  },
+  "fuenteFicha": "https://www.betamotor.com/es/motocicletas/alpx/",
+  "destacada": true,
+  "orden": 401
+}

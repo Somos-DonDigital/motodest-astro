@@ -1,0 +1,29 @@
+{
+  "nombre": "RR X-Pro 4T 350/390/430/480",
+  "marca": "beta",
+  "categoria": "enduro",
+  "slug": "rr-x-pro-4t-350-390-430-480",
+  "precio": 11099,
+  "precioDesde": true,
+  "imagenes": [
+    "beta/imgi-72-view-02-rr-x-pro-4t-1536x864-1.webp"
+  ],
+  "ficha": {
+    "motor": "Monocilíndrico 4 tiempos, refrigerado por líquido",
+    "cilindrada": "349,1 / 385,6 / 430,9 / 477,5 cc",
+    "cambio": "6 velocidades",
+    "alimentacion": "Inyección electrónica Eldor",
+    "chasis": "Doble cuna de acero al molibdeno",
+    "suspDel": "Horquilla hidráulica ø48 mm",
+    "suspTras": "Monoamortiguador con bieletas progresivas",
+    "frenos": "Disco Wave ø260 mm, pinza flotante de doble pistón / disco Wave ø240 mm",
+    "neumaticos": "90/90-21 / 140/80-18",
+    "alturaAsiento": "930 mm",
+    "peso": "107,5 kg (350 y 390) / 108,5 kg (430 y 480)",
+    "deposito": "9 l",
+    "arranque": "Eléctrico"
+  },
+  "fuenteFicha": "https://www.betamotor.com/es/motocicletas/rr-xpro-4t-350-my26/",
+  "destacada": true,
+  "orden": 6
+}

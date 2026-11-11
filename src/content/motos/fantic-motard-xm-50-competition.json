@@ -1,0 +1,29 @@
+{
+  "nombre": "XM 50 Competition",
+  "marca": "fantic",
+  "categoria": "motard",
+  "slug": "xm-50-competition",
+  "precio": 4649,
+  "precioDesde": false,
+  "imagenes": [
+    "fantic/xm-50-competition-motard-motodest.webp",
+    "fantic/xm-50-competition-verde-fantic-motodest.webp"
+  ],
+  "ficha": {
+    "motor": "Monocilíndrico 2 tiempos, refrigerado por líquido",
+    "cilindrada": "49,7 cc",
+    "cambio": "6 velocidades",
+    "chasis": "Perimetral de acero CrMo",
+    "suspDel": "Horquilla invertida Fantic FRS ø41 mm de competición, pies forjados",
+    "suspTras": "Fantic FRS piggyback con ajuste de precarga e hidráulico",
+    "frenos": "Disco Wave ø260 mm / disco Wave ø220 mm",
+    "neumaticos": "100/80-17 / 130/70-17",
+    "alturaAsiento": "910 mm",
+    "peso": "117 kg en seco",
+    "deposito": "7,5 l",
+    "homologacion": "Euro 5+"
+  },
+  "fuenteFicha": "https://fantic.com/es-es/moto/motard/xm-50-competition_j3577",
+  "destacada": false,
+  "orden": 300
+}

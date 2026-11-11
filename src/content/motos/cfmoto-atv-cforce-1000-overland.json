@@ -1,0 +1,31 @@
+{
+  "nombre": "CFORCE 1000 Overland",
+  "marca": "cfmoto",
+  "categoria": "atv",
+  "slug": "cforce-1000-overland",
+  "precio": 14599,
+  "precioDesde": false,
+  "imagenes": [
+    "cfmoto/img-cfatv1000over-tierra-motodest-scaled.webp",
+    "cfmoto/img-cfatv1000over-bosque-motodest-scaled.webp"
+  ],
+  "ficha": {
+    "motor": "Bicilíndrico en V, 4 tiempos, refrigeración líquida, SOHC 8 válvulas",
+    "cilindrada": "963 cc",
+    "potencia": "78 CV a 7.000 rpm",
+    "par": "78,6 Nm a 6.500 rpm",
+    "cambio": "Automático CVT (P-R-N-H-L), transmisión por cardán",
+    "traccion": "4x2 / 4x4",
+    "alimentacion": "Inyección Bosch",
+    "suspension": "Doble trapecio independiente, regulable en compresión y extensión",
+    "frenos": "Discos hidráulicos",
+    "neumaticos": "26x9.00-14 / 26x11.00-14, llantas beadlock",
+    "dimensiones": "2.310 x 1.264 x 1.420 mm",
+    "alturaAsiento": "585 mm",
+    "peso": "490 kg en vacío",
+    "homologacion": "T3, 2 plazas"
+  },
+  "fuenteFicha": "https://cfmoto.es/atv/cforce-1000-overland",
+  "destacada": true,
+  "orden": 106
+}

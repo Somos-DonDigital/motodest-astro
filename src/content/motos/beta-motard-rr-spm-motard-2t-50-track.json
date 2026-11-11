@@ -1,0 +1,29 @@
+{
+  "nombre": "RR SPM Motard 2T 50 Track",
+  "marca": "beta",
+  "categoria": "motard",
+  "slug": "rr-spm-motard-2t-50-track",
+  "precio": 4799,
+  "precioDesde": false,
+  "imagenes": [
+    "beta/imgi-68-rr-50-2t-track-blue-2048x1195-1.webp"
+  ],
+  "ficha": {
+    "motor": "Monocilíndrico 2 tiempos, refrigerado por líquido",
+    "cilindrada": "49,7 cc",
+    "cambio": "6 velocidades",
+    "alimentacion": "Carburador",
+    "chasis": "Doble cuna de acero",
+    "suspDel": "Horquilla invertida hidráulica ø41 mm",
+    "suspTras": "Monoamortiguador",
+    "frenos": "Disco Wave ø260 mm / disco Wave ø220 mm",
+    "neumaticos": "100/80-17 / 130/70-17",
+    "alturaAsiento": "894 mm",
+    "peso": "85 kg",
+    "deposito": "6,5 l",
+    "arranque": "A pedal"
+  },
+  "fuenteFicha": "https://www.betamotor.com/es/motocicletas/moto-rr-motard-2t-50-track/",
+  "destacada": false,
+  "orden": 306
+}

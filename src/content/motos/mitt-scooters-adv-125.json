@@ -1,0 +1,30 @@
+{
+  "nombre": "ADV 125",
+  "marca": "mitt",
+  "categoria": "scooters",
+  "slug": "adv-125",
+  "precio": 3499,
+  "precioDesde": false,
+  "imagenes": [
+    "mitt/img-mitt-adv-125-azul-mitt-motors-motodest-scaled.webp",
+    "mitt/img-mitt-adv-125-gris-mitt-motors-motodest-scaled.webp"
+  ],
+  "ficha": {
+    "motor": "Monocilíndrico 4 tiempos",
+    "cilindrada": "125 cc",
+    "potencia": "8,5 kW (11,5 CV) a 8.000 rpm",
+    "par": "12 Nm a 6.000 rpm",
+    "cambio": "Automático CVT",
+    "alimentacion": "Inyección electrónica",
+    "suspDel": "Horquilla telescópica",
+    "suspTras": "Doble amortiguador",
+    "frenos": "ABS, disco de 220 mm / disco de 220 mm, freno de estacionamiento",
+    "neumaticos": "CST 110/80-14 / 130/70-13",
+    "alturaAsiento": "780 mm",
+    "peso": "131 kg en vacío",
+    "deposito": "8,5 l"
+  },
+  "fuenteFicha": "https://mittmotors.com/vehiculo/mitt-adv-125",
+  "destacada": false,
+  "orden": 5
+}

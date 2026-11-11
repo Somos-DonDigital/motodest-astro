@@ -1,0 +1,31 @@
+{
+  "nombre": "GP1 125",
+  "marca": "mitt",
+  "categoria": "sport-touring",
+  "slug": "gp1-125",
+  "precio": 4099,
+  "precioDesde": false,
+  "imagenes": [
+    "mitt/img-mitt-gp1-125-an-mitt-motors-motodest-scaled.webp",
+    "mitt/img-mitt-gp1-125-na-mitt-motors-motodest-scaled.webp",
+    "mitt/img-mitt-gp1-125-ra-mitt-motors-motodest-scaled.webp"
+  ],
+  "ficha": {
+    "motor": "Monocilíndrico 4 tiempos",
+    "cilindrada": "125 cc",
+    "potencia": "9,3 kW (14 CV) a 9.000 rpm",
+    "par": "11 Nm a 6.750 rpm",
+    "cambio": "Manual de 6 velocidades, transmisión por cadena",
+    "alimentacion": "Inyección electrónica",
+    "suspDel": "Horquilla telescópica",
+    "suspTras": "Monoamortiguador con ajuste de precarga",
+    "frenos": "Disco lobulado de 299 mm / disco lobulado de 240 mm",
+    "neumaticos": "CST 110/70-17 / 150/70-17",
+    "alturaAsiento": "785 mm",
+    "peso": "167 kg en vacío",
+    "deposito": "13,5 l"
+  },
+  "fuenteFicha": "https://mittmotors.com/vehiculo/mitt-gp1-125",
+  "destacada": false,
+  "orden": 202
+}

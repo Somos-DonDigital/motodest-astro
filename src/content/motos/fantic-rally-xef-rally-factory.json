@@ -1,0 +1,29 @@
+{
+  "nombre": "XEF Rally Factory",
+  "marca": "fantic",
+  "categoria": "rally",
+  "slug": "xef-rally-factory",
+  "precio": null,
+  "precioDesde": false,
+  "imagenes": [
+    "fantic/moto-fantic-xef-rally-factory-motodest.webp"
+  ],
+  "ficha": {
+    "motor": "Monocilíndrico 4 tiempos, refrigerado por líquido, 4 válvulas DOHC",
+    "cilindrada": "450 cc",
+    "cambio": "5 velocidades",
+    "alimentacion": "Inyección",
+    "chasis": "Aluminio",
+    "suspDel": "KYB ø48 mm regulable, 310 mm de recorrido",
+    "suspTras": "KYB regulable, 300 mm de recorrido",
+    "frenos": "Disco ø300 mm / disco ø245 mm",
+    "neumaticos": "90/90-21 / 140/90-18",
+    "alturaAsiento": "955 mm",
+    "peso": "< 140 kg en seco",
+    "deposito": "30 l",
+    "homologacion": "Euro 5"
+  },
+  "fuenteFicha": "https://fantic.com/es-es/moto/rally/xef-rally-factory_enb0d",
+  "destacada": false,
+  "orden": 0
+}

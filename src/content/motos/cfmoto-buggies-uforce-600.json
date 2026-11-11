@@ -1,0 +1,30 @@
+{
+  "nombre": "UFORCE 600",
+  "marca": "cfmoto",
+  "categoria": "buggies",
+  "slug": "uforce-600",
+  "precio": 13299,
+  "precioDesde": false,
+  "imagenes": [
+    "cfmoto/img-uf600-t-cfmoto-motodest-scaled.png"
+  ],
+  "ficha": {
+    "motor": "Monocilíndrico, 4 válvulas, SOHC, refrigeración líquida",
+    "cilindrada": "580 cc",
+    "potencia": "38 CV a 6.800 rpm",
+    "par": "43 Nm a 5.800 rpm",
+    "cambio": "Automático CVTech (P-R-N-H-L)",
+    "traccion": "4x2 / 4x4",
+    "alimentacion": "Inyección Bosch",
+    "suspension": "Doble trapecio independiente delante y detrás",
+    "frenos": "Frenada combinada, 4 discos hidráulicos de 210 mm",
+    "neumaticos": "25x8.00-12 / 25x10.00-12",
+    "dimensiones": "2.820 x 1.470 x 1.950 mm",
+    "peso": "640 kg en vacío",
+    "carga": "250 kg",
+    "homologacion": "T3, 2 plazas"
+  },
+  "fuenteFicha": "https://cfmoto.es/atv/uforce-600",
+  "destacada": false,
+  "orden": 206
+}

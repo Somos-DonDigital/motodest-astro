@@ -1,0 +1,29 @@
+{
+  "nombre": "RX 350 2T",
+  "marca": "beta",
+  "categoria": "motocross",
+  "slug": "rx-350-2t",
+  "precio": 9849,
+  "precioDesde": false,
+  "imagenes": [
+    "beta/imgi-7-rx-350-2t-my-2026-1-scaled-1.webp"
+  ],
+  "ficha": {
+    "motor": "Monocilíndrico 2 tiempos, refrigerado por líquido",
+    "cilindrada": "351,7 cc",
+    "cambio": "5 velocidades",
+    "alimentacion": "Carburador Keihin PWK 38",
+    "chasis": "Doble cuna de acero al molibdeno",
+    "suspDel": "Horquilla hidráulica ø48 mm",
+    "suspTras": "Monoamortiguador KYB con bieletas progresivas",
+    "frenos": "Disco Wave ø260 mm, pinza flotante de doble pistón / disco Wave ø240 mm",
+    "neumaticos": "80/100-21 / 110/90-19",
+    "alturaAsiento": "945 mm",
+    "peso": "100 kg",
+    "deposito": "7 l",
+    "arranque": "Eléctrico"
+  },
+  "fuenteFicha": "https://www.betamotor.com/es/motocicletas/rx-2t-350-my26/",
+  "destacada": false,
+  "orden": 100
+}

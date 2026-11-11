@@ -1,0 +1,27 @@
+{
+  "nombre": "808",
+  "marca": "mitt",
+  "categoria": "garage",
+  "slug": "808",
+  "precio": 8299,
+  "precioDesde": false,
+  "imagenes": [],
+  "ficha": {
+    "motor": "Bicilíndrico en V, 4 tiempos",
+    "cilindrada": "800 cc",
+    "potencia": "35 kW (47 CV) a 6.000 rpm",
+    "par": "62 Nm a 4.500 rpm",
+    "cambio": "Manual de 6 velocidades, transmisión por correa",
+    "alimentacion": "Inyección electrónica",
+    "suspDel": "Horquilla convencional",
+    "suspTras": "Amortiguador hidráulico regulable",
+    "frenos": "ABS, disco de 300 mm / disco de 260 mm",
+    "neumaticos": "100/90-19 / 150/80-16",
+    "alturaAsiento": "720 mm",
+    "peso": "243 kg en vacío",
+    "deposito": "11,2 l"
+  },
+  "fuenteFicha": "https://mittmotors.com/vehiculo/mitt-808",
+  "destacada": false,
+  "orden": 102
+}

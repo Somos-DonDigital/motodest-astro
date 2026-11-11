@@ -1,0 +1,31 @@
+{
+  "nombre": "CFORCE 1000 Touring",
+  "marca": "cfmoto",
+  "categoria": "atv",
+  "slug": "cforce-1000-touring",
+  "precio": 13599,
+  "precioDesde": false,
+  "imagenes": [
+    "cfmoto/img-cfatv1000-naranja-motodest-scaled.png",
+    "cfmoto/img-cfatv1000-azul-motodest-scaled.webp"
+  ],
+  "ficha": {
+    "motor": "Bicilíndrico en V, 4 tiempos, refrigeración líquida, SOHC 8 válvulas",
+    "cilindrada": "963 cc",
+    "potencia": "90 CV a 7.500 rpm",
+    "par": "88 Nm a 5.500 rpm",
+    "cambio": "Automático CVT (P-R-N-H-L)",
+    "traccion": "2WD / 4WD / bloqueo de diferencial",
+    "alimentacion": "Inyección Bosch",
+    "suspension": "Trapecios independientes (230 mm) y barra de torsión trasera (236 mm), amortiguadores de gas piggyback regulables",
+    "frenos": "Disco hidráulico en las cuatro ruedas",
+    "neumaticos": "27x9.00-14 / 27x11.00-14",
+    "dimensiones": "2.445 x 1.282 x 1.465 mm",
+    "peso": "472 kg en vacío",
+    "deposito": "26 l",
+    "remolque": "800 kg (UE)"
+  },
+  "fuenteFicha": "https://cfmoto.es/atv/cforce-1000-touring",
+  "destacada": false,
+  "orden": 105
+}

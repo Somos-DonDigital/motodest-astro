@@ -1,0 +1,29 @@
+{
+  "nombre": "808 Big Foot",
+  "marca": "mitt",
+  "categoria": "garage",
+  "slug": "808-big-foot",
+  "precio": 9299,
+  "precioDesde": false,
+  "imagenes": [
+    "mitt/img-mitt-808-big-foot-mitt-motors-motodest-scaled.webp"
+  ],
+  "ficha": {
+    "motor": "Bicilíndrico en V, 4 tiempos",
+    "cilindrada": "800 cc",
+    "potencia": "35 kW (47 CV) a 6.000 rpm",
+    "par": "62 Nm a 4.500 rpm",
+    "cambio": "Manual de 6 velocidades, transmisión por correa",
+    "alimentacion": "Inyección electrónica",
+    "suspDel": "Horquilla convencional",
+    "suspTras": "Amortiguador hidráulico regulable",
+    "frenos": "ABS, disco de 300 mm / disco de 260 mm",
+    "neumaticos": "130/70-19 / 240/45-17",
+    "alturaAsiento": "720 mm",
+    "peso": "243 kg en vacío",
+    "deposito": "11,2 l"
+  },
+  "fuenteFicha": "https://mittmotors.com/vehiculo/mitt-808-big-foot",
+  "destacada": false,
+  "orden": 104
+}

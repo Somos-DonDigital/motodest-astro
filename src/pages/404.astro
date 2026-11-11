@@ -1,0 +1,11 @@
+---
+import Base from '../layouts/Base.astro';
+import { MARCAS } from '../data/sitio';
+---
+<Base titulo="Página no encontrada" descripcion="La página que buscas no existe." noindex>
+  <section class="seccion"><div class="contenedor prosa">
+    <h1>Página no encontrada</h1>
+    <p class="intro">La página que buscas no existe o ha cambiado de dirección. Estas son nuestras marcas:</p>
+    <p>{MARCAS.map((m) => <a class="btn btn--borde" style="margin:0 8px 8px 0" href={`/${m.slug}/`}>{m.nombre}</a>)}</p>
+  </div></section>
+</Base>

@@ -1,0 +1,32 @@
+{
+  "nombre": "MAX-T 125",
+  "marca": "mitt",
+  "categoria": "scooters",
+  "slug": "max-t-125",
+  "precio": 2999,
+  "precioDesde": false,
+  "imagenes": [
+    "mitt/img-mitt-max-t-azul-mitt-motors-motodest-scaled.webp",
+    "mitt/img-mitt-max-t-mitt-motors-motodest-scaled.webp",
+    "mitt/img-mitt-max-t-negra-mitt-motors-motodest-scaled.webp"
+  ],
+  "ficha": {
+    "motor": "Monocilíndrico 4 tiempos",
+    "cilindrada": "125 cc",
+    "potencia": "10,6 kW (14,2 CV) a 8.500 rpm",
+    "par": "12 Nm a 8.000 rpm",
+    "cambio": "Automático CVT",
+    "alimentacion": "Inyección electrónica",
+    "suspDel": "Horquilla telescópica",
+    "suspTras": "Doble amortiguador",
+    "frenos": "ABS, disco / disco",
+    "neumaticos": "120/80-14 / 130/60-13",
+    "alturaAsiento": "750 mm",
+    "peso": "131 kg en vacío",
+    "deposito": "9 l",
+    "equipamiento": "Parabrisas alto"
+  },
+  "fuenteFicha": "https://mittmotors.com/vehiculo/mitt-max-t-125",
+  "destacada": false,
+  "orden": 3
+}

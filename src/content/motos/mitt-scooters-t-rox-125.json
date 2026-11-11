@@ -1,0 +1,31 @@
+{
+  "nombre": "T-ROX 125",
+  "marca": "mitt",
+  "categoria": "scooters",
+  "slug": "t-rox-125",
+  "precio": 3399,
+  "precioDesde": false,
+  "imagenes": [
+    "mitt/img-mitt-t-rox-125-mitt-motors-motodest-scaled.webp",
+    "mitt/img-mitt-t-rox-125-negra-mitt-motors-motodest-scaled.webp",
+    "mitt/img-mitt-t-rox-125-gris-mitt-motors-motodest-scaled.webp"
+  ],
+  "ficha": {
+    "motor": "Monocilíndrico 4 tiempos, 2 válvulas SOHC",
+    "cilindrada": "125 cc",
+    "potencia": "10,8 kW (14,5 CV) a 8.500 rpm",
+    "par": "12 Nm a 6.000 rpm",
+    "cambio": "Automático de variador continuo",
+    "alimentacion": "Inyección electrónica",
+    "suspDel": "Horquilla hidráulica",
+    "suspTras": "Doble amortiguador hidráulico",
+    "frenos": "ABS, disco de 240 mm / disco de 220 mm, freno de estacionamiento",
+    "neumaticos": "120/70-14 / 130/70-13",
+    "alturaAsiento": "790 mm",
+    "peso": "131 kg en vacío",
+    "deposito": "8,5 l"
+  },
+  "fuenteFicha": "https://mittmotors.com/vehiculo/mitt-t-rox-125",
+  "destacada": false,
+  "orden": 2
+}

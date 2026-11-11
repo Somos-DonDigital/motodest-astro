@@ -1,0 +1,30 @@
+{
+  "nombre": "675NK",
+  "marca": "cfmoto",
+  "categoria": "motos",
+  "slug": "675nk",
+  "precio": 6495,
+  "precioDesde": true,
+  "imagenes": [
+    "cfmoto/img-moto-675nk-cfmoto-motodest-scaled.webp",
+    "cfmoto/img-675nk-b-cfmoto-motodest-scaled.webp"
+  ],
+  "ficha": {
+    "motor": "Tricilíndrico en línea, 4 tiempos, DOHC",
+    "cilindrada": "675 cc",
+    "potencia": "66 kW (90 CV) a 11.000 rpm",
+    "par": "68 Nm a 8.250 rpm",
+    "cambio": "6 velocidades, embrague asistido y antirrebote CF-SC",
+    "alimentacion": "Inyección Bosch",
+    "suspDel": "Horquilla invertida KYB de 41 mm, totalmente regulable",
+    "suspTras": "Monoamortiguador KYB con precarga y extensión regulables",
+    "frenos": "Doble disco con pinzas radiales de 4 pistones / disco simple",
+    "neumaticos": "CST S3N 120/70 R17 / 180/55 R17",
+    "alturaAsiento": "810 mm",
+    "peso": "189 kg en orden de marcha",
+    "deposito": "15 l"
+  },
+  "fuenteFicha": "https://cfmoto.es/moto/675nk",
+  "destacada": false,
+  "orden": 6
+}

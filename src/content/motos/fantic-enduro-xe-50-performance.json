@@ -1,0 +1,29 @@
+{
+  "nombre": "XE 50 Performance",
+  "marca": "fantic",
+  "categoria": "enduro",
+  "slug": "xe-50-performance",
+  "precio": 4149,
+  "precioDesde": false,
+  "imagenes": [
+    "fantic/moto-fantic-xe-50-performance-motodest.webp",
+    "fantic/img-fantic-xe-50-performance-roja-enduro-motodest.webp"
+  ],
+  "ficha": {
+    "motor": "Monocilíndrico 2 tiempos, refrigerado por líquido",
+    "cilindrada": "49,7 cc",
+    "cambio": "6 velocidades",
+    "chasis": "Perimetral de acero CrMo",
+    "suspDel": "Horquilla invertida Fantic ø41 mm",
+    "suspTras": "Monoamortiguador Fantic con ajuste de precarga",
+    "frenos": "Disco Wave ø260 mm / disco Wave ø220 mm",
+    "neumaticos": "80/90-21 / 110/80-18",
+    "alturaAsiento": "870 mm",
+    "peso": "117 kg en seco",
+    "deposito": "7,5 l",
+    "homologacion": "Euro 5+"
+  },
+  "fuenteFicha": "https://fantic.com/es-es/moto/enduro/xe-50-performance_0i5ra",
+  "destacada": false,
+  "orden": 102
+}

@@ -1,0 +1,25 @@
+{
+  "nombre": "UFORCE U6 EV",
+  "marca": "cfmoto",
+  "categoria": "buggies",
+  "slug": "uforce-u6-ev",
+  "precio": 19299,
+  "precioDesde": false,
+  "imagenes": [
+    "cfmoto/img-u6ev-v-cfmoto-motodest-scaled.webp",
+    "cfmoto/img-u6ev-a-cfmoto-motodest-scaled.webp"
+  ],
+  "ficha": {
+    "motor": "Eléctrico síncrono de imanes permanentes",
+    "potencia": "35 kW",
+    "par": "74 Nm",
+    "traccion": "2WD / 4WD / 4WD con bloqueo",
+    "neumaticos": "25x8.00-R12 / 25x10.00-R12, llantas de aleación de 12\"",
+    "dimensiones": "2.925 x 1.490 x 1.950 mm",
+    "peso": "680 kg en vacío",
+    "carga": "460 kg"
+  },
+  "fuenteFicha": "https://cfmoto.es/atv/u6-ev",
+  "destacada": false,
+  "orden": 203
+}

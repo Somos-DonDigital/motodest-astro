@@ -1,0 +1,31 @@
+{
+  "nombre": "775R",
+  "marca": "mitt",
+  "categoria": "sport-touring",
+  "slug": "775r",
+  "precio": 7799,
+  "precioDesde": false,
+  "imagenes": [
+    "mitt/img-775r-an-mitt-motors-motodest-scaled.webp",
+    "mitt/img-775r-amarilla-mitt-motors-motodest-scaled.webp",
+    "mitt/img-775r-roja-mitt-motors-motodest-scaled.webp"
+  ],
+  "ficha": {
+    "motor": "Bicilíndrico en línea, 4 tiempos, 4 válvulas por cilindro DOHC",
+    "cilindrada": "730 cc",
+    "potencia": "59 kW (82 CV) a 8.000 rpm",
+    "par": "72 Nm a 6.900 rpm",
+    "cambio": "Transmisión por cadena",
+    "alimentacion": "Inyección Bosch",
+    "suspDel": "Horquilla invertida regulable en precarga y extensión",
+    "suspTras": "Amortiguador con bieletas, regulable en precarga y extensión",
+    "frenos": "Doble disco de 320 mm con pinzas radiales Brembo / disco de 240 mm Brembo, ABS Bosch",
+    "neumaticos": "Michelin Power 5 120/70-17 / 180/55-17",
+    "alturaAsiento": "790 mm",
+    "peso": "205 kg en vacío",
+    "deposito": "14 l"
+  },
+  "fuenteFicha": "https://mittmotors.com/vehiculo/mitt-775r",
+  "destacada": true,
+  "orden": 204
+}

@@ -1,0 +1,27 @@
+{
+  "nombre": "EVO 80 Senior",
+  "marca": "beta",
+  "categoria": "trial",
+  "slug": "evo-80-senior",
+  "precio": 4649,
+  "precioDesde": false,
+  "imagenes": [
+    "beta/imgi-11-evo-80-my-25-senior-v2.webp"
+  ],
+  "ficha": {
+    "motor": "Monocilíndrico 2 tiempos, refrigerado por líquido, admisión por láminas al cárter",
+    "cilindrada": "79,6 cc",
+    "cambio": "6 velocidades",
+    "alimentacion": "Carburador",
+    "chasis": "Acero",
+    "suspDel": "Horquilla hidráulica ø38 mm",
+    "suspTras": "Monoamortiguador con ajuste de precarga y extensión",
+    "frenos": "Disco inox ø185 mm / disco inox ø150 mm, pinzas de 2 pistones opuestos",
+    "neumaticos": "2.75-21 / 4.00-18",
+    "alturaAsiento": "678 mm",
+    "deposito": "2,5 l"
+  },
+  "fuenteFicha": "https://www.betamotor.com/es/motocicletas/evo-80-senior/",
+  "destacada": false,
+  "orden": 204
+}

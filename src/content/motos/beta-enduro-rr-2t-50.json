@@ -1,0 +1,29 @@
+{
+  "nombre": "RR 2T 50",
+  "marca": "beta",
+  "categoria": "enduro",
+  "slug": "rr-2t-50",
+  "precio": 4149,
+  "precioDesde": false,
+  "imagenes": [
+    "beta/imgi-115-rr-50-2t-red-1500x875-1.webp"
+  ],
+  "ficha": {
+    "motor": "Monocilíndrico 2 tiempos, refrigerado por líquido",
+    "cilindrada": "49,7 cc",
+    "cambio": "6 velocidades",
+    "alimentacion": "Carburador",
+    "chasis": "Doble cuna de acero",
+    "suspDel": "Horquilla hidráulica ø37 mm",
+    "suspTras": "Monoamortiguador",
+    "frenos": "Disco ø260 mm / disco ø220 mm",
+    "neumaticos": "80/90-21 / 110/80-18",
+    "alturaAsiento": "885 mm",
+    "peso": "85 kg",
+    "deposito": "6,5 l",
+    "arranque": "A pedal"
+  },
+  "fuenteFicha": "https://www.betamotor.com/es/motocicletas/rr-2t-50/",
+  "destacada": false,
+  "orden": 13
+}

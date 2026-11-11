@@ -1,0 +1,31 @@
+{
+  "nombre": "675SR-R",
+  "marca": "cfmoto",
+  "categoria": "motos",
+  "slug": "675sr-r",
+  "precio": 8299,
+  "precioDesde": false,
+  "imagenes": [
+    "cfmoto/img-moto-675sr-r-cfmoto-motodest-scaled.webp",
+    "cfmoto/img-675srr-n-cfmoto-motodest-scaled.webp",
+    "cfmoto/img-675srr-g-cfmoto-motodest-scaled.webp"
+  ],
+  "ficha": {
+    "motor": "Tricilíndrico en línea, 4 tiempos, refrigerado por líquido, DOHC",
+    "cilindrada": "675 cc",
+    "potencia": "90 CV a 11.000 rpm",
+    "par": "70 Nm a 8.250 rpm",
+    "cambio": "6 velocidades, embrague antirrebote CF-SC, cambio rápido para subir marchas",
+    "alimentacion": "Inyección Bosch",
+    "suspDel": "Horquilla invertida KYB de 41 mm totalmente regulable",
+    "suspTras": "Monoamortiguador con precarga y extensión regulables",
+    "frenos": "Doble disco de 300 mm con pinzas radiales de 4 pistones J.Juan / disco de 240 mm, ABS",
+    "neumaticos": "CST S3N 120/70 R17 / 180/55 R17",
+    "alturaAsiento": "810 mm (opcionales de 795 y 830 mm)",
+    "peso": "189 kg en vacío",
+    "deposito": "15 l"
+  },
+  "fuenteFicha": "https://cfmoto.es/moto/675sr-r",
+  "destacada": true,
+  "orden": 7
+}

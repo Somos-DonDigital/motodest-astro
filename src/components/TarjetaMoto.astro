@@ -1,0 +1,39 @@
+---
+import { Image } from 'astro:assets';
+import { imgMoto } from '../lib/imagenes';
+import { precioTexto, urlMoto, nombreCompleto, type Moto } from '../lib/formato';
+interface Props { moto: Moto; nivel?: 'h2' | 'h3'; cargaPrioritaria?: boolean }
+const { moto, nivel = 'h3', cargaPrioritaria = false } = Astro.props;
+const m = moto.data;
+const Tit = nivel;
+const destacados = [m.ficha.cilindrada, m.ficha.potencia?.split(' a ')[0]?.replace(/^.*\((.*)\)$/, '$1')].filter(Boolean).slice(0, 2);
+---
+<article class="tm">
+  <a href={urlMoto(m)} class="tm__enlace">
+    <div class="tm__img">
+      {m.imagenes[0]
+        ? <Image src={imgMoto(m.imagenes[0])} alt={nombreCompleto(m)} widths={[360, 560, 720]} sizes="(max-width: 640px) 92vw, (max-width: 1100px) 45vw, 320px" loading={cargaPrioritaria ? 'eager' : 'lazy'} />
+        : <div class="tm__sinfoto">Foto próximamente</div>}
+    </div>
+    <div class="tm__cuerpo">
+      <Tit class="tm__nombre">{nombreCompleto(m)}</Tit>
+      {destacados.length > 0 && <p class="tm__datos">{destacados.join(' · ')}</p>}
+      <p class="tm__precio">{precioTexto(m)}</p>
+      <span class="tm__ver">Ver ficha <span aria-hidden="true">→</span></span>
+    </div>
+  </a>
+</article>
+<style>
+  .tm { background: #fff; border: 1px solid var(--borde); border-radius: var(--radio); overflow: hidden; transition: box-shadow 0.2s, transform 0.2s; }
+  .tm:hover { box-shadow: 0 18px 40px rgb(11 1 62 / 0.12); transform: translateY(-3px); }
+  .tm__enlace { display: flex; flex-direction: column; height: 100%; text-decoration: none; }
+  .tm__img { aspect-ratio: 5 / 3; background: #fff; display: grid; place-items: center; padding: 10px; }
+  .tm__img :global(img) { width: 100%; height: 100%; object-fit: contain; transition: transform 0.3s; }
+  .tm:hover .tm__img :global(img) { transform: scale(1.04); }
+  .tm__sinfoto { color: var(--gris); font-size: var(--fs-peq); }
+  .tm__cuerpo { padding: 16px 20px 20px; display: flex; flex-direction: column; flex: 1; }
+  .tm__nombre { font-size: clamp(1rem, 1.2vw, 1.2rem); margin-bottom: 6px; }
+  .tm__datos { color: var(--gris); font-size: var(--fs-peq); margin-bottom: 8px; }
+  .tm__precio { font-weight: 800; font-size: clamp(1.1rem, 1.3vw, 1.35rem); color: var(--azul); margin: auto 0 6px; }
+  .tm__ver { color: var(--naranja); font-weight: 700; font-size: var(--fs-peq); }
+</style>

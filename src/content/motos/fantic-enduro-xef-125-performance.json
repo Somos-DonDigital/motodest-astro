@@ -1,0 +1,32 @@
+{
+  "nombre": "XEF 125 Performance",
+  "marca": "fantic",
+  "categoria": "enduro",
+  "slug": "xef-125-performance",
+  "precio": 5399,
+  "precioDesde": false,
+  "imagenes": [
+    "fantic/moto-fantic-xef-125-performance-motodest.webp",
+    "fantic/moto-fantic-xef-125-roja-enduro-motodest.jpg"
+  ],
+  "ficha": {
+    "motor": "Monocilíndrico 4 tiempos, refrigerado por líquido",
+    "cilindrada": "124,66 cc",
+    "potencia": "11 kW (15 CV) a 9.500 rpm",
+    "par": "11,8 Nm a 7.500 rpm",
+    "cambio": "6 velocidades",
+    "alimentacion": "Inyección electrónica",
+    "chasis": "Perimetral de acero",
+    "suspDel": "Horquilla invertida Fantic ø41 mm",
+    "suspTras": "Monoamortiguador Fantic con ajuste de precarga",
+    "frenos": "Disco Wave ø260 mm / disco Wave ø220 mm, ABS desconectable",
+    "neumaticos": "90/90-21 / 120/90-18",
+    "alturaAsiento": "910 mm",
+    "peso": "127 kg en orden de marcha",
+    "deposito": "7,5 l",
+    "homologacion": "Euro 5+"
+  },
+  "fuenteFicha": "https://fantic.com/es-es/moto/enduro/xef-125-performance_n0a41",
+  "destacada": false,
+  "orden": 100
+}

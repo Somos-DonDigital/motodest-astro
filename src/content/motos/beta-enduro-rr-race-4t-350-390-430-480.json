@@ -1,0 +1,29 @@
+{
+  "nombre": "RR Race 4T 350/390/430/480",
+  "marca": "beta",
+  "categoria": "enduro",
+  "slug": "rr-race-4t-350-390-430-480",
+  "precio": 11549,
+  "precioDesde": false,
+  "imagenes": [
+    "beta/imgi-99-rr-race-350-4t-my26-1536x950-1.webp"
+  ],
+  "ficha": {
+    "motor": "Monocilíndrico 4 tiempos, refrigerado por líquido",
+    "cilindrada": "349,1 / 385,6 / 430,9 / 477,5 cc",
+    "cambio": "6 velocidades",
+    "alimentacion": "Inyección electrónica Eldor",
+    "chasis": "Doble cuna de acero al molibdeno",
+    "suspDel": "Horquilla invertida KYB ø48 mm de cartucho cerrado",
+    "suspTras": "Monoamortiguador KYB con bieletas progresivas",
+    "frenos": "Disco Wave ø260 mm, pinza flotante de doble pistón / disco Wave ø240 mm",
+    "neumaticos": "90/90-21 / 140/80-18",
+    "alturaAsiento": "950 mm",
+    "peso": "107 kg",
+    "deposito": "9 l",
+    "arranque": "Eléctrico"
+  },
+  "fuenteFicha": "https://www.betamotor.com/es/motocicletas/rr-race-4t-350-my26/",
+  "destacada": false,
+  "orden": 10
+}

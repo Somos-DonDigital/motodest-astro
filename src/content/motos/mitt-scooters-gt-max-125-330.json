@@ -1,0 +1,32 @@
+{
+  "nombre": "GT-MAX 125/330",
+  "marca": "mitt",
+  "categoria": "scooters",
+  "slug": "gt-max-125-330",
+  "precio": 3499,
+  "precioDesde": true,
+  "imagenes": [
+    "mitt/img-mitt-gt-max-125-330-roja-mitt-motors-motodest-scaled.webp",
+    "mitt/img-mitt-gt-max-125-330-avn-mitt-motors-motodest-scaled.webp",
+    "mitt/img-mitt-gt-max-125-330-froja-mitt-motors-motodest-scaled.webp",
+    "mitt/img-mitt-gt-max-125-330-naranja-mitt-motors-motodest-scaled.webp"
+  ],
+  "ficha": {
+    "motor": "Monocilíndrico 4 tiempos (datos de la versión 125)",
+    "cilindrada": "125 cc / 330 cc",
+    "potencia": "8,1 kW (11 CV) a 8.000 rpm (125)",
+    "par": "10,5 Nm a 6.500 rpm (125)",
+    "cambio": "Automático CVT",
+    "alimentacion": "Inyección electrónica Delphi",
+    "suspDel": "Horquilla telescópica",
+    "suspTras": "Doble amortiguador con ajuste de precarga",
+    "frenos": "Frenada combinada CBS, disco / disco",
+    "neumaticos": "120/80-14 / 130/70-13",
+    "alturaAsiento": "805 mm",
+    "peso": "145 kg en vacío (125)",
+    "deposito": "12 l"
+  },
+  "fuenteFicha": "https://mittmotors.com/vehiculo/mitt-gt-max-125-330",
+  "destacada": false,
+  "orden": 9
+}

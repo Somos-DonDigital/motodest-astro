@@ -1,0 +1,30 @@
+{
+  "nombre": "GTS 125",
+  "marca": "mitt",
+  "categoria": "scooters",
+  "slug": "gts-125",
+  "precio": 2599,
+  "precioDesde": false,
+  "imagenes": [
+    "mitt/img-mitt-gts-125-azul-mitt-motors-motodest-scaled.jpg",
+    "mitt/img-mitt-gts-125-negro-mitt-motors-motodest-scaled.jpg"
+  ],
+  "ficha": {
+    "motor": "Monocilíndrico 4 tiempos",
+    "cilindrada": "125 cc",
+    "potencia": "6,5 kW (9 CV) a 7.260 rpm",
+    "par": "9 Nm a 6.500 rpm",
+    "cambio": "Automático CVT",
+    "alimentacion": "Inyección electrónica",
+    "suspDel": "Horquilla telescópica",
+    "suspTras": "Doble amortiguador con ajuste de precarga",
+    "frenos": "Disco / disco",
+    "neumaticos": "120/80-14 / 130/60-13",
+    "alturaAsiento": "730 mm",
+    "peso": "146 kg en vacío",
+    "deposito": "14 l"
+  },
+  "fuenteFicha": "https://mittmotors.com/vehiculo/mitt-gts-125-330",
+  "destacada": false,
+  "orden": 7
+}

@@ -1,0 +1,31 @@
+{
+  "nombre": "ZFORCE 950 Sport",
+  "marca": "cfmoto",
+  "categoria": "buggies",
+  "slug": "zforce-950-sport",
+  "precio": 17299,
+  "precioDesde": false,
+  "imagenes": [
+    "cfmoto/img-zf950sport-cfmoto-motodest-scaled.png",
+    "cfmoto/img-zf950sport-n-cfmoto-motodest-scaled.png"
+  ],
+  "ficha": {
+    "motor": "Bicilíndrico en V, 4 tiempos, refrigeración líquida",
+    "cilindrada": "963 cc",
+    "potencia": "85 CV a 7.500 rpm",
+    "par": "87 Nm a 5.500 rpm",
+    "cambio": "Automático CVT (H/L/N/R/P)",
+    "traccion": "2WD / 4WD / 4WD con bloqueo",
+    "alimentacion": "Inyección Bosch",
+    "suspension": "Doble trapecio independiente, amortiguadores piggyback con compresión regulable",
+    "frenos": "Disco hidráulico en las cuatro ruedas",
+    "neumaticos": "27\" en llanta de 14\"",
+    "dimensiones": "3.065 x 1.524 x 1.870 mm",
+    "peso": "675 kg en vacío",
+    "deposito": "37 l",
+    "plazas": "2"
+  },
+  "fuenteFicha": "https://cfmoto.es/atv/zforce-950-sport",
+  "destacada": false,
+  "orden": 200
+}

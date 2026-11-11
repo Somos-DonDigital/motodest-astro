@@ -1,0 +1,31 @@
+{
+  "nombre": "Desert 125",
+  "marca": "mitt",
+  "categoria": "adventure",
+  "slug": "desert-125",
+  "precio": 3799,
+  "precioDesde": false,
+  "imagenes": [
+    "mitt/img-mittdesert-125-motodest-scaled.webp",
+    "mitt/img-mittdesert-125-dorado-motodest-scaled.webp"
+  ],
+  "ficha": {
+    "motor": "Monocilíndrico 4 tiempos, 4 válvulas SOHC, refrigeración líquida",
+    "cilindrada": "125 cc",
+    "potencia": "15 CV a 9.750 rpm",
+    "par": "11,5 Nm a 8.000 rpm",
+    "cambio": "6 velocidades",
+    "alimentacion": "Inyección electrónica",
+    "chasis": "Multitubular de acero",
+    "suspDel": "Horquilla invertida hidráulica",
+    "suspTras": "Amortiguador hidráulico con precarga regulable",
+    "frenos": "ABS Bosch, disco de 200 mm / disco de 200 mm",
+    "neumaticos": "90/90-19 / 110/90-17",
+    "alturaAsiento": "830 mm",
+    "peso": "148 kg en vacío",
+    "deposito": "13,5 l"
+  },
+  "fuenteFicha": "https://www.mundomotero.com/motos/mitt/desert-125",
+  "destacada": false,
+  "orden": 300
+}

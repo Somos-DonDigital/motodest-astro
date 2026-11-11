@@ -1,0 +1,30 @@
+{
+  "nombre": "XM 50 Performance",
+  "marca": "fantic",
+  "categoria": "motard",
+  "slug": "xm-50-performance",
+  "precio": 4149,
+  "precioDesde": false,
+  "imagenes": [
+    "fantic/xm-50-performance-motard-motodest.webp",
+    "fantic/fantic-xm-performance-50cc-rosa-motodest.webp",
+    "fantic/fantic-xm-performance-50cc-roja-motodest.webp"
+  ],
+  "ficha": {
+    "motor": "Monocilíndrico 2 tiempos, refrigerado por líquido",
+    "cilindrada": "49,7 cc",
+    "cambio": "6 velocidades",
+    "chasis": "Perimetral de acero CrMo",
+    "suspDel": "Horquilla invertida Fantic ø41 mm",
+    "suspTras": "Monoamortiguador Fantic con ajuste de precarga",
+    "frenos": "Disco Wave ø260 mm / disco Wave ø220 mm",
+    "neumaticos": "100/80-17 / 130/70-17",
+    "alturaAsiento": "870 mm",
+    "peso": "117 kg en seco",
+    "deposito": "7,5 l",
+    "homologacion": "Euro 5+"
+  },
+  "fuenteFicha": "https://fantic.com/es-es/moto/motard/xm-50-performance_54pe6",
+  "destacada": false,
+  "orden": 301
+}

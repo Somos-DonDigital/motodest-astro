@@ -1,0 +1,30 @@
+{
+  "nombre": "800MT-X",
+  "marca": "cfmoto",
+  "categoria": "motos",
+  "slug": "800mt-x",
+  "precio": 10499,
+  "precioDesde": false,
+  "imagenes": [
+    "cfmoto/img-moto-800mt-x-cfmoto-motodest-scaled.webp",
+    "cfmoto/img-800mtx-a-cfmoto-motodest-scaled.webp"
+  ],
+  "ficha": {
+    "motor": "Bicilíndrico en línea, refrigeración líquida, 8 válvulas DOHC",
+    "cilindrada": "799 cc",
+    "potencia": "70 kW (95 CV) a 8.500 rpm",
+    "par": "87 Nm a 6.750 rpm",
+    "cambio": "6 velocidades, embrague antirrebote",
+    "alimentacion": "Inyección electrónica",
+    "suspDel": "Horquilla invertida de 48 mm totalmente regulable, 230 mm de recorrido",
+    "suspTras": "Monoamortiguador totalmente regulable, 230 mm de recorrido",
+    "frenos": "Doble disco de 320 mm con pinza radial / disco de 260 mm, ABS en curva",
+    "neumaticos": "90/90 R21 / 150/70 R18",
+    "alturaAsiento": "830 / 870 mm",
+    "peso": "220 kg en orden de marcha",
+    "deposito": "22,5 l (más 8 l con el depósito trasero opcional)"
+  },
+  "fuenteFicha": "https://cfmoto.es/moto/800mt-x",
+  "destacada": false,
+  "orden": 3
+}

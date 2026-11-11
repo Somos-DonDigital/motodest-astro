@@ -1,0 +1,32 @@
+{
+  "nombre": "UFORCE U10 Pro & Highland",
+  "marca": "cfmoto",
+  "categoria": "buggies",
+  "slug": "uforce-u10-pro-y-highland",
+  "precio": 20299,
+  "precioDesde": true,
+  "imagenes": [
+    "cfmoto/img-u10ph-r-cfmoto-motodest-scaled.webp",
+    "cfmoto/img-u10ph-v-cfmoto-motodest-scaled.webp",
+    "cfmoto/img-u10ph-cmf-cfmoto-motodest-scaled.webp"
+  ],
+  "ficha": {
+    "motor": "Tricilíndrico, 4 tiempos, refrigeración líquida, DOHC",
+    "cilindrada": "998 cc",
+    "potencia": "90 CV a 7.250 rpm",
+    "par": "94,5 Nm a 6.500 rpm",
+    "cambio": "Automático CVT (P-R-N-H-L)",
+    "traccion": "2WD / 4WD / 4WD con bloqueo",
+    "alimentacion": "Inyección Bosch",
+    "suspension": "Doble trapecio independiente (280 mm delante, 260 mm detrás)",
+    "frenos": "Disco delante y detrás",
+    "neumaticos": "29x9 R14 / 29x11 R14",
+    "dimensiones": "3.097 x 1.645 x 1.945 mm",
+    "peso": "911 kg en vacío",
+    "deposito": "45 l",
+    "carga": "749 kg"
+  },
+  "fuenteFicha": "https://cfmoto.es/atv/u10-pro",
+  "destacada": false,
+  "orden": 204
+}

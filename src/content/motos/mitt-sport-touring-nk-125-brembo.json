@@ -1,0 +1,29 @@
+{
+  "nombre": "NK 125 Brembo",
+  "marca": "mitt",
+  "categoria": "sport-touring",
+  "slug": "nk-125-brembo",
+  "precio": 3499,
+  "precioDesde": false,
+  "imagenes": [
+    "mitt/img-mitt-nk-125-mitt-motors-motodest-scaled.webp"
+  ],
+  "ficha": {
+    "motor": "Monocilíndrico 4 tiempos",
+    "cilindrada": "125 cc",
+    "potencia": "10,6 kW (15 CV) a 9.500 rpm",
+    "par": "9,15 Nm a 8.500 rpm",
+    "cambio": "Transmisión por cadena",
+    "alimentacion": "Inyección electrónica",
+    "suspDel": "Horquilla invertida de 37 mm",
+    "suspTras": "Monoamortiguador regulable",
+    "frenos": "Brembo con ABS, disco de 299 mm / disco de 240 mm",
+    "neumaticos": "110/70-17 / 140/70-17",
+    "alturaAsiento": "790 mm",
+    "peso": "154 kg en vacío",
+    "deposito": "12 l"
+  },
+  "fuenteFicha": "https://mittmotors.com/vehiculo/mitt-nk-125-brembo-ltd-edition",
+  "destacada": false,
+  "orden": 200
+}

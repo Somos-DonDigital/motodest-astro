@@ -1,0 +1,67 @@
+---
+import { getCollection } from 'astro:content';
+import Base from '../../../layouts/Base.astro';
+import TarjetaMoto from '../../../components/TarjetaMoto.astro';
+import Formulario from '../../../components/Formulario.astro';
+import { MARCAS, EMPRESA, type Marca, type Categoria } from '../../../data/sitio';
+import { imgSitio } from '../../../lib/imagenes';
+import { urlMoto, nombreCompleto, euros } from '../../../lib/formato';
+
+export function getStaticPaths() {
+  return MARCAS.flatMap((m) => m.categorias.map((c) => ({ params: { marca: m.slug, categoria: c.slug }, props: { marca: m, cat: c } })));
+}
+const { marca, cat } = Astro.props as { marca: Marca; cat: Categoria };
+const motos = (await getCollection('motos', (m) => m.data.marca === marca.slug && m.data.categoria === cat.slug)).sort((a, b) => a.data.orden - b.data.orden);
+const precios = motos.map((m) => m.data.precio).filter((p): p is number => p != null);
+const desde = precios.length ? Math.min(...precios) : null;
+const tel = EMPRESA.telefono.replace(/\s/g, '');
+const descripcion = `${cat.h1} en Barbate (Cádiz): ${motos.length} modelos${desde ? ` desde ${euros(desde)}` : ''}. ${cat.intro}`.slice(0, 300);
+---
+<Base
+  titulo={`${cat.h1}: precios y modelos`}
+  descripcion={descripcion}
+  imagen={imgSitio(cat.imagen)}
+  migas={[{ nombre: marca.nombre, url: `/${marca.slug}/` }, { nombre: cat.nombre, url: `/${marca.slug}/${cat.slug}/` }]}
+  schema={[{
+    '@context': 'https://schema.org', '@type': 'ItemList', name: cat.h1,
+    itemListElement: motos.map((m, i) => ({ '@type': 'ListItem', position: i + 1, name: nombreCompleto(m.data), url: new URL(urlMoto(m.data), Astro.site).toString() })),
+  }]}
+>
+  <section class="cab-cat">
+    <div class="contenedor">
+      <span class="antetitulo">Concesionario oficial {marca.nombre}</span>
+      <h1>{cat.h1}</h1>
+      <p class="intro">{cat.intro}</p>
+    </div>
+  </section>
+
+  <section class="seccion">
+    <div class="contenedor">
+      <h2 class="sr-only">Modelos</h2>
+      <div class="rejilla rejilla--motos">
+        {motos.map((m, i) => <TarjetaMoto moto={m} cargaPrioritaria={i < 3} />)}
+      </div>
+      <p class="nota">Precios con la moto matriculada, IVA incluido. Pregúntanos por promociones y financiación.</p>
+      <div class="cta-linea">
+        <a class="btn" href="#contacto">Pide información</a>
+        <span>o llámanos al <a class="tel" href={`tel:${tel}`}>{EMPRESA.telefonoVisible}</a></span>
+      </div>
+    </div>
+  </section>
+
+  <section class="seccion seccion--gris">
+    <div class="contenedor">
+      <h2>Más gamas {marca.nombre}</h2>
+      <ul class="otras">
+        {marca.categorias.filter((c) => c.slug !== cat.slug).map((c) => <li><a class="btn btn--borde" href={`/${marca.slug}/${c.slug}/`}>{c.nombre}</a></li>)}
+      </ul>
+    </div>
+  </section>
+
+  <Formulario titulo={`¿Dudas con tu ${marca.nombre} ${cat.nombre.toLowerCase()}?`} />
+</Base>
+<style>
+  .cab-cat { background: var(--gris-claro); padding-block: max(28px, 3vw) max(36px, 4vw); }
+  .nota { color: var(--gris); font-size: var(--fs-peq); margin-top: 24px; }
+  .otras { list-style: none; padding: 0; margin: 0; display: flex; flex-wrap: wrap; gap: 12px; }
+</style>

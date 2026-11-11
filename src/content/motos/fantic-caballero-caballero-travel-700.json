@@ -1,0 +1,28 @@
+{
+  "nombre": "Caballero Travel 700",
+  "marca": "fantic",
+  "categoria": "caballero",
+  "slug": "caballero-travel-700",
+  "precio": 9799,
+  "precioDesde": false,
+  "imagenes": [
+    "fantic/imgweb-moto-fantic-caballero-travel-700-motodest.webp"
+  ],
+  "ficha": {
+    "motor": "Bicilíndrico 4 tiempos, refrigerado por líquido",
+    "cilindrada": "689 cc",
+    "cambio": "6 velocidades",
+    "alimentacion": "Inyección electrónica, doble cuerpo de mariposa ø38 mm",
+    "chasis": "Doble viga de acero CrMo",
+    "suspDel": "Horquilla invertida VRM-Marzocchi ø45 mm",
+    "suspTras": "Monoamortiguador VRM-Marzocchi con ajuste de precarga",
+    "frenos": "Disco flotante ø330 mm con pinzas radiales Brembo de 4 pistones / disco ø245 mm Brembo",
+    "neumaticos": "110/80 R19 / 150/70 R17",
+    "alturaAsiento": "830 mm",
+    "peso": "175 kg sin gasolina",
+    "deposito": "13 l"
+  },
+  "fuenteFicha": "https://fantic.com/es-es/moto/caballero/travel-700_8c4i1",
+  "destacada": false,
+  "orden": 202
+}

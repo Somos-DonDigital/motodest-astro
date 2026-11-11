@@ -1,0 +1,21 @@
+{
+  "nombre": "Minitrial Electric 20\" XL",
+  "marca": "beta",
+  "categoria": "minibike",
+  "slug": "minitrial-electric-20-pulgadas-xl",
+  "precio": 3459,
+  "precioDesde": false,
+  "imagenes": [
+    "beta/imgi-9-minitrialxl-my2021-gallery.webp"
+  ],
+  "ficha": {
+    "motor": "Eléctrico 1.350 W, 48 V",
+    "bateria": "Batería de litio, 12 Ah",
+    "autonomia": "2 h a velocidad constante",
+    "alturaAsiento": "575 mm",
+    "peso": "26,4 kg"
+  },
+  "fuenteFicha": "https://www.betamotor.com/en-be/bikes/minitrial-electric-20-xl/",
+  "destacada": false,
+  "orden": 502
+}

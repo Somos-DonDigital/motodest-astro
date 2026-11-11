@@ -1,0 +1,30 @@
+{
+  "nombre": "125NK",
+  "marca": "cfmoto",
+  "categoria": "motos",
+  "slug": "125nk",
+  "precio": 4199,
+  "precioDesde": false,
+  "imagenes": [
+    "cfmoto/img-moto-125nk-cfmoto-motodest-scaled.webp",
+    "cfmoto/img-125nk-n-cfmoto-motodest-scaled.webp"
+  ],
+  "ficha": {
+    "motor": "Monocilíndrico 4 tiempos, refrigerado por líquido, DOHC",
+    "cilindrada": "124 cc",
+    "potencia": "11 kW (15 CV) a 11.000 rpm",
+    "par": "11 Nm a 8.500 rpm",
+    "cambio": "6 velocidades",
+    "alimentacion": "Inyección Bosch",
+    "suspDel": "Horquilla invertida de 37 mm con precarga regulable",
+    "suspTras": "Monoamortiguador",
+    "frenos": "Disco de 292 mm con pinza radial de 4 pistones / disco de 220 mm, ABS Bosch",
+    "neumaticos": "110/70 R17 / 140/60 R17",
+    "alturaAsiento": "780 mm",
+    "peso": "142 kg en orden de marcha",
+    "deposito": "12,5 l"
+  },
+  "fuenteFicha": "https://cfmoto.es/moto/125nk",
+  "destacada": false,
+  "orden": 5
+}

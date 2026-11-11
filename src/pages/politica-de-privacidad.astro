@@ -1,0 +1,23 @@
+---
+import Base from '../layouts/Base.astro';
+import Pendiente from '../components/Pendiente.astro';
+import { EMPRESA } from '../data/sitio';
+const d = EMPRESA.direccion;
+---
+<Base titulo="Política de privacidad" descripcion="Cómo trata Motodest los datos personales de quienes contactan a través de la web." migas={[{ nombre: 'Política de privacidad', url: '/politica-de-privacidad/' }]}>
+  <section class="seccion"><div class="contenedor prosa">
+    <h1>Política de privacidad</h1>
+    <h2>Responsable del tratamiento</h2>
+    <p><Pendiente valor={EMPRESA.razonSocial} texto="razón social" /> (Motodest), con NIF <Pendiente valor={EMPRESA.nif} texto="NIF" /> y domicilio en {d.calle}, {d.cp} {d.localidad} ({d.provincia}). Email: {EMPRESA.email}.</p>
+    <h2>Qué datos tratamos y para qué</h2>
+    <p>Los datos que nos facilitas en los formularios (nombre, teléfono, email, la moto que te interesa y tu mensaje) se usan para responder a tu consulta, preparar presupuestos o pruebas y, solo si lo marcas expresamente, para enviarte ofertas y novedades de Motodest.</p>
+    <h2>Base legal</h2>
+    <p>Atender tu consulta se basa en tu solicitud y en la aplicación de medidas precontractuales (art. 6.1.b RGPD). El envío de comunicaciones comerciales se basa en tu consentimiento (art. 6.1.a RGPD), que puedes retirar en cualquier momento.</p>
+    <h2>Cuánto tiempo los conservamos</h2>
+    <p>Mientras sea necesario para atender tu consulta y, después, durante los plazos legales aplicables. Los datos para comunicaciones comerciales se conservan hasta que retires el consentimiento.</p>
+    <h2>Destinatarios</h2>
+    <p>No cedemos tus datos a terceros salvo obligación legal. Si solicitas financiación, se comunicarán a la entidad financiera con tu autorización. El proveedor de alojamiento de la web actúa como encargado del tratamiento.</p>
+    <h2>Tus derechos</h2>
+    <p>Puedes ejercer tus derechos de acceso, rectificación, supresión, oposición, limitación y portabilidad escribiendo a {EMPRESA.email} o a la dirección postal indicada. Si consideras que no se han atendido correctamente, puedes reclamar ante la Agencia Española de Protección de Datos (www.aepd.es).</p>
+  </div></section>
+</Base>

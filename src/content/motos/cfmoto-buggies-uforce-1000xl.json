@@ -1,0 +1,31 @@
+{
+  "nombre": "UFORCE 1000XL",
+  "marca": "cfmoto",
+  "categoria": "buggies",
+  "slug": "uforce-1000xl",
+  "precio": null,
+  "precioDesde": false,
+  "imagenes": [
+    "cfmoto/img-uf1000xl-t-cfmoto-motodest-scaled.png",
+    "cfmoto/img-uf1000xl-a-cfmoto-motodest-scaled.png"
+  ],
+  "ficha": {
+    "motor": "Bicilíndrico en V, 4 tiempos, SOHC 8 válvulas, refrigeración líquida",
+    "cilindrada": "962,6 cc",
+    "potencia": "78 CV a 7.000 rpm",
+    "par": "74 Nm a 6.500 rpm",
+    "cambio": "Automático CVTech (P-R-N-H-L), transmisión por cardán",
+    "traccion": "4x2 / 4x4",
+    "alimentacion": "Inyección Bosch",
+    "suspension": "Doble trapecio independiente, 230 mm de recorrido, amortiguadores de nitrógeno",
+    "frenos": "Discos hidráulicos con frenada combinada",
+    "neumaticos": "27x9.00-14 / 27x11.00-14",
+    "dimensiones": "3.770 x 1.615 x 1.850 mm",
+    "peso": "820 kg en vacío",
+    "carga": "800 kg",
+    "homologacion": "T3, 3 plazas"
+  },
+  "fuenteFicha": "https://cfmoto.es/atv/uforce-1000-xl",
+  "destacada": false,
+  "orden": 209
+}

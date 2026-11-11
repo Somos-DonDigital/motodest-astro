@@ -1,0 +1,22 @@
+{
+  "nombre": "CFORCE 520L",
+  "marca": "cfmoto",
+  "categoria": "atv",
+  "slug": "cforce-520l",
+  "precio": 7599,
+  "precioDesde": false,
+  "imagenes": [
+    "cfmoto/img-cforce520l-naranja-motodest-scaled.png",
+    "cfmoto/img-cforce520l-gris-motodest-scaled.webp"
+  ],
+  "ficha": {
+    "motor": "Monocilíndrico 4 tiempos, refrigeración líquida",
+    "cilindrada": "495 cc",
+    "cambio": "Automático CVT",
+    "equipamiento": "Dirección asistida (EPS)",
+    "plazas": "2"
+  },
+  "fuenteFicha": null,
+  "destacada": false,
+  "orden": 102
+}

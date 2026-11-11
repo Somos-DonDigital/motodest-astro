@@ -1,0 +1,32 @@
+---
+import Base from '../layouts/Base.astro';
+import Formulario from '../components/Formulario.astro';
+import { EMPRESA } from '../data/sitio';
+const d = EMPRESA.direccion;
+const tel = EMPRESA.telefono.replace(/\s/g, '');
+const mapa = `https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(`Motodest ${d.calle}, ${d.cp} ${d.localidad}`)}`;
+---
+<Base titulo="Contacto: concesionario de motos en Barbate" descripcion={`Contacta con Motodest en ${d.calle}, ${d.localidad} (${d.provincia}). Teléfono ${EMPRESA.telefonoVisible}. Horario de lunes a sábado.`} migas={[{ nombre: 'Contacto', url: '/contacto/' }]}>
+  <section class="seccion">
+    <div class="contenedor contacto">
+      <div>
+        <span class="antetitulo">Contacto</span>
+        <h1>Ven a vernos a Barbate</h1>
+        <p class="intro">Estamos en la avenida de la Mar. Ven a ver las motos, pide una prueba o pregúntanos lo que necesites.</p>
+      </div>
+      <div class="datos">
+        <div><h2>Dirección</h2><p>{d.calle}<br />{d.cp} {d.localidad} ({d.provincia})<br /><a href={mapa} target="_blank" rel="noopener">Cómo llegar →</a></p></div>
+        <div><h2>Teléfono y email</h2><p><a href={`tel:${tel}`}>{EMPRESA.telefonoVisible}</a><br /><a href={`mailto:${EMPRESA.email}`}>{EMPRESA.email}</a></p></div>
+        <div><h2>Horario</h2><p>{EMPRESA.horario.map((h) => <>{h.dias}: {h.horas}<br /></>)}</p></div>
+      </div>
+    </div>
+  </section>
+  <Formulario titulo="Escríbenos" />
+</Base>
+<style>
+  .contacto { display: grid; grid-template-columns: 1fr 1fr; gap: max(28px, 4vw); }
+  .datos { display: grid; gap: 24px; }
+  .datos h2 { font-size: var(--fs-h3); margin-bottom: 6px; }
+  .datos a { color: var(--naranja); font-weight: 700; text-decoration: none; }
+  @media (max-width: 860px) { .contacto { grid-template-columns: 1fr; } }
+</style>

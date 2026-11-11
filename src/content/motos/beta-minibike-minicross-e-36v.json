@@ -1,0 +1,26 @@
+{
+  "nombre": "Minicross E 36V",
+  "marca": "beta",
+  "categoria": "minibike",
+  "slug": "minicross-e-36v",
+  "precio": 1899,
+  "precioDesde": false,
+  "imagenes": [
+    "beta/imgi-10-minicross-e-my-2022-mod.webp"
+  ],
+  "ficha": {
+    "motor": "Eléctrico 0,75 kW",
+    "bateria": "Litio 36 V, 13 Ah",
+    "autonomia": "45 min a velocidad constante",
+    "chasis": "Acero, basculante de aluminio tratado",
+    "suspDel": "Horquilla invertida hidráulica ø33 mm",
+    "suspTras": "Monoamortiguador con muelle regulable",
+    "frenos": "Discos con mando hidráulico",
+    "neumaticos": "60/100-12 / 70/100-10",
+    "alturaAsiento": "670 mm",
+    "peso": "37 kg"
+  },
+  "fuenteFicha": "https://www.betamotor.com/es/motocicletas/moto-minicross-e/",
+  "destacada": false,
+  "orden": 503
+}

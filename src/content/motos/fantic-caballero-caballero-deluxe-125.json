@@ -1,0 +1,31 @@
+{
+  "nombre": "Caballero Deluxe 125",
+  "marca": "fantic",
+  "categoria": "caballero",
+  "slug": "caballero-deluxe-125",
+  "precio": 5999,
+  "precioDesde": false,
+  "imagenes": [
+    "fantic/img-moto-deluxe-125-gris-caballero-fantic.webp"
+  ],
+  "ficha": {
+    "motor": "Monocilíndrico 4 tiempos, refrigerado por líquido",
+    "cilindrada": "124,66 cc",
+    "potencia": "11 kW (15 CV) a 10.000 rpm",
+    "par": "11,2 Nm a 7.750 rpm",
+    "cambio": "6 velocidades",
+    "alimentacion": "Inyección electrónica, cuerpo de mariposa ø30 mm",
+    "chasis": "Monoviga de acero CrMo",
+    "suspDel": "Horquilla invertida ø41 mm",
+    "suspTras": "Monoamortiguador con ajuste de precarga",
+    "frenos": "Disco ø320 mm / disco ø230 mm, ABS Continental de dos canales desconectable",
+    "neumaticos": "110/80-19 / 130/80-17",
+    "alturaAsiento": "820 mm",
+    "peso": "130 kg en seco",
+    "deposito": "12 l",
+    "homologacion": "Euro 5+"
+  },
+  "fuenteFicha": "https://fantic.com/es-es/moto/caballero/deluxe-125-_563mw",
+  "destacada": false,
+  "orden": 206
+}

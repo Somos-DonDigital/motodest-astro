@@ -1,0 +1,30 @@
+{
+  "nombre": "UFORCE U10 Pro XL",
+  "marca": "cfmoto",
+  "categoria": "buggies",
+  "slug": "uforce-u10-pro-xl",
+  "precio": 21299,
+  "precioDesde": false,
+  "imagenes": [
+    "cfmoto/img-u10proxl-r-cfmoto-motodest-scaled.webp",
+    "cfmoto/img-u10proxl-v-cfmoto-motodest-scaled.webp",
+    "cfmoto/img-u10proxl-g-cfmoto-motodest-scaled.webp"
+  ],
+  "ficha": {
+    "motor": "Tricilíndrico, 4 tiempos, refrigeración líquida, DOHC",
+    "cilindrada": "998 cc",
+    "potencia": "90 CV a 7.250 rpm",
+    "par": "94,5 Nm a 6.500 rpm",
+    "cambio": "Automático CVT (P-R-N-H-L)",
+    "traccion": "2WD / 4WD / 4WD con bloqueo",
+    "alimentacion": "Inyección Bosch",
+    "suspension": "Doble trapecio independiente (280 mm delante, 260 mm detrás)",
+    "frenos": "Doble disco delante / disco simple detrás",
+    "neumaticos": "29x9 R14 / 29x11 R14",
+    "deposito": "45 l",
+    "carga": "749 kg"
+  },
+  "fuenteFicha": "https://cfmoto.es/atv/u10-pro-xl",
+  "destacada": false,
+  "orden": 205
+}

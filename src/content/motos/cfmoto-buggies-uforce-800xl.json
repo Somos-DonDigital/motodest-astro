@@ -1,0 +1,32 @@
+{
+  "nombre": "UFORCE 800XL",
+  "marca": "cfmoto",
+  "categoria": "buggies",
+  "slug": "uforce-800xl",
+  "precio": 17299,
+  "precioDesde": false,
+  "imagenes": [
+    "cfmoto/img-uf800xl-t-cfmoto-motodest-scaled.webp",
+    "cfmoto/img-uf800xl-a-cfmoto-motodest-scaled.webp",
+    "cfmoto/img-uf800xl-n-cfmoto-motodest-scaled.webp"
+  ],
+  "ficha": {
+    "motor": "Bicilíndrico en V, 4 tiempos, refrigeración líquida, SOHC 8 válvulas",
+    "cilindrada": "800 cc",
+    "potencia": "63,5 CV a 7.000 rpm",
+    "par": "69,8 Nm a 5.500 rpm",
+    "cambio": "Automático CVT (P-R-N-H-L)",
+    "traccion": "2WD / 4WD / 4WD con bloqueo",
+    "alimentacion": "Inyección electrónica",
+    "suspension": "Doble trapecio independiente, 225 mm de recorrido",
+    "frenos": "Discos hidráulicos y freno de mano",
+    "neumaticos": "27x9.00-14 / 27x11.00-14",
+    "dimensiones": "3.635 x 1.525 x 2.005 mm",
+    "peso": "775 kg en vacío",
+    "deposito": "40 l",
+    "carga": "620 kg"
+  },
+  "fuenteFicha": "https://cfmoto.es/atv/uforce-800xl",
+  "destacada": false,
+  "orden": 207
+}

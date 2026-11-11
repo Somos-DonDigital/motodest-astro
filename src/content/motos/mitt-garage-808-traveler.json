@@ -1,0 +1,29 @@
+{
+  "nombre": "808 Traveler",
+  "marca": "mitt",
+  "categoria": "garage",
+  "slug": "808-traveler",
+  "precio": 12299,
+  "precioDesde": false,
+  "imagenes": [
+    "mitt/img-mitt-808-traveler-mitt-motors-motodest-scaled.webp"
+  ],
+  "ficha": {
+    "motor": "Bicilíndrico en V, 4 tiempos",
+    "cilindrada": "800 cc",
+    "potencia": "35 kW (47 CV) a 6.000 rpm",
+    "par": "62 Nm a 4.500 rpm",
+    "cambio": "Manual de 6 velocidades, transmisión por correa",
+    "alimentacion": "Inyección electrónica",
+    "suspDel": "Horquilla invertida",
+    "suspTras": "Amortiguador hidráulico regulable",
+    "frenos": "ABS, disco de 300 mm / disco de 300 mm",
+    "neumaticos": "140/70-17 / 200/50-17",
+    "alturaAsiento": "750 mm",
+    "peso": "329 kg en vacío",
+    "deposito": "18,2 l"
+  },
+  "fuenteFicha": "https://mittmotors.com/vehiculo/mitt-808-traveler",
+  "destacada": false,
+  "orden": 103
+}

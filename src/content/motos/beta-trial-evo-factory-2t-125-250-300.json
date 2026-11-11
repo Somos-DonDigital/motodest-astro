@@ -1,0 +1,28 @@
+{
+  "nombre": "EVO Factory 2T 125/250/300",
+  "marca": "beta",
+  "categoria": "trial",
+  "slug": "evo-factory-2t-125-250-300",
+  "precio": 8649,
+  "precioDesde": true,
+  "imagenes": [
+    "beta/imgi-8-evo-factory-2t-gallery-1-1.webp"
+  ],
+  "ficha": {
+    "motor": "Monocilíndrico 2 tiempos, refrigerado por líquido, admisión por láminas al cárter, cárteres de magnesio",
+    "cilindrada": "124,8 / 249,7 / 296,5 cc",
+    "cambio": "6 velocidades",
+    "alimentacion": "Carburador",
+    "chasis": "Monoviga de aluminio hidroconformado",
+    "suspDel": "Horquilla hidráulica ø39 mm regulable",
+    "suspTras": "Monoamortiguador con cuerpo de aluminio",
+    "frenos": "Disco ø185 mm de 4 pistones / disco ø160 mm de 2 pistones",
+    "neumaticos": "2.75-21 / 4.00 R18",
+    "alturaAsiento": "660 mm",
+    "deposito": "2,8 l",
+    "arranque": "A pedal"
+  },
+  "fuenteFicha": "https://www.moto.it/listino/betamotor/evo-250/evo-250-2t-factory-2025-26/o6NgSo",
+  "destacada": false,
+  "orden": 201
+}

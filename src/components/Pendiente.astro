@@ -1,0 +1,6 @@
+---
+// Marca en rojo un dato que falta, para que no se publique sin rellenar.
+interface Props { valor: string | null; texto: string }
+const { valor, texto } = Astro.props;
+---
+{valor ? valor : <mark style="background:#ffe1e1;color:#a00;padding:0 4px">[PENDIENTE: {texto}]</mark>}

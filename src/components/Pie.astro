@@ -1,0 +1,66 @@
+---
+import { Image } from 'astro:assets';
+import { MARCAS, EMPRESA } from '../data/sitio';
+import { imgSitio } from '../lib/imagenes';
+const año = new Date().getFullYear();
+const d = EMPRESA.direccion;
+---
+<footer class="pie">
+  <div class="contenedor pie__rejilla">
+    <div>
+      <Image src={imgSitio('logo-motodest')} alt="Motodest" width={180} layout="fixed" />
+      <p class="pie__txt">Concesionario oficial Fantic, Beta, CFMOTO y MITT en Barbate (Cádiz).</p>
+      <address class="pie__txt">
+        {d.calle}<br />{d.cp} {d.localidad} ({d.provincia})<br />
+        <a href={`tel:${EMPRESA.telefono.replace(/\s/g, '')}`}>{EMPRESA.telefonoVisible}</a><br />
+        <a href={`mailto:${EMPRESA.email}`}>{EMPRESA.email}</a>
+      </address>
+    </div>
+    <div>
+      <h2 class="pie__tit">Marcas</h2>
+      <ul class="pie__lista">
+        {MARCAS.map((m) => <li><a href={`/${m.slug}/`}>Concesionario {m.nombre}</a></li>)}
+      </ul>
+    </div>
+    <div>
+      <h2 class="pie__tit">Horario</h2>
+      <dl class="pie__horario">
+        {EMPRESA.horario.map((h) => <><dt>{h.dias}</dt><dd>{h.horas}</dd></>)}
+      </dl>
+    </div>
+    <div>
+      <h2 class="pie__tit">Información</h2>
+      <ul class="pie__lista">
+        <li><a href="/contacto/">Contacto</a></li>
+        <li><a href="/aviso-legal/">Aviso legal</a></li>
+        <li><a href="/politica-de-privacidad/">Política de privacidad</a></li>
+        <li><a href="/politica-de-cookies/">Política de cookies</a></li>
+      </ul>
+      {EMPRESA.redes.length > 0 && (
+        <ul class="pie__redes">
+          {EMPRESA.redes.map((r) => <li><a href={r.url} rel="noopener" target="_blank">{r.nombre}</a></li>)}
+        </ul>
+      )}
+    </div>
+  </div>
+  <div class="contenedor pie__legal">
+    <span>© {año} Motodest</span>
+    <span>Web diseñada y desarrollada por <a href="https://dondigital.es" rel="noopener">DonDigital</a></span>
+  </div>
+</footer>
+<style>
+  .pie { background: var(--azul); color: #cfcce3; padding-top: max(56px, 5vw); font-size: var(--fs-peq); }
+  .pie a { text-decoration: none; }
+  .pie a:hover { color: var(--naranja); }
+  .pie__rejilla { display: grid; grid-template-columns: 1.4fr 1fr 1.2fr 1fr; gap: max(28px, 3vw); }
+  .pie__tit { font-size: 1rem; color: #fff; letter-spacing: 0.08em; }
+  .pie__txt { margin-top: 18px; font-style: normal; }
+  .pie__lista { list-style: none; padding: 0; margin: 0; display: grid; gap: 8px; }
+  .pie__horario { margin: 0; display: grid; gap: 2px; }
+  .pie__horario dt { color: #fff; font-weight: 700; margin-top: 8px; }
+  .pie__horario dd { margin: 0; }
+  .pie__redes { list-style: none; padding: 0; display: flex; gap: 14px; margin-top: 18px; }
+  .pie__legal { display: flex; flex-wrap: wrap; justify-content: space-between; gap: 10px; border-top: 1px solid rgb(255 255 255 / 0.12); margin-top: max(40px, 4vw); padding-block: 22px; }
+  @media (max-width: 900px) { .pie__rejilla { grid-template-columns: 1fr 1fr; } }
+  @media (max-width: 560px) { .pie__rejilla { grid-template-columns: 1fr; } }
+</style>

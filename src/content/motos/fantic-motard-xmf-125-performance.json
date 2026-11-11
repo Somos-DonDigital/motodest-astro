@@ -1,0 +1,33 @@
+{
+  "nombre": "XMF 125 Performance",
+  "marca": "fantic",
+  "categoria": "motard",
+  "slug": "xmf-125-performance",
+  "precio": 5399,
+  "precioDesde": false,
+  "imagenes": [
+    "fantic/img-xmf-125-verde-motard-fantic-motodest.webp",
+    "fantic/img-xmf-125-rosa-motard-fantic-motodest.webp",
+    "fantic/img-xmf-125-roja-motard-fantic-motodest.webp"
+  ],
+  "ficha": {
+    "motor": "Monocilíndrico 4 tiempos, refrigerado por líquido",
+    "cilindrada": "124,66 cc",
+    "potencia": "11 kW (15 CV) a 9.500 rpm",
+    "par": "11,8 Nm a 7.500 rpm",
+    "cambio": "6 velocidades",
+    "alimentacion": "Inyección electrónica",
+    "chasis": "Perimetral de acero",
+    "suspDel": "Horquilla invertida Fantic ø41 mm",
+    "suspTras": "Monoamortiguador Fantic FRS con ajuste de precarga",
+    "frenos": "Disco Wave ø320 mm / disco Wave ø220 mm, ABS desconectable",
+    "neumaticos": "100/80-17 / 130/70-17",
+    "alturaAsiento": "870 mm",
+    "peso": "127 kg en orden de marcha",
+    "deposito": "7,5 l",
+    "homologacion": "Euro 5+"
+  },
+  "fuenteFicha": "https://fantic.com/es-es/moto/motard/xmf-125-performance_k8xhv",
+  "destacada": false,
+  "orden": 303
+}

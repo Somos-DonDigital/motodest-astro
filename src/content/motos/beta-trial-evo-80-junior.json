@@ -1,0 +1,27 @@
+{
+  "nombre": "EVO 80 Junior",
+  "marca": "beta",
+  "categoria": "trial",
+  "slug": "evo-80-junior",
+  "precio": 4299,
+  "precioDesde": false,
+  "imagenes": [
+    "beta/imgi-10-evo-80-my-25-junior.webp"
+  ],
+  "ficha": {
+    "motor": "Monocilíndrico 2 tiempos, refrigerado por líquido, admisión por láminas al cárter",
+    "cilindrada": "79,6 cc",
+    "cambio": "6 velocidades",
+    "alimentacion": "Carburador",
+    "chasis": "Acero",
+    "suspDel": "Horquilla hidráulica ø33 mm regulable",
+    "suspTras": "Monoamortiguador con ajuste de precarga",
+    "frenos": "Disco inox ø175 mm / disco inox ø150 mm, pinzas de 2 pistones opuestos",
+    "neumaticos": "2.50-19 / 3.50-17",
+    "alturaAsiento": "620 mm",
+    "deposito": "2,5 l"
+  },
+  "fuenteFicha": "https://www.betamotor.com/es/motocicletas/evo-80-junior/",
+  "destacada": false,
+  "orden": 203
+}

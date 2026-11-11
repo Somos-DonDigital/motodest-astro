@@ -1,0 +1,32 @@
+{
+  "nombre": "Caballero Rally 500",
+  "marca": "fantic",
+  "categoria": "caballero",
+  "slug": "caballero-rally-500",
+  "precio": 7899,
+  "precioDesde": false,
+  "imagenes": [
+    "fantic/img-moto-rally-500-beige-fantic-motodest.webp",
+    "fantic/img-moto-rally-500-verde-fantic-motodest.webp"
+  ],
+  "ficha": {
+    "motor": "Monocilíndrico 4 tiempos, refrigerado por líquido, 4 válvulas DOHC",
+    "cilindrada": "463 cc",
+    "potencia": "44 CV a 8.000 rpm",
+    "par": "42 Nm a 7.000 rpm",
+    "cambio": "6 velocidades",
+    "alimentacion": "Inyección electrónica, Ride by Wire ø46 mm",
+    "chasis": "Monoviga de acero CrMo",
+    "suspDel": "Horquilla invertida ø43 mm totalmente regulable",
+    "suspTras": "Monoamortiguador con piggyback totalmente regulable",
+    "frenos": "Disco flotante ø320 mm / disco ø230 mm",
+    "neumaticos": "Pirelli Scorpion Rally STR 90/90-21 / 140/80-17",
+    "alturaAsiento": "860 mm",
+    "peso": "150 kg en seco",
+    "deposito": "12 l",
+    "homologacion": "Euro 5+"
+  },
+  "fuenteFicha": "https://fantic.com/es-es/moto/caballero/rally-500-_2j8x4",
+  "destacada": false,
+  "orden": 205
+}

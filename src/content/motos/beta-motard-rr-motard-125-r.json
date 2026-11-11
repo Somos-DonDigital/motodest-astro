@@ -1,0 +1,28 @@
+{
+  "nombre": "RR Motard 125 R",
+  "marca": "beta",
+  "categoria": "motard",
+  "slug": "rr-motard-125-r",
+  "precio": 6099,
+  "precioDesde": false,
+  "imagenes": [
+    "beta/imgi-10-rr-125-4t-r-2-scaled-1.webp"
+  ],
+  "ficha": {
+    "motor": "Monocilíndrico 4 tiempos, refrigerado por líquido",
+    "cilindrada": "124,66 cc",
+    "cambio": "6 velocidades",
+    "alimentacion": "Inyección",
+    "chasis": "Doble cuna de acero desdoblada sobre el escape",
+    "suspDel": "Horquilla invertida hidráulica ø41 mm",
+    "suspTras": "Monoamortiguador con ajuste de precarga",
+    "frenos": "Disco ø260 mm con sistema CBS / disco ø220 mm",
+    "neumaticos": "110/80-17 / 130/70-17",
+    "alturaAsiento": "890 mm",
+    "peso": "107 kg",
+    "deposito": "7,5 l"
+  },
+  "fuenteFicha": "https://www.betamotor.com/es/motocicletas/moto-rr-motard-4t-125r/",
+  "destacada": false,
+  "orden": 303
+}

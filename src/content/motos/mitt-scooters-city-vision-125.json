@@ -1,0 +1,29 @@
+{
+  "nombre": "City Vision 125",
+  "marca": "mitt",
+  "categoria": "scooters",
+  "slug": "city-vision-125",
+  "precio": 2599,
+  "precioDesde": false,
+  "imagenes": [
+    "mitt/img-mitt-city-vision-125-negra-mitt-motors-motodest-scaled.webp",
+    "mitt/img-mitt-city-vision-125-gris-mitt-motors-motodest-scaled.webp"
+  ],
+  "ficha": {
+    "motor": "Monocilíndrico 4 tiempos, 2 válvulas, refrigeración líquida",
+    "cilindrada": "125 cc",
+    "potencia": "11 CV a 8.000 rpm",
+    "par": "10,3 Nm a 6.500 rpm",
+    "cambio": "Automático CVT",
+    "alimentacion": "Inyección electrónica",
+    "suspDel": "Horquilla telescópica",
+    "suspTras": "Doble amortiguador con ajuste de precarga",
+    "frenos": "Frenada combinada CBS, disco / disco",
+    "neumaticos": "CST 110/70-16 / 120/70-14",
+    "peso": "159 kg en vacío",
+    "deposito": "12 l"
+  },
+  "fuenteFicha": "https://www.mundomotero.com/motos/mitt/city-vision-125",
+  "destacada": false,
+  "orden": 4
+}

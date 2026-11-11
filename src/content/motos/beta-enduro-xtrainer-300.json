@@ -1,0 +1,29 @@
+{
+  "nombre": "Xtrainer 300",
+  "marca": "beta",
+  "categoria": "enduro",
+  "slug": "xtrainer-300",
+  "precio": 7999,
+  "precioDesde": false,
+  "imagenes": [
+    "beta/imgi-108-xtrainer-my2026-1-1500x928-1.webp"
+  ],
+  "ficha": {
+    "motor": "Monocilíndrico 2 tiempos, refrigerado por líquido",
+    "cilindrada": "292,3 cc",
+    "cambio": "6 velocidades",
+    "alimentacion": "Carburador Keihin PWK 36",
+    "chasis": "Perimetral de acero al molibdeno con doble cuna",
+    "suspDel": "Horquilla hidráulica ø43 mm",
+    "suspTras": "Monoamortiguador con bieletas progresivas",
+    "frenos": "Disco Wave ø260 mm, pinza flotante de doble pistón / disco Wave ø240 mm",
+    "neumaticos": "80/100-21 / 140/80-18",
+    "alturaAsiento": "910 mm",
+    "peso": "99 kg",
+    "deposito": "8,5 l",
+    "arranque": "Eléctrico"
+  },
+  "fuenteFicha": "https://www.betamotor.com/es/motocicletas/xtrainer-2t-300-my26/",
+  "destacada": false,
+  "orden": 12
+}

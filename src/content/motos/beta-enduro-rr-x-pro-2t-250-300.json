@@ -1,0 +1,29 @@
+{
+  "nombre": "RR X-Pro 2T 250/300",
+  "marca": "beta",
+  "categoria": "enduro",
+  "slug": "rr-x-pro-2t-250-300",
+  "precio": 9849,
+  "precioDesde": false,
+  "imagenes": [
+    "beta/imgi-12-view-01-rr-x-pro-2t-250300.webp"
+  ],
+  "ficha": {
+    "motor": "Monocilíndrico 2 tiempos, refrigerado por líquido",
+    "cilindrada": "249 cc / 292,6 cc",
+    "cambio": "6 velocidades",
+    "alimentacion": "Carburador Keihin PWK 36",
+    "chasis": "Doble cuna de acero al molibdeno",
+    "suspDel": "Horquilla hidráulica ø48 mm",
+    "suspTras": "Monoamortiguador con bieletas progresivas",
+    "frenos": "Disco Wave ø260 mm, pinza flotante de doble pistón / disco Wave ø240 mm",
+    "neumaticos": "90/90-21 / 140/80-18",
+    "alturaAsiento": "930 mm",
+    "peso": "103 kg",
+    "deposito": "9,5 l",
+    "arranque": "Eléctrico"
+  },
+  "fuenteFicha": "https://www.betamotor.com/es/motocicletas/rr-x-pro-2t-300-my26/",
+  "destacada": false,
+  "orden": 5
+}

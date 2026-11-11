@@ -1,0 +1,27 @@
+{
+  "nombre": "700MT",
+  "marca": "cfmoto",
+  "categoria": "motos",
+  "slug": "700mt",
+  "precio": 7499,
+  "precioDesde": false,
+  "imagenes": [
+    "cfmoto/img-moto-700mt-cfmoto-motodest-scaled.webp",
+    "cfmoto/img-700mt-a-cfmoto-motodest-scaled.webp"
+  ],
+  "ficha": {
+    "motor": "Bicilíndrico en línea, 4 tiempos, refrigeración líquida, DOHC",
+    "cilindrada": "693 cc",
+    "potencia": "50 kW (68 CV) a 9.500 rpm",
+    "par": "60 Nm a 6.000 rpm",
+    "cambio": "6 velocidades, embrague antirrebote",
+    "frenos": "Doble disco de 320 mm con pinzas radiales de 4 pistones J.Juan / disco de 260 mm, ABS de doble canal",
+    "alturaAsiento": "800 mm (835 mm con accesorio)",
+    "peso": "240 kg en vacío",
+    "deposito": "20 l",
+    "homologacion": "Euro 5+"
+  },
+  "fuenteFicha": "https://cfmoto.es/moto/700mt",
+  "destacada": false,
+  "orden": 2
+}

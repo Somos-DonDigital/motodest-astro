@@ -1,0 +1,29 @@
+{
+  "nombre": "XEF 310 2026",
+  "marca": "fantic",
+  "categoria": "enduro",
+  "slug": "xef-310-2026",
+  "precio": 11299,
+  "precioDesde": false,
+  "imagenes": [
+    "fantic/moto-fantic-xef-310-2026-enduro-motodest.webp"
+  ],
+  "ficha": {
+    "motor": "Monocilíndrico 4 tiempos, refrigerado por líquido, 4 válvulas DOHC, cilindro inclinado hacia atrás",
+    "cilindrada": "304 cc",
+    "cambio": "6 velocidades",
+    "alimentacion": "Inyección",
+    "chasis": "Perimetral de aluminio",
+    "suspDel": "KYB ø48 mm regulable, 300 mm de recorrido",
+    "suspTras": "KYB regulable, 306 mm de recorrido",
+    "frenos": "Disco ø270 mm / disco ø240 mm",
+    "neumaticos": "90/90-21 / 140/90-18",
+    "alturaAsiento": "955 mm",
+    "peso": "109 kg sin gasolina, con líquidos",
+    "deposito": "7,4 l",
+    "homologacion": "Euro 5+"
+  },
+  "fuenteFicha": "https://fantic.com/es-es/moto/enduro/xef-310_65241",
+  "destacada": false,
+  "orden": 105
+}

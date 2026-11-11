@@ -1,0 +1,156 @@
+---
+import { Image, getImage } from 'astro:assets';
+import { getCollection } from 'astro:content';
+import Base from '../../../layouts/Base.astro';
+import TarjetaMoto from '../../../components/TarjetaMoto.astro';
+import Formulario from '../../../components/Formulario.astro';
+import { marcaPorSlug, categoriaDe, EMPRESA } from '../../../data/sitio';
+import { imgMoto } from '../../../lib/imagenes';
+import { ETIQUETAS, precioTexto, nombreCompleto, descripcionMoto, urlMoto, tipoMoto, type Moto } from '../../../lib/formato';
+
+export async function getStaticPaths() {
+  const motos = await getCollection('motos');
+  return motos.map((m) => ({ params: { marca: m.data.marca, categoria: m.data.categoria, modelo: m.data.slug }, props: { moto: m } }));
+}
+const { moto } = Astro.props as { moto: Moto };
+const m = moto.data;
+const marca = marcaPorSlug(m.marca);
+const cat = categoriaDe(m.marca, m.categoria);
+const nombre = nombreCompleto(m);
+const descripcion = descripcionMoto(m);
+const filas = ETIQUETAS.filter(([k]) => m.ficha[k]).map(([k, et]) => [et, m.ficha[k]]);
+const relacionadas = (await getCollection('motos', (x) => x.data.marca === m.marca && x.data.categoria === m.categoria && x.data.slug !== m.slug))
+  .sort((a, b) => Math.abs(a.data.orden - m.orden) - Math.abs(b.data.orden - m.orden)).slice(0, 4);
+const tel = EMPRESA.telefono.replace(/\s/g, '');
+const wa = `https://wa.me/${EMPRESA.whatsapp}?text=${encodeURIComponent(`Hola, me interesa la ${nombre}.`)}`;
+const imgs = m.imagenes.map(imgMoto);
+const imgsSchema = await Promise.all(imgs.map(async (i) => new URL((await getImage({ src: i, width: 1200, format: 'jpg' })).src, Astro.site).toString()));
+
+const producto: Record<string, unknown> = {
+  '@context': 'https://schema.org',
+  '@type': 'Product',
+  name: nombre,
+  brand: { '@type': 'Brand', name: marca.nombre },
+  category: tipoMoto(m),
+  description: descripcion,
+  url: new URL(urlMoto(m), Astro.site).toString(),
+  ...(imgsSchema.length ? { image: imgsSchema } : {}),
+  ...(m.precio != null
+    ? { offers: { '@type': 'Offer', priceCurrency: 'EUR', price: m.precio, url: new URL(urlMoto(m), Astro.site).toString(), itemCondition: 'https://schema.org/NewCondition', seller: { '@id': `${Astro.site!.toString().replace(/\/$/, '')}/#negocio` } } }
+    : {}),
+};
+---
+<Base
+  titulo={`${nombre}: precio y ficha técnica`}
+  descripcion={descripcion}
+  imagen={imgs[0]}
+  tipoOg="product"
+  migas={[{ nombre: marca.nombre, url: `/${marca.slug}/` }, { nombre: cat.nombre, url: `/${marca.slug}/${cat.slug}/` }, { nombre: m.nombre, url: urlMoto(m) }]}
+  schema={[producto]}
+>
+  <section class="ficha contenedor">
+    <div class="galeria">
+      <div class="galeria__principal">
+        {imgs.length
+          ? imgs.map((src, i) => (
+              <Image src={src} alt={`${nombre}${imgs.length > 1 ? ` (${i + 1} de ${imgs.length})` : ''}`} widths={[480, 800, 1200]} sizes="(max-width: 900px) 92vw, 55vw" loading={i === 0 ? 'eager' : 'lazy'} fetchpriority={i === 0 ? 'high' : 'auto'} class:list={['galeria__img', { activa: i === 0 }]} data-i={i} />
+            ))
+          : <div class="galeria__sin">Foto próximamente</div>}
+      </div>
+      {imgs.length > 1 && (
+        <div class="galeria__minis" role="group" aria-label="Elegir foto">
+          {imgs.map((src, i) => (
+            <button type="button" class:list={['galeria__mini', { activa: i === 0 }]} data-i={i} aria-label={`Ver foto ${i + 1}`} aria-pressed={i === 0 ? 'true' : 'false'}>
+              <Image src={src} alt="" width={120} layout="fixed" />
+            </button>
+          ))}
+        </div>
+      )}
+    </div>
+
+    <div class="resumen">
+      <a class="resumen__marca" href={`/${marca.slug}/${cat.slug}/`}>{marca.nombre} · {cat.nombre}</a>
+      <h1>{nombre}</h1>
+      <p class="resumen__precio">{precioTexto(m)}</p>
+      {m.precio != null && <p class="resumen__nota">Precio con la moto matriculada, IVA incluido. Consulta promociones y financiación.</p>}
+      <p class="resumen__desc">{descripcion}</p>
+      <div class="resumen__ctas">
+        <a class="btn" href="#contacto">Pedir información</a>
+        <a class="btn btn--borde" href={wa} target="_blank" rel="noopener">WhatsApp</a>
+      </div>
+      <p class="resumen__tel">o llámanos al <a href={`tel:${tel}`}>{EMPRESA.telefonoVisible}</a></p>
+    </div>
+  </section>
+
+  {filas.length > 0 && (
+    <section class="seccion seccion--gris">
+      <div class="contenedor">
+        <h2>Ficha técnica de la {nombre}</h2>
+        <table class="tabla">
+          <tbody>
+            {filas.map(([k, v]) => <tr><th scope="row">{k}</th><td>{v}</td></tr>)}
+          </tbody>
+        </table>
+        <p class="fuente">Datos del fabricante.{m.fuenteFicha && <> Fuente: <a href={m.fuenteFicha} rel="noopener nofollow" target="_blank">{new URL(m.fuenteFicha).hostname.replace('www.', '')}</a>.</>} Pueden variar según la versión o el año del modelo.</p>
+      </div>
+    </section>
+  )}
+
+  {relacionadas.length > 0 && (
+    <section class="seccion">
+      <div class="contenedor">
+        <h2>También te puede interesar</h2>
+        <div class="rejilla rejilla--motos">
+          {relacionadas.map((r) => <TarjetaMoto moto={r} />)}
+        </div>
+      </div>
+    </section>
+  )}
+
+  <Formulario moto={nombre} titulo={`Pide información sobre la ${nombre}`} />
+</Base>
+
+<script>
+  document.querySelectorAll<HTMLButtonElement>('.galeria__mini').forEach((b) => {
+    b.addEventListener('click', () => {
+      const i = b.dataset.i;
+      document.querySelectorAll('.galeria__img').forEach((img) => img.classList.toggle('activa', (img as HTMLElement).dataset.i === i));
+      document.querySelectorAll('.galeria__mini').forEach((x) => {
+        x.classList.toggle('activa', x === b);
+        x.setAttribute('aria-pressed', String(x === b));
+      });
+    });
+  });
+</script>
+
+<style>
+  .ficha { display: grid; grid-template-columns: 1.3fr 1fr; gap: max(28px, 4vw); padding-block: max(16px, 2vw) var(--esp-seccion); align-items: start; }
+  .galeria__principal { position: relative; aspect-ratio: 5 / 3; background: #fff; border: 1px solid var(--borde); border-radius: var(--radio); display: grid; place-items: center; overflow: hidden; }
+  .galeria__principal :global(.galeria__img) { grid-area: 1 / 1; width: 100%; height: 100%; object-fit: contain; opacity: 0; transition: opacity 0.25s; }
+  .galeria__principal :global(.galeria__img.activa) { opacity: 1; }
+  .galeria__sin { color: var(--gris); }
+  .galeria__minis { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 12px; }
+  .galeria__mini { border: 2px solid var(--borde); border-radius: 8px; background: #fff; padding: 4px; cursor: pointer; }
+  .galeria__mini.activa { border-color: var(--naranja); }
+  .galeria__mini :global(img) { width: 96px; height: 58px; object-fit: contain; }
+  .resumen { position: sticky; top: calc(max(68px, 5.6vw) + 20px); }
+  .resumen__marca { color: var(--naranja); font-weight: 700; text-transform: uppercase; letter-spacing: 0.1em; font-size: var(--fs-peq); text-decoration: none; }
+  .resumen h1 { font-size: clamp(1.8rem, 3.2vw, 3.2rem); margin-top: 8px; }
+  .resumen__precio { font-size: clamp(1.6rem, 2.4vw, 2.4rem); font-weight: 800; color: var(--azul); margin-bottom: 4px; }
+  .resumen__nota { color: var(--gris); font-size: var(--fs-peq); }
+  .resumen__desc { color: var(--gris); }
+  .resumen__ctas { display: flex; flex-wrap: wrap; gap: 12px; margin-top: 20px; }
+  .resumen__tel { margin-top: 12px; font-weight: 700; }
+  .resumen__tel a { color: var(--naranja); text-decoration: none; }
+  .tabla { width: 100%; border-collapse: collapse; background: #fff; border-radius: var(--radio); overflow: hidden; }
+  .tabla th, .tabla td { text-align: left; padding: 14px 20px; border-bottom: 1px solid var(--borde); vertical-align: top; }
+  .tabla th { width: 32%; font-weight: 700; color: var(--azul); }
+  .tabla tr:last-child th, .tabla tr:last-child td { border-bottom: 0; }
+  .fuente { color: var(--gris); font-size: var(--fs-peq); margin-top: 16px; }
+  @media (max-width: 900px) {
+    .ficha { grid-template-columns: 1fr; }
+    .resumen { position: static; }
+    .tabla th, .tabla td { display: block; width: 100%; padding: 10px 16px; }
+    .tabla th { border-bottom: 0; padding-bottom: 0; }
+  }
+</style>
