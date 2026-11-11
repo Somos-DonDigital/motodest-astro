@@ -62,7 +62,7 @@ Header unset X-Powered-By
 <FilesMatch "\.(js|css|woff2|webp|avif|jpg|jpeg|png|svg|ico)$">
 Header set Cache-Control "public, max-age=31536000, immutable"
 </FilesMatch>
-<FilesMatch "\.(html|xml|txt)$">
+<FilesMatch "\.(html|xml|txt|json)$">
 Header set Cache-Control "public, max-age=0, must-revalidate"
 </FilesMatch>
 </IfModule>
@@ -75,6 +75,6 @@ AddOutputFilterByType DEFLATE text/html text/css text/plain text/xml application
 <FilesMatch "(^\.|\.(md|json|yml|yaml|lock|log|sh|sql|bak|env)$)">
 Require all denied
 </FilesMatch>
-<FilesMatch "^(manifest\.webmanifest)$">
+<FilesMatch "^(manifest\.webmanifest|buscar\.json)$">
 Require all granted
 </FilesMatch>
