@@ -1,0 +1,35 @@
+{
+  "nombre": "ZFORCE Z10-4 Basic",
+  "marca": "cfmoto",
+  "categoria": "buggies",
+  "slug": "z10-4-basic",
+  "precio": null,
+  "precioDesde": false,
+  "imagenes": [
+    {
+      "src": "cfmoto/cfmoto-z10-4-basic.webp",
+      "color": "Azul Céfiro",
+      "hex": "#1f8fb8"
+    }
+  ],
+  "ficha": {
+    "motor": "Tricilíndrico turbo, 4 tiempos, refrigeración líquida, DOHC",
+    "cilindrada": "998 cc",
+    "potencia": "154 CV a 7.750 rpm",
+    "par": "136 Nm a 7.000 rpm",
+    "cambio": "CVT OmniDrive P/R/N/H/L",
+    "traccion": "2WD / 4WD / 4WD con bloqueo",
+    "alimentacion": "Inyección Bosch EFI",
+    "suspension": "Trapecio independiente (432 mm de recorrido) / brazo independiente (508 mm)",
+    "frenos": "Disco hidráulico en las cuatro ruedas",
+    "neumaticos": "30 x 10.00 R14",
+    "deposito": "45 l",
+    "dimensiones": "4.038 x 1.626 x 1.740 mm",
+    "peso": "1.000 kg",
+    "carga": "400 kg",
+    "plazas": "4"
+  },
+  "fuenteFicha": "https://cfmoto.es/atv/z10-4-basic",
+  "destacada": false,
+  "orden": 213
+}

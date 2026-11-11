@@ -1,0 +1,38 @@
+{
+  "nombre": "800NK",
+  "marca": "cfmoto",
+  "categoria": "motos",
+  "slug": "800nk",
+  "precio": null,
+  "precioDesde": false,
+  "imagenes": [
+    {
+      "src": "cfmoto/cfmoto-800nk-negro-nebulosa.webp",
+      "color": "Negro Nebulosa",
+      "hex": "#202124"
+    },
+    {
+      "src": "cfmoto/cfmoto-800nk-gris-aerolito.webp",
+      "color": "Gris Aerolito",
+      "hex": "#8a8d91"
+    }
+  ],
+  "ficha": {
+    "motor": "Bicilíndrico en línea, 4 tiempos, DOHC, cigüeñal a 285º",
+    "cilindrada": "799 cc",
+    "potencia": "70 kW (94 CV) a 9.250 rpm",
+    "par": "79 Nm a 8.000 rpm",
+    "cambio": "6 velocidades, embrague multidisco húmedo antirrebote",
+    "alimentacion": "Inyección electrónica EFI",
+    "suspDel": "Horquilla invertida KYB de 43 mm, ajustable",
+    "suspTras": "Amortiguador KYB de 74 mm, ajustable",
+    "frenos": "Doble disco de 320 mm con pinzas radiales J.Juan / disco de 260 mm J.Juan",
+    "neumaticos": "Maxxis 120/70 R17 / 180/55 R17",
+    "peso": "186 kg en orden de marcha",
+    "deposito": "15 l",
+    "dimensiones": "2.146 x 818 x 1.137 mm"
+  },
+  "fuenteFicha": "https://cfmoto.es/moto/800nk",
+  "destacada": false,
+  "orden": 8
+}

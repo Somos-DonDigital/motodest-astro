@@ -7,19 +7,14 @@
   "precioDesde": false,
   "imagenes": [
     {
-      "src": "cfmoto/img-moto-675sr-r-cfmoto-motodest-scaled.webp",
-      "color": "Blanco",
-      "hex": "#c2c3c4"
+      "src": "cfmoto/cfmoto-675sr-r-negro-nebulosa.webp",
+      "color": "Negro Nebulosa",
+      "hex": "#202124"
     },
     {
-      "src": "cfmoto/img-675srr-n-cfmoto-motodest-scaled.webp",
-      "color": "Negro",
-      "hex": "#252525"
-    },
-    {
-      "src": "cfmoto/img-675srr-g-cfmoto-motodest-scaled.webp",
-      "color": "Gris",
-      "hex": "#878787"
+      "src": "cfmoto/cfmoto-675sr-r-blanco-nebulosa.webp",
+      "color": "Blanco Nebulosa",
+      "hex": "#eef0f2"
     }
   ],
   "ficha": {

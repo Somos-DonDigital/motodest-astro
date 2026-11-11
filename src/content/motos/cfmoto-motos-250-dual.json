@@ -1,0 +1,31 @@
+{
+  "nombre": "250 Dual",
+  "marca": "cfmoto",
+  "categoria": "motos",
+  "slug": "250-dual",
+  "precio": null,
+  "precioDesde": false,
+  "imagenes": [
+    {
+      "src": "cfmoto/cfmoto-250-dual.webp",
+      "color": "Verde Lima",
+      "hex": "#9bc83a"
+    }
+  ],
+  "ficha": {
+    "motor": "Monocilíndrico, 4 tiempos, refrigeración líquida, SOHC",
+    "potencia": "18 kW a 8.000 rpm",
+    "par": "22,5 Nm a 7.000 rpm",
+    "alimentacion": "Inyección electrónica",
+    "suspDel": "Horquilla invertida YUAN",
+    "suspTras": "Monoamortiguador YUAN",
+    "frenos": "Disco de 265 mm con pinza de doble pistón / disco de 220 mm",
+    "neumaticos": "80/100-21 / 120/80-18",
+    "peso": "154 kg",
+    "deposito": "13 l",
+    "dimensiones": "2.120 x 850 x 1.225 mm"
+  },
+  "fuenteFicha": "https://cfmoto.es/moto/250-dual",
+  "destacada": false,
+  "orden": 10
+}

@@ -15,6 +15,11 @@
       "src": "fantic/imgweb-scrambler-500-azul-fantic-caballero-motodest.webp",
       "color": "Azul",
       "hex": "#2970b0"
+    },
+    {
+      "src": "fantic/fantic-caballero-scrambler-500-sunset-white.webp",
+      "color": "Sunset White",
+      "hex": "#f1efe9"
     }
   ],
   "ficha": {

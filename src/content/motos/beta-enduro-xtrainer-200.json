@@ -1,0 +1,33 @@
+{
+  "nombre": "Xtrainer 200",
+  "marca": "beta",
+  "categoria": "enduro",
+  "slug": "xtrainer-200",
+  "precio": null,
+  "precioDesde": false,
+  "imagenes": [
+    {
+      "src": "beta/beta-xtrainer-200.webp",
+      "color": "Rojo",
+      "hex": "#d7261e"
+    }
+  ],
+  "ficha": {
+    "motor": "Monocilíndrico 2 tiempos, refrigerado por líquido, válvula de escape BPV",
+    "cilindrada": "190,2 cc",
+    "cambio": "6 velocidades",
+    "alimentacion": "Carburador Keihin PWK 36, engrase separado",
+    "arranque": "Eléctrico",
+    "chasis": "Acero al molibdeno de doble cuna",
+    "suspDel": "Horquilla hidráulica de 43 mm",
+    "suspTras": "Monoamortiguador con sistema progresivo",
+    "frenos": "Disco wave de 260 mm / disco wave de 240 mm",
+    "neumaticos": "90/90-21 / 140/80-18",
+    "alturaAsiento": "910 mm",
+    "peso": "97,5 kg",
+    "deposito": "8,5 l"
+  },
+  "fuenteFicha": "https://www.betamotor.com/es/motocicletas/xtrainer-2t-200/",
+  "destacada": false,
+  "orden": 15
+}

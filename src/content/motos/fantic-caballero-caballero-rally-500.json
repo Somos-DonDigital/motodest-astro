@@ -15,6 +15,11 @@
       "src": "fantic/img-moto-rally-500-verde-fantic-motodest.webp",
       "color": "Verde",
       "hex": "#395235"
+    },
+    {
+      "src": "fantic/fantic-caballero-rally-500-legend-red.webp",
+      "color": "Legend Red",
+      "hex": "#b3202a"
     }
   ],
   "ficha": {

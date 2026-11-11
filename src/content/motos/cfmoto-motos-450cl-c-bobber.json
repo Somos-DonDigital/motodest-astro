@@ -1,0 +1,37 @@
+{
+  "nombre": "450CL-C Bobber",
+  "marca": "cfmoto",
+  "categoria": "motos",
+  "slug": "450cl-c-bobber",
+  "precio": null,
+  "precioDesde": false,
+  "imagenes": [
+    {
+      "src": "cfmoto/cfmoto-450cl-c-bobber-blanco-marfil.webp",
+      "color": "Blanco Marfil",
+      "hex": "#ece5d3"
+    },
+    {
+      "src": "cfmoto/cfmoto-450cl-c-bobber-negro-nebulosa.webp",
+      "color": "Negro Nebulosa",
+      "hex": "#202124"
+    }
+  ],
+  "ficha": {
+    "motor": "Bicilíndrico, refrigeración líquida, DOHC",
+    "cilindrada": "449 cc",
+    "potencia": "30 kW a 8.000 rpm",
+    "par": "42,2 Nm a 6.250 rpm",
+    "cambio": "6 velocidades, embrague antirrebote",
+    "suspension": "Horquilla invertida de 37 mm / basculante de doble brazo",
+    "frenos": "Disco de 320 mm con pinza radial J.Juan de 4 pistones / disco de 220 mm J.Juan, ABS",
+    "neumaticos": "CST 130/90-16 / 150/80-16",
+    "alturaAsiento": "715 mm",
+    "peso": "177 kg en orden de marcha",
+    "deposito": "12 l",
+    "dimensiones": "2.205 x 805 x 1.110 mm"
+  },
+  "fuenteFicha": "https://cfmoto.es/moto/450cl-c-bobber",
+  "destacada": false,
+  "orden": 9
+}

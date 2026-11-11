@@ -1,0 +1,42 @@
+{
+  "nombre": "CFORCE C4",
+  "marca": "cfmoto",
+  "categoria": "atv",
+  "slug": "c4",
+  "precio": null,
+  "precioDesde": false,
+  "imagenes": [
+    {
+      "src": "cfmoto/cfmoto-c4-verde-cipres.webp",
+      "color": "Verde Ciprés",
+      "hex": "#2f5d3a"
+    },
+    {
+      "src": "cfmoto/cfmoto-c4-gris-gedanita.webp",
+      "color": "Gris Gedanita",
+      "hex": "#7d8288"
+    }
+  ],
+  "ficha": {
+    "motor": "Monocilíndrico, 4 tiempos, refrigeración líquida, DOHC",
+    "cilindrada": "408,8 cc",
+    "potencia": "33 CV a 7.750 rpm",
+    "par": "34,5 Nm a 5.500 rpm",
+    "cambio": "CVT",
+    "traccion": "2WD / 4WD con bloqueo de diferencial delantero",
+    "alimentacion": "Inyección EFI",
+    "suspension": "Doble trapecio independiente delante y detrás",
+    "frenos": "Discos hidráulicos de 210 mm",
+    "neumaticos": "24 x 8.00-12 / 24 x 10.00-12",
+    "alturaAsiento": "574 mm",
+    "peso": "355 kg",
+    "deposito": "17 l",
+    "carga": "270 kg",
+    "remolque": "612 kg",
+    "dimensiones": "2.165 x 1.175 x 1.265 mm",
+    "homologacion": "T3 (tractor), 2 plazas"
+  },
+  "fuenteFicha": "https://cfmoto.es/atv/c4",
+  "destacada": false,
+  "orden": 107
+}

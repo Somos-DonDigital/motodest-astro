@@ -1,0 +1,33 @@
+{
+  "nombre": "RX 250 4T",
+  "marca": "beta",
+  "categoria": "motocross",
+  "slug": "rx-250-4t",
+  "precio": null,
+  "precioDesde": false,
+  "imagenes": [
+    {
+      "src": "beta/beta-rx-250-4t.webp",
+      "color": "Rojo",
+      "hex": "#d7261e"
+    }
+  ],
+  "ficha": {
+    "motor": "Monocilíndrico 4 tiempos, refrigerado por líquido, DOHC 4 válvulas",
+    "cilindrada": "249,8 cc",
+    "cambio": "5 velocidades",
+    "alimentacion": "Inyección electrónica, cuerpo de mariposa de 46 mm",
+    "arranque": "Eléctrico",
+    "chasis": "Acero al molibdeno de doble cuna",
+    "suspDel": "Horquilla KYB de 48 mm",
+    "suspTras": "Monoamortiguador KYB con sistema progresivo",
+    "frenos": "Disco wave de 260 mm / disco wave de 240 mm",
+    "neumaticos": "80/100-21 / 100/90-19",
+    "alturaAsiento": "945 mm",
+    "peso": "101 kg",
+    "deposito": "7 l"
+  },
+  "fuenteFicha": "https://www.betamotor.com/es/motocicletas/rx-4t-250/",
+  "destacada": false,
+  "orden": 103
+}

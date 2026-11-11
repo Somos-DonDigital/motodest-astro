@@ -1,0 +1,44 @@
+{
+  "nombre": "Stealth 500",
+  "marca": "fantic",
+  "categoria": "stealth",
+  "slug": "stealth-500",
+  "precio": 6799,
+  "precioDesde": false,
+  "imagenes": [
+    {
+      "src": "fantic/fantic-stealth-500-rojo.webp",
+      "color": "Rojo",
+      "hex": "#a81e2a"
+    },
+    {
+      "src": "fantic/fantic-stealth-500-racing-white.webp",
+      "color": "Racing White",
+      "hex": "#eef0f2"
+    },
+    {
+      "src": "fantic/fantic-stealth-500-acid-green.webp",
+      "color": "Acid Green",
+      "hex": "#c6e32a"
+    }
+  ],
+  "ficha": {
+    "motor": "Monocilíndrico 4 tiempos Euro 5+, refrigerado por líquido, DOHC 4 válvulas",
+    "cilindrada": "463 cc",
+    "cambio": "6 velocidades, embrague antirrebote",
+    "alimentacion": "Inyección electrónica Ride by Wire de 46 mm",
+    "arranque": "Eléctrico",
+    "chasis": "Mixto: jaula de acero con placas laterales de aluminio forjado",
+    "suspDel": "Horquilla invertida de 41 mm",
+    "suspTras": "Monoamortiguador ajustable en precarga",
+    "frenos": "Disco de 320 mm con pinza radial / disco de 230 mm, ABS en curva y control de tracción",
+    "neumaticos": "Pirelli Diablo Rosso IV 110/70-17 / 150/60-17",
+    "alturaAsiento": "810 mm",
+    "peso": "147 kg en seco",
+    "deposito": "12 l",
+    "homologacion": "Euro 5+"
+  },
+  "fuenteFicha": "https://fantic.com/es-es/moto/street/stealth-500-red-yellow_iac0r",
+  "destacada": false,
+  "orden": 601
+}

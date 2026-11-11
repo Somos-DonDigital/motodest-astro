@@ -1,0 +1,52 @@
+{
+  "nombre": "CFORCE C6 Pro",
+  "marca": "cfmoto",
+  "categoria": "atv",
+  "slug": "c6-pro",
+  "precio": null,
+  "precioDesde": false,
+  "imagenes": [
+    {
+      "src": "cfmoto/cfmoto-c6-pro-gris-granito.webp",
+      "color": "Gris Granito",
+      "hex": "#5c5f63"
+    },
+    {
+      "src": "cfmoto/cfmoto-c6-pro-azul-skyforge.webp",
+      "color": "Azul Skyforge",
+      "hex": "#1f86c8"
+    },
+    {
+      "src": "cfmoto/cfmoto-c6-pro-rojo-magma.webp",
+      "color": "Rojo Magma",
+      "hex": "#c0262d"
+    },
+    {
+      "src": "cfmoto/cfmoto-c6-pro-camuflaje-kanati.webp",
+      "color": "Camuflaje Kanati",
+      "hex": "#5b5340"
+    }
+  ],
+  "ficha": {
+    "motor": "Monocilíndrico, 4 tiempos, refrigeración líquida, DOHC",
+    "cilindrada": "647,1 cc",
+    "potencia": "54 CV a 7.500 rpm",
+    "par": "57 Nm a 5.000 rpm",
+    "cambio": "CVT OmniDrive",
+    "traccion": "2WD / 4WD con bloqueo de diferencial delantero",
+    "alimentacion": "Inyección EFI",
+    "suspension": "Doble trapecio independiente delante y detrás",
+    "frenos": "Discos hidráulicos de 214 mm",
+    "neumaticos": "26 x 9.00-14 / 26 x 11.00-14",
+    "alturaAsiento": "564 mm",
+    "peso": "450 kg",
+    "deposito": "24 l",
+    "carga": "330 kg",
+    "remolque": "830 kg",
+    "dimensiones": "2.455 x 1.240 x 1.410 mm",
+    "homologacion": "T3 (tractor), 2 plazas"
+  },
+  "fuenteFicha": "https://cfmoto.es/atv/c6-pro",
+  "destacada": false,
+  "orden": 109
+}

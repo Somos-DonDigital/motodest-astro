@@ -1,0 +1,40 @@
+{
+  "nombre": "800MT-ES",
+  "marca": "cfmoto",
+  "categoria": "motos",
+  "slug": "800mt-es",
+  "precio": null,
+  "precioDesde": false,
+  "imagenes": [
+    {
+      "src": "cfmoto/cfmoto-800mt-es-azul-neptuno.webp",
+      "color": "Azul Neptuno",
+      "hex": "#1d5fa8"
+    },
+    {
+      "src": "cfmoto/cfmoto-800mt-es-blanco-glaciar.webp",
+      "color": "Blanco Glaciar",
+      "hex": "#e9ecef"
+    }
+  ],
+  "ficha": {
+    "motor": "Bicilíndrico en línea, refrigeración líquida, 8 válvulas DOHC",
+    "cilindrada": "799 cc",
+    "potencia": "91 CV a 9.250 rpm",
+    "par": "75 Nm a 8.000 rpm",
+    "cambio": "6 velocidades, embrague multidisco en baño de aceite",
+    "alimentacion": "Inyección electrónica",
+    "suspDel": "Horquilla invertida de 41 mm con ajuste electrónico",
+    "suspTras": "Monoamortiguador con ajuste electrónico",
+    "frenos": "Doble disco de 320 mm con pinzas radiales J.Juan / disco de 260 mm, ABS en curva",
+    "neumaticos": "Michelin Anakee 110/80 R19 / 150/70 R17",
+    "alturaAsiento": "825 mm",
+    "peso": "231 kg",
+    "deposito": "19 l",
+    "dimensiones": "2.234 x 853 x 1.277 mm",
+    "equipamiento": "Pantalla táctil de 8\" con CarPlay, control de tracción, radar de ángulo muerto"
+  },
+  "fuenteFicha": "https://cfmoto.es/moto/800mt-es",
+  "destacada": false,
+  "orden": 4
+}

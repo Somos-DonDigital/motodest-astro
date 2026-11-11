@@ -1,0 +1,32 @@
+{
+  "nombre": "Sincro 2T 250/300",
+  "marca": "beta",
+  "categoria": "trial",
+  "slug": "sincro-2t-250-300",
+  "precio": null,
+  "precioDesde": false,
+  "imagenes": [
+    {
+      "src": "beta/beta-sincro-2t-300.webp",
+      "color": "Rojo",
+      "hex": "#d7261e"
+    }
+  ],
+  "ficha": {
+    "motor": "Monocilíndrico 2 tiempos, refrigerado por líquido, admisión por láminas al cárter",
+    "cilindrada": "249,7 cc / 296,5 cc",
+    "cambio": "6 velocidades",
+    "alimentacion": "Carburador Keihin PWK de 28 mm",
+    "arranque": "A pedal o eléctrico (versión E-Start)",
+    "chasis": "Monoviga de aluminio hidroconformado",
+    "suspDel": "Horquilla hidráulica de 39 mm regulable",
+    "suspTras": "Amortiguador hidráulico",
+    "frenos": "Disco de 185 mm con pinza de 4 pistones / disco de 160 mm con pinza de 2 pistones",
+    "neumaticos": "2.75-21 / 4.00 R18",
+    "alturaAsiento": "670 mm",
+    "deposito": "2,6 l"
+  },
+  "fuenteFicha": "https://www.betamotor.com/es/motocicletas/sincro-2t-300/",
+  "destacada": false,
+  "orden": 1
+}

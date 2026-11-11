@@ -1,0 +1,45 @@
+{
+  "nombre": "Stealth 125",
+  "marca": "fantic",
+  "categoria": "stealth",
+  "slug": "stealth-125",
+  "precio": 5799,
+  "precioDesde": false,
+  "imagenes": [
+    {
+      "src": "fantic/fantic-stealth-125-amarillo.webp",
+      "color": "Amarillo",
+      "hex": "#e7c51c"
+    },
+    {
+      "src": "fantic/fantic-stealth-125-racing-white.webp",
+      "color": "Racing White",
+      "hex": "#eef0f2"
+    },
+    {
+      "src": "fantic/fantic-stealth-125-acid-green.webp",
+      "color": "Acid Green",
+      "hex": "#c6e32a"
+    }
+  ],
+  "ficha": {
+    "motor": "Monocilíndrico 4 tiempos Euro 5+, refrigerado por líquido, 4 válvulas con distribución variable",
+    "cilindrada": "124,66 cc",
+    "potencia": "11 kW (15 CV)",
+    "cambio": "6 velocidades, embrague antirrebote",
+    "alimentacion": "Inyección electrónica",
+    "arranque": "Eléctrico",
+    "chasis": "Mixto: celosía de acero con placas laterales de aluminio",
+    "suspDel": "Horquilla invertida de 41 mm",
+    "suspTras": "Monoamortiguador ajustable en precarga",
+    "frenos": "Disco de 320 mm con pinza radial / disco de 230 mm, ABS de doble canal",
+    "neumaticos": "Pirelli Diablo Rosso IV 110/70-17 / 150/60-17",
+    "alturaAsiento": "810 mm",
+    "peso": "129 kg en seco",
+    "deposito": "12,5 l",
+    "homologacion": "Euro 5+"
+  },
+  "fuenteFicha": "https://fantic.com/es-es/moto/street/stealth-125-red-yellow_a64r2",
+  "destacada": false,
+  "orden": 600
+}

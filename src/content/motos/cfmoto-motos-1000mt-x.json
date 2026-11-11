@@ -7,19 +7,14 @@
   "precioDesde": false,
   "imagenes": [
     {
-      "src": "cfmoto/img-1000mt-x-cfmoto-motodest-scaled.webp",
-      "color": "Azul",
-      "hex": "#1064a1"
+      "src": "cfmoto/cfmoto-1000mt-x-gris-aerolito.webp",
+      "color": "Gris Aerolito",
+      "hex": "#8a8d91"
     },
     {
-      "src": "cfmoto/img-1000mtx-p-cfmoto-motodest-scaled.webp",
-      "color": "Blanco",
-      "hex": "#c8c8c9"
-    },
-    {
-      "src": "cfmoto/img-1000mtx-vn-cfmoto-motodest-scaled.webp",
-      "color": "Verde",
-      "hex": "#403f3f"
+      "src": "cfmoto/cfmoto-1000mt-x-verde-tactico.webp",
+      "color": "Verde Táctico",
+      "hex": "#4b5a3a"
     }
   ],
   "ficha": {

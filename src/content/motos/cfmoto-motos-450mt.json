@@ -7,14 +7,14 @@
   "precioDesde": false,
   "imagenes": [
     {
-      "src": "cfmoto/img-450mt-cfmoto-motodest-scaled.webp",
-      "color": "Negro",
-      "hex": "#2f2f2e"
+      "src": "cfmoto/cfmoto-450mt-azul-cefiro.webp",
+      "color": "Azul Céfiro",
+      "hex": "#1f8fb8"
     },
     {
-      "src": "cfmoto/img-450mt-a-cfmoto-motodest-scaled.webp",
-      "color": "Azul",
-      "hex": "#0c5e8f"
+      "src": "cfmoto/cfmoto-450mt-gris-tundra.webp",
+      "color": "Gris Tundra",
+      "hex": "#6b7075"
     }
   ],
   "ficha": {

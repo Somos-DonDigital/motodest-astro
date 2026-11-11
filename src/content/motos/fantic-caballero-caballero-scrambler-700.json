@@ -15,6 +15,11 @@
       "src": "fantic/img-fantic-caballero-scrambler-700-roja.webp",
       "color": "Rojo",
       "hex": "#9b1326"
+    },
+    {
+      "src": "fantic/fantic-caballero-scrambler-700-sunset-white.webp",
+      "color": "Sunset White",
+      "hex": "#f1efe9"
     }
   ],
   "ficha": {
