@@ -1,0 +1,6 @@
+User-agent: *
+Allow: /
+Disallow: /api/
+Disallow: /gracias/
+
+Sitemap: https://motodest.com/sitemap-index.xml

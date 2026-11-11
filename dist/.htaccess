@@ -1,0 +1,80 @@
+# motodest.com (Astro, estático)
+Options -Indexes
+ServerSignature Off
+DirectoryIndex index.html
+ErrorDocument 404 /404.html
+
+<IfModule mod_rewrite.c>
+RewriteEngine On
+
+# HTTPS y dominio único (sin tocar la validación SSL)
+RewriteCond %{REQUEST_URI} !^/\.well-known/
+RewriteCond %{HTTPS} off [OR]
+RewriteCond %{HTTP_HOST} !^motodest\.com$ [NC]
+RewriteRule ^(.*)$ https://motodest.com/$1 [R=301,L]
+
+# Redirecciones de las URLs de WordPress (23)
+RewriteRule ^concesionario-oficial-fantic/?$ /fantic/ [R=301,L]
+RewriteRule ^concesionario-oficial-beta/?$ /beta/ [R=301,L]
+RewriteRule ^concesionario-oficial-cf-moto/?$ /cfmoto/ [R=301,L]
+RewriteRule ^concesionario-oficial-mitt/?$ /mitt/ [R=301,L]
+RewriteRule ^motos-fantic-enduro-motodest/?$ /fantic/enduro/ [R=301,L]
+RewriteRule ^motos-fantic-caballero-motodest/?$ /fantic/caballero/ [R=301,L]
+RewriteRule ^concesionario-oficial-motard-motodest/?$ /fantic/motard/ [R=301,L]
+RewriteRule ^motos-fantic-motocross-motodest/?$ /fantic/motocross/ [R=301,L]
+RewriteRule ^motos-fantic-rally-motodest/?$ /fantic/rally/ [R=301,L]
+RewriteRule ^motos-enduro-betamotor-motodest/?$ /beta/enduro/ [R=301,L]
+RewriteRule ^motos-mx-betamotor-motodest/?$ /beta/motocross/ [R=301,L]
+RewriteRule ^motos-trial-betamotor-motodest/?$ /beta/trial/ [R=301,L]
+RewriteRule ^motos-motard-betamotor-motodest/?$ /beta/motard/ [R=301,L]
+RewriteRule ^motos-alp-betamotor-motodest/?$ /beta/alp/ [R=301,L]
+RewriteRule ^minibike-betamotor-motodest/?$ /beta/minibike/ [R=301,L]
+RewriteRule ^motos-cfmoto-motodest/?$ /cfmoto/motos/ [R=301,L]
+RewriteRule ^atv-cfmoto-motodest/?$ /cfmoto/atv/ [R=301,L]
+RewriteRule ^buggies-cfmoto-motodest/?$ /cfmoto/buggies/ [R=301,L]
+RewriteRule ^scooters-mitt-motodest/?$ /mitt/scooters/ [R=301,L]
+RewriteRule ^garage-mitt-motodest/?$ /mitt/garage/ [R=301,L]
+RewriteRule ^sport-touring-mitt-motors-motodest/?$ /mitt/sport-touring/ [R=301,L]
+RewriteRule ^motos-adventure-mitt-motors-motodest/?$ /mitt/adventure/ [R=301,L]
+RewriteRule ^wordpress-felizmente-alojado-en-webempresa/?$ / [R=301,L]
+
+# Restos de WordPress
+RewriteRule ^(wp-admin|wp-login\.php|wp-content|wp-includes|xmlrpc\.php|feed|comments)(/.*)?$ - [G,L]
+
+# Barra final en las páginas
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteCond %{REQUEST_URI} !/$
+RewriteCond %{REQUEST_URI} !\.[a-z0-9]+$ [NC]
+RewriteRule ^(.*)$ /$1/ [R=301,L]
+</IfModule>
+
+<IfModule mod_headers.c>
+# VISTA PREVIA: quitar esta línea el día del lanzamiento
+Header always set X-Robots-Tag "noindex, nofollow"
+Header always set X-Content-Type-Options "nosniff"
+Header always set Referrer-Policy "strict-origin-when-cross-origin"
+Header always set X-Frame-Options "SAMEORIGIN"
+Header always set Permissions-Policy "camera=(), microphone=(), geolocation=()"
+Header always set Strict-Transport-Security "max-age=31536000"
+Header always set Content-Security-Policy "default-src 'self'; script-src 'self' 'unsafe-inline'; style-src 'self' 'unsafe-inline'; img-src 'self' data:; font-src 'self'; connect-src 'self'; form-action 'self'; frame-ancestors 'self'; base-uri 'self'; object-src 'none'; upgrade-insecure-requests"
+Header always set Cross-Origin-Opener-Policy "same-origin"
+Header unset X-Powered-By
+<FilesMatch "\.(js|css|woff2|webp|avif|jpg|jpeg|png|svg|ico)$">
+Header set Cache-Control "public, max-age=31536000, immutable"
+</FilesMatch>
+<FilesMatch "\.(html|xml|txt)$">
+Header set Cache-Control "public, max-age=0, must-revalidate"
+</FilesMatch>
+</IfModule>
+
+<IfModule mod_deflate.c>
+AddOutputFilterByType DEFLATE text/html text/css text/plain text/xml application/javascript application/json application/xml image/svg+xml
+</IfModule>
+
+# Archivos que nunca deben servirse
+<FilesMatch "(^\.|\.(md|json|yml|yaml|lock|log|sh|sql|bak|env)$)">
+Require all denied
+</FilesMatch>
+<FilesMatch "^(manifest\.webmanifest)$">
+Require all granted
+</FilesMatch>
