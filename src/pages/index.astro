@@ -24,6 +24,7 @@ const diapos = [
 ];
 const franjas: Record<string, string> = { fantic: 'franja-fantic', beta: 'franja-beta', cfmoto: 'hero-675nk-hormigon', mitt: 'franja-mitt' };
 const servicios = [
+  { img: 'hero-675nk', titulo: 'Venta de motos nuevas', texto: 'Concesionario oficial de Fantic, Beta, CFMOTO y MITT. Financiación a tu medida y entrega lista para rodar.', url: '#marcas', cta: 'Ver las marcas →' },
   { img: 'servicio-alquiler', titulo: 'Motos de alquiler', texto: 'Alquiler de motos en Barbate. Consúltanos los modelos y las fechas disponibles.' },
   { img: 'servicio-boutique', titulo: 'Tienda boutique', texto: 'Cascos, equipación y accesorios de marcas como LS2, Airoh, Alpinestars o Shad.' },
   { img: 'servicio-segunda-mano', titulo: 'Segunda mano', texto: 'Motos de ocasión revisadas. Pregúntanos qué unidades tenemos disponibles.' },
@@ -89,11 +90,11 @@ const nombresAcc: Record<string, string> = { 'acc-ls2': 'LS2', 'acc-airoh': 'Air
       <div class="servicios">
         {servicios.map((s) => (
           <article class="servicio">
-            <Image format="avif" src={imgSitio(s.img)} alt={s.titulo} widths={[480, 720]} sizes="(max-width: 700px) 92vw, 30vw" class="servicio__img" />
+            <Image format="avif" src={imgSitio(s.img)} alt={s.titulo} widths={[480, 720]} sizes="(max-width: 700px) 92vw, (max-width: 1100px) 46vw, 23vw" class="servicio__img" />
             <div class="servicio__txt">
               <h3>{s.titulo}</h3>
               <p>{s.texto}</p>
-              <a class="servicio__ver" href="#contacto">Pregúntanos →</a>
+              <a class="servicio__ver" href={s.url ?? '#contacto'}>{s.cta ?? 'Pregúntanos →'}</a>
             </div>
           </article>
         ))}
@@ -148,7 +149,7 @@ const nombresAcc: Record<string, string> = { 'acc-ls2': 'LS2', 'acc-airoh': 'Air
   .panel__btn { margin-top: 6px; }
   .marca__ver, .servicio__ver { color: var(--naranja); font-weight: 700; text-decoration: none; }
   .seccion--azul .intro--centro { color: #cfcce3; }
-  .servicios { display: grid; grid-template-columns: repeat(3, 1fr); gap: max(14px, 1.4vw); }
+  .servicios { display: grid; grid-template-columns: repeat(4, 1fr); gap: max(14px, 1.4vw); }
   .servicio { border: 1px solid var(--borde); display: flex; flex-direction: column; }
   .servicio :global(.servicio__img) { width: 100%; aspect-ratio: 4 / 3; object-fit: cover; }
   .servicio__txt { padding: 16px 20px 22px; }
@@ -164,8 +165,9 @@ const nombresAcc: Record<string, string> = { 'acc-ls2': 'LS2', 'acc-airoh': 'Air
   .cinta__pista li:hover :global(img) { filter: none; transform: scale(1.06); }
   .cinta__pista li span { position: absolute; left: 0; right: 0; bottom: 0; padding: 30px 14px 12px; background: linear-gradient(0deg, rgb(0 0 0 / 0.75), transparent); font-weight: 800; text-transform: uppercase; letter-spacing: 0.06em; opacity: 0; transform: translateY(10px); transition: 0.35s; }
   .cinta__pista li:hover span { opacity: 1; transform: none; color: var(--naranja); }
+  @media (max-width: 1100px) { .servicios { grid-template-columns: repeat(2, 1fr); } }
+  @media (max-width: 600px) { .servicios { grid-template-columns: 1fr; } }
   @media (max-width: 900px) {
-    .servicios { grid-template-columns: 1fr; }
     .paneles { flex-direction: column; height: auto; }
     .panel { flex: none; height: 64vw; min-height: 260px; }
     .panel :global(.panel__img) { filter: none; transform: none; }
