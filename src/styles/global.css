@@ -16,7 +16,7 @@
   --gris-claro: #f3f2f7;
   --borde: #e2e0ea;
   --blanco: #fff;
-  --radio: max(10px, 0.7vw);
+  --radio: 0px;
   --ancho: min(1320px, 92vw);
   --fuente-titulos: 'Death Star', 'Arial Black', Impact, sans-serif;
   --fuente-texto: 'Cairo Variable', 'Cairo', system-ui, -apple-system, 'Segoe UI', sans-serif;
@@ -62,9 +62,10 @@ p { margin: 0 0 1em; }
 /* Botones */
 .btn {
   display: inline-flex; align-items: center; justify-content: center; gap: 0.5em;
-  padding: max(12px, 0.9vw) max(22px, 1.8vw);
-  border-radius: 999px; border: 2px solid var(--naranja);
-  background: var(--naranja); color: #fff; font-weight: 700; font-size: var(--fs-texto);
+  padding: max(10px, 0.75vw) max(22px, 1.8vw);
+  border-radius: 0; border: 2px solid var(--naranja);
+  background: var(--naranja); color: #fff; font-weight: 600; font-size: var(--fs-peq);
+  text-transform: uppercase; letter-spacing: 0.06em; line-height: 1.3;
   text-decoration: none; cursor: pointer; transition: background 0.2s, border-color 0.2s, color 0.2s, transform 0.2s;
 }
 .btn:hover { background: var(--naranja-osc); border-color: var(--naranja-osc); }
@@ -99,3 +100,9 @@ p { margin: 0 0 1em; }
 .deco::before { top: -10px; right: 2vw; }
 .deco::after { bottom: -10px; left: 1vw; transform: scale(0.6); transform-origin: bottom left; }
 .deco > * { position: relative; z-index: 1; }
+
+/* Título de sección como en el diseño: centrado con el trazo naranja */
+.tit-seccion { position: relative; text-align: center; font-size: clamp(1.3rem, 2vw, 2rem); margin-bottom: max(24px, 2.4vw); }
+.tit-seccion::after { content: ''; position: absolute; top: 50%; right: max(4vw, calc(50% - 34ch)); width: clamp(70px, 9vw, 140px); height: 14px; transform: translateY(-50%); background: url('/trazo-naranja.svg') no-repeat center / contain; }
+.tit-seccion--izq::after { right: auto; left: max(4vw, calc(50% - 34ch)); }
+@media (max-width: 700px) { .tit-seccion::after { display: none; } }

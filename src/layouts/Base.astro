@@ -18,9 +18,10 @@ interface Props {
   schema?: Record<string, unknown>[];
   noindex?: boolean;
   tipoOg?: 'website' | 'product';
+  superpuesta?: boolean;
 }
 
-const { titulo, descripcion, imagen, migas = [], schema = [], noindex = false, tipoOg = 'website' } = Astro.props;
+const { titulo, descripcion, imagen, migas = [], schema = [], noindex = false, tipoOg = 'website', superpuesta = false } = Astro.props;
 const site = Astro.site!.toString().replace(/\/$/, '');
 const canonical = new URL(Astro.url.pathname, Astro.site).toString();
 const tituloCompleto = titulo.includes('Motodest') ? titulo : `${titulo} | Motodest`;
@@ -95,8 +96,9 @@ const todosSchemas = [negocio, ...migasSchema, ...schema];
   </head>
   <body>
     <a class="saltar" href="#contenido">Saltar al contenido</a>
-    <Cabecera />
+    <Cabecera superpuesta={superpuesta} />
     <main id="contenido">
+      <slot name="hero" />
       {migas.length > 0 && (
         <nav class="migas contenedor" aria-label="Migas de pan">
           <ol>

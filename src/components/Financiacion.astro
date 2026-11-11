@@ -1,0 +1,111 @@
+---
+// Calculadora de cuota (sistema francés). Orientativa: sujeta a estudio de la financiera.
+import Icono from './Icono.astro';
+import { FINANCIACION as F, EMPRESA } from '../data/sitio';
+import { euros } from '../lib/formato';
+interface Props { precio?: number | null; moto?: string; id?: string }
+const { precio = null, moto = '', id = 'financiacion' } = Astro.props;
+const base = precio ?? 6000;
+const tel = EMPRESA.telefono.replace(/\s/g, '');
+---
+<div class="calc" id={id} data-calc data-tin={F.tin} data-comision={F.comisionApertura} data-moto={moto}>
+  <div class="calc__datos">
+    <label class="calc__campo">
+      <span class="calc__etq"><Icono nombre="euro" tam={22} /> Precio de la moto</span>
+      {precio != null
+        ? <><output class="calc__valor">{euros(precio)}</output><input type="hidden" name="precio" value={precio} /></>
+        : <input class="calc__num" type="number" name="precio" min={F.importeMinimo} step="100" value={base} inputmode="numeric" />}
+    </label>
+    <label class="calc__campo">
+      <span class="calc__etq"><Icono nombre="carga" tam={22} /> Entrada <output class="calc__valor" data-entrada-txt>0 €</output></span>
+      <input type="range" name="entrada" min="0" max={Math.round(base * F.entradaMaxPct / 100 / 100) * 100} step="100" value="0" />
+      <span class="calc__lim"><span>Sin entrada</span><span>Hasta el {F.entradaMaxPct} %</span></span>
+    </label>
+    <fieldset class="calc__campo calc__plazos">
+      <legend class="calc__etq"><Icono nombre="calendario" tam={22} /> Plazo</legend>
+      <div class="calc__chips">
+        {F.plazos.map((p) => <label><input type="radio" name="plazo" value={p} checked={p === F.plazoPorDefecto} /><span>{p} meses</span></label>)}
+      </div>
+    </fieldset>
+  </div>
+  <div class="calc__res" aria-live="polite">
+    <p class="calc__titulo">Tu cuota</p>
+    <p class="calc__cuota"><strong data-cuota>—</strong> <span>/mes</span></p>
+    <dl class="calc__desglose">
+      <div><dt>Importe financiado</dt><dd data-financiado>—</dd></div>
+      <div><dt>Entrada</dt><dd data-entrada>—</dd></div>
+      <div><dt>Total a plazos</dt><dd data-total>—</dd></div>
+      <div><dt>TIN</dt><dd>{F.tin.toLocaleString('es-ES')} %{!F.confirmado && <mark class="calc__pend">[PENDIENTE: TIN provisional]</mark>}</dd></div>
+    </dl>
+    <a class="btn calc__cta" href="#contacto" data-calc-cta>Solicitar esta financiación</a>
+    <p class="calc__tel">o llámanos al <a href={`tel:${tel}`}>{EMPRESA.telefonoVisible}</a></p>
+    <p class="calc__legal">Cálculo orientativo. La financiación está sujeta a estudio y aprobación por la entidad financiera; las condiciones finales pueden variar.</p>
+  </div>
+</div>
+
+<script>
+  const fmt = (n: number) => new Intl.NumberFormat('es-ES', { style: 'currency', currency: 'EUR', maximumFractionDigits: 2, minimumFractionDigits: 2 }).format(n);
+  const fmt0 = (n: number) => new Intl.NumberFormat('es-ES', { style: 'currency', currency: 'EUR', maximumFractionDigits: 0 }).format(n);
+  document.querySelectorAll<HTMLElement>('[data-calc]').forEach((c) => {
+    const tin = Number(c.dataset.tin) / 100;
+    const com = Number(c.dataset.comision) / 100;
+    const q = <T extends Element>(s: string) => c.querySelector<T>(s)!;
+    const precio = q<HTMLInputElement>('[name=precio]');
+    const entrada = q<HTMLInputElement>('[name=entrada]');
+    const calc = () => {
+      const p = Math.max(0, Number(precio.value) || 0);
+      entrada.max = String(Math.round((p * 0.5) / 100) * 100);
+      const e = Math.min(Number(entrada.value), Number(entrada.max));
+      const n = Number(q<HTMLInputElement>('[name=plazo]:checked').value);
+      const capital = Math.max(0, p - e) * (1 + com);
+      const r = tin / 12;
+      const cuota = capital === 0 ? 0 : r === 0 ? capital / n : (capital * r) / (1 - Math.pow(1 + r, -n));
+      q('[data-cuota]').textContent = fmt(cuota);
+      q('[data-financiado]').textContent = fmt0(p - e);
+      q('[data-entrada]').textContent = fmt0(e);
+      q('[data-entrada-txt]').textContent = fmt0(e);
+      q('[data-total]').textContent = fmt0(cuota * n + e);
+      c.dataset.resumen = `Financiación: ${fmt0(p)} con ${fmt0(e)} de entrada a ${n} meses (cuota orientativa ${fmt(cuota)}/mes).`;
+    };
+    c.addEventListener('input', calc);
+    calc();
+    q('[data-calc-cta]').addEventListener('click', () => {
+      const m = document.querySelector<HTMLTextAreaElement>('#contacto textarea[name="mensaje"]');
+      if (m) m.value = `${c.dataset.moto ? c.dataset.moto + '. ' : ''}${c.dataset.resumen}`;
+      const libre = document.querySelector<HTMLInputElement>('#contacto input[name="moto_libre"]');
+      if (libre && c.dataset.moto) libre.value = c.dataset.moto;
+    });
+  });
+</script>
+
+<style>
+  .calc { display: grid; grid-template-columns: 1.2fr 1fr; background: #fff; color: var(--texto); border: 1px solid var(--borde); }
+  .calc__datos { padding: max(20px, 2vw); display: grid; gap: max(18px, 1.6vw); }
+  .calc__campo { display: grid; gap: 8px; border: 0; padding: 0; margin: 0; min-width: 0; }
+  .calc__etq { display: flex; align-items: center; gap: 10px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.04em; font-size: var(--fs-peq); color: var(--azul); padding: 0; }
+  .calc__etq :global(.icono) { color: var(--naranja); }
+  .calc__etq .calc__valor { margin-left: auto; text-transform: none; }
+  .calc__valor { font-weight: 800; font-size: 1.15rem; color: var(--azul); }
+  .calc__num { font: inherit; font-weight: 700; font-size: 1.1rem; padding: 10px 12px; border: 0; border-bottom: 2px solid var(--azul); background: var(--gris-claro); width: 100%; }
+  .calc input[type='range'] { width: 100%; accent-color: var(--naranja); }
+  .calc__lim { display: flex; justify-content: space-between; font-size: 0.8rem; color: var(--gris); }
+  .calc__chips { display: flex; flex-wrap: wrap; gap: 8px; }
+  .calc__chips label { cursor: pointer; }
+  .calc__chips input { position: absolute; opacity: 0; pointer-events: none; }
+  .calc__chips span { display: block; padding: 6px 12px; border: 1px solid var(--azul); font-size: var(--fs-peq); font-weight: 700; }
+  .calc__chips input:checked + span { background: var(--naranja); border-color: var(--naranja); color: #fff; }
+  .calc__chips input:focus-visible + span { outline: 3px solid var(--naranja); outline-offset: 2px; }
+  .calc__res { background: var(--azul); color: #fff; padding: max(20px, 2vw); display: flex; flex-direction: column; }
+  .calc__titulo { text-transform: uppercase; letter-spacing: 0.1em; font-size: var(--fs-peq); color: var(--naranja); font-weight: 700; margin: 0; }
+  .calc__cuota { margin: 4px 0 14px; }
+  .calc__cuota strong { font-size: clamp(2rem, 3.4vw, 3rem); line-height: 1; }
+  .calc__desglose { margin: 0 0 18px; display: grid; gap: 6px; font-size: var(--fs-peq); }
+  .calc__desglose div { display: flex; justify-content: space-between; gap: 10px; border-bottom: 1px solid rgb(255 255 255 / 0.15); padding-bottom: 6px; }
+  .calc__desglose dd { margin: 0; font-weight: 700; text-align: right; }
+  .calc__pend { display: block; background: #ffe1e1; color: #a00; padding: 0 4px; font-weight: 400; margin-top: 2px; }
+  .calc__cta { align-self: flex-start; }
+  .calc__tel { margin: 10px 0 0; font-size: var(--fs-peq); }
+  .calc__tel a { color: var(--naranja); font-weight: 700; text-decoration: none; }
+  .calc__legal { margin: auto 0 0; padding-top: 14px; font-size: 0.75rem; color: #cfcce3; }
+  @media (max-width: 760px) { .calc { grid-template-columns: 1fr; } }
+</style>

@@ -2,20 +2,30 @@
 import { Image } from 'astro:assets';
 import { getCollection } from 'astro:content';
 import Base from '../layouts/Base.astro';
+import Carrusel from '../components/Carrusel.astro';
 import TarjetaMoto from '../components/TarjetaMoto.astro';
 import Formulario from '../components/Formulario.astro';
+import Financiacion from '../components/Financiacion.astro';
+import Ventajas from '../components/Ventajas.astro';
 import { MARCAS, EMPRESA } from '../data/sitio';
 import { imgSitio } from '../lib/imagenes';
 
 const motos = await getCollection('motos');
 const destacadas = motos.filter((m) => m.data.destacada).sort((a, b) => MARCAS.findIndex((x) => x.slug === a.data.marca) - MARCAS.findIndex((x) => x.slug === b.data.marca) || a.data.orden - b.data.orden);
-const contar = (marca: string) => motos.filter((m) => m.data.marca === marca).length;
 const tel = EMPRESA.telefono.replace(/\s/g, '');
 
+const diapos = [
+  { img: 'hero-675nk-hormigon', titulo: 'CFMOTO 675NK', url: '/cfmoto/motos/675nk/', pos: '50% 60%' },
+  { img: 'hero-utv-dunas', titulo: 'Buggies y UTV CFMOTO', url: '/cfmoto/buggies/', pos: '60% 50%' },
+  { img: 'hero-caballero-ruta', titulo: 'Fantic Caballero', url: '/fantic/caballero/' },
+  { img: 'hero-beta', titulo: 'Beta enduro', url: '/beta/enduro/' },
+  { img: 'hero-mitt', titulo: 'MITT', url: '/mitt/' },
+];
+const franjas: Record<string, string> = { fantic: 'franja-fantic', beta: 'franja-beta', cfmoto: 'hero-675nk-hormigon', mitt: 'franja-mitt' };
 const servicios = [
-  { img: 'alquiler', titulo: 'Motos de alquiler', texto: 'Alquiler de motos en Barbate. Consúltanos los modelos y las fechas disponibles.' },
-  { img: 'boutique', titulo: 'Tienda boutique', texto: 'Cascos, equipación y accesorios de marcas como LS2, Airoh, Alpinestars o Shad.' },
-  { img: 'segunda-mano', titulo: 'Segunda mano', texto: 'Motos de ocasión revisadas. Pregúntanos qué unidades tenemos disponibles.' },
+  { img: 'servicio-alquiler', titulo: 'Motos de alquiler', texto: 'Alquiler de motos en Barbate.' },
+  { img: 'servicio-boutique', titulo: 'Tienda boutique', texto: 'Cascos, equipación y accesorios.' },
+  { img: 'servicio-segunda-mano', titulo: 'Segunda mano', texto: 'Motos de ocasión revisadas.' },
 ];
 const accesorios = ['acc-ls2', 'acc-airoh', 'acc-alpinestars', 'acc-shad', 'acc-sp-connect', 'acc-liqui-moli', 'acc-komobi'];
 const nombresAcc: Record<string, string> = { 'acc-ls2': 'LS2', 'acc-airoh': 'Airoh', 'acc-alpinestars': 'Alpinestars', 'acc-shad': 'Shad', 'acc-sp-connect': 'SP Connect', 'acc-liqui-moli': 'Liqui Moly', 'acc-komobi': 'Komobi' };
@@ -23,124 +33,105 @@ const nombresAcc: Record<string, string> = { 'acc-ls2': 'LS2', 'acc-airoh': 'Air
 <Base
   titulo="Motodest | Concesionario oficial Fantic, Beta, CFMOTO y MITT en Barbate"
   descripcion="Concesionario oficial de motos en Barbate (Cádiz): Fantic, Beta, CFMOTO y MITT. Motos, quads y buggies nuevos con financiación, alquiler, segunda mano y boutique."
+  imagen={imgSitio('hero-675nk-hormigon')}
+  superpuesta
 >
-  <section class="hero">
-    <Image src={imgSitio('hero-675nk')} alt="CFMOTO 675NK en Motodest" class="hero__img" widths={[640, 960, 1420]} sizes="100vw" loading="eager" fetchpriority="high" layout="full-width" />
-    <div class="hero__capa contenedor">
-      <span class="antetitulo">Barbate · Cádiz</span>
-      <h1>Concesionario oficial de motos en Barbate</h1>
-      <p class="hero__txt">Fantic, Beta, CFMOTO y MITT: motos, quads y buggies nuevos con asesoramiento cercano y financiación a tu medida.</p>
-      <div class="cta-linea">
-        <a class="btn" href="#destacadas">Ver motos</a>
-        <a class="btn btn--borde" href={`tel:${tel}`}>Llámanos al {EMPRESA.telefonoVisible}</a>
-      </div>
+  <Fragment slot="hero">
+    <Carrusel diapos={diapos} h1="Concesionario oficial de motos en Barbate" />
+    <Ventajas />
+  </Fragment>
+
+  <section class="concesionario">
+    <h2 class="tit-seccion tit-seccion--izq">Concesionario oficial</h2>
+    <div class="franjas">
+      {MARCAS.map((m) => (
+        <a class="franja" href={`/${m.slug}/`}>
+          <Image src={imgSitio(franjas[m.slug])} alt={`Motos ${m.nombre} en Motodest`} widths={[400, 640, 900]} sizes="(max-width: 700px) 50vw, 25vw" class="franja__img" />
+          <span class="franja__txt">{m.nombre}</span>
+        </a>
+      ))}
     </div>
+    <a class="banner" href="/fantic/caballero/">
+      <Image src={imgSitio('banner-caballero')} alt="Fantic Caballero" widths={[640, 1000]} sizes="100vw" class="banner__img" />
+      <span class="banner__sello">Caballero</span>
+      <span class="banner__ver">Ver la gama →</span>
+    </a>
   </section>
 
   <section class="seccion" id="destacadas">
     <div class="contenedor">
-      <span class="antetitulo">Motos destacadas</span>
-      <h2>Nuestras motos</h2>
-      <p class="intro">Una selección de la gama que tenemos en Motodest. Entra en cada moto para ver la ficha técnica oficial y el precio.</p>
+      <h2 class="tit-seccion">Motos destacadas</h2>
       <div class="rejilla rejilla--motos">
-        {destacadas.map((m, i) => <TarjetaMoto moto={m} cargaPrioritaria={i < 2} />)}
+        {destacadas.map((m) => <TarjetaMoto moto={m} />)}
       </div>
-      <div class="cta-linea">
-        <a class="btn" href="/contacto/">Pide información</a>
+      <div class="cta-linea cta-linea--centro">
+        <a class="btn" href="#contacto">Pide información</a>
         <span>o llámanos al <a class="tel" href={`tel:${tel}`}>{EMPRESA.telefonoVisible}</a></span>
       </div>
     </div>
   </section>
 
-  <section class="seccion seccion--gris">
+  <section class="seccion seccion--gris" id="financiacion">
     <div class="contenedor">
-      <span class="antetitulo">Concesionario oficial</span>
-      <h2>Nuestras marcas</h2>
-      <div class="rejilla marcas">
-        {MARCAS.map((m) => (
-          <a class="marca" href={`/${m.slug}/`}>
-            <Image src={imgSitio(m.logoImg)} alt={`Motos ${m.nombre} en Motodest`} widths={[400, 640]} sizes="(max-width: 700px) 92vw, 320px" class="marca__img" />
-            <div class="marca__txt">
-              <h3>{m.nombre}</h3>
-              <p>{contar(m.slug)} modelos · {m.categorias.map((c) => c.nombre).join(', ')}</p>
-              <span class="marca__ver">Descubre los modelos →</span>
-            </div>
-          </a>
-        ))}
-      </div>
+      <h2 class="tit-seccion">Financiación a tu medida</h2>
+      <p class="intro intro--centro">Calcula cuánto te sale al mes. Elige si das entrada y el plazo, y te preparamos la financiación sin compromiso.</p>
+      <Financiacion id="calc-home" />
     </div>
   </section>
 
-  <section class="seccion seccion--azul financia deco">
-    <div class="contenedor financia__in">
-      <div>
-        <span class="antetitulo">Financiación</span>
-        <h2>Financiación a tu medida</h2>
-        <p class="intro">Te preparamos un plan de pago adaptado a lo que necesitas, sin compromiso. Cuéntanos qué moto te interesa y te damos la cuota.</p>
-      </div>
-      <div class="cta-linea">
-        <a class="btn" href="/contacto/">Calcular mi cuota</a>
-        <span>o llámanos al <a class="tel" href={`tel:${tel}`}>{EMPRESA.telefonoVisible}</a></span>
-      </div>
+  <section class="servicios-sec" id="servicios">
+    <h2 class="tit-seccion">Nuestros servicios</h2>
+    <div class="servicios">
+      {servicios.map((s) => (
+        <a class="servicio" href="#contacto">
+          <Image src={imgSitio(s.img)} alt={s.titulo} widths={[480, 720, 960]} sizes="(max-width: 700px) 100vw, 34vw" class="servicio__img" />
+          <span class="servicio__txt"><strong>{s.titulo}</strong><span>{s.texto}</span></span>
+        </a>
+      ))}
     </div>
   </section>
 
-  <section class="seccion">
-    <div class="contenedor">
-      <span class="antetitulo">Nuestros servicios</span>
-      <h2>Mucho más que venta</h2>
-      <div class="rejilla servicios">
-        {servicios.map((s) => (
-          <article class="servicio">
-            <Image src={imgSitio(s.img)} alt={s.titulo} widths={[400, 640]} sizes="(max-width: 700px) 92vw, 420px" class="servicio__img" />
-            <div class="servicio__txt">
-              <h3>{s.titulo}</h3>
-              <p>{s.texto}</p>
-              <a class="servicio__ver" href="/contacto/">Pregúntanos →</a>
-            </div>
-          </article>
-        ))}
-      </div>
-    </div>
+  <section class="marcas-acc">
+    <h2 class="tit-seccion marcas-acc__tit">Nuestras marcas</h2>
+    <ul class="marcas-acc__lista">
+      {accesorios.map((a) => <li><Image src={imgSitio(a)} alt={nombresAcc[a]} widths={[240, 360]} sizes="(max-width: 700px) 45vw, 15vw" /></li>)}
+    </ul>
   </section>
 
-  <section class="seccion seccion--gris accesorios">
-    <div class="contenedor">
-      <h2 class="accesorios__tit">Marcas de equipación y accesorios</h2>
-      <ul class="accesorios__lista">
-        {accesorios.map((a) => <li><Image src={imgSitio(a)} alt={nombresAcc[a]} widths={[200, 320]} sizes="(max-width: 700px) 40vw, 180px" /></li>)}
-      </ul>
-    </div>
-  </section>
-
-  <Formulario titulo="¿Buscas moto? Te asesoramos" />
+  <Formulario titulo="¿Necesitas que te asesoremos?" subtitulo="Cuéntanos qué buscas y te llamamos" />
 </Base>
 
 <style>
-  .hero { position: relative; color: #fff; min-height: min(88vh, 860px); display: grid; align-items: end; overflow: hidden; background: var(--azul); }
-  .hero :global(.hero__img) { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; }
-  .hero::before { content: ''; position: absolute; z-index: 1; right: 3vw; top: 6vw; width: clamp(140px, 20vw, 320px); aspect-ratio: 1; background: url('/deco-lineas.svg') no-repeat center / contain; }
-  .hero::after { content: ''; position: absolute; inset: 0; background: linear-gradient(0deg, rgb(11 1 62 / 0.92) 0%, rgb(11 1 62 / 0.45) 45%, rgb(11 1 62 / 0) 75%); }
-  .hero__capa { position: relative; z-index: 1; padding-block: max(48px, 6vw); }
-  .hero h1 { max-width: 18ch; }
-  .hero__txt { font-size: clamp(1.05rem, 1.4vw, 1.4rem); max-width: 52ch; color: #e7e5f4; }
-  .marcas { grid-template-columns: repeat(auto-fit, minmax(min(100%, 280px), 1fr)); }
-  .marca { background: #fff; border-radius: var(--radio); overflow: hidden; text-decoration: none; display: flex; flex-direction: column; transition: box-shadow 0.2s, transform 0.2s; }
-  .marca:hover { box-shadow: 0 18px 40px rgb(11 1 62 / 0.12); transform: translateY(-3px); }
-  .marca :global(.marca__img) { aspect-ratio: 4 / 3; width: 100%; object-fit: cover; }
-  .marca__txt { padding: 18px 20px 22px; }
-  .marca__txt p { color: var(--gris); font-size: var(--fs-peq); }
-  .marca__ver, .servicio__ver { color: var(--naranja); font-weight: 700; text-decoration: none; }
-  .financia__in { display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 24px; }
-  .financia .cta-linea { margin-top: 0; }
-  .financia .tel { color: #fff; }
-  .servicios { grid-template-columns: repeat(auto-fit, minmax(min(100%, 280px), 1fr)); }
-  .servicio { border-radius: var(--radio); overflow: hidden; border: 1px solid var(--borde); }
-  .servicio :global(.servicio__img) { aspect-ratio: 4 / 3; width: 100%; object-fit: cover; }
-  .servicio__txt { padding: 18px 20px 22px; }
-  .accesorios { padding-block: max(36px, 4vw); }
-  .accesorios__tit { font-size: var(--fs-h3); text-align: center; }
-  .accesorios__lista { list-style: none; padding: 0 0 6px; margin: 24px 0 0; display: grid; grid-auto-flow: column; grid-auto-columns: minmax(140px, 1fr); gap: max(12px, 1.2vw); overflow-x: auto; scroll-snap-type: x mandatory; }
-  .accesorios__lista li { scroll-snap-align: start; }
-  .accesorios__lista :global(img) { width: 100%; aspect-ratio: 3 / 4; object-fit: cover; border-radius: var(--radio); }
+  .concesionario { padding-top: var(--esp-seccion); }
+  .franjas { display: grid; grid-template-columns: repeat(4, 1fr); }
+  .franja { position: relative; display: block; overflow: hidden; color: #fff; text-decoration: none; aspect-ratio: 1 / 1; }
+  .franja :global(.franja__img) { width: 100%; height: 100%; object-fit: cover; transition: transform 0.4s; }
+  .franja:hover :global(.franja__img) { transform: scale(1.05); }
+  .franja::after { content: ''; position: absolute; inset: 0; background: linear-gradient(0deg, rgb(0 0 0 / 0.55), transparent 40%); }
+  .franja__txt { position: absolute; z-index: 1; left: 0; right: 0; bottom: max(14px, 1.4vw); text-align: center; font-weight: 700; text-transform: uppercase; letter-spacing: 0.06em; font-size: clamp(0.95rem, 1.2vw, 1.2rem); }
+  .franja:hover .franja__txt { color: var(--naranja); }
+  .banner { position: relative; display: block; height: clamp(260px, 26vw, 420px); margin-top: clamp(28px, 3vw, 40px); color: #fff; text-decoration: none; }
+  .banner :global(.banner__img) { width: 100%; height: 100%; object-fit: cover; object-position: 50% 45%; }
+  .banner__sello { position: absolute; left: 50%; top: 0; transform: translate(-50%, -50%); background: #000; color: #fff; border: 3px solid #fff; border-radius: 12px; padding: 2px 16px; font-family: var(--fuente-titulos); font-size: clamp(1.2rem, 2vw, 2rem); text-transform: uppercase; letter-spacing: 0.04em; }
+  .banner__ver { position: absolute; right: 4vw; bottom: max(18px, 2vw); font-weight: 700; text-transform: uppercase; font-size: clamp(1rem, 1.4vw, 1.4rem); }
+  .banner:hover .banner__ver { color: var(--naranja); }
+  .cta-linea--centro { justify-content: center; }
+  .intro--centro { text-align: center; margin: -10px auto max(24px, 2.4vw); }
+  .servicios-sec { padding-top: var(--esp-seccion); }
+  .servicios { display: grid; grid-template-columns: repeat(3, 1fr); }
+  .servicio { position: relative; display: block; color: #fff; text-decoration: none; aspect-ratio: 1 / 0.92; overflow: hidden; }
+  .servicio :global(.servicio__img) { width: 100%; height: 100%; object-fit: cover; transition: transform 0.4s; }
+  .servicio:hover :global(.servicio__img) { transform: scale(1.04); }
+  .servicio::after { content: ''; position: absolute; inset: 0; background: linear-gradient(0deg, rgb(0 0 0 / 0.65), transparent 45%); }
+  .servicio__txt { position: absolute; z-index: 1; left: 0; right: 0; bottom: max(16px, 1.6vw); text-align: center; display: grid; gap: 2px; }
+  .servicio__txt strong { text-transform: uppercase; letter-spacing: 0.06em; font-size: clamp(1rem, 1.3vw, 1.3rem); }
+  .servicio__txt span { font-size: var(--fs-peq); opacity: 0.9; }
+  .servicio:hover strong { color: var(--naranja); }
+  .marcas-acc { background: #000; color: #fff; padding-block: max(48px, 5vw); margin-top: var(--esp-seccion); }
+  .marcas-acc__tit { color: #fff; }
+  .marcas-acc__lista { list-style: none; margin: 0; padding: 0; display: grid; grid-auto-flow: column; grid-auto-columns: minmax(150px, 1fr); gap: 6px; overflow-x: auto; scroll-snap-type: x mandatory; }
+  .marcas-acc__lista li { scroll-snap-align: start; }
+  .marcas-acc__lista :global(img) { width: 100%; aspect-ratio: 16 / 9; object-fit: cover; filter: grayscale(1) brightness(0.85); transition: filter 0.3s; }
+  .marcas-acc__lista li:hover :global(img) { filter: none; }
+  @media (max-width: 900px) { .franjas { grid-template-columns: 1fr 1fr; } .servicios { grid-template-columns: 1fr; } .servicio { aspect-ratio: 16 / 10; } }
 </style>

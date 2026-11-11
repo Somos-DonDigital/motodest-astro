@@ -2,17 +2,23 @@
 import { MARCAS, EMPRESA } from '../data/sitio';
 const año = new Date().getFullYear();
 const d = EMPRESA.direccion;
+const tel = EMPRESA.telefono.replace(/\s/g, '');
 ---
 <footer class="pie">
   <div class="contenedor pie__rejilla">
     <div>
-      <img src="/logo-motodest.svg" alt="Motodest" width="200" height="30" loading="lazy" />
-      <p class="pie__txt">Concesionario oficial Fantic, Beta, CFMOTO y MITT en Barbate (Cádiz).</p>
-      <address class="pie__txt">
-        {d.calle}<br />{d.cp} {d.localidad} ({d.provincia})<br />
-        <a href={`tel:${EMPRESA.telefono.replace(/\s/g, '')}`}>{EMPRESA.telefonoVisible}</a><br />
-        <a href={`mailto:${EMPRESA.email}`}>{EMPRESA.email}</a>
-      </address>
+      <h2 class="pie__tit">Motodest</h2>
+      <dl class="pie__datos">
+        <dt>Email</dt><dd><a href={`mailto:${EMPRESA.email}`}>{EMPRESA.email}</a></dd>
+        <dt>Teléfono</dt><dd><a href={`tel:${tel}`}>{EMPRESA.telefonoVisible}</a></dd>
+        <dt>Dirección</dt><dd>{d.calle}, {d.cp} {d.localidad}, {d.provincia}</dd>
+      </dl>
+    </div>
+    <div>
+      <h2 class="pie__tit">Horario</h2>
+      <dl class="pie__datos">
+        {EMPRESA.horario.map((h) => <><dt>{h.dias}</dt><dd>{h.horas}</dd></>)}
+      </dl>
     </div>
     <div>
       <h2 class="pie__tit">Marcas</h2>
@@ -21,44 +27,42 @@ const d = EMPRESA.direccion;
       </ul>
     </div>
     <div>
-      <h2 class="pie__tit">Horario</h2>
-      <dl class="pie__horario">
-        {EMPRESA.horario.map((h) => <><dt>{h.dias}</dt><dd>{h.horas}</dd></>)}
-      </dl>
-    </div>
-    <div>
-      <h2 class="pie__tit">Información</h2>
+      <h2 class="pie__tit">Legal</h2>
       <ul class="pie__lista">
-        <li><a href="/contacto/">Contacto</a></li>
         <li><a href="/aviso-legal/">Aviso legal</a></li>
         <li><a href="/politica-de-privacidad/">Política de privacidad</a></li>
-        <li><a href="/politica-de-cookies/">Política de cookies</a></li>
+        <li><a href="/politica-de-cookies/">Cookies</a></li>
       </ul>
-      {EMPRESA.redes.length > 0 && (
-        <ul class="pie__redes">
-          {EMPRESA.redes.map((r) => <li><a href={r.url} rel="noopener" target="_blank">{r.nombre}</a></li>)}
-        </ul>
-      )}
+      <img class="pie__logo" src="/logo-motodest-azul.svg" alt="Motodest" width="220" height="32" loading="lazy" />
     </div>
   </div>
-  <div class="contenedor pie__legal">
+  {EMPRESA.redes.length > 0 && (
+    <ul class="pie__redes contenedor">
+      {EMPRESA.redes.map((r) => <li><a href={r.url} rel="noopener" target="_blank">{r.nombre}</a></li>)}
+    </ul>
+  )}
+  <div class="pie__legal">
     <span>© {año} Motodest</span>
-    <span>Web diseñada y desarrollada por <a href="https://dondigital.es" rel="noopener">DonDigital</a></span>
+    <span aria-hidden="true">|</span>
+    <span>Página web desarrollada por <a href="https://dondigital.es" rel="noopener">DonDigital</a></span>
   </div>
 </footer>
 <style>
-  .pie { background: var(--azul); color: #cfcce3; padding-top: max(56px, 5vw); font-size: var(--fs-peq); }
+  /* Pie naranja con texto azul marino (contraste AA) y barra inferior negra, como el diseño */
+  .pie { background: var(--naranja); color: var(--azul); padding-top: max(48px, 4.4vw); font-size: var(--fs-peq); }
   .pie a { text-decoration: none; }
-  .pie a:hover { color: var(--naranja); }
-  .pie__rejilla { display: grid; grid-template-columns: 1.4fr 1fr 1.2fr 1fr; gap: max(28px, 3vw); }
-  .pie__tit { font-size: 1rem; color: #fff; letter-spacing: 0.08em; }
-  .pie__txt { margin-top: 18px; font-style: normal; }
-  .pie__lista { list-style: none; padding: 0; margin: 0; display: grid; gap: 8px; }
-  .pie__horario { margin: 0; display: grid; gap: 2px; }
-  .pie__horario dt { color: #fff; font-weight: 700; margin-top: 8px; }
-  .pie__horario dd { margin: 0; }
-  .pie__redes { list-style: none; padding: 0; display: flex; gap: 14px; margin-top: 18px; }
-  .pie__legal { display: flex; flex-wrap: wrap; justify-content: space-between; gap: 10px; border-top: 1px solid rgb(255 255 255 / 0.12); margin-top: max(40px, 4vw); padding-block: 22px; }
+  .pie a:hover { text-decoration: underline; }
+  .pie__rejilla { display: grid; grid-template-columns: repeat(4, 1fr); gap: max(28px, 3vw); padding-bottom: max(36px, 3.4vw); }
+  .pie__tit { font-size: clamp(1rem, 1.2vw, 1.2rem); color: var(--azul); margin-bottom: 14px; }
+  .pie__datos { margin: 0; display: grid; gap: 0; }
+  .pie__datos dt { text-transform: uppercase; font-weight: 600; margin-top: 10px; }
+  .pie__datos dt:first-child { margin-top: 0; }
+  .pie__datos dd { margin: 0; }
+  .pie__lista { list-style: none; padding: 0; margin: 0; display: grid; gap: 4px; text-transform: uppercase; }
+  .pie__logo { width: clamp(150px, 14vw, 220px); margin-top: 24px; }
+  .pie__redes { list-style: none; display: flex; justify-content: center; gap: 14px; padding: 0 0 24px; margin-block: 0; }
+  .pie__legal { background: #000; color: #fff; display: flex; flex-wrap: wrap; justify-content: center; gap: 6px 24px; padding: 10px 4vw; font-size: 0.78rem; text-transform: uppercase; letter-spacing: 0.04em; }
+  .pie__legal a { color: #fff; }
   @media (max-width: 900px) { .pie__rejilla { grid-template-columns: 1fr 1fr; } }
-  @media (max-width: 560px) { .pie__rejilla { grid-template-columns: 1fr; } }
+  @media (max-width: 520px) { .pie__rejilla { grid-template-columns: 1fr; } }
 </style>

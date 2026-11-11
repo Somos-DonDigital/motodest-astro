@@ -2,6 +2,7 @@
 // Moto en grande para las páginas de categoría (diseño de la diseñadora: foto grande,
 // palabra de la categoría de fondo, colores, precio, CTA y datos clave con línea).
 import { Image } from 'astro:assets';
+import Icono from './Icono.astro';
 import { imgMoto } from '../lib/imagenes';
 import { precioTexto, urlMoto, nombreCompleto, type Moto } from '../lib/formato';
 interface Props { moto: Moto; palabra: string; cargaPrioritaria?: boolean }
@@ -13,7 +14,7 @@ const CAMPOS: [string, string][] = [
   ['alturaAsiento', 'Altura de asiento'], ['peso', 'Peso'], ['autonomia', 'Autonomía'],
   ['bateria', 'Batería'], ['deposito', 'Depósito'], ['traccion', 'Tracción'],
 ];
-const datos = CAMPOS.filter(([k]) => m.ficha[k]).slice(0, 4).map(([k, t]) => [t, m.ficha[k]]);
+const datos = CAMPOS.filter(([k]) => m.ficha[k]).slice(0, 4).map(([k, t]) => [k, t, m.ficha[k]]);
 const nombre = nombreCompleto(m);
 ---
 <article class="fc">
@@ -38,7 +39,7 @@ const nombre = nombreCompleto(m);
     </div>
     {datos.length > 0 && (
       <dl class="fc__datos">
-        {datos.map(([t, v]) => <div><dt>{t}</dt><dd>{v}</dd></div>)}
+        {datos.map(([k, t, v]) => <div><Icono nombre={k} /><dt>{t}</dt><dd>{v}</dd></div>)}
       </dl>
     )}
   </div>
@@ -89,7 +90,8 @@ const nombre = nombreCompleto(m);
   .fc__nota span { width: 9px; height: 9px; border-radius: 50%; background: #2fb34f; }
   .fc__acciones { display: flex; flex-wrap: wrap; gap: 10px; margin-bottom: max(20px, 2vw); }
   .fc__datos { display: grid; grid-template-columns: 1fr 1fr; gap: 18px max(18px, 2vw); margin: auto 0 0; }
-  .fc__datos div { border-top: 2px solid var(--azul); padding-top: 8px; }
+  .fc__datos div { border-top: 2px solid var(--azul); padding-top: 10px; display: grid; grid-template-columns: auto 1fr; column-gap: 12px; align-items: start; }
+  .fc__datos :global(.icono) { grid-row: span 2; color: var(--naranja); }
   .fc__datos dt { font-family: var(--fuente-texto); font-weight: 700; text-transform: uppercase; letter-spacing: 0.04em; font-size: var(--fs-peq); color: var(--azul); }
   .fc__datos dd { margin: 4px 0 0; font-size: var(--fs-peq); color: #333; }
 </style>

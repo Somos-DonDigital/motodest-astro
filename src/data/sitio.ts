@@ -31,6 +31,18 @@ export const EMPRESA = {
   redes: [] as { nombre: string; url: string }[],
 };
 
+// Financiación. PENDIENTE: confirmar con la financiera el TIN, los plazos, la entrada mínima
+// y si hay comisión de apertura. Mientras `confirmado` sea false la calculadora lo marca en rojo.
+export const FINANCIACION = {
+  confirmado: false,
+  tin: 9.99, // % anual, provisional
+  comisionApertura: 0, // % sobre el importe financiado
+  plazos: [12, 24, 36, 48, 60, 72, 84, 96],
+  plazoPorDefecto: 48,
+  entradaMaxPct: 50,
+  importeMinimo: 1500,
+};
+
 export type SlugMarca = 'fantic' | 'beta' | 'cfmoto' | 'mitt';
 
 export interface Categoria {

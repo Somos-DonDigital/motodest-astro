@@ -1,55 +1,56 @@
 ---
 import { EMPRESA } from '../data/sitio';
-interface Props { moto?: string; titulo?: string; id?: string }
-const { moto = '', titulo = '¿Te asesoramos?', id = 'contacto' } = Astro.props;
+interface Props { moto?: string; titulo?: string; subtitulo?: string; id?: string }
+const { moto = '', titulo = '¿Necesitas que te asesoremos?', subtitulo = 'Déjanos tus datos y te llamamos', id = 'contacto' } = Astro.props;
+const tel = EMPRESA.telefono.replace(/\s/g, '');
 ---
-<section class="form-sec seccion seccion--azul deco" id={id}>
-  <div class="contenedor form-sec__rejilla">
-    <div>
-      <span class="antetitulo">Contacto</span>
-      <h2>{titulo}</h2>
-      <p class="intro">Déjanos tus datos y te llamamos para resolver tus dudas, preparar una prueba o un presupuesto con financiación.</p>
-      <p class="form-sec__tel">O llámanos al <a href={`tel:${EMPRESA.telefono.replace(/\s/g, '')}`}>{EMPRESA.telefonoVisible}</a></p>
-    </div>
+<section class="form-sec seccion" id={id}>
+  <div class="contenedor form-sec__in">
+    <h2 class="form-sec__tit">{titulo}</h2>
+    <p class="form-sec__sub">{subtitulo}</p>
     <form class="form" method="post" action="/api/contacto.php">
       <input type="hidden" name="moto" value={moto} />
       <input type="hidden" name="origen" value={Astro.url.pathname} />
       <div class="form__trampa" aria-hidden="true"><label>No rellenar <input type="text" name="web" tabindex="-1" autocomplete="off" /></label></div>
-      <div class="form__fila">
-        <label>Nombre<input type="text" name="nombre" required autocomplete="name" maxlength="80" /></label>
-        <label>Teléfono<input type="tel" name="telefono" required autocomplete="tel" maxlength="20" pattern="[0-9 +()-]{9,20}" /></label>
-      </div>
-      <label>Email<input type="email" name="email" required autocomplete="email" maxlength="120" /></label>
+      <label>Nombre<input type="text" name="nombre" required autocomplete="name" maxlength="80" /></label>
+      <label>Teléfono<input type="tel" name="telefono" required autocomplete="tel" maxlength="20" pattern="[0-9 +()-]{9,20}" /></label>
+      <label class="form__ancho">Email<input type="email" name="email" required autocomplete="email" maxlength="120" /></label>
       {moto
-        ? <p class="form__moto">Consulta sobre: <strong>{moto}</strong></p>
-        : <label>¿Qué moto te interesa?<input type="text" name="moto_libre" maxlength="120" /></label>}
-      <label>Mensaje<textarea name="mensaje" rows="4" maxlength="2000"></textarea></label>
-      <label class="form__check">
+        ? <p class="form__moto form__ancho">Consulta sobre: <strong>{moto}</strong></p>
+        : <label class="form__ancho">¿Qué moto te interesa?<input type="text" name="moto_libre" maxlength="120" /></label>}
+      <label class="form__ancho">Información adicional<textarea name="mensaje" rows="3" maxlength="2000"></textarea></label>
+      <label class="form__check form__ancho">
         <input type="checkbox" name="privacidad" value="1" required />
         <span>He leído y acepto la <a href="/politica-de-privacidad/" target="_blank">política de privacidad</a>.</span>
       </label>
-      <label class="form__check">
+      <label class="form__check form__ancho">
         <input type="checkbox" name="comercial" value="1" />
         <span>Quiero recibir ofertas y novedades de Motodest.</span>
       </label>
-      <button class="btn" type="submit">Enviar consulta</button>
-      <p class="form__info">Responsable: Motodest. Finalidad: responder a tu consulta. Más información en la política de privacidad.</p>
+      <div class="form__envio form__ancho">
+        <button class="btn" type="submit">Enviar consulta</button>
+        <span>o llámanos al <a href={`tel:${tel}`}>{EMPRESA.telefonoVisible}</a></span>
+      </div>
+      <p class="form__info form__ancho">Responsable: Motodest. Finalidad: responder a tu consulta. Más información en la política de privacidad.</p>
     </form>
   </div>
 </section>
 <style>
-  .form-sec__rejilla { display: grid; grid-template-columns: 1fr 1.1fr; gap: max(32px, 5vw); align-items: start; }
-  .form-sec__tel { font-weight: 700; }
-  .form-sec__tel a { color: var(--naranja); text-decoration: none; }
-  .form { background: #fff; color: var(--texto); padding: max(22px, 2.4vw); border-radius: var(--radio); display: grid; gap: 14px; }
-  .form__fila { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; }
-  .form label { display: grid; gap: 6px; font-weight: 700; font-size: var(--fs-peq); }
-  .form input[type='text'], .form input[type='tel'], .form input[type='email'], .form textarea { font: inherit; font-weight: 400; padding: 12px 14px; border: 1px solid var(--borde); border-radius: 8px; background: var(--gris-claro); width: 100%; }
-  .form input:focus, .form textarea:focus { outline: 2px solid var(--naranja); background: #fff; }
-  .form__check { grid-template-columns: auto 1fr !important; align-items: start; font-weight: 400 !important; }
+  .form-sec__in { max-width: 820px; }
+  .form-sec__tit { text-align: center; color: var(--naranja); font-family: var(--fuente-texto); font-weight: 700; font-size: clamp(1.5rem, 2.4vw, 2.3rem); margin-bottom: 4px; }
+  .form-sec__sub { text-align: center; color: var(--naranja); font-weight: 700; text-transform: uppercase; letter-spacing: 0.04em; font-size: var(--fs-peq); margin-bottom: max(28px, 3vw); }
+  .form { display: grid; grid-template-columns: 1fr 1fr; gap: 22px 28px; }
+  .form__ancho { grid-column: 1 / -1; }
+  .form label { display: grid; gap: 2px; color: var(--naranja); font-size: var(--fs-peq); }
+  .form input[type='text'], .form input[type='tel'], .form input[type='email'], .form textarea { font: inherit; color: var(--texto); padding: 6px 0; border: 0; border-bottom: 1.5px solid var(--naranja); background: transparent; width: 100%; border-radius: 0; resize: vertical; }
+  .form input:focus, .form textarea:focus { outline: none; border-bottom-color: var(--azul); border-bottom-width: 2px; }
+  .form__check { grid-template-columns: auto 1fr !important; align-items: start; gap: 10px !important; color: var(--texto) !important; }
   .form__check input { margin-top: 5px; accent-color: var(--naranja); }
+  .form__check a { color: var(--naranja); }
   .form__moto { margin: 0; font-size: var(--fs-peq); }
   .form__trampa { position: absolute; left: -9999px; }
-  .form__info { font-size: 0.8rem; color: var(--gris); margin: 0; }
-  @media (max-width: 860px) { .form-sec__rejilla, .form__fila { grid-template-columns: 1fr; } }
+  .form__envio { display: flex; flex-wrap: wrap; align-items: center; gap: 12px 20px; }
+  .form__envio a { color: var(--naranja); font-weight: 700; text-decoration: none; }
+  .form__info { font-size: 0.78rem; color: var(--gris); margin: 0; }
+  @media (max-width: 640px) { .form { grid-template-columns: 1fr; } }
 </style>
