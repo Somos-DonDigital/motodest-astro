@@ -29,7 +29,7 @@ function limpio(string $k, int $max = 200): string {
 }
 
 
-function mimeCorreo(string $texto, string $html, string &$tipo): string {
+function mimeCorreo(string $texto, string $html, ?string &$tipo): string {
     $alt = 'alt' . bin2hex(random_bytes(8));
     $rel = 'rel' . bin2hex(random_bytes(8));
     $tipo = 'multipart/related; type="multipart/alternative"; boundary="' . $rel . '"';
