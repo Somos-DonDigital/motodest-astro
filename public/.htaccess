@@ -72,7 +72,7 @@ AddOutputFilterByType DEFLATE text/html text/css text/plain text/xml application
 </IfModule>
 
 # Archivos que nunca deben servirse
-<FilesMatch "(^\.|\.(md|json|yml|yaml|lock|log|sh|sql|bak|env)$)">
+<FilesMatch "(^\.|\.(md|yml|yaml|lock|log|sh|sql|bak|env)$)">
 Require all denied
 </FilesMatch>
 <FilesMatch "^(manifest\.webmanifest|buscar\.json)$">
