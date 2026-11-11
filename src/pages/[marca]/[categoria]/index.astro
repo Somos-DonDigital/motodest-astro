@@ -31,7 +31,7 @@ const descripcion = `${cat.h1} en Barbate (Cádiz): ${motos.length} modelos${des
     itemListElement: motos.map((m, i) => ({ '@type': 'ListItem', position: i + 1, name: nombreCompleto(m.data), url: new URL(urlMoto(m.data), Astro.site).toString() })),
   }]}
 >
-  <section class="cab-cat">
+  <section class="cab-cat deco">
     <div class="contenedor">
       <span class="antetitulo">Concesionario oficial {marca.nombre}</span>
       <h1>{cat.h1}</h1>

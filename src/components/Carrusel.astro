@@ -1,78 +1,100 @@
 ---
-// Carrusel de cabecera a pantalla completa (diseño): foto, título del modelo y "Descubre más".
+// Hero a pantalla completa: fotos que se funden con GSAP (zoom lento), sombreado azul
+// de marca, líneas diagonales del manual y el texto fijo con sus CTA.
 import { Image } from 'astro:assets';
 import { imgSitio } from '../lib/imagenes';
-export interface Diapo { img: string; titulo: string; url: string; texto?: string; alt?: string; pos?: string }
-interface Props { diapos: Diapo[]; h1?: string; alto?: 'alto' | 'medio' }
-const { diapos, h1, alto = 'alto' } = Astro.props;
-const varias = diapos.length > 1;
+import { EMPRESA } from '../data/sitio';
+export interface Diapo { img: string; titulo: string; url: string; alt?: string; pos?: string }
+interface Props { diapos: Diapo[]; antetitulo: string; h1: string; texto: string; cta?: { texto: string; url: string }; alto?: 'alto' | 'medio' }
+const { diapos, antetitulo, h1, texto, cta = { texto: 'Ver motos', url: '#destacadas' }, alto = 'alto' } = Astro.props;
+const tel = EMPRESA.telefono.replace(/\s/g, '');
 ---
-<section class:list={['carr', `carr--${alto}`]} data-carr aria-roledescription={varias ? 'carrusel' : undefined} aria-label="Destacados">
-  <div class="carr__pista" data-pista>
+<section class:list={['hero', `hero--${alto}`]} data-hero>
+  <div class="hero__fotos">
     {diapos.map((d, i) => (
-      <div class="carr__diapo" role={varias ? 'group' : undefined} aria-roledescription={varias ? 'diapositiva' : undefined} aria-label={varias ? `${i + 1} de ${diapos.length}` : undefined}>
-        <Image format="avif" src={imgSitio(d.img)} alt={d.alt ?? d.titulo} widths={[640, 960, 1440, 2000]} sizes="100vw" loading={i === 0 ? 'eager' : 'lazy'} fetchpriority={i === 0 ? 'high' : 'auto'} class="carr__img" style={d.pos ? `object-position:${d.pos}` : undefined} />
-        <div class="carr__capa contenedor">
-          {i === 0 && h1 ? <h1 class="carr__tit">{d.titulo}<span class="sr-only"> · {h1}</span></h1> : <p class="carr__tit">{d.titulo}</p>}
-          {d.texto && <p class="carr__txt">{d.texto}</p>}
-          <a class="btn carr__btn" href={d.url}>Descubre más</a>
-        </div>
-      </div>
+      <Image format="avif" src={imgSitio(d.img)} alt={i === 0 ? (d.alt ?? d.titulo) : ''} widths={[640, 960, 1440, 2000]} sizes="100vw" loading={i === 0 ? 'eager' : 'lazy'} fetchpriority={i === 0 ? 'high' : 'auto'} class:list={['hero__img', { activa: i === 0 }]} style={d.pos ? `object-position:${d.pos}` : undefined} />
     ))}
   </div>
-  {varias && (
-    <>
-      <button class="carr__flecha carr__flecha--ant" type="button" aria-label="Anterior" data-ant><svg viewBox="0 0 24 24" width="28" height="28" aria-hidden="true"><path d="m15 5-7 7 7 7" fill="none" stroke="currentColor" stroke-width="1.6"/></svg></button>
-      <button class="carr__flecha carr__flecha--sig" type="button" aria-label="Siguiente" data-sig><svg viewBox="0 0 24 24" width="28" height="28" aria-hidden="true"><path d="m9 5 7 7-7 7" fill="none" stroke="currentColor" stroke-width="1.6"/></svg></button>
-      <div class="carr__puntos" role="group" aria-label="Elegir diapositiva">
-        {diapos.map((_, i) => <button type="button" class:list={['carr__punto', { activo: i === 0 }]} aria-label={`Ir a la ${i + 1}`} data-ir={i}></button>)}
+  <span class="hero__deco" aria-hidden="true"></span>
+  <div class="hero__capa contenedor">
+    <span class="antetitulo">{antetitulo}</span>
+    <h1 class="hero__tit">{h1}</h1>
+    <p class="hero__txt">{texto}</p>
+    <div class="cta-linea">
+      <a class="btn" href={cta.url}>{cta.texto}</a>
+      <a class="btn btn--borde" href={`tel:${tel}`}>Llámanos al {EMPRESA.telefonoVisible}</a>
+    </div>
+    {diapos.length > 1 && (
+      <div class="hero__pie">
+        <a class="hero__modelo" href={diapos[0].url} data-modelo>{diapos[0].titulo} <span aria-hidden="true">→</span></a>
+        <div class="hero__puntos" role="group" aria-label="Elegir foto">
+          {diapos.map((d, i) => <button type="button" class:list={['hero__punto', { activo: i === 0 }]} aria-label={d.titulo} data-ir={i} data-url={d.url} data-titulo={d.titulo}><span></span></button>)}
+        </div>
       </div>
-    </>
-  )}
+    )}
+  </div>
 </section>
 
 <script>
-  document.querySelectorAll<HTMLElement>('[data-carr]').forEach((c) => {
-    const pista = c.querySelector<HTMLElement>('[data-pista]')!;
-    const n = pista.children.length;
-    if (n < 2) return;
-    const puntos = [...c.querySelectorAll<HTMLButtonElement>('[data-ir]')];
-    let i = 0;
-    const ir = (k: number) => { i = (k + n) % n; pista.scrollTo({ left: i * pista.clientWidth, behavior: 'smooth' }); };
-    pista.addEventListener('scroll', () => {
-      const k = Math.round(pista.scrollLeft / pista.clientWidth);
-      if (k !== i) i = k;
-      puntos.forEach((p, j) => p.classList.toggle('activo', j === k));
-    }, { passive: true });
-    c.querySelector('[data-ant]')!.addEventListener('click', () => { ir(i - 1); parar(); });
-    c.querySelector('[data-sig]')!.addEventListener('click', () => { ir(i + 1); parar(); });
-    puntos.forEach((p, j) => p.addEventListener('click', () => { ir(j); parar(); }));
+  import { gsap } from 'gsap';
+  document.querySelectorAll<HTMLElement>('[data-hero]').forEach((h) => {
+    const fotos = [...h.querySelectorAll<HTMLImageElement>('.hero__img')];
+    const puntos = [...h.querySelectorAll<HTMLButtonElement>('[data-ir]')];
+    const modelo = h.querySelector<HTMLAnchorElement>('[data-modelo]');
     const reducir = matchMedia('(prefers-reduced-motion: reduce)').matches;
-    let t = reducir ? 0 : window.setInterval(() => { if (!document.hidden) ir(i + 1); }, 6000);
-    function parar() { if (t) { clearInterval(t); t = 0; } }
-    c.addEventListener('pointerdown', parar);
-    c.addEventListener('focusin', parar);
+    if (!reducir) {
+      gsap.fromTo(fotos[0], { scale: 1.12 }, { scale: 1, duration: 7, ease: 'power1.out' });
+      gsap.from(h.querySelectorAll('.hero__capa > *'), { y: 40, opacity: 0, duration: 0.9, ease: 'power3.out', stagger: 0.1, delay: 0.1 });
+      gsap.from(h.querySelector('.hero__deco'), { x: 80, opacity: 0, duration: 1.2, ease: 'power3.out', delay: 0.3 });
+    }
+    if (fotos.length < 2) return;
+    let i = 0;
+    const ir = (k: number) => {
+      const sig = (k + fotos.length) % fotos.length;
+      if (sig === i) return;
+      const ant = fotos[i]; const nueva = fotos[sig];
+      nueva.loading = 'eager';
+      gsap.set(nueva, { zIndex: 2, opacity: 0, scale: 1.12 });
+      gsap.set(ant, { zIndex: 1 });
+      gsap.to(nueva, { opacity: 1, duration: 1.2, ease: 'power2.inOut' });
+      if (!reducir) gsap.to(nueva, { scale: 1, duration: 7, ease: 'power1.out' });
+      gsap.to(ant, { opacity: 0, duration: 1.2, delay: 0.6 });
+      puntos.forEach((p, j) => p.classList.toggle('activo', j === sig));
+      if (modelo) {
+        gsap.to(modelo, { y: -10, opacity: 0, duration: 0.25, onComplete: () => {
+          modelo.href = puntos[sig].dataset.url!; modelo.firstChild!.textContent = `${puntos[sig].dataset.titulo} `;
+          gsap.fromTo(modelo, { y: 10, opacity: 0 }, { y: 0, opacity: 1, duration: 0.35 });
+        } });
+      }
+      i = sig;
+    };
+    let t = 0;
+    const reiniciar = () => { clearInterval(t); if (!reducir) t = window.setInterval(() => { if (!document.hidden) ir(i + 1); }, 6500); };
+    puntos.forEach((p, j) => p.addEventListener('click', () => { ir(j); reiniciar(); }));
+    reiniciar();
+    window.addEventListener('load', () => fotos.slice(1).forEach((f) => (f.loading = 'eager')));
   });
 </script>
 
 <style>
-  .carr { position: relative; background: #000; color: #fff; }
-  .carr__pista { display: grid; grid-auto-flow: column; grid-auto-columns: 100%; overflow-x: auto; scroll-snap-type: x mandatory; scrollbar-width: none; }
-  .carr__pista::-webkit-scrollbar { display: none; }
-  .carr__diapo { position: relative; scroll-snap-align: start; display: grid; align-items: end; min-height: clamp(520px, 62vw, 900px); overflow: hidden; }
-  .carr--medio .carr__diapo { min-height: clamp(460px, 54vw, 780px); }
-  .carr__diapo :global(.carr__img) { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; }
-  .carr__diapo::after { content: ''; position: absolute; inset: 0; background: linear-gradient(0deg, rgb(0 0 0 / 0.6) 0%, rgb(0 0 0 / 0) 45%); }
-  .carr__capa { position: relative; z-index: 1; padding-bottom: max(64px, 6vw); }
-  .carr__tit { font-family: var(--fuente-texto); font-weight: 700; text-transform: uppercase; font-size: clamp(1.7rem, 2.8vw, 2.8rem); line-height: 1.05; letter-spacing: 0; max-width: 16ch; margin: 0 0 12px; }
-  .carr__txt { max-width: 48ch; margin: 0 0 14px; }
-  .carr__btn { padding: 6px 28px; }
-  .carr__flecha { position: absolute; top: 50%; transform: translateY(-50%); background: none; border: 0; color: #fff; padding: 12px; cursor: pointer; z-index: 2; opacity: 0.85; }
-  .carr__flecha:hover { opacity: 1; color: var(--naranja); }
-  .carr__flecha--ant { left: max(8px, 3vw); }
-  .carr__flecha--sig { right: max(8px, 3vw); }
-  .carr__puntos { position: absolute; left: 50%; bottom: max(20px, 2vw); transform: translateX(-50%); display: flex; gap: 10px; z-index: 2; }
-  .carr__punto { width: 11px; height: 11px; border-radius: 50%; border: 0; padding: 0; background: #fff; cursor: pointer; }
-  .carr__punto.activo { background: var(--naranja); }
-  @media (max-width: 700px) { .carr__flecha { display: none; } .carr__diapo { min-height: 78vh; } }
+  .hero { position: relative; color: #fff; min-height: min(92vh, 900px); display: grid; align-items: end; overflow: hidden; background: var(--azul); }
+  .hero--medio { min-height: min(80vh, 780px); }
+  .hero__fotos { position: absolute; inset: 0; }
+  .hero__fotos :global(.hero__img) { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; opacity: 0; }
+  .hero__fotos :global(.hero__img.activa) { opacity: 1; }
+  /* Sombreado azul de marca */
+  .hero::after { content: ''; position: absolute; inset: 0; z-index: 2; background: linear-gradient(0deg, rgb(11 1 62 / 0.95) 0%, rgb(11 1 62 / 0.55) 40%, rgb(11 1 62 / 0.05) 75%), linear-gradient(90deg, rgb(11 1 62 / 0.55), transparent 60%); }
+  .hero__deco { position: absolute; z-index: 3; right: 3vw; top: max(110px, 8vw); width: clamp(150px, 22vw, 340px); aspect-ratio: 1; background: url('/deco-lineas.svg') no-repeat center / contain; pointer-events: none; }
+  .hero__capa { position: relative; z-index: 4; padding-block: max(120px, 9vw) max(40px, 4vw); }
+  .hero__tit { font-size: clamp(2.2rem, 5.2vw, 5.2rem); max-width: 16ch; line-height: 1.02; }
+  .hero__txt { font-size: clamp(1.05rem, 1.4vw, 1.4rem); max-width: 52ch; color: #e7e5f4; }
+  .hero .btn--borde { color: #fff; }
+  .hero__pie { display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 16px; margin-top: max(32px, 3.4vw); padding-top: 18px; border-top: 1px solid rgb(255 255 255 / 0.2); }
+  .hero__modelo { font-weight: 800; text-transform: uppercase; letter-spacing: 0.06em; text-decoration: none; font-size: clamp(0.95rem, 1.2vw, 1.15rem); display: inline-block; }
+  .hero__modelo:hover { color: var(--naranja); }
+  .hero__puntos { display: flex; gap: 8px; }
+  .hero__punto { width: clamp(34px, 4vw, 60px); height: 22px; border: 0; padding: 0; background: none; cursor: pointer; display: grid; align-items: center; }
+  .hero__punto span { display: block; height: 3px; background: rgb(255 255 255 / 0.45); transition: background 0.3s; }
+  .hero__punto.activo span, .hero__punto:hover span { background: var(--naranja); }
+  @media (max-width: 700px) { .hero { min-height: 88vh; } .hero__deco { width: 34vw; top: 90px; } }
 </style>

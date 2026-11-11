@@ -10,10 +10,6 @@ function iniciar() {
   gsap.registerPlugin(ScrollTrigger);
   document.documentElement.classList.add('anim');
 
-  // Texto del carrusel: entra desde abajo
-  const capa = document.querySelector('.carr__diapo .carr__capa');
-  if (capa) gsap.from(capa.children, { y: 40, opacity: 0, duration: 0.9, ease: 'power3.out', stagger: 0.12, delay: 0.15 });
-
   // Barra de ventajas
   gsap.from('.ventajas li', { y: 16, opacity: 0, duration: 0.6, ease: 'power2.out', stagger: 0.07, delay: 0.4 });
 
@@ -24,11 +20,10 @@ function iniciar() {
 
   // Grupos que entran escalonados
   const grupos: [string, string][] = [
-    ['.franjas', '.franja'],
+    ['.marcas', '.marca'],
     ['.servicios', '.servicio'],
-    ['.gama__franjas', '.gama__item'],
+    ['.gama__rejilla', '.gcat'],
     ['.rejilla--motos', '.tm'],
-    ['.marcas-acc__lista', 'li'],
     ['.claves__lista', 'li'],
     ['.pie__rejilla', ':scope > div'],
   ];
@@ -36,7 +31,7 @@ function iniciar() {
     document.querySelectorAll<HTMLElement>(cont).forEach((c) => {
       const hijos = c.querySelectorAll(item);
       if (!hijos.length) return;
-      gsap.from(hijos, { y: 40, opacity: 0, duration: 0.7, ease: 'power3.out', stagger: 0.08, scrollTrigger: { trigger: c, start: 'top 85%', once: true } });
+      gsap.from(hijos, { y: 40, opacity: 0, duration: 0.7, ease: 'power3.out', stagger: 0.08, clearProps: 'transform,opacity', scrollTrigger: { trigger: c, start: 'top 85%', once: true } });
     });
   });
 
@@ -54,6 +49,21 @@ function iniciar() {
     gsap.fromTo(img, { yPercent: -6, scale: 1.08 }, { yPercent: 6, ease: 'none', scrollTrigger: { trigger: img.parentElement!, start: 'top bottom', end: 'bottom top', scrub: true } });
   });
   gsap.from('.historia__txt > *', { x: -30, opacity: 0, duration: 0.8, ease: 'power3.out', stagger: 0.1, scrollTrigger: { trigger: '.historia', start: 'top 75%', once: true } });
+
+  // Cinta de marcas de equipación: movimiento continuo, se para al pasar el ratón
+  document.querySelectorAll<HTMLElement>('[data-cinta]').forEach((c) => {
+    const pista = c.querySelector<HTMLElement>('.cinta__pista')!;
+    const tw = gsap.to(pista, { xPercent: -50, duration: 40, ease: 'none', repeat: -1 });
+    c.addEventListener('mouseenter', () => gsap.to(tw, { timeScale: 0, duration: 0.6 }));
+    c.addEventListener('mouseleave', () => gsap.to(tw, { timeScale: 1, duration: 0.6 }));
+    ScrollTrigger.create({ trigger: c, start: 'top bottom', end: 'bottom top', onUpdate: (st) => { tw.timeScale(1 + Math.min(4, Math.abs(st.getVelocity()) / 400)); gsap.to(tw, { timeScale: 1, duration: 1, overwrite: true }); } });
+  });
+
+  // Gama de la marca: la moto entra desde la derecha y la palabra desde la izquierda
+  gsap.utils.toArray<HTMLElement>('.gcat').forEach((g) => {
+    gsap.from(g.querySelector('.gcat__moto'), { x: 80, opacity: 0, duration: 1, ease: 'power3.out', clearProps: 'transform,opacity', scrollTrigger: { trigger: g, start: 'top 85%', once: true } });
+    gsap.from(g.querySelector('.gcat__palabra'), { x: -60, opacity: 0, duration: 1, ease: 'power3.out', clearProps: 'transform,opacity', scrollTrigger: { trigger: g, start: 'top 85%', once: true } });
+  });
 
   // Calculadora: la cuota "late" al cambiar
   document.querySelectorAll<HTMLElement>('[data-cuota]').forEach((c) => {

@@ -13,7 +13,7 @@ const destacados = [m.ficha.cilindrada, m.ficha.potencia?.split(' a ')[0]?.repla
   <a href={urlMoto(m)} class="tm__enlace tm__enlace--img" tabindex="-1" aria-hidden="true">
     <div class="tm__img">
       {m.imagenes.length
-        ? m.imagenes.map((im, i) => <Image format="avif" src={imgMoto(im.src)} alt={`${nombreCompleto(m)} en color ${im.color.toLowerCase()}`} widths={[360, 560, 720]} sizes="(max-width: 640px) 92vw, (max-width: 1100px) 45vw, 320px" loading={cargaPrioritaria && i === 0 ? 'eager' : 'lazy'} class:list={['tm__foto', { activa: i === 0 }]} data-i={i} />)
+        ? m.imagenes.map((im, i) => <Image format="avif" fit="contain" src={imgMoto(im.src)} alt={`${nombreCompleto(m)} en color ${im.color.toLowerCase()}`} widths={[360, 560, 720]} sizes="(max-width: 640px) 92vw, (max-width: 1100px) 45vw, 320px" loading={cargaPrioritaria && i === 0 ? 'eager' : 'lazy'} class:list={['tm__foto', { activa: i === 0 }]} data-i={i} />)
         : <div class="tm__sinfoto">Foto próximamente</div>}
     </div>
   </a>

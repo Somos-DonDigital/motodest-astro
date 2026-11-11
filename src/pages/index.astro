@@ -12,6 +12,7 @@ import { imgSitio } from '../lib/imagenes';
 
 const motos = await getCollection('motos');
 const destacadas = motos.filter((m) => m.data.destacada).sort((a, b) => MARCAS.findIndex((x) => x.slug === a.data.marca) - MARCAS.findIndex((x) => x.slug === b.data.marca) || a.data.orden - b.data.orden);
+const contar = (marca: string) => motos.filter((m) => m.data.marca === marca).length;
 const tel = EMPRESA.telefono.replace(/\s/g, '');
 
 const diapos = [
@@ -23,9 +24,9 @@ const diapos = [
 ];
 const franjas: Record<string, string> = { fantic: 'franja-fantic', beta: 'franja-beta', cfmoto: 'hero-675nk-hormigon', mitt: 'franja-mitt' };
 const servicios = [
-  { img: 'servicio-alquiler', titulo: 'Motos de alquiler', texto: 'Alquiler de motos en Barbate.' },
-  { img: 'servicio-boutique', titulo: 'Tienda boutique', texto: 'Cascos, equipación y accesorios.' },
-  { img: 'servicio-segunda-mano', titulo: 'Segunda mano', texto: 'Motos de ocasión revisadas.' },
+  { img: 'servicio-alquiler', titulo: 'Motos de alquiler', texto: 'Alquiler de motos en Barbate. Consúltanos los modelos y las fechas disponibles.' },
+  { img: 'servicio-boutique', titulo: 'Tienda boutique', texto: 'Cascos, equipación y accesorios de marcas como LS2, Airoh, Alpinestars o Shad.' },
+  { img: 'servicio-segunda-mano', titulo: 'Segunda mano', texto: 'Motos de ocasión revisadas. Pregúntanos qué unidades tenemos disponibles.' },
 ];
 const accesorios = ['acc-ls2', 'acc-airoh', 'acc-alpinestars', 'acc-shad', 'acc-sp-connect', 'acc-liqui-moli', 'acc-komobi'];
 const nombresAcc: Record<string, string> = { 'acc-ls2': 'LS2', 'acc-airoh': 'Airoh', 'acc-alpinestars': 'Alpinestars', 'acc-shad': 'Shad', 'acc-sp-connect': 'SP Connect', 'acc-liqui-moli': 'Liqui Moly', 'acc-komobi': 'Komobi' };
@@ -37,26 +38,9 @@ const nombresAcc: Record<string, string> = { 'acc-ls2': 'LS2', 'acc-airoh': 'Air
   superpuesta
 >
   <Fragment slot="hero">
-    <Carrusel diapos={diapos} h1="Concesionario oficial de motos en Barbate" />
+    <Carrusel diapos={diapos} antetitulo="Barbate · Cádiz" h1="Concesionario oficial de motos en Barbate" texto="Fantic, Beta, CFMOTO y MITT: motos, quads y buggies nuevos con asesoramiento cercano y financiación a tu medida." />
     <Ventajas />
   </Fragment>
-
-  <section class="concesionario">
-    <h2 class="tit-seccion">Concesionario oficial</h2>
-    <div class="franjas">
-      {MARCAS.map((m) => (
-        <a class="franja" href={`/${m.slug}/`}>
-          <Image format="avif" src={imgSitio(franjas[m.slug])} alt={`Motos ${m.nombre} en Motodest`} widths={[400, 640, 900]} sizes="(max-width: 700px) 50vw, 25vw" class="franja__img" />
-          <span class="franja__txt">{m.nombre}</span>
-        </a>
-      ))}
-    </div>
-    <a class="banner" href="/fantic/caballero/">
-      <Image format="avif" src={imgSitio('banner-caballero')} alt="Fantic Caballero" widths={[640, 1000]} sizes="100vw" class="banner__img" />
-      <span class="banner__sello">Caballero</span>
-      <span class="banner__ver">Ver la gama →</span>
-    </a>
-  </section>
 
   <section class="seccion" id="destacadas">
     <div class="contenedor">
@@ -71,7 +55,27 @@ const nombresAcc: Record<string, string> = { 'acc-ls2': 'LS2', 'acc-airoh': 'Air
     </div>
   </section>
 
-  <section class="seccion seccion--gris" id="financiacion">
+  <section class="seccion seccion--gris">
+    <div class="contenedor">
+      <h2 class="tit-seccion">Concesionario oficial</h2>
+      <div class="marcas">
+        {MARCAS.map((m) => (
+          <a class="marca" href={`/${m.slug}/`}>
+            <span class="marca__foto">
+              <Image format="avif" src={imgSitio(franjas[m.slug])} alt={`Motos ${m.nombre} en Motodest`} widths={[400, 640]} sizes="(max-width: 700px) 92vw, 25vw" class="marca__img" />
+              <span class="marca__nombre">{m.nombre}</span>
+            </span>
+            <span class="marca__txt">
+              <span>{contar(m.slug)} modelos · {m.categorias.map((c) => c.nombre).join(', ')}</span>
+              <span class="marca__ver">Descubre los modelos →</span>
+            </span>
+          </a>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <section class="seccion seccion--azul deco" id="financiacion">
     <div class="contenedor">
       <h2 class="tit-seccion">Financiación a tu medida</h2>
       <p class="intro intro--centro">Calcula cuánto te sale al mes. Elige si das entrada y el plazo, y te preparamos la financiación sin compromiso.</p>
@@ -79,59 +83,80 @@ const nombresAcc: Record<string, string> = { 'acc-ls2': 'LS2', 'acc-airoh': 'Air
     </div>
   </section>
 
-  <section class="servicios-sec" id="servicios">
-    <h2 class="tit-seccion">Nuestros servicios</h2>
-    <div class="servicios">
-      {servicios.map((s) => (
-        <a class="servicio" href="#contacto">
-          <Image format="avif" src={imgSitio(s.img)} alt={s.titulo} widths={[480, 720, 960]} sizes="(max-width: 700px) 100vw, 34vw" class="servicio__img" />
-          <span class="servicio__txt"><strong>{s.titulo}</strong><span>{s.texto}</span></span>
-        </a>
-      ))}
+  <section class="seccion" id="servicios">
+    <div class="contenedor">
+      <h2 class="tit-seccion">Nuestros servicios</h2>
+      <div class="servicios">
+        {servicios.map((s) => (
+          <article class="servicio">
+            <Image format="avif" src={imgSitio(s.img)} alt={s.titulo} widths={[480, 720]} sizes="(max-width: 700px) 92vw, 30vw" class="servicio__img" />
+            <div class="servicio__txt">
+              <h3>{s.titulo}</h3>
+              <p>{s.texto}</p>
+              <a class="servicio__ver" href="#contacto">Pregúntanos →</a>
+            </div>
+          </article>
+        ))}
+      </div>
+      <div class="cta-linea cta-linea--centro">
+        <a class="btn" href="#contacto">Pide información</a>
+        <span>o llámanos al <a class="tel" href={`tel:${tel}`}>{EMPRESA.telefonoVisible}</a></span>
+      </div>
     </div>
   </section>
 
   <section class="marcas-acc">
     <h2 class="tit-seccion marcas-acc__tit">Nuestras marcas</h2>
-    <ul class="marcas-acc__lista">
-      {accesorios.map((a) => <li><Image format="avif" src={imgSitio(a)} alt={nombresAcc[a]} widths={[240, 360]} sizes="(max-width: 700px) 45vw, 15vw" /></li>)}
-    </ul>
+    <p class="marcas-acc__txt">Cascos, equipación y accesorios de las marcas que usamos y recomendamos.</p>
+    <div class="cinta" data-cinta>
+      <ul class="cinta__pista">
+        {[0, 1].map((rep) => accesorios.map((a) => (
+          <li aria-hidden={rep ? 'true' : undefined}>
+            <Image format="avif" src={imgSitio(a)} alt={rep ? '' : nombresAcc[a]} widths={[280, 420]} sizes="(max-width: 700px) 46vw, 20vw" />
+            <span>{nombresAcc[a]}</span>
+          </li>
+        )))}
+      </ul>
+    </div>
+    <div class="cta-linea cta-linea--centro">
+      <a class="btn" href="#contacto">Pregunta por equipación</a>
+      <span>o llámanos al <a class="tel" href={`tel:${tel}`}>{EMPRESA.telefonoVisible}</a></span>
+    </div>
   </section>
 
   <Formulario titulo="¿Necesitas que te asesoremos?" subtitulo="Cuéntanos qué buscas y te llamamos" />
 </Base>
 
 <style>
-  .concesionario { padding-top: var(--esp-seccion); }
-  .franjas { display: grid; grid-template-columns: repeat(4, 1fr); }
-  .franja { position: relative; display: block; overflow: hidden; color: #fff; text-decoration: none; aspect-ratio: 1 / 1; }
-  .franja :global(.franja__img) { width: 100%; height: 100%; object-fit: cover; transition: transform 0.4s; }
-  .franja:hover :global(.franja__img) { transform: scale(1.05); }
-  .franja::after { content: ''; position: absolute; inset: 0; background: linear-gradient(0deg, rgb(0 0 0 / 0.55), transparent 40%); }
-  .franja__txt { position: absolute; z-index: 1; left: 0; right: 0; bottom: max(14px, 1.4vw); text-align: center; font-weight: 700; text-transform: uppercase; letter-spacing: 0.06em; font-size: clamp(0.95rem, 1.2vw, 1.2rem); }
-  .franja:hover .franja__txt { color: var(--naranja); }
-  .banner { position: relative; display: block; height: clamp(260px, 26vw, 420px); margin-top: clamp(28px, 3vw, 40px); color: #fff; text-decoration: none; }
-  .banner :global(.banner__img) { width: 100%; height: 100%; object-fit: cover; object-position: 50% 45%; }
-  .banner__sello { position: absolute; left: 50%; top: 0; transform: translate(-50%, -50%); background: #000; color: #fff; border: 3px solid #fff; border-radius: 12px; padding: 2px 16px; font-family: var(--fuente-titulos); font-size: clamp(1.2rem, 2vw, 2rem); text-transform: uppercase; letter-spacing: 0.04em; }
-  .banner__ver { position: absolute; right: 4vw; bottom: max(18px, 2vw); font-weight: 700; text-transform: uppercase; font-size: clamp(1rem, 1.4vw, 1.4rem); }
-  .banner:hover .banner__ver { color: var(--naranja); }
   .cta-linea--centro { justify-content: center; }
   .intro--centro { text-align: center; margin: -10px auto max(24px, 2.4vw); }
-  .servicios-sec { padding-top: var(--esp-seccion); }
-  .servicios { display: grid; grid-template-columns: repeat(3, 1fr); }
-  .servicio { position: relative; display: block; color: #fff; text-decoration: none; aspect-ratio: 1 / 0.92; overflow: hidden; }
-  .servicio :global(.servicio__img) { width: 100%; height: 100%; object-fit: cover; transition: transform 0.4s; }
-  .servicio:hover :global(.servicio__img) { transform: scale(1.04); }
-  .servicio::after { content: ''; position: absolute; inset: 0; background: linear-gradient(0deg, rgb(0 0 0 / 0.65), transparent 45%); }
-  .servicio__txt { position: absolute; z-index: 1; left: 0; right: 0; bottom: max(16px, 1.6vw); text-align: center; display: grid; gap: 2px; }
-  .servicio__txt strong { text-transform: uppercase; letter-spacing: 0.06em; font-size: clamp(1rem, 1.3vw, 1.3rem); }
-  .servicio__txt span { font-size: var(--fs-peq); opacity: 0.9; }
-  .servicio:hover strong { color: var(--naranja); }
-  .marcas-acc { background: #000; color: #fff; padding-block: max(48px, 5vw); margin-top: var(--esp-seccion); }
-  .marcas-acc__tit { color: #fff; }
-  .marcas-acc__lista { list-style: none; margin: 0; padding: 0; display: grid; grid-auto-flow: column; grid-auto-columns: minmax(150px, 1fr); gap: 6px; overflow-x: auto; scroll-snap-type: x mandatory; }
-  .marcas-acc__lista li { scroll-snap-align: start; }
-  .marcas-acc__lista :global(img) { width: 100%; aspect-ratio: 16 / 9; object-fit: cover; filter: grayscale(1) brightness(0.85); transition: filter 0.3s; }
-  .marcas-acc__lista li:hover :global(img) { filter: none; }
-  @media (max-width: 900px) { .franjas { grid-template-columns: 1fr 1fr; } .servicios { grid-template-columns: 1fr; } .servicio { aspect-ratio: 16 / 10; } }
+  .marcas { display: grid; grid-template-columns: repeat(4, 1fr); gap: max(14px, 1.4vw); }
+  .marca { display: flex; flex-direction: column; background: #fff; text-decoration: none; transition: box-shadow 0.2s, transform 0.2s; }
+  .marca:hover { box-shadow: 0 18px 40px rgb(11 1 62 / 0.14); transform: translateY(-3px); }
+  .marca__foto { position: relative; display: block; aspect-ratio: 4 / 3; overflow: hidden; }
+  .marca__foto :global(.marca__img) { width: 100%; height: 100%; object-fit: cover; transition: transform 0.4s; }
+  .marca:hover :global(.marca__img) { transform: scale(1.05); }
+  .marca__foto::after { content: ''; position: absolute; inset: 0; background: linear-gradient(0deg, rgb(0 0 0 / 0.6), transparent 45%); }
+  .marca__nombre { position: absolute; z-index: 1; left: 18px; bottom: 12px; color: #fff; font-weight: 800; text-transform: uppercase; letter-spacing: 0.04em; font-size: clamp(1.1rem, 1.5vw, 1.5rem); }
+  .marca__txt { display: grid; gap: 8px; padding: 14px 18px 18px; color: var(--gris); font-size: var(--fs-peq); }
+  .marca__ver, .servicio__ver { color: var(--naranja); font-weight: 700; text-decoration: none; }
+  .seccion--azul .intro--centro { color: #cfcce3; }
+  .servicios { display: grid; grid-template-columns: repeat(3, 1fr); gap: max(14px, 1.4vw); }
+  .servicio { border: 1px solid var(--borde); display: flex; flex-direction: column; }
+  .servicio :global(.servicio__img) { width: 100%; aspect-ratio: 4 / 3; object-fit: cover; }
+  .servicio__txt { padding: 16px 20px 22px; }
+  .servicio__txt h3 { font-size: var(--fs-h3); margin-bottom: 6px; }
+  .servicio__txt p { color: var(--gris); font-size: var(--fs-peq); }
+  .marcas-acc { background: #000; color: #fff; padding-block: max(56px, 6vw); overflow: hidden; }
+  .marcas-acc__txt { text-align: center; color: #bbb; margin: -8px auto max(28px, 3vw); padding-inline: 4vw; }
+  .marcas-acc .tel { color: #fff; }
+  .cinta { overflow: hidden; }
+  .cinta__pista { list-style: none; margin: 0; padding: 0; display: flex; gap: max(10px, 1vw); width: max-content; }
+  .cinta__pista li { position: relative; width: clamp(200px, 21vw, 340px); aspect-ratio: 3 / 4; overflow: hidden; flex: none; }
+  .cinta__pista :global(img) { width: 100%; height: 100%; object-fit: cover; filter: grayscale(1) brightness(0.75); transition: filter 0.4s, transform 0.6s; }
+  .cinta__pista li:hover :global(img) { filter: none; transform: scale(1.06); }
+  .cinta__pista li span { position: absolute; left: 0; right: 0; bottom: 0; padding: 30px 14px 12px; background: linear-gradient(0deg, rgb(0 0 0 / 0.75), transparent); font-weight: 800; text-transform: uppercase; letter-spacing: 0.06em; opacity: 0; transform: translateY(10px); transition: 0.35s; }
+  .cinta__pista li:hover span { opacity: 1; transform: none; color: var(--naranja); }
+  @media (max-width: 900px) { .marcas { grid-template-columns: 1fr 1fr; } .servicios { grid-template-columns: 1fr; } }
+  @media (max-width: 520px) { .marcas { grid-template-columns: 1fr; } }
 </style>

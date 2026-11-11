@@ -6,7 +6,8 @@ import Carrusel from '../../components/Carrusel.astro';
 import TarjetaMoto from '../../components/TarjetaMoto.astro';
 import Formulario from '../../components/Formulario.astro';
 import { MARCAS, EMPRESA, type Marca } from '../../data/sitio';
-import { imgSitio } from '../../lib/imagenes';
+import { imgSitio, imgMoto } from '../../lib/imagenes';
+import { euros } from '../../lib/formato';
 
 export function getStaticPaths() {
   return MARCAS.map((m) => ({ params: { marca: m.slug }, props: { marca: m } }));
@@ -31,6 +32,12 @@ const DIAPOS: Record<string, { img: string; titulo: string; url: string; pos?: s
   ],
   mitt: [{ img: 'hero-mitt', titulo: 'MITT', url: '/mitt/scooters/' }],
 };
+const gamas = marca.categorias.map((c) => {
+  const lista = motos.filter((m) => m.data.categoria === c.slug);
+  const rep = lista.find((m) => m.data.destacada && m.data.imagenes.length) ?? lista.find((m) => m.data.imagenes.length);
+  const precios = lista.map((m) => m.data.precio).filter((p): p is number => p != null);
+  return { cat: c, n: lista.length, img: rep?.data.imagenes[0]?.src, desde: precios.length ? Math.min(...precios) : null, palabra: c.nombre.split(/[\s/]+/)[0].toUpperCase() };
+});
 const historiaImg = marca.slug === 'fantic' ? 'historia-fantic-2' : marca.historiaImg;
 ---
 <Base
@@ -44,9 +51,9 @@ const historiaImg = marca.slug === 'fantic' ? 'historia-fantic-2' : marca.histor
     itemListElement: marca.categorias.map((c, i) => ({ '@type': 'ListItem', position: i + 1, name: c.h1, url: new URL(`/${marca.slug}/${c.slug}/`, Astro.site).toString() })),
   }]}
 >
-  <Carrusel slot="hero" diapos={DIAPOS[marca.slug]} h1={marca.h1} alto="medio" />
+  <Carrusel slot="hero" diapos={DIAPOS[marca.slug]} antetitulo="Concesionario oficial" h1={marca.h1} texto={marca.lema} cta={{ texto: "Ver la gama", url: "#gama" }} alto="medio" />
 
-  <section class="historia">
+  <section class="historia deco">
     <div class="historia__txt">
       <h2>{marca.historiaTitulo}</h2>
       {marca.historia.map((p) => <p>{p}</p>)}
@@ -59,15 +66,22 @@ const historiaImg = marca.slug === 'fantic' ? 'historia-fantic-2' : marca.histor
     <Image format="avif" src={imgSitio(historiaImg)} alt={marca.nombre} widths={[640, 960, 1400]} sizes="(max-width: 860px) 100vw, 63vw" class="historia__img" />
   </section>
 
-  <section class="gama" id="gama">
-    <h2 class="tit-seccion">La gama {marca.nombre}</h2>
-    <div class="gama__franjas" style={`--n:${marca.categorias.length}`}>
-      {marca.categorias.map((c) => (
-        <a class="gama__item" href={`/${marca.slug}/${c.slug}/`}>
-          <Image format="avif" src={imgSitio(c.imagen)} alt={c.h1} widths={[300, 480, 720]} sizes="(max-width: 700px) 50vw, 20vw" class="gama__img" />
-          <span class="gama__txt"><strong>{c.nombre}</strong><small>{contar(c.slug)} modelos</small></span>
-        </a>
-      ))}
+  <section class="gama seccion" id="gama">
+    <div class="contenedor">
+      <h2 class="tit-seccion">La gama {marca.nombre}</h2>
+      <div class="gama__rejilla">
+        {gamas.map((g) => (
+          <a class="gcat" href={`/${marca.slug}/${g.cat.slug}/`} style={`--n:${g.palabra.length}`}>
+            <span class="gcat__palabra" aria-hidden="true">{g.palabra}</span>
+            {g.img && <Image format="avif" fit="contain" src={imgMoto(g.img)} alt={`${marca.nombre} ${g.cat.nombre}`} widths={[360, 560, 760]} sizes="(max-width: 700px) 88vw, (max-width: 1100px) 44vw, 30vw" class="gcat__moto" />}
+            <span class="gcat__pie">
+              <strong>{g.cat.nombre}</strong>
+              <span>{g.n} modelos{g.desde ? ` · desde ${euros(g.desde)}` : ''}</span>
+              <span class="gcat__ver" aria-hidden="true">→</span>
+            </span>
+          </a>
+        ))}
+      </div>
     </div>
   </section>
 
@@ -90,22 +104,26 @@ const historiaImg = marca.slug === 'fantic' ? 'historia-fantic-2' : marca.histor
   .historia p { font-size: var(--fs-peq); color: #ddd; }
   .historia .tel { color: #fff; }
   .historia :global(.historia__img) { width: 100%; height: 100%; object-fit: cover; }
-  .gama { padding-top: var(--esp-seccion); }
-  .gama__franjas { display: grid; grid-template-columns: repeat(var(--n), 1fr); }
-  .gama__item { position: relative; display: block; overflow: hidden; color: #fff; text-decoration: none; aspect-ratio: 1 / 2.1; max-height: 720px; width: 100%; }
-  .gama__item :global(.gama__img) { width: 100%; height: 100%; object-fit: cover; transition: transform 0.4s; }
-  .gama__item:hover :global(.gama__img) { transform: scale(1.05); }
-  .gama__item::after { content: ''; position: absolute; inset: 0; background: linear-gradient(0deg, rgb(0 0 0 / 0.6), transparent 35%); }
-  .gama__txt { position: absolute; z-index: 1; left: 0; right: 0; bottom: max(14px, 1.4vw); display: grid; text-align: center; }
-  .gama__txt strong { text-transform: uppercase; letter-spacing: 0.06em; font-size: clamp(0.95rem, 1.2vw, 1.2rem); }
-  .gama__txt small { font-size: 0.78rem; opacity: 0.9; }
-  .gama__item:hover strong { color: var(--naranja); }
+  .gama__rejilla { display: grid; grid-template-columns: repeat(3, 1fr); gap: max(14px, 1.4vw); }
+  .gcat { position: relative; display: flex; flex-direction: column; justify-content: flex-end; min-height: clamp(300px, 28vw, 440px); padding: max(16px, 1.6vw); background: var(--gris-claro); overflow: hidden; text-decoration: none; color: var(--azul); isolation: isolate; container-type: inline-size; transition: background 0.35s; }
+  .gcat__palabra { position: absolute; z-index: -1; left: 0.04em; top: 0.02em; font-weight: 900; text-transform: uppercase; line-height: 0.9; letter-spacing: -0.03em; font-size: min(calc(100cqi / (var(--n) * 0.6)), 34cqi); color: rgb(11 1 62 / 0.07); transition: color 0.35s, transform 0.5s; }
+  .gcat :global(.gcat__moto) { position: absolute; left: 6%; right: 6%; top: 16%; bottom: 22%; width: 88%; height: 62%; object-fit: contain; transition: transform 0.5s cubic-bezier(.2,.8,.2,1); }
+  .gcat__pie { position: relative; display: grid; grid-template-columns: 1fr auto; align-items: end; column-gap: 12px; border-top: 2px solid var(--azul); padding-top: 10px; }
+  .gcat__pie strong { font-size: clamp(1.2rem, 1.8vw, 1.8rem); font-weight: 800; text-transform: uppercase; line-height: 1.1; }
+  .gcat__pie span { grid-column: 1; font-size: var(--fs-peq); color: var(--gris); }
+  .gcat__pie .gcat__ver { grid-column: 2; grid-row: 1 / span 2; align-self: center; font-size: 1.8rem; color: var(--naranja); transition: transform 0.3s; }
+  .gcat:hover { background: var(--azul); color: #fff; }
+  .gcat:hover .gcat__palabra { color: rgb(244 123 41 / 0.22); transform: translateX(3%); }
+  .gcat:hover :global(.gcat__moto) { transform: translateX(4%) scale(1.06); }
+  .gcat:hover .gcat__pie { border-color: var(--naranja); }
+  .gcat:hover .gcat__pie span { color: #cfcce3; }
+  .gcat:hover .gcat__ver { transform: translateX(6px); }
+  @media (max-width: 560px) { .gama__rejilla { grid-template-columns: 1fr; } }
   @media (max-width: 860px) {
     .historia { grid-template-columns: 1fr; }
     .historia__txt { padding-inline: 4vw; }
     .historia__txt::after { right: 4vw; bottom: 10px; }
     .historia :global(.historia__img) { aspect-ratio: 16 / 10; }
-    .gama__franjas { grid-template-columns: repeat(2, 1fr); }
-    .gama__item { aspect-ratio: 3 / 4; }
+    .gama__rejilla { grid-template-columns: repeat(2, 1fr); }
   }
 </style>
