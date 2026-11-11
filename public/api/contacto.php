@@ -58,13 +58,47 @@ $cuerpo = "Nueva consulta desde motodest.com\n\n"
         . "Mensaje:\n" . ($mensaje ?: '-') . "\n\n"
         . 'Fecha: ' . date('d/m/Y H:i') . "\nIP: $ip\n";
 
+// ---- Plantilla HTML del aviso ----
+function e(string $v): string { return htmlspecialchars($v, ENT_QUOTES, 'UTF-8'); }
+$telLimpio = preg_replace('/[^0-9+]/', '', $telefono);
+$waNum = ltrim($telLimpio, '+'); if (strlen($waNum) === 9) $waNum = '34' . $waNum;
+$fila = fn(string $k, string $v) => '<tr><td style="padding:10px 0;border-bottom:1px solid #ecebf3;color:#6b678a;font-size:13px;text-transform:uppercase;letter-spacing:.06em;width:150px;vertical-align:top">' . $k . '</td><td style="padding:10px 0;border-bottom:1px solid #ecebf3;color:#0b013e;font-size:16px;font-weight:600">' . $v . '</td></tr>';
+$filas = $fila('Nombre', e($nombre))
+       . $fila('Teléfono', '<a href="tel:' . e($telLimpio) . '" style="color:#0b013e;text-decoration:none">' . e($telefono) . '</a>')
+       . $fila('Email', $email ? '<a href="mailto:' . e($email) . '" style="color:#0b013e">' . e($email) . '</a>' : '—')
+       . $fila('Moto', e($moto ?: '—'))
+       . $fila('Ofertas', $comercial ? 'Acepta recibir ofertas' : 'No acepta ofertas');
+$botones = '<a href="tel:' . e($telLimpio) . '" style="display:inline-block;background:#f47b29;color:#fff;font-weight:800;text-transform:uppercase;letter-spacing:.06em;font-size:14px;padding:14px 22px;text-decoration:none;margin:0 8px 8px 0">Llamar</a>'
+         . '<a href="https://wa.me/' . e($waNum) . '" style="display:inline-block;background:#0b013e;color:#fff;font-weight:800;text-transform:uppercase;letter-spacing:.06em;font-size:14px;padding:14px 22px;text-decoration:none;margin:0 8px 8px 0">WhatsApp</a>'
+         . ($email ? '<a href="mailto:' . e($email) . '?subject=' . rawurlencode('Re: ' . $asunto) . '" style="display:inline-block;border:2px solid #0b013e;color:#0b013e;font-weight:800;text-transform:uppercase;letter-spacing:.06em;font-size:14px;padding:12px 20px;text-decoration:none;margin:0 8px 8px 0">Responder</a>' : '');
+$etiqueta = $canal === 'asistente' ? 'Chat de la web' : 'Formulario de la web';
+$html = '<!DOCTYPE html><html lang="es"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width"></head>'
+  . '<body style="margin:0;background:#f2f1f7;font-family:Arial,Helvetica,sans-serif">'
+  . '<table role="presentation" width="100%" cellpadding="0" cellspacing="0" style="background:#f2f1f7;padding:24px 12px"><tr><td align="center">'
+  . '<table role="presentation" width="100%" cellpadding="0" cellspacing="0" style="max-width:600px;background:#fff">'
+  . '<tr><td style="background:#0b013e;padding:22px 28px"><img src="https://motodest.com/logo-motodest.png" width="180" alt="Motodest" style="display:block;border:0"></td></tr>'
+  . '<tr><td style="height:5px;background:#f47b29;font-size:0;line-height:0">&nbsp;</td></tr>'
+  . '<tr><td style="padding:28px 28px 8px"><p style="margin:0 0 6px;color:#f47b29;font-size:12px;font-weight:800;text-transform:uppercase;letter-spacing:.12em">' . $etiqueta . '</p>'
+  . '<h1 style="margin:0;color:#0b013e;font-size:24px;line-height:1.25">Nueva consulta' . ($moto ? ' sobre la ' . e($moto) : '') . '</h1></td></tr>'
+  . '<tr><td style="padding:8px 28px"><table role="presentation" width="100%" cellpadding="0" cellspacing="0">' . $filas . '</table></td></tr>'
+  . ($mensaje ? '<tr><td style="padding:18px 28px 0"><p style="margin:0 0 6px;color:#6b678a;font-size:13px;text-transform:uppercase;letter-spacing:.06em">Mensaje</p><div style="background:#f7f6fb;border-left:4px solid #f47b29;padding:14px 16px;color:#0b013e;font-size:15px;line-height:1.5">' . nl2br(e($mensaje)) . '</div></td></tr>' : '')
+  . '<tr><td style="padding:24px 28px 18px">' . $botones . '</td></tr>'
+  . '<tr><td style="padding:16px 28px;background:#f7f6fb;color:#8b88a6;font-size:12px;line-height:1.5">Enviado desde motodest.com' . e($origen) . '<br>' . date('d/m/Y H:i') . ' · IP ' . e($ip) . '</td></tr>'
+  . '</table></td></tr></table></body></html>';
+
+$limite = 'md' . bin2hex(random_bytes(8));
+$cuerpoMime = "--$limite\r\nContent-Type: text/plain; charset=UTF-8\r\nContent-Transfer-Encoding: base64\r\n\r\n" . chunk_split(base64_encode($cuerpo))
+            . "--$limite\r\nContent-Type: text/html; charset=UTF-8\r\nContent-Transfer-Encoding: base64\r\n\r\n" . chunk_split(base64_encode($html))
+            . "--$limite--";
+
 $cabeceras = implode("\r\n", [
     'From: Web Motodest <' . REMITENTE . '>',
-    'Reply-To: ' . ($email ? $nombre . ' <' . $email . '>' : DESTINO),
-    'Content-Type: text/plain; charset=UTF-8',
+    'Reply-To: ' . ($email ? '=?UTF-8?B?' . base64_encode($nombre) . '?= <' . $email . '>' : DESTINO),
+    'MIME-Version: 1.0',
+    'Content-Type: multipart/alternative; boundary="' . $limite . '"',
     'X-Mailer: motodest.com',
 ]);
 
-$ok = mail(DESTINO, '=?UTF-8?B?' . base64_encode($asunto) . '?=', $cuerpo, $cabeceras, '-f' . REMITENTE);
+$ok = mail(DESTINO, '=?UTF-8?B?' . base64_encode($asunto) . '?=', $cuerpoMime, $cabeceras, '-f' . REMITENTE);
 if (!$ok) fallo(500, 'No se ha podido enviar. Llámanos al 630 55 34 94.');
 volver(GRACIAS);
