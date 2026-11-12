@@ -91,6 +91,7 @@ const resto = fotos.length - mosaico.length;
     };
 
     document.querySelectorAll<HTMLElement>('[data-abrir-foto]').forEach((b) => b.addEventListener('click', () => abrir(Number(b.dataset.abrirFoto) || 0)));
+    addEventListener('abrir-visor', (e) => abrir(Number((e as CustomEvent).detail) || 0));
     dlg.querySelector('[data-visor-cerrar]')!.addEventListener('click', cerrar);
     dlg.querySelector('[data-visor-ant]')!.addEventListener('click', () => pintar(actual - 1, -1));
     dlg.querySelector('[data-visor-sig]')!.addEventListener('click', () => pintar(actual + 1, 1));

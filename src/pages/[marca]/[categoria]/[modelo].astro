@@ -37,6 +37,11 @@ const cuotaDesde = m.precio == null ? null
   : cuotaMensual(capitalFinanciado(m.precio, 0, FINANCIACION.comisionApertura), FINANCIACION.tin, Math.max(...FINANCIACION.plazos));
 const cuotaTxt = cuotaDesde?.toLocaleString('es-ES', { minimumFractionDigits: 2, maximumFractionDigits: 2 });
 const miniatura = imgs[0];
+// Distintivo ambiental DGT: solo cuando la moto se matricula y cumple Euro 5 (etiqueta C).
+// Se da por hecho en las gamas de calle (MITT, CFMOTO motos); en el resto, solo si la ficha lo dice.
+const CALLE = ['fantic/caballero', 'fantic/stealth', 'mitt/scooters', 'mitt/sport-touring', 'mitt/adventure', 'mitt/garage', 'cfmoto/motos'];
+const textoNorma = `${m.ficha.homologacion ?? ''} ${m.ficha.motor ?? ''}`;
+const etiquetaC = !/T3|tractor/i.test(textoNorma) && !/el[eé]ctric/i.test(m.ficha.motor ?? '') && (/Euro\s?5/i.test(textoNorma) || CALLE.includes(`${m.marca}/${m.categoria}`));
 const imgsSchema = await Promise.all(imgs.map(async (i) => new URL((await getImage({ src: i, width: 1200, format: 'jpg' })).src, Astro.site).toString()));
 
 const producto: Record<string, unknown> = {
@@ -65,17 +70,27 @@ const producto: Record<string, unknown> = {
 >
   <section class="ficha contenedor">
     <div class="galeria">
-      <div class="galeria__principal">
+      <div class="galeria__principal" data-carrusel>
         {imgs.length
           ? imgs.map((src, i) => (
               <Image format="avif" fit="contain" src={src} alt={`${nombre}${imgs.length > 1 ? ` en color ${m.imagenes[i].color.toLowerCase()}` : ''}`} widths={[480, 800, 1200]} sizes="(max-width: 900px) 92vw, 55vw" loading={i === 0 ? 'eager' : 'lazy'} fetchpriority={i === 0 ? 'high' : 'auto'} class:list={['galeria__img', { activa: i === 0 }]} data-i={i} />
             ))
           : <div class="galeria__sin">Foto próximamente</div>}
+        {fotos.map((f, i) => (
+          <img class="galeria__slide" data-slide={i + 1} data-src={`${f.base}-900.avif`} data-srcset={`${f.base}-900.avif 900w, ${f.base}-1600.avif 1600w`} sizes="(max-width: 900px) 92vw, 55vw" alt={`${nombre}, foto ${i + 1}`} width={f.w} height={f.h} decoding="async" />
+        ))}
+        {etiquetaC && (
+          <span class="dgt" title="Distintivo ambiental C de la DGT" aria-label="Distintivo ambiental C de la DGT" role="img">
+            <svg viewBox="0 0 64 64" width="56" height="56" aria-hidden="true"><circle cx="32" cy="32" r="31" fill="#fff"/><circle cx="32" cy="32" r="28.5" fill="#2e9e44"/><path d="M3.5 32a28.5 28.5 0 0 1 57 0z" fill="#8dc63f"/><circle cx="32" cy="32" r="18" fill="#fff"/><text x="32" y="41" text-anchor="middle" font-family="Arial, Helvetica, sans-serif" font-weight="700" font-size="26" fill="#2e9e44">C</text></svg>
+          </span>
+        )}
         {fotos.length > 0 && (
-          <button type="button" class="galeria__verfotos" data-abrir-foto="0">
-            <svg viewBox="0 0 24 24" width="18" height="18" aria-hidden="true"><path d="M4 7h3l2-3h6l2 3h3v13H4z M12 17a4 4 0 1 0 0-8 4 4 0 0 0 0 8z" fill="none" stroke="currentColor" stroke-width="1.8"/></svg>
-            Ver {fotos.length} fotos
-          </button>
+          <>
+            <button type="button" class="galeria__flecha galeria__flecha--ant" data-car-ant aria-label="Foto anterior"><svg viewBox="0 0 24 24" width="22" height="22" aria-hidden="true"><path d="M15 5l-7 7 7 7" fill="none" stroke="currentColor" stroke-width="2.4"/></svg></button>
+            <button type="button" class="galeria__flecha galeria__flecha--sig" data-car-sig aria-label="Foto siguiente"><svg viewBox="0 0 24 24" width="22" height="22" aria-hidden="true"><path d="M9 5l7 7-7 7" fill="none" stroke="currentColor" stroke-width="2.4"/></svg></button>
+            <button type="button" class="galeria__ampliar" data-car-ampliar aria-label="Ver a pantalla completa"><svg viewBox="0 0 24 24" width="20" height="20" aria-hidden="true"><path d="M4 9V4h5M20 9V4h-5M4 15v5h5M20 15v5h-5" fill="none" stroke="currentColor" stroke-width="2"/></svg></button>
+            <span class="galeria__cont"><b data-car-n>1</b> / {fotos.length + 1}</span>
+          </>
         )}
       </div>
       {imgs.length > 1 && (
@@ -93,12 +108,11 @@ const producto: Record<string, unknown> = {
       )}
       {fotos.length > 0 && (
         <div class="galeria__fotos">
-          <p class="galeria__etq">Fotos</p>
+          <p class="galeria__etq">Fotos <button type="button" class="galeria__todas" data-abrir-foto="0">Ver las {fotos.length} a pantalla completa</button></p>
           <div class="galeria__tira">
-            {fotos.slice(0, 5).map((f, i) => (
-              <button type="button" class="galeria__foto" data-abrir-foto={i} aria-label={`Ver foto ${i + 1}`}>
+            {fotos.map((f, i) => (
+              <button type="button" class="galeria__foto" data-ir-slide={i + 1} aria-label={`Ver foto ${i + 1}`}>
                 <img src={`${f.base}-400.avif`} alt="" width="160" height="106" loading="lazy" decoding="async" />
-                {i === 4 && fotos.length > 5 && <span>+{fotos.length - 5}</span>}
               </button>
             ))}
           </div>
@@ -122,9 +136,10 @@ const producto: Record<string, unknown> = {
       <div class="resumen__ctas" data-ctas>
         <a class="btn" href="#contacto">Me interesa</a>
         <a class="btn btn--borde" href={`tel:${tel}`}>Llámanos</a>
+        <a class="btn btn--borde btn--wa" href={wa} target="_blank" rel="noopener"><svg viewBox="0 0 24 24" width="20" height="20" aria-hidden="true"><path fill="#25d366" d="M12 2a10 10 0 0 0-8.6 15.1L2 22l5-1.3A10 10 0 1 0 12 2z"/><path fill="#fff" d="M17.3 14.4c-.3-.1-1.7-.8-1.9-.9-.3-.1-.5-.1-.7.1l-.9 1.1c-.2.2-.3.2-.6.1a7.6 7.6 0 0 1-3.8-3.3c-.3-.5.3-.5.8-1.6.1-.2 0-.4 0-.5l-.9-2c-.2-.5-.5-.5-.7-.5h-.6a1.1 1.1 0 0 0-.8.4 3.3 3.3 0 0 0-1 2.5 5.8 5.8 0 0 0 1.2 3.1 13.3 13.3 0 0 0 5.1 4.5c1.9.8 2.6.9 3.6.7.6-.1 1.7-.7 2-1.4.2-.7.2-1.3.2-1.4-.1-.1-.3-.2-.6-.3z"/></svg>WhatsApp</a>
       </div>
       <p class="resumen__envio"><svg viewBox="0 0 24 24" width="26" height="26" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M2 6h11v10H2zM13 9h4.5l3.5 3.6V16h-8"/><circle cx="6" cy="17.5" r="1.8"/><circle cx="17" cy="17.5" r="1.8"/></svg><span><strong>Envío a toda España</strong> Te la llevamos lista para rodar, estés donde estés.</span></p>
-      <p class="resumen__tel">{EMPRESA.telefonoVisible} · <a href={wa} target="_blank" rel="noopener">o escríbenos por WhatsApp</a></p>
+      <p class="resumen__tel">o llámanos al <a href={`tel:${tel}`}>{EMPRESA.telefonoVisible}</a></p>
     </div>
   </section>
 
@@ -176,6 +191,7 @@ const producto: Record<string, unknown> = {
       <div class="barra__btns">
         {cuotaDesde && <a class="btn barra__fin" href="#financiacion" data-cuota-minima><span class="barra__fin-t">Calcula tu cuota</span><span class="barra__fin-c">desde {cuotaTxt} €/mes*</span></a>}
         <a class:list={["btn", { "btn--borde": !!cuotaDesde }]} href="#contacto">Me interesa</a>
+        <a class="btn btn--borde barra__wa" href={wa} target="_blank" rel="noopener" aria-label="WhatsApp"><svg viewBox="0 0 24 24" width="20" height="20" aria-hidden="true"><path fill="#25d366" d="M12 2a10 10 0 0 0-8.6 15.1L2 22l5-1.3A10 10 0 1 0 12 2z"/><path fill="#fff" d="M17.3 14.4c-.3-.1-1.7-.8-1.9-.9-.3-.1-.5-.1-.7.1l-.9 1.1c-.2.2-.3.2-.6.1a7.6 7.6 0 0 1-3.8-3.3c-.3-.5.3-.5.8-1.6.1-.2 0-.4 0-.5l-.9-2c-.2-.5-.5-.5-.7-.5h-.6a1.1 1.1 0 0 0-.8.4 3.3 3.3 0 0 0-1 2.5 5.8 5.8 0 0 0 1.2 3.1 13.3 13.3 0 0 0 5.1 4.5c1.9.8 2.6.9 3.6.7.6-.1 1.7-.7 2-1.4.2-.7.2-1.3.2-1.4-.1-.1-.3-.2-.6-.3z"/></svg><span>WhatsApp</span></a>
         <a class="btn btn--borde barra__llamar" href={`tel:${tel}`} aria-label="Llámanos">
           <svg viewBox="0 0 24 24" width="20" height="20" aria-hidden="true"><path d="M5 3h4l2 5-2.5 1.5a11 11 0 0 0 6 6L16 13l5 2v4a2 2 0 0 1-2 2A17 17 0 0 1 3 5a2 2 0 0 1 2-2z" fill="none" stroke="currentColor" stroke-width="1.8"/></svg>
           <span>Llámanos</span>
@@ -235,17 +251,49 @@ const producto: Record<string, unknown> = {
     }
   }
 
-  document.querySelectorAll<HTMLButtonElement>('.galeria__mini').forEach((b) => {
-    b.addEventListener('click', () => {
-      const i = b.dataset.i;
-      document.querySelectorAll('.galeria__img').forEach((img) => img.classList.toggle('activa', (img as HTMLElement).dataset.i === i));
-      const n = document.querySelector('.galeria__nombre'); if (n) n.textContent = b.dataset.color ?? '';
-      document.querySelectorAll('.galeria__mini').forEach((x) => {
-        x.classList.toggle('activa', x === b);
-        x.setAttribute('aria-pressed', String(x === b));
+  {
+    const caja = document.querySelector<HTMLElement>('[data-carrusel]');
+    const slides = [...document.querySelectorAll<HTMLImageElement>('.galeria__slide')];
+    const total = slides.length + 1;
+    const nEl = document.querySelector('[data-car-n]');
+    const tiras = [...document.querySelectorAll<HTMLButtonElement>('[data-ir-slide]')];
+    let actual = 0;
+    const cargar = (k: number) => { const im = slides[k - 1]; if (im && !im.src) { im.srcset = im.dataset.srcset!; im.src = im.dataset.src!; } };
+    const ir = (k: number) => {
+      actual = (k + total) % total;
+      caja?.classList.toggle('en-foto', actual > 0);
+      slides.forEach((im, j) => im.classList.toggle('activa', j + 1 === actual));
+      cargar(actual); cargar((actual + 1) % total);
+      if (nEl) nEl.textContent = String(actual + 1);
+      tiras.forEach((t) => t.classList.toggle('activa', Number(t.dataset.irSlide) === actual));
+      tiras.find((t) => Number(t.dataset.irSlide) === actual)?.scrollIntoView({ block: 'nearest', inline: 'center' });
+    };
+    document.querySelector('[data-car-ant]')?.addEventListener('click', () => ir(actual - 1));
+    document.querySelector('[data-car-sig]')?.addEventListener('click', () => ir(actual + 1));
+    tiras.forEach((t) => t.addEventListener('click', () => ir(Number(t.dataset.irSlide))));
+    // Ampliar: abre el visor en la foto que se está viendo
+    document.querySelector('[data-car-ampliar]')?.addEventListener('click', () => dispatchEvent(new CustomEvent('abrir-visor', { detail: Math.max(0, actual - 1) })));
+    // Deslizar con el dedo
+    let x0: number | null = null;
+    caja?.addEventListener('touchstart', (e) => { x0 = e.touches[0].clientX; }, { passive: true });
+    caja?.addEventListener('touchend', (e) => {
+      if (x0 == null || slides.length === 0) return;
+      const dx = e.changedTouches[0].clientX - x0; x0 = null;
+      if (Math.abs(dx) > 40) ir(actual + (dx < 0 ? 1 : -1));
+    });
+    caja?.addEventListener('keydown', (e) => { if (e.key === 'ArrowRight') ir(actual + 1); if (e.key === 'ArrowLeft') ir(actual - 1); });
+    if (slides.length) setTimeout(() => cargar(1), 1500);
+
+    document.querySelectorAll<HTMLButtonElement>('.galeria__mini').forEach((b) => {
+      b.addEventListener('click', () => {
+        const i = b.dataset.i;
+        document.querySelectorAll('.galeria__img').forEach((img) => img.classList.toggle('activa', (img as HTMLElement).dataset.i === i));
+        const n = document.querySelector('.galeria__nombre'); if (n) n.textContent = b.dataset.color ?? '';
+        document.querySelectorAll('.galeria__mini').forEach((x) => { x.classList.toggle('activa', x === b); x.setAttribute('aria-pressed', String(x === b)); });
+        ir(0);
       });
     });
-  });
+  }
 </script>
 
 <style>
@@ -254,11 +302,24 @@ const producto: Record<string, unknown> = {
   .galeria__principal :global(.galeria__img) { position: absolute; inset: 3%; width: 94%; height: 94%; max-width: none; object-fit: contain; opacity: 0; transition: opacity 0.25s; }
   .galeria__principal :global(.galeria__img.activa) { opacity: 1; }
   .galeria__sin { color: var(--gris); }
+  .galeria__slide { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; opacity: 0; transition: opacity 0.3s; background: #f3f2f7; }
+  .galeria__slide.activa { opacity: 1; }
+  .galeria__principal.en-foto :global(.galeria__img.activa) { opacity: 0; }
+  .galeria__flecha { position: absolute; top: 50%; translate: 0 -50%; z-index: 3; width: 44px; height: 44px; display: grid; place-items: center; border: 0; background: rgb(255 255 255 / 0.9); color: var(--azul); cursor: pointer; box-shadow: 0 4px 14px rgb(11 1 62 / 0.15); transition: background 0.2s, color 0.2s; }
+  .galeria__flecha:hover { background: var(--naranja); color: #fff; }
+  .galeria__flecha--ant { left: 10px; }
+  .galeria__flecha--sig { right: 10px; }
+  .galeria__ampliar { position: absolute; right: 10px; bottom: 10px; z-index: 3; width: 42px; height: 42px; display: grid; place-items: center; border: 0; background: var(--azul); color: #fff; cursor: zoom-in; transition: background 0.2s; }
+  .galeria__ampliar:hover { background: var(--naranja); }
+  .galeria__cont { position: absolute; left: 10px; bottom: 10px; z-index: 3; background: rgb(11 1 62 / 0.75); color: #fff; font-size: 0.8rem; padding: 4px 10px; letter-spacing: 0.04em; }
+  .dgt { position: absolute; top: 10px; right: 10px; z-index: 3; line-height: 0; filter: drop-shadow(0 2px 6px rgb(0 0 0 / 0.18)); }
+  .galeria__todas { border: 0; background: none; padding: 0; margin-left: 10px; color: var(--naranja); font: inherit; font-weight: 700; cursor: pointer; text-decoration: underline; text-underline-offset: 3px; }
   .galeria__verfotos { position: absolute; left: 12px; bottom: 12px; z-index: 2; display: inline-flex; align-items: center; gap: 8px; background: var(--azul); color: #fff; border: 0; padding: 10px 14px; font: inherit; font-weight: 700; font-size: 0.85rem; text-transform: uppercase; letter-spacing: 0.06em; cursor: pointer; transition: background 0.2s; }
   .galeria__verfotos:hover { background: var(--naranja); }
   .galeria__fotos { margin-top: 18px; }
-  .galeria__tira { display: grid; grid-template-columns: repeat(5, 1fr); gap: 8px; }
-  .galeria__foto { position: relative; padding: 0; border: 2px solid transparent; background: #eee; cursor: zoom-in; aspect-ratio: 3 / 2; overflow: hidden; transition: border-color 0.2s; }
+  .galeria__tira { display: grid; grid-auto-flow: column; grid-auto-columns: calc((100% - 32px) / 5); gap: 8px; overflow-x: auto; scrollbar-width: thin; padding-bottom: 4px; }
+  .galeria__foto.activa { border-color: var(--naranja); }
+  .galeria__foto { position: relative; padding: 0; border: 2px solid transparent; background: #eee; cursor: pointer; aspect-ratio: 3 / 2; overflow: hidden; transition: border-color 0.2s; }
   .galeria__foto:hover { border-color: var(--naranja); }
   .galeria__foto :global(img) { width: 100%; height: 100%; object-fit: cover; display: block; transition: transform 0.4s; }
   .galeria__foto:hover :global(img) { transform: scale(1.08); }
@@ -307,8 +368,8 @@ const producto: Record<string, unknown> = {
   .resumen__cuota:hover { color: var(--naranja); }
   .resumen__cuota:hover svg { transform: translateX(4px); }
   .resumen__legal { color: var(--gris); font-size: 0.78rem; margin: 2px 0 0; max-width: 46ch; }
-  .resumen__ctas { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 18px; }
-  .resumen__ctas .btn { min-width: 180px; justify-content: center; }
+  .resumen__ctas { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 10px; margin-top: 18px; }
+  .resumen__ctas .btn { min-width: 0; justify-content: center; padding-inline: 10px; white-space: nowrap; }
   .resumen__tel { margin-top: 12px; color: var(--gris); font-weight: 600; }
   .resumen__tel a { color: var(--naranja); }
   .barra { position: fixed; left: 0; right: 0; bottom: 0; z-index: 50; background: #fff; box-shadow: 0 -10px 30px rgb(11 1 62 / 0.14); transform: translateY(105%); transition: transform 0.35s cubic-bezier(0.2, 0.7, 0.2, 1); }
@@ -321,7 +382,10 @@ const producto: Record<string, unknown> = {
   .barra__precio span { color: var(--naranja); font-weight: 700; font-size: 0.95rem; }
   .barra__btns { display: flex; gap: 10px; flex: none; }
   .barra__btns .btn { min-width: 170px; justify-content: center; }
-  .barra__llamar { display: inline-flex; align-items: center; gap: 8px; }
+  .barra__llamar, .barra__wa, .btn--wa { display: inline-flex; align-items: center; justify-content: center; gap: 8px; }
+  .btn--wa { border-color: #25d366 !important; }
+  .btn--wa:hover { background: #25d366 !important; color: #fff !important; }
+  .barra__wa { border-color: #25d366 !important; }
   .barra__fin { flex-direction: column; line-height: 1.1; gap: 2px; }
   .barra__fin-c { font-size: 0.72rem; font-weight: 600; letter-spacing: 0.02em; text-transform: none; opacity: 0.95; white-space: nowrap; }
   @media (max-width: 900px) {
@@ -330,10 +394,19 @@ const producto: Record<string, unknown> = {
     .barra__in { padding: 10px 12px calc(10px + env(safe-area-inset-bottom)); }
     .barra__btns { flex: 1; }
     .barra__btns { gap: 8px; }
-    .barra__btns .btn { flex: 1; min-width: 0; padding-inline: 8px; font-size: 0.8rem; letter-spacing: 0.04em; white-space: nowrap; }
+    .barra__btns .btn { flex: 1 1 auto; min-width: 0; padding-inline: 8px; font-size: 0.74rem; letter-spacing: 0.02em; white-space: nowrap; }
+    .barra__fin-c { font-size: 0.68rem; }
     .barra__in { padding-inline: 10px; }
-    .barra__btns .barra__fin { flex: 1.6; }
-    .barra__llamar { flex: 0 0 52px !important; }
-    .barra__llamar span { display: none; }
+    .barra__btns .barra__fin { flex: 1.4 1 auto; }
+    .barra__llamar, .barra__wa { flex: 0 0 44px !important; padding-inline: 0 !important; }
+    .barra__llamar span, .barra__wa span { display: none; }
+    .galeria__flecha { width: 38px; height: 38px; }
+    .dgt svg { width: 46px; height: 46px; }
+  }
+  @media (max-width: 380px) {
+    .barra__in { padding-inline: 8px; }
+    .barra__btns { gap: 5px; }
+    .barra__btns .btn { padding-inline: 6px; }
+    .barra__llamar, .barra__wa { flex-basis: 42px !important; }
   }
 </style>
