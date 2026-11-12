@@ -90,10 +90,12 @@ const tel = EMPRESA.telefono.replace(/\s/g, '');
   .calc__num { font: inherit; font-weight: 700; font-size: 1.1rem; padding: 10px 12px; border: 0; border-bottom: 2px solid var(--azul); background: var(--gris-claro); width: 100%; }
   .calc input[type='range'] { width: 100%; accent-color: var(--naranja); }
   .calc__lim { display: flex; justify-content: space-between; font-size: 0.8rem; color: var(--gris); }
-  .calc__chips { display: flex; flex-wrap: wrap; gap: 8px; }
+  .calc__plazos legend { float: left; width: 100%; margin: 0; }
+  .calc__chips { clear: both; display: grid; grid-template-columns: repeat(4, 1fr); gap: 8px; }
+  @media (max-width: 420px) { .calc__chips { grid-template-columns: repeat(3, 1fr); } }
   .calc__chips label { cursor: pointer; }
   .calc__chips input { position: absolute; opacity: 0; pointer-events: none; }
-  .calc__chips span { display: block; padding: 6px 12px; border: 1px solid var(--azul); font-size: var(--fs-peq); font-weight: 700; }
+  .calc__chips span { display: block; text-align: center; white-space: nowrap; padding: 8px 6px; border: 1px solid var(--azul); font-size: var(--fs-peq); font-weight: 700; }
   .calc__chips input:checked + span { background: var(--naranja); border-color: var(--naranja); color: #fff; }
   .calc__chips input:focus-visible + span { outline: 3px solid var(--naranja); outline-offset: 2px; }
   .calc__res { background: var(--azul); color: #fff; padding: max(20px, 2vw); display: flex; flex-direction: column; }
