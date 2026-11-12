@@ -63,6 +63,25 @@ const nombresAcc: Record<string, string> = { 'acc-ls2': 'LS2', 'acc-airoh': 'Air
       <div class="rejilla rejilla--motos" data-rotar="8">
         {seleccion.map((m, i) => <div class="rotar__item" data-marca={m.data.marca} hidden={i >= 8 ? true : undefined}><TarjetaMoto moto={m} /></div>)}
       </div>
+      <script is:inline>
+        // «Nuestras motos»: 8 distintas en cada visita, dos por marca. Se ejecuta en cuanto se lee la rejilla,
+        // antes de que el navegador pida las fotos, así no hay cambio visible ni descargas de más.
+        (function () {
+          var rej = document.currentScript.previousElementSibling;
+          var n = Number(rej.getAttribute('data-rotar')) || 8;
+          var items = Array.prototype.slice.call(rej.querySelectorAll('.rotar__item'));
+          var azar = function (a) { for (var i = a.length - 1; i > 0; i--) { var j = Math.floor(Math.random() * (i + 1)); var t = a[i]; a[i] = a[j]; a[j] = t; } return a; };
+          var marcas = []; items.forEach(function (x) { if (marcas.indexOf(x.dataset.marca) < 0) marcas.push(x.dataset.marca); });
+          var por = Math.max(1, Math.floor(n / marcas.length)), elegidos = [];
+          marcas.forEach(function (mk) { elegidos = elegidos.concat(azar(items.filter(function (x) { return x.dataset.marca === mk; })).slice(0, por)); });
+          if (elegidos.length < n) elegidos = elegidos.concat(azar(items.filter(function (x) { return elegidos.indexOf(x) < 0; })).slice(0, n - elegidos.length));
+          items.forEach(function (x) { x.hidden = true; });
+          azar(elegidos).forEach(function (x, i) {
+            x.hidden = false; rej.appendChild(x);
+            if (i < 4) x.querySelectorAll('img').forEach(function (img) { img.loading = 'eager'; });
+          });
+        })();
+      </script>
       <div class="cta-linea cta-linea--centro">
         <a class="btn" href="#contacto">Pide información</a>
         <span>o llámanos al <a class="tel" href={`tel:${tel}`}>{EMPRESA.telefonoVisible}</a></span>
@@ -142,21 +161,7 @@ const nombresAcc: Record<string, string> = { 'acc-ls2': 'LS2', 'acc-airoh': 'Air
   <Formulario titulo="¿Necesitas que te asesoremos?" subtitulo="Cuéntanos qué buscas y te llamamos" />
 </Base>
 
-<script>
-  // «Nuestras motos»: en cada visita se muestran 8 distintas, dos de cada marca
-  document.querySelectorAll<HTMLElement>('[data-rotar]').forEach((rej) => {
-    const n = Number(rej.dataset.rotar) || 8;
-    const items = [...rej.querySelectorAll<HTMLElement>('.rotar__item')];
-    const azar = <T,>(a: T[]) => { for (let i = a.length - 1; i > 0; i--) { const j = Math.floor(Math.random() * (i + 1)); [a[i], a[j]] = [a[j], a[i]]; } return a; };
-    const marcas = [...new Set(items.map((x) => x.dataset.marca))];
-    const porMarca = Math.max(1, Math.floor(n / marcas.length));
-    let elegidos = marcas.flatMap((mk) => azar(items.filter((x) => x.dataset.marca === mk)).slice(0, porMarca));
-    if (elegidos.length < n) elegidos = elegidos.concat(azar(items.filter((x) => !elegidos.includes(x))).slice(0, n - elegidos.length));
-    elegidos = azar(elegidos);
-    items.forEach((x) => { x.hidden = true; });
-    elegidos.forEach((x) => { x.hidden = false; rej.appendChild(x); });
-  });
-</script>
+
 
 <style>
   .rotar__item { display: contents; }

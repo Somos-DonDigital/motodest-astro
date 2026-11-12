@@ -29,7 +29,7 @@ function iniciar() {
   ];
   grupos.forEach(([cont, item]) => {
     document.querySelectorAll<HTMLElement>(cont).forEach((c) => {
-      const hijos = c.querySelectorAll(item);
+      const hijos = [...c.querySelectorAll<HTMLElement>(item)].filter((h) => !h.closest('[hidden]'));
       if (!hijos.length) return;
       gsap.from(hijos, { y: 40, opacity: 0, duration: 0.7, ease: 'power3.out', stagger: 0.08, clearProps: 'transform,opacity', scrollTrigger: { trigger: c, start: 'top 85%', once: true } });
     });
