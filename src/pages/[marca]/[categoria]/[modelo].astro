@@ -289,13 +289,15 @@ const producto: Record<string, unknown> = {
     .tabla th { border-bottom: 0; padding-bottom: 0; }
   }
 
-  .resumen__cuota { display: inline-flex; align-items: center; gap: 4px; margin: 14px 0 4px; color: #1f8a3a; font-weight: 700; font-size: clamp(1.1rem, 1.5vw, 1.35rem); text-decoration: underline; text-underline-offset: 5px; text-decoration-thickness: 2px; }
+  .resumen__cuota { display: inline-flex; align-items: center; gap: 4px; margin: 14px 0 4px; color: var(--azul); text-decoration-color: var(--naranja) !important; font-weight: 700; font-size: clamp(1.1rem, 1.5vw, 1.35rem); text-decoration: underline; text-underline-offset: 5px; text-decoration-thickness: 2px; }
+  .resumen__cuota svg { color: var(--naranja); transition: transform 0.2s; }
   .resumen__cuota:hover { color: var(--naranja); }
+  .resumen__cuota:hover svg { transform: translateX(4px); }
   .resumen__legal { color: var(--gris); font-size: 0.78rem; margin: 2px 0 0; max-width: 46ch; }
   .resumen__ctas { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 18px; }
   .resumen__ctas .btn { min-width: 180px; justify-content: center; }
   .resumen__tel { margin-top: 12px; color: var(--gris); font-weight: 600; }
-  .resumen__tel a { color: #1f8a3a; }
+  .resumen__tel a { color: var(--naranja); }
   .barra { position: fixed; left: 0; right: 0; bottom: 0; z-index: 50; background: #fff; box-shadow: 0 -10px 30px rgb(11 1 62 / 0.14); transform: translateY(105%); transition: transform 0.35s cubic-bezier(0.2, 0.7, 0.2, 1); }
   .barra.visible { transform: none; }
   .barra__in { display: flex; align-items: center; justify-content: space-between; gap: 16px; padding-block: 10px; }
@@ -303,7 +305,7 @@ const producto: Record<string, unknown> = {
   .barra :global(.barra__img) { width: 96px; height: 60px; object-fit: contain; }
   .barra__nombre { font-weight: 800; color: var(--azul); text-transform: uppercase; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
   .barra__precio { font-weight: 800; color: var(--azul); font-size: 1.1rem; }
-  .barra__precio span { color: #1f8a3a; font-weight: 700; font-size: 0.95rem; }
+  .barra__precio span { color: var(--naranja); font-weight: 700; font-size: 0.95rem; }
   .barra__btns { display: flex; gap: 10px; flex: none; }
   .barra__btns .btn { min-width: 170px; justify-content: center; }
   .barra__llamar { display: inline-flex; align-items: center; gap: 8px; }
