@@ -5,6 +5,8 @@ import { Image } from 'astro:assets';
 import Icono from './Icono.astro';
 import { imgMoto } from '../lib/imagenes';
 import { precioTexto, urlMoto, nombreCompleto, type Moto } from '../lib/formato';
+import { cuotaMensual, capitalFinanciado } from '../lib/cuota';
+import { FINANCIACION, EMPRESA } from '../data/sitio';
 interface Props { moto: Moto; palabra: string; cargaPrioritaria?: boolean }
 const { moto, palabra, cargaPrioritaria = false } = Astro.props;
 const m = moto.data;
@@ -16,6 +18,10 @@ const CAMPOS: [string, string][] = [
 ];
 const datos = CAMPOS.filter(([k]) => m.ficha[k]).slice(0, 4).map(([k, t]) => [k, t, m.ficha[k]]);
 const nombre = nombreCompleto(m);
+const cuota = m.precio != null && FINANCIACION.confirmado && m.precio >= FINANCIACION.importeMinimo
+  ? cuotaMensual(capitalFinanciado(m.precio, 0, FINANCIACION.comisionApertura), FINANCIACION.tin, Math.max(...FINANCIACION.plazos)).toLocaleString('es-ES', { minimumFractionDigits: 2, maximumFractionDigits: 2 })
+  : null;
+const tel = EMPRESA.telefono.replace(/\s/g, '');
 ---
 <article class="fc">
   <a href={urlMoto(m)} class="fc__img" tabindex="-1" aria-hidden="true" data-palabra={palabra} style={`--n:${palabra.length}`}>
@@ -32,11 +38,17 @@ const nombre = nombreCompleto(m);
     </div>
     <h2 class="fc__nombre"><a href={urlMoto(m)}>{nombre}</a></h2>
     <p class="fc__precio">{precioTexto(m)}</p>
-    <p class="fc__nota"><span></span>Financiación inmediata</p>
+    {cuota && <a class="fc__cuota" href={`${urlMoto(m)}#financiacion`}>Elige tu cuota desde <span>{cuota} €/mes*</span></a>}
+    <p class="fc__nota"><span></span>Financiación inmediata · Envío a toda España</p>
     <div class="fc__acciones">
-      <a class="btn" href={urlMoto(m)}>Ver ficha completa</a>
-      <a class="btn btn--borde fc__comercial" href="#contacto" data-moto={nombre}>Hablar con un comercial</a>
+      {cuota
+        ? <a class="btn" href={`${urlMoto(m)}#financiacion`}>Calcula tu cuota</a>
+        : <a class="btn" href={urlMoto(m)}>Ver ficha completa</a>}
+      {cuota
+        ? <a class="btn btn--borde" href={urlMoto(m)}>Ver ficha completa</a>
+        : <a class="btn btn--borde fc__comercial" href="#contacto" data-moto={nombre}>Hablar con un comercial</a>}
     </div>
+    <p class="fc__tel">o llámanos al <a href={`tel:${tel}`}>{EMPRESA.telefonoVisible}</a></p>
     {datos.length > 0 && (
       <dl class="fc__datos">
         {datos.map(([k, t, v]) => <div><Icono nombre={k} /><dt>{t}</dt><dd>{v}</dd></div>)}
@@ -88,7 +100,13 @@ const nombre = nombreCompleto(m);
   .fc__precio { font-weight: 800; font-size: clamp(1.5rem, 2.2vw, 2.2rem); color: var(--azul); margin: 0 0 6px; line-height: 1.1; }
   .fc__nota { display: flex; align-items: center; gap: 8px; color: var(--azul); font-size: var(--fs-peq); margin: 0 0 16px; }
   .fc__nota span { width: 9px; height: 9px; border-radius: 50%; background: #2fb34f; }
-  .fc__acciones { display: flex; flex-wrap: wrap; gap: 10px; margin-bottom: max(20px, 2vw); }
+  .fc__cuota { display: inline-block; margin: 0 0 10px; color: var(--azul); font-weight: 700; font-size: clamp(1rem, 1.3vw, 1.2rem); text-decoration: underline; text-decoration-color: var(--naranja); text-decoration-thickness: 2px; text-underline-offset: 5px; }
+  .fc__cuota span { white-space: nowrap; }
+  .fc__cuota:hover { color: var(--naranja); }
+  .fc__acciones { display: flex; flex-wrap: wrap; gap: 10px; margin-bottom: 10px; }
+  .fc__tel { margin: 0 0 max(20px, 2vw); font-size: var(--fs-peq); color: var(--gris); }
+  .fc__tel a { color: var(--naranja); font-weight: 700; text-decoration: none; }
+  @media (max-width: 640px) { .fc__acciones .btn { flex: 1 1 100%; justify-content: center; } }
   .fc__datos { display: grid; grid-template-columns: 1fr 1fr; gap: 18px max(18px, 2vw); margin: auto 0 0; }
   .fc__datos div { border-top: 2px solid var(--azul); padding-top: 10px; display: grid; grid-template-columns: auto 1fr; column-gap: 12px; align-items: start; }
   .fc__datos :global(.icono) { grid-row: span 2; color: var(--naranja); }
