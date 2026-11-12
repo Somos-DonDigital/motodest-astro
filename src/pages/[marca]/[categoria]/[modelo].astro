@@ -137,8 +137,6 @@ const producto: Record<string, unknown> = {
     </section>
   )}
 
-  {fotos.length > 0 && <GaleriaFotos fotos={fotos} nombre={nombre} />}
-
   {m.precio != null && (
     <section class="seccion">
       <div class="contenedor">
@@ -149,6 +147,9 @@ const producto: Record<string, unknown> = {
       </div>
     </section>
   )}
+
+  {fotos.length > 0 && <GaleriaFotos fotos={fotos} nombre={nombre} />}
+
 
   {filas.length > 0 && (
     <section class="seccion seccion--gris">
@@ -164,16 +165,6 @@ const producto: Record<string, unknown> = {
     </section>
   )}
 
-  {relacionadas.length > 0 && (
-    <section class="seccion">
-      <div class="contenedor">
-        <h2>También te puede interesar</h2>
-        <div class="rejilla rejilla--motos">
-          {relacionadas.map((r) => <TarjetaMoto moto={r} />)}
-        </div>
-      </div>
-    </section>
-  )}
 
   <div class="barra" data-barra>
     <div class="barra__in contenedor">
@@ -192,6 +183,18 @@ const producto: Record<string, unknown> = {
   </div>
 
   <Formulario moto={nombre} titulo={`Pide información sobre la ${nombre}`} />
+
+  {relacionadas.length > 0 && (
+    <section class="seccion">
+      <div class="contenedor">
+        <h2>También te puede interesar</h2>
+        <div class="rejilla rejilla--motos">
+          {relacionadas.map((r) => <TarjetaMoto moto={r} />)}
+        </div>
+      </div>
+    </section>
+  )}
+
 </Base>
 
 <script>
