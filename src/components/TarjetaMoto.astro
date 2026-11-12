@@ -25,7 +25,8 @@ const destacados = [m.ficha.cilindrada, m.ficha.potencia?.split(' a ')[0]?.repla
       <Tit class="tm__nombre">{nombreCompleto(m)}</Tit>
       {destacados.length > 0 && <p class="tm__datos">{destacados.join(' · ')}</p>}
       <p class="tm__precio">{precioTexto(m)}</p>
-      {m.precio != null && <p class="tm__fin"><span></span>Financiación inmediata · Envío a toda España</p>}
+      {m.precio != null && <p class="tm__fin"><span></span>Financiación inmediata</p>}
+      <p class="tm__envio"><svg viewBox="0 0 24 24" width="15" height="15" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M2 6h11v10H2zM13 9h4.5l3.5 3.6V16h-8"/><circle cx="6" cy="17.5" r="1.8"/><circle cx="17" cy="17.5" r="1.8"/></svg>Envío a toda España</p>
       <span class="tm__ver">Ver ficha <span aria-hidden="true">→</span></span>
     </div>
   </a>
@@ -43,6 +44,8 @@ const destacados = [m.ficha.cilindrada, m.ficha.potencia?.split(' a ')[0]?.repla
   .tm { display: flex; flex-direction: column; background: #fff; border: 1px solid var(--borde); border-radius: var(--radio); overflow: hidden; transition: box-shadow 0.2s, transform 0.2s; }
   .tm:hover { box-shadow: 0 18px 40px rgb(11 1 62 / 0.12); transform: translateY(-3px); }
   .tm__fin { display: flex; align-items: center; gap: 7px; color: var(--azul); font-size: var(--fs-peq); margin: 2px 0 8px; }
+  .tm__envio { display: flex; align-items: center; gap: 7px; color: var(--azul); font-size: var(--fs-peq); margin: -4px 0 8px; white-space: nowrap; }
+  .tm__envio svg { color: var(--naranja); flex: none; margin-left: -3px; }
   .tm__fin span { width: 8px; height: 8px; border-radius: 50%; background: #2fb34f; }
   .tm__enlace { display: flex; flex-direction: column; text-decoration: none; }
   .tm__enlace:not(.tm__enlace--img) { flex: 1; }
