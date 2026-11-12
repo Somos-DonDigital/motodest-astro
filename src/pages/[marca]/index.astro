@@ -63,8 +63,9 @@ const historiaImg = marca.slug === 'fantic' ? 'historia-fantic-2' : marca.histor
         {marca.historia.map((p) => <p>{p}</p>)}
         <p>En Motodest somos concesionario oficial {marca.nombre} en Barbate: te asesoramos, preparamos tu moto y te acompañamos en el mantenimiento.</p>
         <div class="cta-linea">
-          <a class="btn" href="#contacto">Pide información</a>
-          <span>o llámanos al <a class="tel" href={`tel:${tel}`}>{EMPRESA.telefonoVisible}</a></span>
+          <a class="btn historia__cta" href="#gama">Descubre la gama {marca.nombre}
+            <svg viewBox="0 0 24 24" width="18" height="18" aria-hidden="true"><path d="M12 4v15m-6-6 6 6 6-6" fill="none" stroke="currentColor" stroke-width="2.4"/></svg>
+          </a>
         </div>
       </div>
     </div>
@@ -113,6 +114,9 @@ const historiaImg = marca.slug === 'fantic' ? 'historia-fantic-2' : marca.histor
   .historia p { color: #e6e4f2; font-size: clamp(1rem, 1.1vw, 1.12rem); line-height: 1.65; max-width: 52ch; }
   .historia .cta-linea { margin-top: max(20px, 1.8vw); }
   .historia .tel { color: #fff; }
+  .historia__cta { display: inline-flex; align-items: center; gap: 10px; }
+  .historia__cta svg { transition: transform 0.3s; }
+  .historia__cta:hover svg { transform: translateY(4px); }
   @media (max-width: 860px) {
     .historia { min-height: 0; align-items: flex-end; }
     .historia :global(.historia__img) { height: 100%; object-position: 60% 50%; }

@@ -111,3 +111,4 @@ p { margin: 0 0 1em; }
 @media (max-width: 700px) { .tit-seccion::after { left: auto; right: -2vw; width: 46vw; opacity: 0.85; } .tit-seccion--izq::after { right: auto; left: -2vw; } }
 
 body { padding-bottom: var(--barra-alto, 0px); }
+section[id] { scroll-margin-top: 72px; }
