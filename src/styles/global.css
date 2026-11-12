@@ -109,3 +109,5 @@ p { margin: 0 0 1em; }
 .tit-seccion::after { content: ''; position: absolute; z-index: -1; left: calc(100% - 1.4em); top: 54%; width: clamp(150px, 20vw, 340px); aspect-ratio: 900 / 146; transform: translateY(-50%); background: url('/huella.webp') no-repeat left center / contain; pointer-events: none; }
 .tit-seccion--izq::after { left: auto; right: calc(100% - 1.4em); transform: translateY(-50%) scaleX(-1); }
 @media (max-width: 700px) { .tit-seccion::after { left: auto; right: -2vw; width: 46vw; opacity: 0.85; } .tit-seccion--izq::after { right: auto; left: -2vw; } }
+
+body { padding-bottom: var(--barra-alto, 0px); }

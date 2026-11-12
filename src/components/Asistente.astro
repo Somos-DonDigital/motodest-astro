@@ -48,7 +48,7 @@ const wa = `https://wa.me/${EMPRESA.whatsapp}?text=${encodeURIComponent('Hola, e
 </script>
 
 <style>
-  .asis { position: fixed; right: max(16px, 1.6vw); bottom: max(16px, 1.6vw); z-index: 60; font-size: 15px; }
+  .asis { position: fixed; right: max(16px, 1.6vw); bottom: calc(max(16px, 1.6vw) + var(--barra-alto, 0px)); transition: bottom 0.35s; z-index: 60; font-size: 15px; }
   .asis__abrir { position: relative; width: 64px; height: 64px; border-radius: 50%; border: 0; cursor: pointer; display: grid; place-items: center; background: var(--naranja); box-shadow: 0 12px 30px rgb(11 1 62 / 0.35); transition: transform 0.2s; }
   .asis__abrir:hover { transform: scale(1.06); }
   .asis__abrir[aria-expanded='true'] { transform: scale(0.9); }
