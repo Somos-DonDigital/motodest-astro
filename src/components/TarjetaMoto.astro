@@ -25,7 +25,7 @@ const destacados = [m.ficha.cilindrada, m.ficha.potencia?.split(' a ')[0]?.repla
       <Tit class="tm__nombre">{nombreCompleto(m)}</Tit>
       {destacados.length > 0 && <p class="tm__datos">{destacados.join(' · ')}</p>}
       <p class="tm__precio">{precioTexto(m)}</p>
-      {m.precio != null && <p class="tm__fin"><span></span>Financiación inmediata</p>}
+      {m.precio != null && <p class="tm__fin"><span></span>Financiación inmediata · Envío a toda España</p>}
       <span class="tm__ver">Ver ficha <span aria-hidden="true">→</span></span>
     </div>
   </a>

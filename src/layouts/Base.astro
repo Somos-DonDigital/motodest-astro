@@ -50,7 +50,7 @@ const negocio = {
     addressCountry: EMPRESA.direccion.pais,
   },
   openingHoursSpecification: EMPRESA.horarioSchema.map((h) => ({ '@type': 'OpeningHoursSpecification', ...h })),
-  areaServed: ['Barbate', 'Vejer de la Frontera', 'Conil de la Frontera', 'Zahara de los Atunes', 'Cádiz'],
+  areaServed: [{ '@type': 'Country', name: 'España' }, 'Barbate', 'Vejer de la Frontera', 'Conil de la Frontera', 'Zahara de los Atunes', 'Cádiz'],
   brand: ['Fantic', 'Beta', 'CFMOTO', 'MITT'].map((name) => ({ '@type': 'Brand', name })),
   ...(EMPRESA.redes.length ? { sameAs: EMPRESA.redes.map((r) => r.url) } : {}),
 };
