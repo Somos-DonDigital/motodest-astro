@@ -44,5 +44,11 @@
   },
   "fuenteFicha": "https://mittmotors.com/vehiculo/mitt-gt-max-125-330",
   "destacada": false,
-  "orden": 9
+  "orden": 9,
+  "galeria": [
+    "mitt/mitt-scooters-gt-max-125-330/01.webp",
+    "mitt/mitt-scooters-gt-max-125-330/02.webp",
+    "mitt/mitt-scooters-gt-max-125-330/03.webp",
+    "mitt/mitt-scooters-gt-max-125-330/04.webp"
+  ]
 }

@@ -34,5 +34,12 @@
   },
   "fuenteFicha": "https://cfmoto.es/atv/cforce-1000-mv",
   "destacada": false,
-  "orden": 100
+  "orden": 100,
+  "galeria": [
+    "cfmoto/cfmoto-atv-cforce-1000-mv/01.webp",
+    "cfmoto/cfmoto-atv-cforce-1000-mv/02.webp",
+    "cfmoto/cfmoto-atv-cforce-1000-mv/03.webp",
+    "cfmoto/cfmoto-atv-cforce-1000-mv/04.webp",
+    "cfmoto/cfmoto-atv-cforce-1000-mv/05.webp"
+  ]
 }

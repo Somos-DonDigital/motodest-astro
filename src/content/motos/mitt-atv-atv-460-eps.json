@@ -33,5 +33,13 @@
   },
   "fuenteFicha": "https://mittmotors.com/vehiculo/mitt-460-eps",
   "destacada": false,
-  "orden": 502
+  "orden": 502,
+  "galeria": [
+    "mitt/mitt-atv-atv-460-eps/01.webp",
+    "mitt/mitt-atv-atv-460-eps/02.webp",
+    "mitt/mitt-atv-atv-460-eps/03.webp",
+    "mitt/mitt-atv-atv-460-eps/04.webp",
+    "mitt/mitt-atv-atv-460-eps/05.webp",
+    "mitt/mitt-atv-atv-460-eps/06.webp"
+  ]
 }

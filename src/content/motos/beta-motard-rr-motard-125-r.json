@@ -28,5 +28,17 @@
   },
   "fuenteFicha": "https://www.betamotor.com/es/motocicletas/moto-rr-motard-4t-125r/",
   "destacada": false,
-  "orden": 303
+  "orden": 303,
+  "galeria": [
+    "beta/beta-motard-rr-motard-125-r/01.webp",
+    "beta/beta-motard-rr-motard-125-r/02.webp",
+    "beta/beta-motard-rr-motard-125-r/03.webp",
+    "beta/beta-motard-rr-motard-125-r/04.webp",
+    "beta/beta-motard-rr-motard-125-r/05.webp",
+    "beta/beta-motard-rr-motard-125-r/06.webp",
+    "beta/beta-motard-rr-motard-125-r/07.webp",
+    "beta/beta-motard-rr-motard-125-r/08.webp",
+    "beta/beta-motard-rr-motard-125-r/09.webp",
+    "beta/beta-motard-rr-motard-125-r/10.webp"
+  ]
 }

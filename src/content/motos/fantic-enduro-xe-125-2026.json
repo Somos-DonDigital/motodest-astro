@@ -29,5 +29,16 @@
   },
   "fuenteFicha": "https://fantic.com/es-es/moto/enduro/xe-125_ib7hm",
   "destacada": false,
-  "orden": 107
+  "orden": 107,
+  "galeria": [
+    "fantic/fantic-enduro-xe-125-2026/01.webp",
+    "fantic/fantic-enduro-xe-125-2026/02.webp",
+    "fantic/fantic-enduro-xe-125-2026/03.webp",
+    "fantic/fantic-enduro-xe-125-2026/04.webp",
+    "fantic/fantic-enduro-xe-125-2026/05.webp",
+    "fantic/fantic-enduro-xe-125-2026/06.webp",
+    "fantic/fantic-enduro-xe-125-2026/07.webp",
+    "fantic/fantic-enduro-xe-125-2026/08.webp",
+    "fantic/fantic-enduro-xe-125-2026/09.webp"
+  ]
 }

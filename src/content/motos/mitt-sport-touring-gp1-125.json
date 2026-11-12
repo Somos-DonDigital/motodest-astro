@@ -39,5 +39,12 @@
   },
   "fuenteFicha": "https://mittmotors.com/vehiculo/mitt-gp1-125",
   "destacada": false,
-  "orden": 202
+  "orden": 202,
+  "galeria": [
+    "mitt/mitt-sport-touring-gp1-125/01.webp",
+    "mitt/mitt-sport-touring-gp1-125/02.webp",
+    "mitt/mitt-sport-touring-gp1-125/03.webp",
+    "mitt/mitt-sport-touring-gp1-125/04.webp",
+    "mitt/mitt-sport-touring-gp1-125/05.webp"
+  ]
 }

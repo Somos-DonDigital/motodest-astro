@@ -34,5 +34,17 @@
   },
   "fuenteFicha": "https://cfmoto.es/moto/125nk",
   "destacada": false,
-  "orden": 5
+  "orden": 5,
+  "galeria": [
+    "cfmoto/cfmoto-motos-125nk/01.webp",
+    "cfmoto/cfmoto-motos-125nk/02.webp",
+    "cfmoto/cfmoto-motos-125nk/03.webp",
+    "cfmoto/cfmoto-motos-125nk/04.webp",
+    "cfmoto/cfmoto-motos-125nk/05.webp",
+    "cfmoto/cfmoto-motos-125nk/06.webp",
+    "cfmoto/cfmoto-motos-125nk/07.webp",
+    "cfmoto/cfmoto-motos-125nk/08.webp",
+    "cfmoto/cfmoto-motos-125nk/09.webp",
+    "cfmoto/cfmoto-motos-125nk/10.webp"
+  ]
 }

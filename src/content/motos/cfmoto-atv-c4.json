@@ -38,5 +38,10 @@
   },
   "fuenteFicha": "https://cfmoto.es/atv/c4",
   "destacada": false,
-  "orden": 107
+  "orden": 107,
+  "galeria": [
+    "cfmoto/cfmoto-atv-c4/01.webp",
+    "cfmoto/cfmoto-atv-c4/02.webp",
+    "cfmoto/cfmoto-atv-c4/03.webp"
+  ]
 }

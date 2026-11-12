@@ -32,5 +32,14 @@
   },
   "fuenteFicha": "https://mittmotors.com/vehiculo/mitt-adv-pro-125",
   "destacada": false,
-  "orden": 105
+  "orden": 105,
+  "galeria": [
+    "mitt/mitt-scooters-adv-pro-125/01.webp",
+    "mitt/mitt-scooters-adv-pro-125/02.webp",
+    "mitt/mitt-scooters-adv-pro-125/03.webp",
+    "mitt/mitt-scooters-adv-pro-125/04.webp",
+    "mitt/mitt-scooters-adv-pro-125/05.webp",
+    "mitt/mitt-scooters-adv-pro-125/06.webp",
+    "mitt/mitt-scooters-adv-pro-125/07.webp"
+  ]
 }

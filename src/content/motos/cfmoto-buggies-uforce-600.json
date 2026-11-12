@@ -30,5 +30,12 @@
   },
   "fuenteFicha": "https://cfmoto.es/atv/uforce-600",
   "destacada": false,
-  "orden": 206
+  "orden": 206,
+  "galeria": [
+    "cfmoto/cfmoto-buggies-uforce-600/01.webp",
+    "cfmoto/cfmoto-buggies-uforce-600/02.webp",
+    "cfmoto/cfmoto-buggies-uforce-600/03.webp",
+    "cfmoto/cfmoto-buggies-uforce-600/04.webp",
+    "cfmoto/cfmoto-buggies-uforce-600/05.webp"
+  ]
 }

@@ -41,5 +41,16 @@
   },
   "fuenteFicha": "https://fantic.com/es-es/moto/caballero/rally-500-_2j8x4",
   "destacada": false,
-  "orden": 205
+  "orden": 205,
+  "galeria": [
+    "fantic/fantic-caballero-caballero-rally-500/01.webp",
+    "fantic/fantic-caballero-caballero-rally-500/02.webp",
+    "fantic/fantic-caballero-caballero-rally-500/03.webp",
+    "fantic/fantic-caballero-caballero-rally-500/04.webp",
+    "fantic/fantic-caballero-caballero-rally-500/05.webp",
+    "fantic/fantic-caballero-caballero-rally-500/06.webp",
+    "fantic/fantic-caballero-caballero-rally-500/07.webp",
+    "fantic/fantic-caballero-caballero-rally-500/08.webp",
+    "fantic/fantic-caballero-caballero-rally-500/09.webp"
+  ]
 }

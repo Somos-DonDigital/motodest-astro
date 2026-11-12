@@ -36,5 +36,15 @@
   },
   "fuenteFicha": "https://fantic.com/es-es/moto/motard/xmf-125-competition_m3567",
   "destacada": false,
-  "orden": 302
+  "orden": 302,
+  "galeria": [
+    "fantic/fantic-motard-xmf-125-competition/01.webp",
+    "fantic/fantic-motard-xmf-125-competition/02.webp",
+    "fantic/fantic-motard-xmf-125-competition/03.webp",
+    "fantic/fantic-motard-xmf-125-competition/04.webp",
+    "fantic/fantic-motard-xmf-125-competition/05.webp",
+    "fantic/fantic-motard-xmf-125-competition/06.webp",
+    "fantic/fantic-motard-xmf-125-competition/07.webp",
+    "fantic/fantic-motard-xmf-125-competition/08.webp"
+  ]
 }

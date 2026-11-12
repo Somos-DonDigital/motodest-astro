@@ -34,5 +34,11 @@
   },
   "fuenteFicha": "https://mittmotors.com/vehiculo/mitt-gts-125-330",
   "destacada": false,
-  "orden": 7
+  "orden": 7,
+  "galeria": [
+    "mitt/mitt-scooters-gts-125/01.webp",
+    "mitt/mitt-scooters-gts-125/02.webp",
+    "mitt/mitt-scooters-gts-125/03.webp",
+    "mitt/mitt-scooters-gts-125/04.webp"
+  ]
 }

@@ -29,5 +29,13 @@
   },
   "fuenteFicha": "https://mittmotors.com/vehiculo/mitt-rt-50-125",
   "destacada": false,
-  "orden": 1
+  "orden": 1,
+  "galeria": [
+    "mitt/mitt-scooters-rt-125/01.webp",
+    "mitt/mitt-scooters-rt-125/02.webp",
+    "mitt/mitt-scooters-rt-125/03.webp",
+    "mitt/mitt-scooters-rt-125/04.webp",
+    "mitt/mitt-scooters-rt-125/05.webp",
+    "mitt/mitt-scooters-rt-125/06.webp"
+  ]
 }

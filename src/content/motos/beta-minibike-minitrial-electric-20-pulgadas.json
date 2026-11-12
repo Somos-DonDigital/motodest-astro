@@ -25,5 +25,8 @@
   },
   "fuenteFicha": "https://www.betamotor.com/es/motocicletas/moto-minitrial-electric-20/",
   "destacada": false,
-  "orden": 501
+  "orden": 501,
+  "galeria": [
+    "beta/beta-minibike-minitrial-electric-20-pulgadas/01.webp"
+  ]
 }

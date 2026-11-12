@@ -41,5 +41,12 @@
   },
   "fuenteFicha": "https://cfmoto.es/atv/cforce-850-touring",
   "destacada": false,
-  "orden": 104
+  "orden": 104,
+  "galeria": [
+    "cfmoto/cfmoto-atv-cforce-850-touring/01.webp",
+    "cfmoto/cfmoto-atv-cforce-850-touring/02.webp",
+    "cfmoto/cfmoto-atv-cforce-850-touring/03.webp",
+    "cfmoto/cfmoto-atv-cforce-850-touring/04.webp",
+    "cfmoto/cfmoto-atv-cforce-850-touring/05.webp"
+  ]
 }

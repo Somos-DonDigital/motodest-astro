@@ -29,5 +29,11 @@
   },
   "fuenteFicha": "https://mittmotors.com/vehiculo/mitt-808",
   "destacada": false,
-  "orden": 102
+  "orden": 102,
+  "galeria": [
+    "mitt/mitt-garage-808/01.webp",
+    "mitt/mitt-garage-808/02.webp",
+    "mitt/mitt-garage-808/03.webp",
+    "mitt/mitt-garage-808/04.webp"
+  ]
 }

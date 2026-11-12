@@ -33,5 +33,13 @@
   },
   "fuenteFicha": "https://mittmotors.com/vehiculo/mitt-275-atv-2",
   "destacada": false,
-  "orden": 500
+  "orden": 500,
+  "galeria": [
+    "mitt/mitt-atv-atv-275/01.webp",
+    "mitt/mitt-atv-atv-275/02.webp",
+    "mitt/mitt-atv-atv-275/03.webp",
+    "mitt/mitt-atv-atv-275/04.webp",
+    "mitt/mitt-atv-atv-275/05.webp",
+    "mitt/mitt-atv-atv-275/06.webp"
+  ]
 }

@@ -33,5 +33,14 @@
   },
   "fuenteFicha": "https://mittmotors.com/vehiculo/mitt-alto-125",
   "destacada": false,
-  "orden": 106
+  "orden": 106,
+  "galeria": [
+    "mitt/mitt-scooters-alto-125/01.webp",
+    "mitt/mitt-scooters-alto-125/02.webp",
+    "mitt/mitt-scooters-alto-125/03.webp",
+    "mitt/mitt-scooters-alto-125/04.webp",
+    "mitt/mitt-scooters-alto-125/05.webp",
+    "mitt/mitt-scooters-alto-125/06.webp",
+    "mitt/mitt-scooters-alto-125/07.webp"
+  ]
 }

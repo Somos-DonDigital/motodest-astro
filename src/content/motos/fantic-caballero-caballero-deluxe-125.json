@@ -31,5 +31,13 @@
   },
   "fuenteFicha": "https://fantic.com/es-es/moto/caballero/deluxe-125-_563mw",
   "destacada": false,
-  "orden": 206
+  "orden": 206,
+  "galeria": [
+    "fantic/fantic-caballero-caballero-deluxe-125/01.webp",
+    "fantic/fantic-caballero-caballero-deluxe-125/02.webp",
+    "fantic/fantic-caballero-caballero-deluxe-125/03.webp",
+    "fantic/fantic-caballero-caballero-deluxe-125/04.webp",
+    "fantic/fantic-caballero-caballero-deluxe-125/05.webp",
+    "fantic/fantic-caballero-caballero-deluxe-125/06.webp"
+  ]
 }

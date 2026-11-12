@@ -39,5 +39,14 @@
   },
   "fuenteFicha": "https://mittmotors.com/vehiculo/mitt-t-rox-125",
   "destacada": false,
-  "orden": 2
+  "orden": 2,
+  "galeria": [
+    "mitt/mitt-scooters-t-rox-125/01.webp",
+    "mitt/mitt-scooters-t-rox-125/02.webp",
+    "mitt/mitt-scooters-t-rox-125/03.webp",
+    "mitt/mitt-scooters-t-rox-125/04.webp",
+    "mitt/mitt-scooters-t-rox-125/05.webp",
+    "mitt/mitt-scooters-t-rox-125/06.webp",
+    "mitt/mitt-scooters-t-rox-125/07.webp"
+  ]
 }

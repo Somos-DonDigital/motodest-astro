@@ -31,5 +31,17 @@
   },
   "fuenteFicha": "https://fantic.com/es-es/moto/caballero/rally-125-_01f51",
   "destacada": false,
-  "orden": 208
+  "orden": 208,
+  "galeria": [
+    "fantic/fantic-caballero-caballero-rally-125/01.webp",
+    "fantic/fantic-caballero-caballero-rally-125/02.webp",
+    "fantic/fantic-caballero-caballero-rally-125/03.webp",
+    "fantic/fantic-caballero-caballero-rally-125/04.webp",
+    "fantic/fantic-caballero-caballero-rally-125/05.webp",
+    "fantic/fantic-caballero-caballero-rally-125/06.webp",
+    "fantic/fantic-caballero-caballero-rally-125/07.webp",
+    "fantic/fantic-caballero-caballero-rally-125/08.webp",
+    "fantic/fantic-caballero-caballero-rally-125/09.webp",
+    "fantic/fantic-caballero-caballero-rally-125/10.webp"
+  ]
 }

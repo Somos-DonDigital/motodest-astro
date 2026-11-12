@@ -21,5 +21,12 @@
   },
   "fuenteFicha": "https://www.betamotor.com/en-be/bikes/minitrial-electric-20-xl/",
   "destacada": false,
-  "orden": 502
+  "orden": 502,
+  "galeria": [
+    "beta/beta-minibike-minitrial-electric-20-pulgadas-xl/01.webp",
+    "beta/beta-minibike-minitrial-electric-20-pulgadas-xl/02.webp",
+    "beta/beta-minibike-minitrial-electric-20-pulgadas-xl/03.webp",
+    "beta/beta-minibike-minitrial-electric-20-pulgadas-xl/04.webp",
+    "beta/beta-minibike-minitrial-electric-20-pulgadas-xl/05.webp"
+  ]
 }

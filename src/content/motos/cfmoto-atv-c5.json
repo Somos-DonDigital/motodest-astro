@@ -47,5 +47,12 @@
   },
   "fuenteFicha": "https://cfmoto.es/atv/c5",
   "destacada": false,
-  "orden": 108
+  "orden": 108,
+  "galeria": [
+    "cfmoto/cfmoto-atv-c5/01.webp",
+    "cfmoto/cfmoto-atv-c5/02.webp",
+    "cfmoto/cfmoto-atv-c5/03.webp",
+    "cfmoto/cfmoto-atv-c5/04.webp",
+    "cfmoto/cfmoto-atv-c5/05.webp"
+  ]
 }

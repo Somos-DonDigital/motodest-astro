@@ -40,5 +40,13 @@
   },
   "fuenteFicha": "https://mittmotors.com/vehiculo/mitt-tt-555",
   "destacada": false,
-  "orden": 301
+  "orden": 301,
+  "galeria": [
+    "mitt/mitt-adventure-tt-555/01.webp",
+    "mitt/mitt-adventure-tt-555/02.webp",
+    "mitt/mitt-adventure-tt-555/03.webp",
+    "mitt/mitt-adventure-tt-555/04.webp",
+    "mitt/mitt-adventure-tt-555/05.webp",
+    "mitt/mitt-adventure-tt-555/06.webp"
+  ]
 }

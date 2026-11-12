@@ -34,5 +34,14 @@
   },
   "fuenteFicha": "https://mittmotors.com/vehiculo/mitt-mt-125",
   "destacada": false,
-  "orden": 301
+  "orden": 301,
+  "galeria": [
+    "mitt/mitt-adventure-mt-125/01.webp",
+    "mitt/mitt-adventure-mt-125/02.webp",
+    "mitt/mitt-adventure-mt-125/03.webp",
+    "mitt/mitt-adventure-mt-125/04.webp",
+    "mitt/mitt-adventure-mt-125/05.webp",
+    "mitt/mitt-adventure-mt-125/06.webp",
+    "mitt/mitt-adventure-mt-125/07.webp"
+  ]
 }

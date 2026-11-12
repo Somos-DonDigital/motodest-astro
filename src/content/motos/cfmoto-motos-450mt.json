@@ -34,5 +34,15 @@
   },
   "fuenteFicha": "https://cfmoto.es/moto/450mt",
   "destacada": false,
-  "orden": 1
+  "orden": 1,
+  "galeria": [
+    "cfmoto/cfmoto-motos-450mt/01.webp",
+    "cfmoto/cfmoto-motos-450mt/02.webp",
+    "cfmoto/cfmoto-motos-450mt/03.webp",
+    "cfmoto/cfmoto-motos-450mt/04.webp",
+    "cfmoto/cfmoto-motos-450mt/05.webp",
+    "cfmoto/cfmoto-motos-450mt/06.webp",
+    "cfmoto/cfmoto-motos-450mt/07.webp",
+    "cfmoto/cfmoto-motos-450mt/08.webp"
+  ]
 }

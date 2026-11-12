@@ -39,5 +39,15 @@
   },
   "fuenteFicha": "https://mittmotors.com/vehiculo/mitt-775r",
   "destacada": true,
-  "orden": 204
+  "orden": 204,
+  "galeria": [
+    "mitt/mitt-sport-touring-775r/01.webp",
+    "mitt/mitt-sport-touring-775r/02.webp",
+    "mitt/mitt-sport-touring-775r/03.webp",
+    "mitt/mitt-sport-touring-775r/04.webp",
+    "mitt/mitt-sport-touring-775r/05.webp",
+    "mitt/mitt-sport-touring-775r/06.webp",
+    "mitt/mitt-sport-touring-775r/07.webp",
+    "mitt/mitt-sport-touring-775r/08.webp"
+  ]
 }

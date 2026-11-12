@@ -34,5 +34,11 @@
   },
   "fuenteFicha": "https://mittmotors.com/vehiculo/mitt-urban-125",
   "destacada": false,
-  "orden": 8
+  "orden": 8,
+  "galeria": [
+    "mitt/mitt-scooters-urban-125/01.webp",
+    "mitt/mitt-scooters-urban-125/02.webp",
+    "mitt/mitt-scooters-urban-125/03.webp",
+    "mitt/mitt-scooters-urban-125/04.webp"
+  ]
 }

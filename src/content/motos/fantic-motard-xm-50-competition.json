@@ -33,5 +33,15 @@
   },
   "fuenteFicha": "https://fantic.com/es-es/moto/motard/xm-50-competition_j3577",
   "destacada": false,
-  "orden": 300
+  "orden": 300,
+  "galeria": [
+    "fantic/fantic-motard-xm-50-competition/01.webp",
+    "fantic/fantic-motard-xm-50-competition/02.webp",
+    "fantic/fantic-motard-xm-50-competition/03.webp",
+    "fantic/fantic-motard-xm-50-competition/04.webp",
+    "fantic/fantic-motard-xm-50-competition/05.webp",
+    "fantic/fantic-motard-xm-50-competition/06.webp",
+    "fantic/fantic-motard-xm-50-competition/07.webp",
+    "fantic/fantic-motard-xm-50-competition/08.webp"
+  ]
 }

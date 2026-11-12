@@ -29,5 +29,17 @@
   },
   "fuenteFicha": "https://www.betamotor.com/es/motocicletas/moto-rr-motard-2t-50-track/",
   "destacada": false,
-  "orden": 306
+  "orden": 306,
+  "galeria": [
+    "beta/beta-motard-rr-spm-motard-2t-50-track/01.webp",
+    "beta/beta-motard-rr-spm-motard-2t-50-track/02.webp",
+    "beta/beta-motard-rr-spm-motard-2t-50-track/03.webp",
+    "beta/beta-motard-rr-spm-motard-2t-50-track/04.webp",
+    "beta/beta-motard-rr-spm-motard-2t-50-track/05.webp",
+    "beta/beta-motard-rr-spm-motard-2t-50-track/06.webp",
+    "beta/beta-motard-rr-spm-motard-2t-50-track/07.webp",
+    "beta/beta-motard-rr-spm-motard-2t-50-track/08.webp",
+    "beta/beta-motard-rr-spm-motard-2t-50-track/09.webp",
+    "beta/beta-motard-rr-spm-motard-2t-50-track/10.webp"
+  ]
 }

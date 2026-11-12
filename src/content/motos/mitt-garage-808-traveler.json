@@ -29,5 +29,11 @@
   },
   "fuenteFicha": "https://mittmotors.com/vehiculo/mitt-808-traveler",
   "destacada": false,
-  "orden": 103
+  "orden": 103,
+  "galeria": [
+    "mitt/mitt-garage-808-traveler/01.webp",
+    "mitt/mitt-garage-808-traveler/02.webp",
+    "mitt/mitt-garage-808-traveler/03.webp",
+    "mitt/mitt-garage-808-traveler/04.webp"
+  ]
 }

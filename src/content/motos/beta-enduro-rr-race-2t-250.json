@@ -29,5 +29,17 @@
   },
   "fuenteFicha": "https://www.betamotor.com/es/motocicletas/rr-race-2t-250-my26/",
   "destacada": false,
-  "orden": 9
+  "orden": 9,
+  "galeria": [
+    "beta/beta-enduro-rr-race-2t-250/01.webp",
+    "beta/beta-enduro-rr-race-2t-250/02.webp",
+    "beta/beta-enduro-rr-race-2t-250/03.webp",
+    "beta/beta-enduro-rr-race-2t-250/04.webp",
+    "beta/beta-enduro-rr-race-2t-250/05.webp",
+    "beta/beta-enduro-rr-race-2t-250/06.webp",
+    "beta/beta-enduro-rr-race-2t-250/07.webp",
+    "beta/beta-enduro-rr-race-2t-250/08.webp",
+    "beta/beta-enduro-rr-race-2t-250/09.webp",
+    "beta/beta-enduro-rr-race-2t-250/10.webp"
+  ]
 }

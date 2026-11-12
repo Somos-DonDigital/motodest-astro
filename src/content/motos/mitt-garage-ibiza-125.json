@@ -28,5 +28,14 @@
   },
   "fuenteFicha": "https://mittmotors.com/vehiculo/mitt-ibiza-125",
   "destacada": false,
-  "orden": 100
+  "orden": 100,
+  "galeria": [
+    "mitt/mitt-garage-ibiza-125/01.webp",
+    "mitt/mitt-garage-ibiza-125/02.webp",
+    "mitt/mitt-garage-ibiza-125/03.webp",
+    "mitt/mitt-garage-ibiza-125/04.webp",
+    "mitt/mitt-garage-ibiza-125/05.webp",
+    "mitt/mitt-garage-ibiza-125/06.webp",
+    "mitt/mitt-garage-ibiza-125/07.webp"
+  ]
 }

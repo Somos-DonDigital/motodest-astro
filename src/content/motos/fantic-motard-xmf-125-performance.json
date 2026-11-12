@@ -41,5 +41,15 @@
   },
   "fuenteFicha": "https://fantic.com/es-es/moto/motard/xmf-125-performance_k8xhv",
   "destacada": false,
-  "orden": 303
+  "orden": 303,
+  "galeria": [
+    "fantic/fantic-motard-xmf-125-performance/01.webp",
+    "fantic/fantic-motard-xmf-125-performance/02.webp",
+    "fantic/fantic-motard-xmf-125-performance/03.webp",
+    "fantic/fantic-motard-xmf-125-performance/04.webp",
+    "fantic/fantic-motard-xmf-125-performance/05.webp",
+    "fantic/fantic-motard-xmf-125-performance/06.webp",
+    "fantic/fantic-motard-xmf-125-performance/07.webp",
+    "fantic/fantic-motard-xmf-125-performance/08.webp"
+  ]
 }

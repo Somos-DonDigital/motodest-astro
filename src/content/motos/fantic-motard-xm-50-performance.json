@@ -38,5 +38,14 @@
   },
   "fuenteFicha": "https://fantic.com/es-es/moto/motard/xm-50-performance_54pe6",
   "destacada": false,
-  "orden": 301
+  "orden": 301,
+  "galeria": [
+    "fantic/fantic-motard-xm-50-performance/01.webp",
+    "fantic/fantic-motard-xm-50-performance/02.webp",
+    "fantic/fantic-motard-xm-50-performance/03.webp",
+    "fantic/fantic-motard-xm-50-performance/04.webp",
+    "fantic/fantic-motard-xm-50-performance/05.webp",
+    "fantic/fantic-motard-xm-50-performance/06.webp",
+    "fantic/fantic-motard-xm-50-performance/07.webp"
+  ]
 }

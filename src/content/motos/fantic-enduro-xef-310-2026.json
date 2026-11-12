@@ -29,5 +29,13 @@
   },
   "fuenteFicha": "https://fantic.com/es-es/moto/enduro/xef-310_65241",
   "destacada": false,
-  "orden": 105
+  "orden": 105,
+  "galeria": [
+    "fantic/fantic-enduro-xef-310-2026/01.webp",
+    "fantic/fantic-enduro-xef-310-2026/02.webp",
+    "fantic/fantic-enduro-xef-310-2026/03.webp",
+    "fantic/fantic-enduro-xef-310-2026/04.webp",
+    "fantic/fantic-enduro-xef-310-2026/05.webp",
+    "fantic/fantic-enduro-xef-310-2026/06.webp"
+  ]
 }

@@ -29,5 +29,13 @@
   },
   "fuenteFicha": "https://fantic.com/es-es/moto/rally/xef-rally-factory_enb0d",
   "destacada": false,
-  "orden": 0
+  "orden": 0,
+  "galeria": [
+    "fantic/fantic-rally-xef-rally-factory/01.webp",
+    "fantic/fantic-rally-xef-rally-factory/02.webp",
+    "fantic/fantic-rally-xef-rally-factory/03.webp",
+    "fantic/fantic-rally-xef-rally-factory/04.webp",
+    "fantic/fantic-rally-xef-rally-factory/05.webp",
+    "fantic/fantic-rally-xef-rally-factory/06.webp"
+  ]
 }

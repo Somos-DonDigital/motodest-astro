@@ -35,5 +35,12 @@
   },
   "fuenteFicha": "https://cfmoto.es/atv/uforce-1000-xl",
   "destacada": false,
-  "orden": 209
+  "orden": 209,
+  "galeria": [
+    "cfmoto/cfmoto-buggies-uforce-1000xl/01.webp",
+    "cfmoto/cfmoto-buggies-uforce-1000xl/02.webp",
+    "cfmoto/cfmoto-buggies-uforce-1000xl/03.webp",
+    "cfmoto/cfmoto-buggies-uforce-1000xl/04.webp",
+    "cfmoto/cfmoto-buggies-uforce-1000xl/05.webp"
+  ]
 }

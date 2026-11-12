@@ -27,5 +27,9 @@
   },
   "fuenteFicha": "https://www.betamotor.com/es/motocicletas/evo-80-senior/",
   "destacada": false,
-  "orden": 204
+  "orden": 204,
+  "galeria": [
+    "beta/beta-trial-evo-80-senior/01.webp",
+    "beta/beta-trial-evo-80-senior/02.webp"
+  ]
 }

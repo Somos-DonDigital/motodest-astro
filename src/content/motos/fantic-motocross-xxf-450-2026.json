@@ -28,5 +28,14 @@
   },
   "fuenteFicha": "https://fantic.com/es-es/moto/motocross/xxf-450-_2hw43",
   "destacada": false,
-  "orden": 401
+  "orden": 401,
+  "galeria": [
+    "fantic/fantic-motocross-xxf-450-2026/01.webp",
+    "fantic/fantic-motocross-xxf-450-2026/02.webp",
+    "fantic/fantic-motocross-xxf-450-2026/03.webp",
+    "fantic/fantic-motocross-xxf-450-2026/04.webp",
+    "fantic/fantic-motocross-xxf-450-2026/05.webp",
+    "fantic/fantic-motocross-xxf-450-2026/06.webp",
+    "fantic/fantic-motocross-xxf-450-2026/07.webp"
+  ]
 }

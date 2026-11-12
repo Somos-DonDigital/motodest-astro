@@ -29,5 +29,12 @@
   },
   "fuenteFicha": "https://cfmoto.es/atv/u6-ev",
   "destacada": false,
-  "orden": 203
+  "orden": 203,
+  "galeria": [
+    "cfmoto/cfmoto-buggies-uforce-u6-ev/01.webp",
+    "cfmoto/cfmoto-buggies-uforce-u6-ev/02.webp",
+    "cfmoto/cfmoto-buggies-uforce-u6-ev/03.webp",
+    "cfmoto/cfmoto-buggies-uforce-u6-ev/04.webp",
+    "cfmoto/cfmoto-buggies-uforce-u6-ev/05.webp"
+  ]
 }

@@ -31,5 +31,17 @@
   },
   "fuenteFicha": "https://cfmoto.es/moto/700mt",
   "destacada": false,
-  "orden": 2
+  "orden": 2,
+  "galeria": [
+    "cfmoto/cfmoto-motos-700mt/01.webp",
+    "cfmoto/cfmoto-motos-700mt/02.webp",
+    "cfmoto/cfmoto-motos-700mt/03.webp",
+    "cfmoto/cfmoto-motos-700mt/04.webp",
+    "cfmoto/cfmoto-motos-700mt/05.webp",
+    "cfmoto/cfmoto-motos-700mt/06.webp",
+    "cfmoto/cfmoto-motos-700mt/07.webp",
+    "cfmoto/cfmoto-motos-700mt/08.webp",
+    "cfmoto/cfmoto-motos-700mt/09.webp",
+    "cfmoto/cfmoto-motos-700mt/10.webp"
+  ]
 }

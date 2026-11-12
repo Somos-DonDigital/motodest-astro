@@ -29,5 +29,15 @@
   },
   "fuenteFicha": "https://www.betamotor.com/es/motocicletas/rr-2t-50/",
   "destacada": false,
-  "orden": 13
+  "orden": 13,
+  "galeria": [
+    "beta/beta-enduro-rr-2t-50/01.webp",
+    "beta/beta-enduro-rr-2t-50/02.webp",
+    "beta/beta-enduro-rr-2t-50/03.webp",
+    "beta/beta-enduro-rr-2t-50/04.webp",
+    "beta/beta-enduro-rr-2t-50/05.webp",
+    "beta/beta-enduro-rr-2t-50/06.webp",
+    "beta/beta-enduro-rr-2t-50/07.webp",
+    "beta/beta-enduro-rr-2t-50/08.webp"
+  ]
 }

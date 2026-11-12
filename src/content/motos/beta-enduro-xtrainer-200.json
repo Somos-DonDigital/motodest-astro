@@ -29,5 +29,17 @@
   },
   "fuenteFicha": "https://www.betamotor.com/es/motocicletas/xtrainer-2t-200/",
   "destacada": false,
-  "orden": 15
+  "orden": 15,
+  "galeria": [
+    "beta/beta-enduro-xtrainer-200/01.webp",
+    "beta/beta-enduro-xtrainer-200/02.webp",
+    "beta/beta-enduro-xtrainer-200/03.webp",
+    "beta/beta-enduro-xtrainer-200/04.webp",
+    "beta/beta-enduro-xtrainer-200/05.webp",
+    "beta/beta-enduro-xtrainer-200/06.webp",
+    "beta/beta-enduro-xtrainer-200/07.webp",
+    "beta/beta-enduro-xtrainer-200/08.webp",
+    "beta/beta-enduro-xtrainer-200/09.webp",
+    "beta/beta-enduro-xtrainer-200/10.webp"
+  ]
 }

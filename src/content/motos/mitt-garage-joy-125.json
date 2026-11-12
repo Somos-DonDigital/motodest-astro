@@ -32,5 +32,13 @@
   },
   "fuenteFicha": "https://mittmotors.com/vehiculo/mitt-joy-125",
   "destacada": false,
-  "orden": 205
+  "orden": 205,
+  "galeria": [
+    "mitt/mitt-garage-joy-125/01.webp",
+    "mitt/mitt-garage-joy-125/02.webp",
+    "mitt/mitt-garage-joy-125/03.webp",
+    "mitt/mitt-garage-joy-125/04.webp",
+    "mitt/mitt-garage-joy-125/05.webp",
+    "mitt/mitt-garage-joy-125/06.webp"
+  ]
 }

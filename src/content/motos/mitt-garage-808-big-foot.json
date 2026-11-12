@@ -29,5 +29,14 @@
   },
   "fuenteFicha": "https://mittmotors.com/vehiculo/mitt-808-big-foot",
   "destacada": false,
-  "orden": 104
+  "orden": 104,
+  "galeria": [
+    "mitt/mitt-garage-808-big-foot/01.webp",
+    "mitt/mitt-garage-808-big-foot/02.webp",
+    "mitt/mitt-garage-808-big-foot/03.webp",
+    "mitt/mitt-garage-808-big-foot/04.webp",
+    "mitt/mitt-garage-808-big-foot/05.webp",
+    "mitt/mitt-garage-808-big-foot/06.webp",
+    "mitt/mitt-garage-808-big-foot/07.webp"
+  ]
 }

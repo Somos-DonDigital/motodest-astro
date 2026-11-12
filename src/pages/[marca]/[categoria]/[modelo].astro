@@ -99,7 +99,7 @@ const producto: Record<string, unknown> = {
           <div class="galeria__tira">
             {fotos.slice(0, 5).map((f, i) => (
               <button type="button" class="galeria__foto" data-abrir-foto={i} aria-label={`Ver foto ${i + 1}`}>
-                <Image src={f} format="avif" alt="" width={160} height={106} fit="cover" />
+                <img src={`${f.base}-400.avif`} alt="" width="160" height="106" loading="lazy" decoding="async" />
                 {i === 4 && fotos.length > 5 && <span>+{fotos.length - 5}</span>}
               </button>
             ))}

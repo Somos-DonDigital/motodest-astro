@@ -40,5 +40,12 @@
   },
   "fuenteFicha": "https://cfmoto.es/atv/u10-pro",
   "destacada": false,
-  "orden": 204
+  "orden": 204,
+  "galeria": [
+    "cfmoto/cfmoto-buggies-uforce-u10-pro-y-highland/01.webp",
+    "cfmoto/cfmoto-buggies-uforce-u10-pro-y-highland/02.webp",
+    "cfmoto/cfmoto-buggies-uforce-u10-pro-y-highland/03.webp",
+    "cfmoto/cfmoto-buggies-uforce-u10-pro-y-highland/04.webp",
+    "cfmoto/cfmoto-buggies-uforce-u10-pro-y-highland/05.webp"
+  ]
 }

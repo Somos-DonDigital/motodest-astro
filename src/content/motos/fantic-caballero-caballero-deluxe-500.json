@@ -36,5 +36,15 @@
   },
   "fuenteFicha": "https://fantic.com/es-es/moto/caballero/deluxe-500-_x0632",
   "destacada": false,
-  "orden": 204
+  "orden": 204,
+  "galeria": [
+    "fantic/fantic-caballero-caballero-deluxe-500/01.webp",
+    "fantic/fantic-caballero-caballero-deluxe-500/02.webp",
+    "fantic/fantic-caballero-caballero-deluxe-500/03.webp",
+    "fantic/fantic-caballero-caballero-deluxe-500/04.webp",
+    "fantic/fantic-caballero-caballero-deluxe-500/05.webp",
+    "fantic/fantic-caballero-caballero-deluxe-500/06.webp",
+    "fantic/fantic-caballero-caballero-deluxe-500/07.webp",
+    "fantic/fantic-caballero-caballero-deluxe-500/08.webp"
+  ]
 }

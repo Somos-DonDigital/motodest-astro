@@ -41,5 +41,17 @@
   },
   "fuenteFicha": "https://fantic.com/es-es/moto/street/stealth-125-red-yellow_a64r2",
   "destacada": false,
-  "orden": 600
+  "orden": 600,
+  "galeria": [
+    "fantic/fantic-stealth-stealth-125/01.webp",
+    "fantic/fantic-stealth-stealth-125/02.webp",
+    "fantic/fantic-stealth-stealth-125/03.webp",
+    "fantic/fantic-stealth-stealth-125/04.webp",
+    "fantic/fantic-stealth-stealth-125/05.webp",
+    "fantic/fantic-stealth-stealth-125/06.webp",
+    "fantic/fantic-stealth-stealth-125/07.webp",
+    "fantic/fantic-stealth-stealth-125/08.webp",
+    "fantic/fantic-stealth-stealth-125/09.webp",
+    "fantic/fantic-stealth-stealth-125/10.webp"
+  ]
 }

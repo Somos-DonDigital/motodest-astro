@@ -28,5 +28,16 @@
   },
   "fuenteFicha": "https://fantic.com/es-es/moto/caballero/deluxe-700_x80x7",
   "destacada": false,
-  "orden": 201
+  "orden": 201,
+  "galeria": [
+    "fantic/fantic-caballero-caballero-deluxe-700/01.webp",
+    "fantic/fantic-caballero-caballero-deluxe-700/02.webp",
+    "fantic/fantic-caballero-caballero-deluxe-700/03.webp",
+    "fantic/fantic-caballero-caballero-deluxe-700/04.webp",
+    "fantic/fantic-caballero-caballero-deluxe-700/05.webp",
+    "fantic/fantic-caballero-caballero-deluxe-700/06.webp",
+    "fantic/fantic-caballero-caballero-deluxe-700/07.webp",
+    "fantic/fantic-caballero-caballero-deluxe-700/08.webp",
+    "fantic/fantic-caballero-caballero-deluxe-700/09.webp"
+  ]
 }

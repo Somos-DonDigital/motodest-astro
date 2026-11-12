@@ -31,5 +31,15 @@
   },
   "fuenteFicha": "https://fantic.com/es-es/moto/enduro/xef-125-competition_r0va1",
   "destacada": false,
-  "orden": 101
+  "orden": 101,
+  "galeria": [
+    "fantic/fantic-enduro-xef-125-competition/01.webp",
+    "fantic/fantic-enduro-xef-125-competition/02.webp",
+    "fantic/fantic-enduro-xef-125-competition/03.webp",
+    "fantic/fantic-enduro-xef-125-competition/04.webp",
+    "fantic/fantic-enduro-xef-125-competition/05.webp",
+    "fantic/fantic-enduro-xef-125-competition/06.webp",
+    "fantic/fantic-enduro-xef-125-competition/07.webp",
+    "fantic/fantic-enduro-xef-125-competition/08.webp"
+  ]
 }

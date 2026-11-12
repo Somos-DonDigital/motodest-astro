@@ -31,5 +31,12 @@
   },
   "fuenteFicha": "https://cfmoto.es/atv/z10",
   "destacada": false,
-  "orden": 210
+  "orden": 210,
+  "galeria": [
+    "cfmoto/cfmoto-buggies-z10/01.webp",
+    "cfmoto/cfmoto-buggies-z10/02.webp",
+    "cfmoto/cfmoto-buggies-z10/03.webp",
+    "cfmoto/cfmoto-buggies-z10/04.webp",
+    "cfmoto/cfmoto-buggies-z10/05.webp"
+  ]
 }

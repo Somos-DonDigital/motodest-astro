@@ -1,19 +1,11 @@
 ---
 // Mosaico de fotos oficiales de la moto + visor a pantalla completa (GSAP).
-import { Image, getImage } from 'astro:assets';
-import type { ImageMetadata } from 'astro';
+import { srcsetGaleria, type FotoGaleria } from '../lib/imagenes';
 
-interface Props { fotos: ImageMetadata[]; nombre: string }
+interface Props { fotos: FotoGaleria[]; nombre: string }
 const { fotos, nombre } = Astro.props;
 
-// Versiones para el visor: grande (AVIF) y miniatura
-const visor = await Promise.all(
-  fotos.map(async (f) => {
-    const g = await getImage({ src: f, format: 'avif', widths: [1280, 1920, 2400], sizes: '100vw' });
-    const t = await getImage({ src: f, format: 'avif', width: 200 });
-    return { src: g.src, srcset: g.srcSet.attribute, mini: t.src, w: f.width, h: f.height };
-  }),
-);
+const visor = fotos.map((f) => ({ src: `${f.base}-1600.avif`, srcset: srcsetGaleria(f), mini: `${f.base}-400.avif`, w: f.w, h: f.h }));
 const mosaico = fotos.slice(0, 6);
 const resto = fotos.length - mosaico.length;
 ---
@@ -24,7 +16,7 @@ const resto = fotos.length - mosaico.length;
     <div class:list={['gf__mosaico', `gf__mosaico--${mosaico.length}`]}>
       {mosaico.map((f, i) => (
         <button type="button" class="gf__celda" data-abrir-foto={i} aria-label={`Ampliar foto ${i + 1} de ${fotos.length}`}>
-          <Image src={f} format="avif" alt={`${nombre}, foto ${i + 1}`} widths={[480, 800, 1200, 1600]} sizes={i === 0 ? '(max-width: 900px) 94vw, 60vw' : '(max-width: 900px) 47vw, 30vw'} loading="lazy" class="gf__img" />
+          <img src={`${f.base}-900.avif`} srcset={srcsetGaleria(f)} sizes={i === 0 ? '(max-width: 900px) 94vw, 50vw' : '(max-width: 900px) 47vw, 25vw'} width={f.w} height={f.h} alt={`${nombre}, foto ${i + 1}`} loading="lazy" decoding="async" class="gf__img" />
           {i === mosaico.length - 1 && resto > 0 && <span class="gf__mas">+{resto}</span>}
         </button>
       ))}

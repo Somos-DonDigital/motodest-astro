@@ -29,5 +29,17 @@
   },
   "fuenteFicha": "https://www.betamotor.com/es/motocicletas/rr-2t-50-sport/",
   "destacada": false,
-  "orden": 14
+  "orden": 14,
+  "galeria": [
+    "beta/beta-enduro-rr-2t-50-sport/01.webp",
+    "beta/beta-enduro-rr-2t-50-sport/02.webp",
+    "beta/beta-enduro-rr-2t-50-sport/03.webp",
+    "beta/beta-enduro-rr-2t-50-sport/04.webp",
+    "beta/beta-enduro-rr-2t-50-sport/05.webp",
+    "beta/beta-enduro-rr-2t-50-sport/06.webp",
+    "beta/beta-enduro-rr-2t-50-sport/07.webp",
+    "beta/beta-enduro-rr-2t-50-sport/08.webp",
+    "beta/beta-enduro-rr-2t-50-sport/09.webp",
+    "beta/beta-enduro-rr-2t-50-sport/10.webp"
+  ]
 }

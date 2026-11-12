@@ -35,5 +35,12 @@
   },
   "fuenteFicha": "https://cfmoto.es/atv/cforce-625",
   "destacada": false,
-  "orden": 103
+  "orden": 103,
+  "galeria": [
+    "cfmoto/cfmoto-atv-cforce-625/01.webp",
+    "cfmoto/cfmoto-atv-cforce-625/02.webp",
+    "cfmoto/cfmoto-atv-cforce-625/03.webp",
+    "cfmoto/cfmoto-atv-cforce-625/04.webp",
+    "cfmoto/cfmoto-atv-cforce-625/05.webp"
+  ]
 }

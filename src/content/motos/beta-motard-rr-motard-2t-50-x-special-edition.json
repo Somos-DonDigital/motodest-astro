@@ -29,5 +29,11 @@
   },
   "fuenteFicha": "https://www.betamotor.com/es/motocicletas/rr-motard-2t-50-x-special-edition/",
   "destacada": false,
-  "orden": 301
+  "orden": 301,
+  "galeria": [
+    "beta/beta-motard-rr-motard-2t-50-x-special-edition/01.webp",
+    "beta/beta-motard-rr-motard-2t-50-x-special-edition/02.webp",
+    "beta/beta-motard-rr-motard-2t-50-x-special-edition/03.webp",
+    "beta/beta-motard-rr-motard-2t-50-x-special-edition/04.webp"
+  ]
 }

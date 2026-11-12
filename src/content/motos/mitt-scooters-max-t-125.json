@@ -40,5 +40,13 @@
   },
   "fuenteFicha": "https://mittmotors.com/vehiculo/mitt-max-t-125",
   "destacada": false,
-  "orden": 3
+  "orden": 3,
+  "galeria": [
+    "mitt/mitt-scooters-max-t-125/01.webp",
+    "mitt/mitt-scooters-max-t-125/02.webp",
+    "mitt/mitt-scooters-max-t-125/03.webp",
+    "mitt/mitt-scooters-max-t-125/04.webp",
+    "mitt/mitt-scooters-max-t-125/05.webp",
+    "mitt/mitt-scooters-max-t-125/06.webp"
+  ]
 }

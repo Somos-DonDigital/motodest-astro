@@ -29,5 +29,15 @@
   },
   "fuenteFicha": "https://fantic.com/es-es/moto/enduro/xef-250_6t16t",
   "destacada": true,
-  "orden": 104
+  "orden": 104,
+  "galeria": [
+    "fantic/fantic-enduro-xef-250-2026/01.webp",
+    "fantic/fantic-enduro-xef-250-2026/02.webp",
+    "fantic/fantic-enduro-xef-250-2026/03.webp",
+    "fantic/fantic-enduro-xef-250-2026/04.webp",
+    "fantic/fantic-enduro-xef-250-2026/05.webp",
+    "fantic/fantic-enduro-xef-250-2026/06.webp",
+    "fantic/fantic-enduro-xef-250-2026/07.webp",
+    "fantic/fantic-enduro-xef-250-2026/08.webp"
+  ]
 }

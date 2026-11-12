@@ -38,5 +38,17 @@
   },
   "fuenteFicha": "https://fantic.com/es-es/moto/caballero/scrambler-700_ye3tm",
   "destacada": true,
-  "orden": 200
+  "orden": 200,
+  "galeria": [
+    "fantic/fantic-caballero-caballero-scrambler-700/01.webp",
+    "fantic/fantic-caballero-caballero-scrambler-700/02.webp",
+    "fantic/fantic-caballero-caballero-scrambler-700/03.webp",
+    "fantic/fantic-caballero-caballero-scrambler-700/04.webp",
+    "fantic/fantic-caballero-caballero-scrambler-700/05.webp",
+    "fantic/fantic-caballero-caballero-scrambler-700/06.webp",
+    "fantic/fantic-caballero-caballero-scrambler-700/07.webp",
+    "fantic/fantic-caballero-caballero-scrambler-700/08.webp",
+    "fantic/fantic-caballero-caballero-scrambler-700/09.webp",
+    "fantic/fantic-caballero-caballero-scrambler-700/10.webp"
+  ]
 }

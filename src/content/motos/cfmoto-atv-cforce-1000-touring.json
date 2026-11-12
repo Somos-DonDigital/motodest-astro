@@ -35,5 +35,12 @@
   },
   "fuenteFicha": "https://cfmoto.es/atv/cforce-1000-touring",
   "destacada": false,
-  "orden": 105
+  "orden": 105,
+  "galeria": [
+    "cfmoto/cfmoto-atv-cforce-1000-touring/01.webp",
+    "cfmoto/cfmoto-atv-cforce-1000-touring/02.webp",
+    "cfmoto/cfmoto-atv-cforce-1000-touring/03.webp",
+    "cfmoto/cfmoto-atv-cforce-1000-touring/04.webp",
+    "cfmoto/cfmoto-atv-cforce-1000-touring/05.webp"
+  ]
 }

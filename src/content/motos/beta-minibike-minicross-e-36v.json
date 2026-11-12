@@ -26,5 +26,8 @@
   },
   "fuenteFicha": "https://www.betamotor.com/es/motocicletas/moto-minicross-e/",
   "destacada": false,
-  "orden": 503
+  "orden": 503,
+  "galeria": [
+    "beta/beta-minibike-minicross-e-36v/01.webp"
+  ]
 }

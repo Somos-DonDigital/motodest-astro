@@ -48,5 +48,12 @@
   },
   "fuenteFicha": "https://cfmoto.es/atv/c6-pro",
   "destacada": false,
-  "orden": 109
+  "orden": 109,
+  "galeria": [
+    "cfmoto/cfmoto-atv-c6-pro/01.webp",
+    "cfmoto/cfmoto-atv-c6-pro/02.webp",
+    "cfmoto/cfmoto-atv-c6-pro/03.webp",
+    "cfmoto/cfmoto-atv-c6-pro/04.webp",
+    "cfmoto/cfmoto-atv-c6-pro/05.webp"
+  ]
 }

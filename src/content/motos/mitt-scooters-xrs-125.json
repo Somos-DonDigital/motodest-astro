@@ -34,5 +34,14 @@
   },
   "fuenteFicha": "https://mittmotors.com/vehiculo/mitt-xrs-50-125",
   "destacada": false,
-  "orden": 0
+  "orden": 0,
+  "galeria": [
+    "mitt/mitt-scooters-xrs-125/01.webp",
+    "mitt/mitt-scooters-xrs-125/02.webp",
+    "mitt/mitt-scooters-xrs-125/03.webp",
+    "mitt/mitt-scooters-xrs-125/04.webp",
+    "mitt/mitt-scooters-xrs-125/05.webp",
+    "mitt/mitt-scooters-xrs-125/06.webp",
+    "mitt/mitt-scooters-xrs-125/07.webp"
+  ]
 }

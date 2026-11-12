@@ -40,5 +40,12 @@
   },
   "fuenteFicha": "https://cfmoto.es/atv/uforce-800xl",
   "destacada": false,
-  "orden": 207
+  "orden": 207,
+  "galeria": [
+    "cfmoto/cfmoto-buggies-uforce-800xl/01.webp",
+    "cfmoto/cfmoto-buggies-uforce-800xl/02.webp",
+    "cfmoto/cfmoto-buggies-uforce-800xl/03.webp",
+    "cfmoto/cfmoto-buggies-uforce-800xl/04.webp",
+    "cfmoto/cfmoto-buggies-uforce-800xl/05.webp"
+  ]
 }

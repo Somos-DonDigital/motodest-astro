@@ -35,5 +35,12 @@
   },
   "fuenteFicha": "https://cfmoto.es/atv/zforce-950-sport",
   "destacada": false,
-  "orden": 200
+  "orden": 200,
+  "galeria": [
+    "cfmoto/cfmoto-buggies-zforce-950-sport/01.webp",
+    "cfmoto/cfmoto-buggies-zforce-950-sport/02.webp",
+    "cfmoto/cfmoto-buggies-zforce-950-sport/03.webp",
+    "cfmoto/cfmoto-buggies-zforce-950-sport/04.webp",
+    "cfmoto/cfmoto-buggies-zforce-950-sport/05.webp"
+  ]
 }

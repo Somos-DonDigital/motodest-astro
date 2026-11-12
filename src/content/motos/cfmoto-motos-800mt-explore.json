@@ -32,5 +32,17 @@
   },
   "fuenteFicha": "https://cfmoto.es/moto/800mt-explore",
   "destacada": true,
-  "orden": 4
+  "orden": 4,
+  "galeria": [
+    "cfmoto/cfmoto-motos-800mt-explore/01.webp",
+    "cfmoto/cfmoto-motos-800mt-explore/02.webp",
+    "cfmoto/cfmoto-motos-800mt-explore/03.webp",
+    "cfmoto/cfmoto-motos-800mt-explore/04.webp",
+    "cfmoto/cfmoto-motos-800mt-explore/05.webp",
+    "cfmoto/cfmoto-motos-800mt-explore/06.webp",
+    "cfmoto/cfmoto-motos-800mt-explore/07.webp",
+    "cfmoto/cfmoto-motos-800mt-explore/08.webp",
+    "cfmoto/cfmoto-motos-800mt-explore/09.webp",
+    "cfmoto/cfmoto-motos-800mt-explore/10.webp"
+  ]
 }

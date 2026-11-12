@@ -27,5 +27,9 @@
   },
   "fuenteFicha": "https://www.betamotor.com/es/motocicletas/evo-80-junior/",
   "destacada": false,
-  "orden": 203
+  "orden": 203,
+  "galeria": [
+    "beta/beta-trial-evo-80-junior/01.webp",
+    "beta/beta-trial-evo-80-junior/02.webp"
+  ]
 }

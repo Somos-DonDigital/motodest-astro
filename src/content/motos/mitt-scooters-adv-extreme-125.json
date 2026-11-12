@@ -29,5 +29,13 @@
   },
   "fuenteFicha": "https://mittmotors.com/vehiculo/mitt-adv-xtreme-125",
   "destacada": false,
-  "orden": 6
+  "orden": 6,
+  "galeria": [
+    "mitt/mitt-scooters-adv-extreme-125/01.webp",
+    "mitt/mitt-scooters-adv-extreme-125/02.webp",
+    "mitt/mitt-scooters-adv-extreme-125/03.webp",
+    "mitt/mitt-scooters-adv-extreme-125/04.webp",
+    "mitt/mitt-scooters-adv-extreme-125/05.webp",
+    "mitt/mitt-scooters-adv-extreme-125/06.webp"
+  ]
 }

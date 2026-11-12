@@ -34,5 +34,17 @@
   },
   "fuenteFicha": "https://cfmoto.es/moto/800mt-x",
   "destacada": false,
-  "orden": 3
+  "orden": 3,
+  "galeria": [
+    "cfmoto/cfmoto-motos-800mt-x/01.webp",
+    "cfmoto/cfmoto-motos-800mt-x/02.webp",
+    "cfmoto/cfmoto-motos-800mt-x/03.webp",
+    "cfmoto/cfmoto-motos-800mt-x/04.webp",
+    "cfmoto/cfmoto-motos-800mt-x/05.webp",
+    "cfmoto/cfmoto-motos-800mt-x/06.webp",
+    "cfmoto/cfmoto-motos-800mt-x/07.webp",
+    "cfmoto/cfmoto-motos-800mt-x/08.webp",
+    "cfmoto/cfmoto-motos-800mt-x/09.webp",
+    "cfmoto/cfmoto-motos-800mt-x/10.webp"
+  ]
 }

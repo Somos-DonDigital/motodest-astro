@@ -33,5 +33,13 @@
   },
   "fuenteFicha": "https://mittmotors.com/vehiculo/mitt-330-atv-4x4",
   "destacada": false,
-  "orden": 501
+  "orden": 501,
+  "galeria": [
+    "mitt/mitt-atv-atv-330-4x4/01.webp",
+    "mitt/mitt-atv-atv-330-4x4/02.webp",
+    "mitt/mitt-atv-atv-330-4x4/03.webp",
+    "mitt/mitt-atv-atv-330-4x4/04.webp",
+    "mitt/mitt-atv-atv-330-4x4/05.webp",
+    "mitt/mitt-atv-atv-330-4x4/06.webp"
+  ]
 }

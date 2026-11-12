@@ -33,5 +33,15 @@
   },
   "fuenteFicha": "https://mittmotors.com/vehiculo/mitt-gt-k",
   "destacada": false,
-  "orden": 205
+  "orden": 205,
+  "galeria": [
+    "mitt/mitt-sport-touring-gt-k/01.webp",
+    "mitt/mitt-sport-touring-gt-k/02.webp",
+    "mitt/mitt-sport-touring-gt-k/03.webp",
+    "mitt/mitt-sport-touring-gt-k/04.webp",
+    "mitt/mitt-sport-touring-gt-k/05.webp",
+    "mitt/mitt-sport-touring-gt-k/06.webp",
+    "mitt/mitt-sport-touring-gt-k/07.webp",
+    "mitt/mitt-sport-touring-gt-k/08.webp"
+  ]
 }

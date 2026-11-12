@@ -25,5 +25,9 @@
   },
   "fuenteFicha": "https://www.betamotor.com/es/motocicletas/moto-minitrial-electric-16/",
   "destacada": false,
-  "orden": 500
+  "orden": 500,
+  "galeria": [
+    "beta/beta-minibike-minitrial-electric-16-pulgadas/01.webp",
+    "beta/beta-minibike-minitrial-electric-16-pulgadas/02.webp"
+  ]
 }

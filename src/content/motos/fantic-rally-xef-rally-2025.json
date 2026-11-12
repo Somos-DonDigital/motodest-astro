@@ -29,5 +29,14 @@
   },
   "fuenteFicha": "https://fantic.com/es-es/moto/rally/xef-rally-2025_il672",
   "destacada": false,
-  "orden": 1
+  "orden": 1,
+  "galeria": [
+    "fantic/fantic-rally-xef-rally-2025/01.webp",
+    "fantic/fantic-rally-xef-rally-2025/02.webp",
+    "fantic/fantic-rally-xef-rally-2025/03.webp",
+    "fantic/fantic-rally-xef-rally-2025/04.webp",
+    "fantic/fantic-rally-xef-rally-2025/05.webp",
+    "fantic/fantic-rally-xef-rally-2025/06.webp",
+    "fantic/fantic-rally-xef-rally-2025/07.webp"
+  ]
 }

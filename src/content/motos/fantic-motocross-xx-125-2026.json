@@ -28,5 +28,14 @@
   },
   "fuenteFicha": "https://fantic.com/es-es/moto/motocross/xx-125_y41nk",
   "destacada": false,
-  "orden": 402
+  "orden": 402,
+  "galeria": [
+    "fantic/fantic-motocross-xx-125-2026/01.webp",
+    "fantic/fantic-motocross-xx-125-2026/02.webp",
+    "fantic/fantic-motocross-xx-125-2026/03.webp",
+    "fantic/fantic-motocross-xx-125-2026/04.webp",
+    "fantic/fantic-motocross-xx-125-2026/05.webp",
+    "fantic/fantic-motocross-xx-125-2026/06.webp",
+    "fantic/fantic-motocross-xx-125-2026/07.webp"
+  ]
 }

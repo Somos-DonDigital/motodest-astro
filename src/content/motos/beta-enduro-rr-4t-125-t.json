@@ -28,5 +28,13 @@
   },
   "fuenteFicha": "https://www.betamotor.com/es/motocicletas/rr125-t-4t/",
   "destacada": false,
-  "orden": 2
+  "orden": 2,
+  "galeria": [
+    "beta/beta-enduro-rr-4t-125-t/01.webp",
+    "beta/beta-enduro-rr-4t-125-t/02.webp",
+    "beta/beta-enduro-rr-4t-125-t/03.webp",
+    "beta/beta-enduro-rr-4t-125-t/04.webp",
+    "beta/beta-enduro-rr-4t-125-t/05.webp",
+    "beta/beta-enduro-rr-4t-125-t/06.webp"
+  ]
 }

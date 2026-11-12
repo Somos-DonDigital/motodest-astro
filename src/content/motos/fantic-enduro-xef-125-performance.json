@@ -36,5 +36,16 @@
   },
   "fuenteFicha": "https://fantic.com/es-es/moto/enduro/xef-125-performance_n0a41",
   "destacada": false,
-  "orden": 100
+  "orden": 100,
+  "galeria": [
+    "fantic/fantic-enduro-xef-125-performance/01.webp",
+    "fantic/fantic-enduro-xef-125-performance/02.webp",
+    "fantic/fantic-enduro-xef-125-performance/03.webp",
+    "fantic/fantic-enduro-xef-125-performance/04.webp",
+    "fantic/fantic-enduro-xef-125-performance/05.webp",
+    "fantic/fantic-enduro-xef-125-performance/06.webp",
+    "fantic/fantic-enduro-xef-125-performance/07.webp",
+    "fantic/fantic-enduro-xef-125-performance/08.webp",
+    "fantic/fantic-enduro-xef-125-performance/09.webp"
+  ]
 }

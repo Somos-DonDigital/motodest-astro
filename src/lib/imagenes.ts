@@ -1,7 +1,7 @@
 import type { ImageMetadata } from 'astro';
 
 const motos = import.meta.glob<{ default: ImageMetadata }>('/src/assets/motos/**/*.{webp,jpg,jpeg,png}', { eager: true });
-const galeria = import.meta.glob<{ default: ImageMetadata }>('/src/assets/galeria/**/*.{webp,jpg,jpeg,png}', { eager: true });
+import galeriaManifiesto from '../data/galeria.json';
 const sitio = import.meta.glob<{ default: ImageMetadata }>('/src/assets/site/**/*.{webp,jpg,jpeg,png}', { eager: true });
 
 export function imgMoto(ruta: string): ImageMetadata {
@@ -16,8 +16,14 @@ export function imgSitio(clave: string): ImageMetadata {
   return sitio[k].default;
 }
 
-export function imgGaleria(ruta: string): ImageMetadata {
-  const m = galeria[`/src/assets/galeria/${ruta}`];
+export type FotoGaleria = { base: string; w: number; h: number };
+// Las fotos de galería se generan ya en AVIF (scripts/galeria_avif.mjs) en 400, 900 y 1600 px.
+export function imgGaleria(ruta: string): FotoGaleria {
+  const m = (galeriaManifiesto as Record<string, FotoGaleria>)[ruta];
   if (!m) throw new Error(`Falta la foto de galería: ${ruta}`);
-  return m.default;
+  return m;
 }
+export const srcsetGaleria = (f: FotoGaleria) => {
+  const vistos = new Set<number>();
+  return [400, 900, 1600].map((w) => [w, Math.min(w, f.w)] as const).filter(([, r]) => !vistos.has(r) && vistos.add(r)).map(([w, r]) => `${f.base}-${w}.avif ${r}w`).join(', ');
+};

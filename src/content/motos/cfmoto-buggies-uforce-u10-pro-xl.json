@@ -38,5 +38,12 @@
   },
   "fuenteFicha": "https://cfmoto.es/atv/u10-pro-xl",
   "destacada": false,
-  "orden": 205
+  "orden": 205,
+  "galeria": [
+    "cfmoto/cfmoto-buggies-uforce-u10-pro-xl/01.webp",
+    "cfmoto/cfmoto-buggies-uforce-u10-pro-xl/02.webp",
+    "cfmoto/cfmoto-buggies-uforce-u10-pro-xl/03.webp",
+    "cfmoto/cfmoto-buggies-uforce-u10-pro-xl/04.webp",
+    "cfmoto/cfmoto-buggies-uforce-u10-pro-xl/05.webp"
+  ]
 }

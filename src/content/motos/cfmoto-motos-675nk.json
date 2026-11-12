@@ -34,5 +34,17 @@
   },
   "fuenteFicha": "https://cfmoto.es/moto/675nk",
   "destacada": false,
-  "orden": 6
+  "orden": 6,
+  "galeria": [
+    "cfmoto/cfmoto-motos-675nk/01.webp",
+    "cfmoto/cfmoto-motos-675nk/02.webp",
+    "cfmoto/cfmoto-motos-675nk/03.webp",
+    "cfmoto/cfmoto-motos-675nk/04.webp",
+    "cfmoto/cfmoto-motos-675nk/05.webp",
+    "cfmoto/cfmoto-motos-675nk/06.webp",
+    "cfmoto/cfmoto-motos-675nk/07.webp",
+    "cfmoto/cfmoto-motos-675nk/08.webp",
+    "cfmoto/cfmoto-motos-675nk/09.webp",
+    "cfmoto/cfmoto-motos-675nk/10.webp"
+  ]
 }

@@ -41,5 +41,15 @@
   },
   "fuenteFicha": "https://fantic.com/es-es/moto/caballero/scrambler-500-_45ki4",
   "destacada": false,
-  "orden": 203
+  "orden": 203,
+  "galeria": [
+    "fantic/fantic-caballero-caballero-scrambler-500/01.webp",
+    "fantic/fantic-caballero-caballero-scrambler-500/02.webp",
+    "fantic/fantic-caballero-caballero-scrambler-500/03.webp",
+    "fantic/fantic-caballero-caballero-scrambler-500/04.webp",
+    "fantic/fantic-caballero-caballero-scrambler-500/05.webp",
+    "fantic/fantic-caballero-caballero-scrambler-500/06.webp",
+    "fantic/fantic-caballero-caballero-scrambler-500/07.webp",
+    "fantic/fantic-caballero-caballero-scrambler-500/08.webp"
+  ]
 }

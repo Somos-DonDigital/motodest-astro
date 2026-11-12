@@ -33,5 +33,17 @@
   },
   "fuenteFicha": "https://cfmoto.es/moto/450cl-c-bobber",
   "destacada": false,
-  "orden": 9
+  "orden": 9,
+  "galeria": [
+    "cfmoto/cfmoto-motos-450cl-c-bobber/01.webp",
+    "cfmoto/cfmoto-motos-450cl-c-bobber/02.webp",
+    "cfmoto/cfmoto-motos-450cl-c-bobber/03.webp",
+    "cfmoto/cfmoto-motos-450cl-c-bobber/04.webp",
+    "cfmoto/cfmoto-motos-450cl-c-bobber/05.webp",
+    "cfmoto/cfmoto-motos-450cl-c-bobber/06.webp",
+    "cfmoto/cfmoto-motos-450cl-c-bobber/07.webp",
+    "cfmoto/cfmoto-motos-450cl-c-bobber/08.webp",
+    "cfmoto/cfmoto-motos-450cl-c-bobber/09.webp",
+    "cfmoto/cfmoto-motos-450cl-c-bobber/10.webp"
+  ]
 }

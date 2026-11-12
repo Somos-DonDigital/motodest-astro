@@ -33,5 +33,12 @@
   },
   "fuenteFicha": "https://fantic.com/es-es/moto/enduro/xe-50-performance_0i5ra",
   "destacada": false,
-  "orden": 102
+  "orden": 102,
+  "galeria": [
+    "fantic/fantic-enduro-xe-50-performance/01.webp",
+    "fantic/fantic-enduro-xe-50-performance/02.webp",
+    "fantic/fantic-enduro-xe-50-performance/03.webp",
+    "fantic/fantic-enduro-xe-50-performance/04.webp",
+    "fantic/fantic-enduro-xe-50-performance/05.webp"
+  ]
 }

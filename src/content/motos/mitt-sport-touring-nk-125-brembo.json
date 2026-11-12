@@ -29,5 +29,13 @@
   },
   "fuenteFicha": "https://mittmotors.com/vehiculo/mitt-nk-125-brembo-ltd-edition",
   "destacada": false,
-  "orden": 200
+  "orden": 200,
+  "galeria": [
+    "mitt/mitt-sport-touring-nk-125-brembo/01.webp",
+    "mitt/mitt-sport-touring-nk-125-brembo/02.webp",
+    "mitt/mitt-sport-touring-nk-125-brembo/03.webp",
+    "mitt/mitt-sport-touring-nk-125-brembo/04.webp",
+    "mitt/mitt-sport-touring-nk-125-brembo/05.webp",
+    "mitt/mitt-sport-touring-nk-125-brembo/06.webp"
+  ]
 }

@@ -28,5 +28,13 @@
   },
   "fuenteFicha": "https://fantic.com/es-es/moto/motocross/xx-250-_f1a6o",
   "destacada": false,
-  "orden": 403
+  "orden": 403,
+  "galeria": [
+    "fantic/fantic-motocross-xx-250-2026/01.webp",
+    "fantic/fantic-motocross-xx-250-2026/02.webp",
+    "fantic/fantic-motocross-xx-250-2026/03.webp",
+    "fantic/fantic-motocross-xx-250-2026/04.webp",
+    "fantic/fantic-motocross-xx-250-2026/05.webp",
+    "fantic/fantic-motocross-xx-250-2026/06.webp"
+  ]
 }

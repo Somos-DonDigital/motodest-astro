@@ -40,5 +40,17 @@
   },
   "fuenteFicha": "https://fantic.com/es-es/moto/street/stealth-500-red-yellow_iac0r",
   "destacada": false,
-  "orden": 601
+  "orden": 601,
+  "galeria": [
+    "fantic/fantic-stealth-stealth-500/01.webp",
+    "fantic/fantic-stealth-stealth-500/02.webp",
+    "fantic/fantic-stealth-stealth-500/03.webp",
+    "fantic/fantic-stealth-stealth-500/04.webp",
+    "fantic/fantic-stealth-stealth-500/05.webp",
+    "fantic/fantic-stealth-stealth-500/06.webp",
+    "fantic/fantic-stealth-stealth-500/07.webp",
+    "fantic/fantic-stealth-stealth-500/08.webp",
+    "fantic/fantic-stealth-stealth-500/09.webp",
+    "fantic/fantic-stealth-stealth-500/10.webp"
+  ]
 }

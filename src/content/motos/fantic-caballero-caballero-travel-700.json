@@ -28,5 +28,17 @@
   },
   "fuenteFicha": "https://fantic.com/es-es/moto/caballero/travel-700_8c4i1",
   "destacada": false,
-  "orden": 202
+  "orden": 202,
+  "galeria": [
+    "fantic/fantic-caballero-caballero-travel-700/01.webp",
+    "fantic/fantic-caballero-caballero-travel-700/02.webp",
+    "fantic/fantic-caballero-caballero-travel-700/03.webp",
+    "fantic/fantic-caballero-caballero-travel-700/04.webp",
+    "fantic/fantic-caballero-caballero-travel-700/05.webp",
+    "fantic/fantic-caballero-caballero-travel-700/06.webp",
+    "fantic/fantic-caballero-caballero-travel-700/07.webp",
+    "fantic/fantic-caballero-caballero-travel-700/08.webp",
+    "fantic/fantic-caballero-caballero-travel-700/09.webp",
+    "fantic/fantic-caballero-caballero-travel-700/10.webp"
+  ]
 }

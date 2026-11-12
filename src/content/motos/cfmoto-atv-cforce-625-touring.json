@@ -30,5 +30,12 @@
   },
   "fuenteFicha": "https://cfmoto.es/atv/cforce-625-touring",
   "destacada": false,
-  "orden": 103.5
+  "orden": 103.5,
+  "galeria": [
+    "cfmoto/cfmoto-atv-cforce-625-touring/01.webp",
+    "cfmoto/cfmoto-atv-cforce-625-touring/02.webp",
+    "cfmoto/cfmoto-atv-cforce-625-touring/03.webp",
+    "cfmoto/cfmoto-atv-cforce-625-touring/04.webp",
+    "cfmoto/cfmoto-atv-cforce-625-touring/05.webp"
+  ]
 }

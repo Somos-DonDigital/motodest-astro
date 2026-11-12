@@ -35,5 +35,12 @@
   },
   "fuenteFicha": "https://cfmoto.es/atv/cforce-1000-overland",
   "destacada": true,
-  "orden": 106
+  "orden": 106,
+  "galeria": [
+    "cfmoto/cfmoto-atv-cforce-1000-overland/01.webp",
+    "cfmoto/cfmoto-atv-cforce-1000-overland/02.webp",
+    "cfmoto/cfmoto-atv-cforce-1000-overland/03.webp",
+    "cfmoto/cfmoto-atv-cforce-1000-overland/04.webp",
+    "cfmoto/cfmoto-atv-cforce-1000-overland/05.webp"
+  ]
 }
