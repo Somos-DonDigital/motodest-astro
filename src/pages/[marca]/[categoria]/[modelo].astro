@@ -79,11 +79,6 @@ const producto: Record<string, unknown> = {
         {fotos.map((f, i) => (
           <img class="galeria__slide" data-slide={i + 1} data-src={`${f.base}-900.avif`} data-srcset={`${f.base}-900.avif 900w, ${f.base}-1600.avif 1600w`} sizes="(max-width: 900px) 92vw, 55vw" alt={`${nombre}, foto ${i + 1}`} width={f.w} height={f.h} decoding="async" />
         ))}
-        {etiquetaC && (
-          <span class="dgt" title="Distintivo ambiental C de la DGT" aria-label="Distintivo ambiental C de la DGT" role="img">
-            <svg viewBox="0 0 64 64" width="56" height="56" aria-hidden="true"><circle cx="32" cy="32" r="31" fill="#fff"/><circle cx="32" cy="32" r="28.5" fill="#2e9e44"/><path d="M3.5 32a28.5 28.5 0 0 1 57 0z" fill="#8dc63f"/><circle cx="32" cy="32" r="18" fill="#fff"/><text x="32" y="41" text-anchor="middle" font-family="Arial, Helvetica, sans-serif" font-weight="700" font-size="26" fill="#2e9e44">C</text></svg>
-          </span>
-        )}
         {fotos.length > 0 && (
           <>
             <button type="button" class="galeria__flecha galeria__flecha--ant" data-car-ant aria-label="Foto anterior"><svg viewBox="0 0 24 24" width="22" height="22" aria-hidden="true"><path d="M15 5l-7 7 7 7" fill="none" stroke="currentColor" stroke-width="2.4"/></svg></button>
@@ -122,7 +117,24 @@ const producto: Record<string, unknown> = {
 
     <div class="resumen">
       <a class="resumen__marca" href={`/${marca.slug}/${cat.slug}/`}>{marca.nombre} · {cat.nombre}</a>
-      <h1>{nombre}</h1>
+      <div class="resumen__cab">
+        <h1>{nombre}</h1>
+        {etiquetaC && (
+          <span class="dgt" title="Distintivo ambiental C de la DGT" role="img" aria-label="Distintivo ambiental C de la DGT">
+            <svg viewBox="0 0 100 100" width="64" height="64" aria-hidden="true">
+              <circle cx="50" cy="50" r="49" fill="#8cc63e"/>
+              <g transform="translate(50 48) scale(1.2) translate(-49 -48)">
+              <g fill="#fff"><rect x="20" y="22" width="6" height="34" rx="1"/><rect x="31" y="22" width="22" height="34"/><rect x="56" y="22" width="22" height="16"/><rect x="56" y="41" width="22" height="15" fill="#f4f7d0"/></g>
+              <g fill="#2a2a2a"><rect x="21" y="25" width="1.2" height="28"/><rect x="23" y="25" width="0.8" height="28"/><rect x="24.5" y="25" width="1" height="28"/></g>
+              <text x="42" y="49" text-anchor="middle" font-family="Arial, Helvetica, sans-serif" font-weight="700" font-size="24" fill="#1a1a1a">C</text>
+              <rect x="31" y="62" width="38" height="13" fill="#fff" opacity="0.92"/>
+              <text x="55" y="72.5" text-anchor="middle" font-family="Arial, Helvetica, sans-serif" font-style="italic" font-weight="700" font-size="10" fill="#1a1a1a">DGT</text>
+              <g fill="#1a1a1a"><rect x="34" y="65" width="7" height="1.6"/><rect x="34" y="68" width="7" height="1.6"/><rect x="34" y="71" width="7" height="1.6"/></g>
+              </g>
+            </svg>
+          </span>
+        )}
+      </div>
       <p class="resumen__precio">{precioTexto(m)}</p>
       {m.precio != null && <p class="resumen__nota">Precio con la moto matriculada, IVA incluido. Consulta promociones y financiación.</p>}
       <p class="resumen__desc">{descripcion}</p>
@@ -312,7 +324,9 @@ const producto: Record<string, unknown> = {
   .galeria__ampliar { position: absolute; right: 10px; bottom: 10px; z-index: 3; width: 42px; height: 42px; display: grid; place-items: center; border: 0; background: var(--azul); color: #fff; cursor: zoom-in; transition: background 0.2s; }
   .galeria__ampliar:hover { background: var(--naranja); }
   .galeria__cont { position: absolute; left: 10px; bottom: 10px; z-index: 3; background: rgb(11 1 62 / 0.75); color: #fff; font-size: 0.8rem; padding: 4px 10px; letter-spacing: 0.04em; }
-  .dgt { position: absolute; top: 10px; right: 10px; z-index: 3; line-height: 0; filter: drop-shadow(0 2px 6px rgb(0 0 0 / 0.18)); }
+  .resumen__cab { display: flex; align-items: flex-start; justify-content: space-between; gap: 16px; }
+  .resumen__cab h1 { margin: 0; }
+  .dgt { flex: none; line-height: 0; margin-top: 4px; }
   .galeria__todas { border: 0; background: none; padding: 0; margin-left: 10px; color: var(--naranja); font: inherit; font-weight: 700; cursor: pointer; text-decoration: underline; text-underline-offset: 3px; }
   .galeria__verfotos { position: absolute; left: 12px; bottom: 12px; z-index: 2; display: inline-flex; align-items: center; gap: 8px; background: var(--azul); color: #fff; border: 0; padding: 10px 14px; font: inherit; font-weight: 700; font-size: 0.85rem; text-transform: uppercase; letter-spacing: 0.06em; cursor: pointer; transition: background 0.2s; }
   .galeria__verfotos:hover { background: var(--naranja); }
@@ -401,7 +415,7 @@ const producto: Record<string, unknown> = {
     .barra__llamar, .barra__wa { flex: 0 0 44px !important; padding-inline: 0 !important; }
     .barra__llamar span, .barra__wa span { display: none; }
     .galeria__flecha { width: 38px; height: 38px; }
-    .dgt svg { width: 46px; height: 46px; }
+    .dgt svg { width: 52px; height: 52px; }
   }
   @media (max-width: 380px) {
     .barra__in { padding-inline: 8px; }
