@@ -62,6 +62,7 @@ export interface Marca {
   lema: string;
   historiaTitulo: string;
   historia: string[];
+  historiaDato: { grande: string; texto: string };
   hero: string;
   historiaImg: string;
   logoImg: string;
@@ -77,6 +78,7 @@ export const MARCAS: Marca[] = [
     h1: 'Concesionario oficial Fantic en Cádiz',
     lema: 'Enduro, motard, motocross, rally y la gama Caballero, en Barbate.',
     historiaTitulo: 'Historia de Fantic',
+    historiaDato: { grande: '1968', texto: 'Fundada en Italia' },
     historia: [
       'Fantic es una marca italiana fundada en 1968 que se ha hecho un nombre en el enduro, el trial y el motocross gracias a su innovación y su diseño.',
       'Hoy combina motos de competición, como las XEF y XXF, con la gama Caballero de inspiración clásica, y es una marca muy apreciada por los aficionados de todo el mundo.',
@@ -107,6 +109,7 @@ export const MARCAS: Marca[] = [
     h1: 'Concesionario oficial Beta en Cádiz',
     lema: 'Enduro, trial, motocross, motard y minimotos Beta en Barbate.',
     historiaTitulo: 'Historia de Beta',
+    historiaDato: { grande: '1904', texto: 'Nace en Florencia' },
     historia: [
       'Beta Motor nació en Florencia en 1904 fabricando bicicletas y dio el salto a las motos en 1948. Desde entonces es sinónimo de calidad, fiabilidad y espíritu de competición, sobre todo en trial y enduro.',
       'La tradición artesanal italiana y la innovación constante la han convertido en una referencia mundial para los amantes del off-road.',
@@ -137,6 +140,7 @@ export const MARCAS: Marca[] = [
     h1: 'Concesionario oficial CFMOTO en Cádiz',
     lema: 'Motos, ATV y buggies CFMOTO en Barbate.',
     historiaTitulo: 'Historia de CFMOTO',
+    historiaDato: { grande: '1989', texto: 'Año de fundación' },
     historia: [
       'CFMOTO se fundó en 1989 y desde sus inicios ha desarrollado motores y tecnología propios, lo que le ha permitido crecer en mercados de todo el mundo.',
       'Su evolución constante y sus colaboraciones con fabricantes europeos la han convertido en una marca reconocida por su fiabilidad, su diseño y su equipamiento.',
@@ -161,6 +165,7 @@ export const MARCAS: Marca[] = [
     h1: 'Concesionario oficial MITT en Cádiz',
     lema: 'Scooters, custom, deportivas y trail MITT en Barbate.',
     historiaTitulo: 'Historia de MITT',
+    historiaDato: { grande: 'MITT', texto: 'Marca española' },
     historia: [
       'MITT es una marca española de motos que nació con el objetivo de ofrecer modelos accesibles, funcionales y pensados para el uso diario.',
       'Su gama combina diseño actual, equipamiento completo y fiabilidad mecánica, con scooters, custom, deportivas y trail de distintas cilindradas y una muy buena relación calidad-precio.',

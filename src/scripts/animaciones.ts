@@ -55,7 +55,8 @@ function iniciar() {
   gsap.utils.toArray<HTMLElement>('.historia__img, .banner__img').forEach((img) => {
     gsap.fromTo(img, { yPercent: -6, scale: 1.08 }, { yPercent: 6, ease: 'none', scrollTrigger: { trigger: img.parentElement!, start: 'top bottom', end: 'bottom top', scrub: true } });
   });
-  gsap.from('.historia__txt > *', { x: -30, opacity: 0, duration: 0.8, ease: 'power3.out', stagger: 0.1, scrollTrigger: { trigger: '.historia', start: 'top 75%', once: true } });
+  gsap.utils.toArray<HTMLElement>('.historia__dato').forEach((d) => gsap.fromTo(d, { yPercent: 18, opacity: 0 }, { yPercent: -10, opacity: 1, ease: 'none', scrollTrigger: { trigger: d.parentElement!, start: 'top bottom', end: 'bottom top', scrub: true } }));
+  gsap.from('.historia__txt > :not(.tit-seccion)', { x: -30, opacity: 0, duration: 0.8, ease: 'power3.out', stagger: 0.1, scrollTrigger: { trigger: '.historia', start: 'top 75%', once: true } });
 
   // Paneles de marcas: el que tocas se abre (GSAP anima el ancho)
   document.querySelectorAll<HTMLElement>('[data-paneles]').forEach((c) => {
