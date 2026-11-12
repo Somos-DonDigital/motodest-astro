@@ -169,12 +169,45 @@ const nombresAcc: Record<string, string> = { 'acc-ls2': 'LS2', 'acc-airoh': 'Air
     </div>
   </section>
 
+  <section class="seccion visita" id="visitanos">
+    <div class="contenedor visita__in">
+      <div class="visita__foto">
+        <Image format="avif" src={imgSitio('fachada-motodest')} alt="Fachada del concesionario Motodest en la Avenida de la Mar de Barbate" widths={[600, 900, 1400]} sizes="(max-width: 900px) 100vw, 55vw" loading="lazy" />
+      </div>
+      <div class="visita__txt">
+        <p class="antetitulo">Visítanos</p>
+        <h2 class="tit-seccion">Ven a ver tu moto en Barbate</h2>
+        <p class="visita__dir">{EMPRESA.direccion.calle}<br />{EMPRESA.direccion.cp} {EMPRESA.direccion.localidad} ({EMPRESA.direccion.provincia})</p>
+        <dl class="visita__horario">
+          {EMPRESA.horario.map((h) => <><dt>{h.dias}</dt><dd>{h.horas}</dd></>)}
+        </dl>
+        <p class="visita__ctas">
+          <a class="btn" href="https://www.google.com/maps/search/?api=1&query=Motodest%20Av.%20de%20la%20Mar%20114%20Barbate" target="_blank" rel="noopener">Cómo llegar</a>
+          <span>o llámanos al <a href={`tel:${EMPRESA.telefono.replace(/\s/g, "")}`}>{EMPRESA.telefonoVisible}</a></span>
+        </p>
+        <p class="visita__envio">¿Te pilla lejos? Te llevamos tu moto a casa, a cualquier punto de España.</p>
+      </div>
+    </div>
+  </section>
+
   <Formulario titulo="¿Necesitas que te asesoremos?" subtitulo="Cuéntanos qué buscas y te llamamos" />
 </Base>
 
 
 
 <style>
+  .visita__in { display: grid; grid-template-columns: 1.15fr 1fr; gap: clamp(24px, 4vw, 64px); align-items: center; }
+  .visita__foto { aspect-ratio: 3 / 2; overflow: hidden; }
+  .visita__foto img { width: 100%; height: 100%; object-fit: cover; display: block; }
+  .visita .tit-seccion { margin-left: 0; text-align: left; }
+  .visita__dir { font-size: 1.15rem; color: var(--azul); font-weight: 700; margin: 0 0 14px; }
+  .visita__horario { display: grid; grid-template-columns: auto 1fr; gap: 4px 18px; margin: 0 0 22px; color: var(--gris); }
+  .visita__horario dt { font-weight: 700; color: var(--azul); }
+  .visita__horario dd { margin: 0; }
+  .visita__ctas { display: flex; flex-wrap: wrap; align-items: center; gap: 12px 18px; margin: 0 0 18px; }
+  .visita__ctas span a { color: var(--naranja); font-weight: 700; text-decoration: none; }
+  .visita__envio { margin: 0; padding-left: 12px; border-left: 3px solid var(--naranja); color: var(--azul); font-size: var(--fs-peq); }
+  @media (max-width: 900px) { .visita__in { grid-template-columns: 1fr; } }
   .envio { background: var(--naranja); color: #fff; padding: clamp(28px, 4vw, 48px) 0; }
   .envio__in { display: flex; align-items: center; gap: clamp(16px, 3vw, 36px); flex-wrap: wrap; }
   .envio svg { flex: none; }
