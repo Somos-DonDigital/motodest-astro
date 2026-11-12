@@ -63,7 +63,7 @@ const enlaces = [
                       <span class="mega__dimg"><Image format="avif" fit="contain" src={imgMoto(menu[i].dest.imagenes[0].src)} alt="" widths={[320, 560]} sizes="280px" loading="lazy" decoding="async" /></span>
                       <strong>{m.nombre} {menu[i].dest.nombre}</strong>
                       <span class="mega__precio">{precioTexto(menu[i].dest)}</span>
-                      <span class="mega__cuota">Elige tu cuota desde {cuotaTxt(menu[i].dest.precio!)} €/mes</span>
+                      <span class="mega__cuota">Elige tu cuota desde <span class="nw">{cuotaTxt(menu[i].dest.precio!)} €/mes</span></span>
                       <span class="mega__envio"><svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M2 6h11v10H2zM13 9h4.5l3.5 3.6V16h-8"/><circle cx="6" cy="17.5" r="1.8"/><circle cx="17" cy="17.5" r="1.8"/></svg>Envío a toda España</span>
                     </a>
                   )}
@@ -186,12 +186,12 @@ const enlaces = [
 
   .mega { position: absolute; left: 0; right: 0; top: 100%; background: #fff; color: var(--azul); box-shadow: 0 24px 48px rgb(11 1 62 / 0.25); border-top: 3px solid var(--naranja); opacity: 0; visibility: hidden; transform: translateY(-6px); transition: opacity 0.18s, transform 0.18s, visibility 0s linear 0.18s; }
   .pestana:hover .mega, .pestana:focus-within .mega { opacity: 1; visibility: visible; transform: none; transition-delay: 0.08s, 0.08s, 0s; }
-  .mega__in { display: grid; grid-template-columns: minmax(180px, 0.8fr) minmax(0, 3fr) minmax(220px, 1fr); gap: max(24px, 2.4vw); padding-block: max(26px, 2.2vw); align-items: stretch; }
+  .mega__in { display: grid; grid-template-columns: minmax(220px, 0.9fr) minmax(0, 3fr) minmax(240px, 1fr); gap: max(24px, 2.4vw); padding-block: max(26px, 2.2vw); align-items: stretch; }
   .mega__marca { display: flex; flex-direction: column; align-items: flex-start; border-right: 1px solid #e6e4ef; padding-right: max(20px, 2vw); }
   .mega__ante { margin: 0; color: var(--naranja); text-transform: uppercase; font-size: 0.72rem; font-weight: 700; letter-spacing: 0.1em; }
   .mega__nombre { margin: 4px 0 6px; font-family: var(--fuente-titulos, inherit); font-weight: 800; text-transform: uppercase; font-size: clamp(1.8rem, 2.6vw, 2.6rem); line-height: 1; }
   .mega__total { margin: 0 0 auto; color: var(--gris); font-size: var(--fs-peq); }
-  .mega__btn { margin-top: 18px; white-space: nowrap; }
+  .mega__btn { margin-top: 18px; align-self: stretch; justify-content: center; text-align: center; padding-inline: 12px; white-space: nowrap; font-size: clamp(0.85rem, 0.9vw, 0.95rem); }
   .mega__cats { list-style: none; margin: 0; padding: 0; display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); align-content: start; gap: 10px; }
   .mega__cats a { display: grid; grid-template-rows: auto auto; height: 100%; padding: 10px 12px 12px; text-decoration: none; background: #f6f5fa; border: 1px solid transparent; transition: border-color 0.15s, background 0.15s; }
   .mega__cats a:hover, .mega__cats a.activo { background: #fff; border-color: var(--naranja); }
@@ -213,6 +213,7 @@ const enlaces = [
   .mega__cuota { text-decoration: underline; text-decoration-color: var(--naranja); text-underline-offset: 4px; text-decoration-thickness: 2px; font-weight: 700; font-size: var(--fs-peq); }
   .mega__envio { display: inline-flex; align-items: center; gap: 6px; margin-top: 6px; color: #cfcce3; font-size: 0.75rem; text-transform: uppercase; letter-spacing: 0.06em; }
   .mega__envio svg { color: var(--naranja); }
+  .mega__cuota .nw { white-space: nowrap; }
   .mega__dest:hover .mega__cuota { color: var(--naranja); }
 
   .buscar { background: var(--azul); border-top: 1px solid rgb(255 255 255 / 0.12); box-shadow: 0 20px 40px rgb(0 0 0 / 0.3); }
