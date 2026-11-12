@@ -1,9 +1,28 @@
 ---
-import { MARCAS, EMPRESA } from '../data/sitio';
+import { Image } from 'astro:assets';
+import { getCollection } from 'astro:content';
+import { MARCAS, EMPRESA, FINANCIACION } from '../data/sitio';
+import { imgMoto } from '../lib/imagenes';
+import { precioTexto, urlMoto } from '../lib/formato';
+import { cuotaMensual, capitalFinanciado } from '../lib/cuota';
 interface Props { superpuesta?: boolean }
 const { superpuesta = false } = Astro.props;
 const ruta = Astro.url.pathname;
 const tel = EMPRESA.telefono.replace(/\s/g, '');
+const todas = (await getCollection('motos')).map((e) => e.data);
+const plazoMax = Math.max(...FINANCIACION.plazos);
+const cuotaTxt = (p: number) => cuotaMensual(capitalFinanciado(p, 0, FINANCIACION.comisionApertura), FINANCIACION.tin, plazoMax).toLocaleString('es-ES', { minimumFractionDigits: 2, maximumFractionDigits: 2 });
+const menu = MARCAS.map((m) => {
+  const deMarca = todas.filter((x) => x.marca === m.slug);
+  const cats = m.categorias.map((c) => {
+    const lista = deMarca.filter((x) => x.categoria === c.slug).sort((a, b) => (Number(b.destacada) - Number(a.destacada)) || a.orden - b.orden);
+    const rep = lista.find((x) => x.imagenes.length && x.precio != null) ?? lista.find((x) => x.imagenes.length);
+    return { ...c, total: lista.length, img: rep?.imagenes[0]?.src };
+  }).filter((c) => c.total > 0);
+  const conPrecio = deMarca.filter((x) => x.precio != null && x.imagenes.length).sort((a, b) => (Number(b.destacada) - Number(a.destacada)) || a.orden - b.orden);
+  const dest = conPrecio[0];
+  return { m, cats, total: deMarca.length, dest };
+});
 const enlaces = [
   { url: '/#financiacion', nombre: 'Financiación' },
   { url: '/#servicios', nombre: 'Servicios' },
@@ -19,12 +38,37 @@ const enlaces = [
     <div class="cab__menu" id="cab-menu">
       <nav class="pestanas" aria-label="Marcas">
         <ul>
-          {MARCAS.map((m) => (
+          {MARCAS.map((m, i) => (
             <li class="pestana">
               <a href={`/${m.slug}/`} class:list={['pestana__btn', { activo: ruta.startsWith(`/${m.slug}/`) }]}>{m.nombre}</a>
-              <ul class="pestana__sub">
-                {m.categorias.map((c) => <li><a href={`/${m.slug}/${c.slug}/`} class:list={{ activo: ruta.startsWith(`/${m.slug}/${c.slug}/`) }}>{c.nombre}</a></li>)}
-              </ul>
+              <div class="mega">
+                <div class="mega__in contenedor">
+                  <div class="mega__marca">
+                    <p class="mega__ante">Concesionario oficial</p>
+                    <p class="mega__nombre">{m.nombre}</p>
+                    <p class="mega__total">{menu[i].total} modelos disponibles</p>
+                    <a class="btn mega__btn" href={`/${m.slug}/`}>Ver toda la gama</a>
+                  </div>
+                  <ul class:list={["mega__cats", { "mega__cats--pocas": menu[i].cats.length <= 3 }]}>
+                    {menu[i].cats.map((c) => (
+                      <li><a href={`/${m.slug}/${c.slug}/`} class:list={{ activo: ruta.startsWith(`/${m.slug}/${c.slug}/`) }}>
+                        <span class="mega__img">{c.img && <Image format="avif" fit="contain" src={imgMoto(c.img)} alt="" widths={[240, 400]} sizes="200px" loading="lazy" decoding="async" />}</span>
+                        <span class="mega__txt"><strong>{c.nombre}</strong><small>{c.total} {c.total === 1 ? 'modelo' : 'modelos'}</small></span>
+                      </a></li>
+                    ))}
+                  </ul>
+                  {menu[i].dest && (
+                    <a class="mega__dest" href={urlMoto(menu[i].dest)}>
+                      <span class="mega__etq">Destacada</span>
+                      <span class="mega__dimg"><Image format="avif" fit="contain" src={imgMoto(menu[i].dest.imagenes[0].src)} alt="" widths={[320, 560]} sizes="280px" loading="lazy" decoding="async" /></span>
+                      <strong>{m.nombre} {menu[i].dest.nombre}</strong>
+                      <span class="mega__precio">{precioTexto(menu[i].dest)}</span>
+                      <span class="mega__cuota">Elige tu cuota desde {cuotaTxt(menu[i].dest.precio!)} €/mes</span>
+                      <span class="mega__envio"><svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M2 6h11v10H2zM13 9h4.5l3.5 3.6V16h-8"/><circle cx="6" cy="17.5" r="1.8"/><circle cx="17" cy="17.5" r="1.8"/></svg>Envío a toda España</span>
+                    </a>
+                  )}
+                </div>
+              </div>
             </li>
           ))}
         </ul>
@@ -135,13 +179,41 @@ const enlaces = [
 
   .pestanas ul { list-style: none; margin: 0; padding: 0; }
   .pestanas > ul { display: flex; gap: max(6px, 0.6vw); }
-  .pestana { position: relative; }
-  .pestana__btn { display: block; min-width: clamp(84px, 7.4vw, 124px); padding: 4px 12px; text-align: center; text-decoration: none; text-transform: uppercase; font-weight: 700; font-size: var(--fs-peq); letter-spacing: 0.06em; border: 1px solid #fff; transition: background 0.2s, border-color 0.2s; }
-  .pestana__btn:hover, .pestana__btn.activo, .pestana:focus-within .pestana__btn { background: var(--naranja); border-color: var(--naranja); }
-  .pestana__sub { position: absolute; left: 0; right: 0; top: 100%; background: rgb(11 1 62 / 0.97); border: 1px solid #fff; border-top: 0; opacity: 0; visibility: hidden; transition: opacity 0.15s; }
-  .pestana:hover .pestana__sub, .pestana:focus-within .pestana__sub { opacity: 1; visibility: visible; }
-  .pestana__sub a { display: block; padding: 5px 10px; text-align: center; text-decoration: none; font-size: var(--fs-peq); border-top: 1px solid rgb(255 255 255 / 0.25); white-space: nowrap; }
-  .pestana__sub a:hover, .pestana__sub a.activo { color: var(--naranja); }
+  .pestana { position: static; }
+  .pestana__btn { display: block; min-width: clamp(84px, 7.4vw, 124px); padding: 4px 12px; text-align: center; text-decoration: none; text-transform: uppercase; font-weight: 700; font-size: var(--fs-peq); letter-spacing: 0.06em; border: 1px solid #fff; transition: background 0.2s, border-color 0.2s; position: relative; }
+  .pestana__btn:hover, .pestana__btn.activo, .pestana:hover .pestana__btn, .pestana:focus-within .pestana__btn { background: var(--naranja); border-color: var(--naranja); }
+  .pestana__btn::after { content: ''; position: absolute; left: -10px; right: -10px; top: 100%; height: 30px; }
+
+  .mega { position: absolute; left: 0; right: 0; top: 100%; background: #fff; color: var(--azul); box-shadow: 0 24px 48px rgb(11 1 62 / 0.25); border-top: 3px solid var(--naranja); opacity: 0; visibility: hidden; transform: translateY(-6px); transition: opacity 0.18s, transform 0.18s, visibility 0s linear 0.18s; }
+  .pestana:hover .mega, .pestana:focus-within .mega { opacity: 1; visibility: visible; transform: none; transition-delay: 0.08s, 0.08s, 0s; }
+  .mega__in { display: grid; grid-template-columns: minmax(180px, 0.8fr) minmax(0, 3fr) minmax(220px, 1fr); gap: max(24px, 2.4vw); padding-block: max(26px, 2.2vw); align-items: stretch; }
+  .mega__marca { display: flex; flex-direction: column; align-items: flex-start; border-right: 1px solid #e6e4ef; padding-right: max(20px, 2vw); }
+  .mega__ante { margin: 0; color: var(--naranja); text-transform: uppercase; font-size: 0.72rem; font-weight: 700; letter-spacing: 0.1em; }
+  .mega__nombre { margin: 4px 0 6px; font-family: var(--fuente-titulos, inherit); font-weight: 800; text-transform: uppercase; font-size: clamp(1.8rem, 2.6vw, 2.6rem); line-height: 1; }
+  .mega__total { margin: 0 0 auto; color: var(--gris); font-size: var(--fs-peq); }
+  .mega__btn { margin-top: 18px; white-space: nowrap; }
+  .mega__cats { list-style: none; margin: 0; padding: 0; display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); align-content: start; gap: 10px; }
+  .mega__cats a { display: grid; grid-template-rows: auto auto; height: 100%; padding: 10px 12px 12px; text-decoration: none; background: #f6f5fa; border: 1px solid transparent; transition: border-color 0.15s, background 0.15s; }
+  .mega__cats a:hover, .mega__cats a.activo { background: #fff; border-color: var(--naranja); }
+  .mega__cats--pocas { align-content: stretch; }
+  .mega__cats--pocas a { display: flex; flex-direction: column; }
+  .mega__cats--pocas .mega__img { flex: 1; height: auto; min-height: 120px; }
+  .mega__img { display: block; height: clamp(90px, 8.4vw, 132px); min-width: 0; }
+  .mega__img img { width: 100%; height: 100%; object-fit: contain; transition: transform 0.25s; }
+  .mega__cats a:hover .mega__img img { transform: scale(1.05); }
+  .mega__txt { display: flex; justify-content: space-between; align-items: baseline; gap: 8px; margin-top: 6px; }
+  .mega__txt strong { text-transform: uppercase; font-size: 0.9rem; letter-spacing: 0.04em; }
+  .mega__txt small { color: var(--gris); font-size: 0.75rem; white-space: nowrap; }
+  .mega__dest { min-width: 0; position: relative; display: flex; flex-direction: column; gap: 4px; padding: 14px 16px 16px; background: var(--azul); color: #fff; text-decoration: none; }
+  .mega__etq { align-self: flex-start; background: var(--naranja); font-size: 0.68rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.08em; padding: 3px 8px; }
+  .mega__dimg { display: block; height: clamp(110px, 9.5vw, 150px); margin: 4px 0; min-width: 0; }
+  .mega__dimg img { width: 100%; height: 100%; object-fit: contain; }
+  .mega__dest strong { font-size: 1rem; text-transform: uppercase; line-height: 1.15; }
+  .mega__precio { font-weight: 800; font-size: 1.15rem; }
+  .mega__cuota { text-decoration: underline; text-decoration-color: var(--naranja); text-underline-offset: 4px; text-decoration-thickness: 2px; font-weight: 700; font-size: var(--fs-peq); }
+  .mega__envio { display: inline-flex; align-items: center; gap: 6px; margin-top: 6px; color: #cfcce3; font-size: 0.75rem; text-transform: uppercase; letter-spacing: 0.06em; }
+  .mega__envio svg { color: var(--naranja); }
+  .mega__dest:hover .mega__cuota { color: var(--naranja); }
 
   .buscar { background: var(--azul); border-top: 1px solid rgb(255 255 255 / 0.12); box-shadow: 0 20px 40px rgb(0 0 0 / 0.3); }
   .buscar__in { padding-block: 14px 18px; max-width: 760px; }
@@ -177,8 +249,18 @@ const enlaces = [
     :global(.menu-abierto) { overflow: hidden; }
     .pestanas > ul { flex-direction: column; gap: 14px; }
     .pestana__btn { text-align: left; font-size: 1.05rem; padding: 10px 14px; }
-    .pestana__sub { position: static; opacity: 1; visibility: visible; display: flex; flex-wrap: wrap; border: 0; background: none; padding: 6px 0 0; }
-    .pestana__sub a { border: 0; padding: 6px 14px; text-align: left; color: #cfcce3; }
+    .pestana__btn::after { display: none; }
+    .mega { position: static; opacity: 1; visibility: visible; transform: none; background: none; color: #fff; box-shadow: none; border: 0; transition: none; }
+    .mega__in { display: block; padding: 8px 0 0; }
+    .mega__marca, .mega__dest { display: none; }
+    .mega__cats { grid-template-columns: 1fr 1fr; gap: 6px; }
+    .mega__cats a { grid-template-rows: none; grid-template-columns: 56px 1fr; align-items: center; gap: 10px; padding: 6px 8px; background: rgb(255 255 255 / 0.06); }
+    .mega__cats a:hover, .mega__cats a.activo { background: rgb(255 255 255 / 0.12); }
+    .mega__img, .mega__cats--pocas .mega__img { height: 42px; min-height: 0; flex: none; background: #fff; }
+    .mega__cats--pocas a { display: grid; }
+    .mega__txt { margin: 0; flex-direction: column; gap: 0; }
+    .mega__txt strong { font-size: 0.82rem; }
+    .mega__txt small { color: #cfcce3; }
     .cab__enlaces { flex-direction: column; gap: 14px; }
     .cab__enlaces a { font-size: 1rem; }
     .cab__llamar { display: inline-flex; }
