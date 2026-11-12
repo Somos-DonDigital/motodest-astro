@@ -11,7 +11,7 @@ const tel = EMPRESA.telefono.replace(/\s/g, '');
 <div class="calc" id={id} data-calc data-tin={F.tin} data-comision={F.comisionApertura} data-moto={moto}>
   <div class="calc__datos">
     <label class="calc__campo">
-      <span class="calc__etq"><Icono nombre="euro" tam={22} /> Precio de la moto</span>
+      <span class="calc__etq"><Icono nombre="euro" tam={22} /> {moto ? `Precio de la ${moto}` : 'Precio de la moto'}</span>
       {precio != null
         ? <><output class="calc__valor">{euros(precio)}</output><input type="hidden" name="precio" value={precio} /></>
         : <input class="calc__num" type="number" name="precio" min={F.importeMinimo} step="100" value={base} inputmode="numeric" />}

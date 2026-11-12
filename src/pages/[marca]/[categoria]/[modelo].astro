@@ -33,7 +33,7 @@ const variantes = m.imagenes.map((i) => i.color);
 const fotos = (m.galeria ?? []).map((r) => imgGaleria(r));
 // Cuota más baja posible (plazo máximo, sin entrada). Solo se enseña con las condiciones de la financiera confirmadas.
 const cuotaDesde = (() => {
-  if (m.precio == null || !FINANCIACION.confirmado) return null;
+  if (m.precio == null) return null;
   const n = Math.max(...FINANCIACION.plazos), r = FINANCIACION.tin / 100 / 12;
   const capital = m.precio * (1 + FINANCIACION.comisionApertura / 100);
   return Math.ceil(r === 0 ? capital / n : (capital * r) / (1 - Math.pow(1 + r, -n)));
@@ -115,11 +115,12 @@ const producto: Record<string, unknown> = {
       {m.precio != null && <p class="resumen__nota">Precio con la moto matriculada, IVA incluido. Consulta promociones y financiación.</p>}
       <p class="resumen__desc">{descripcion}</p>
       {m.precio != null && (
-        <a class="resumen__cuota" href="#financiacion">
-          {cuotaDesde ? <>Elige tu cuota desde {cuotaDesde.toLocaleString('es-ES')} €/mes</> : 'Elige tu cuota con financiación inmediata'}
+        <a class="resumen__cuota" href="#financiacion" data-cuota-minima>
+          {cuotaDesde ? <>Elige tu cuota desde {cuotaDesde.toLocaleString('es-ES')} €/mes*</> : 'Elige tu cuota con financiación inmediata'}
           <svg viewBox="0 0 24 24" width="22" height="22" aria-hidden="true"><path d="M9 5l7 7-7 7" fill="none" stroke="currentColor" stroke-width="2.6"/></svg>
         </a>
       )}
+      {cuotaDesde && <p class="resumen__legal">*Cuota orientativa sin entrada a {Math.max(...FINANCIACION.plazos)} meses, TIN {FINANCIACION.tin.toLocaleString('es-ES')} %. Sujeta a estudio y aprobación de la entidad financiera.</p>}
       <div class="resumen__ctas" data-ctas>
         <a class="btn" href="#contacto">Me interesa</a>
         <a class="btn btn--borde" href={`tel:${tel}`}>Llámanos</a>
@@ -144,8 +145,8 @@ const producto: Record<string, unknown> = {
     <section class="seccion">
       <div class="contenedor">
         <span class="antetitulo">Financiación</span>
-        <h2>Calcula tu cuota</h2>
-        <p class="intro">Elige si das entrada y en cuántos meses quieres pagar tu {nombre}.</p>
+        <h2>Elige la cuota que mejor se adapte a ti</h2>
+        <p class="intro">Decide si das entrada y en cuántos meses quieres pagar tu {nombre}.</p>
         <Financiacion precio={m.precio} moto={nombre} />
       </div>
     </section>
@@ -180,7 +181,7 @@ const producto: Record<string, unknown> = {
     <div class="barra__in contenedor">
       <div class="barra__moto">
         {miniatura && <Image src={miniatura} format="avif" fit="contain" alt="" width={96} height={60} class="barra__img" />}
-        <div><p class="barra__nombre">{nombre}</p><p class="barra__precio">{precioTexto(m)}{cuotaDesde && <span> · desde {cuotaDesde} €/mes</span>}</p></div>
+        <div><p class="barra__nombre">{nombre}</p><p class="barra__precio">{precioTexto(m)}{cuotaDesde && <span> · desde {cuotaDesde.toLocaleString('es-ES')} €/mes*</span>}</p></div>
       </div>
       <div class="barra__btns">
         <a class="btn" href="#contacto">Me interesa</a>
@@ -196,6 +197,14 @@ const producto: Record<string, unknown> = {
 </Base>
 
 <script>
+  // Al pulsar «Elige tu cuota desde…» la calculadora se abre con esa misma cuota (plazo máximo, sin entrada)
+  document.querySelector('[data-cuota-minima]')?.addEventListener('click', () => {
+    const radios = [...document.querySelectorAll<HTMLInputElement>('#financiacion input[name="plazo"]')];
+    const max = radios.sort((a, b) => Number(b.value) - Number(a.value))[0];
+    const entrada = document.querySelector<HTMLInputElement>('#financiacion input[type="range"]');
+    if (entrada) { entrada.value = '0'; entrada.dispatchEvent(new Event('input', { bubbles: true })); }
+    if (max) { max.checked = true; max.dispatchEvent(new Event('input', { bubbles: true })); }
+  });
   // Barra fija: en móvil siempre; en escritorio cuando los botones de arriba dejan de verse
   {
     const barra = document.querySelector<HTMLElement>('[data-barra]');
@@ -282,6 +291,7 @@ const producto: Record<string, unknown> = {
 
   .resumen__cuota { display: inline-flex; align-items: center; gap: 4px; margin: 14px 0 4px; color: #1f8a3a; font-weight: 700; font-size: clamp(1.1rem, 1.5vw, 1.35rem); text-decoration: underline; text-underline-offset: 5px; text-decoration-thickness: 2px; }
   .resumen__cuota:hover { color: var(--naranja); }
+  .resumen__legal { color: var(--gris); font-size: 0.78rem; margin: 2px 0 0; max-width: 46ch; }
   .resumen__ctas { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 18px; }
   .resumen__ctas .btn { min-width: 180px; justify-content: center; }
   .resumen__tel { margin-top: 12px; color: var(--gris); font-weight: 600; }
@@ -298,6 +308,7 @@ const producto: Record<string, unknown> = {
   .barra__btns .btn { min-width: 170px; justify-content: center; }
   .barra__llamar { display: inline-flex; align-items: center; gap: 8px; }
   @media (max-width: 900px) {
+    .resumen__ctas { display: none; }
     .barra__moto { display: none; }
     .barra__in { padding: 10px 12px calc(10px + env(safe-area-inset-bottom)); }
     .barra__btns { flex: 1; }
