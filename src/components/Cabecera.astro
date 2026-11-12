@@ -85,7 +85,9 @@ const enlaces = [
     if (!panel.hidden) return cerrarBuscar();
     cerrarMenu();
     panel.hidden = false; abrirBtn.setAttribute('aria-expanded', 'true'); cab.classList.add('cab--buscando');
-    input.focus(); await cargar(); pintar();
+    input.focus();
+    if (!indice) lista.innerHTML = '<li class="buscar__sk"><i></i><i></i><i></i></li>'.repeat(3);
+    await cargar(); pintar();
   });
   const pintar = () => {
     lista.innerHTML = '';
