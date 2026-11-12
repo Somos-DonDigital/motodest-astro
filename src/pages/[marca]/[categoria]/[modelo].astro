@@ -9,6 +9,7 @@ import Icono from '../../../components/Icono.astro';
 import GaleriaFotos from '../../../components/GaleriaFotos.astro';
 import { marcaPorSlug, categoriaDe, EMPRESA, FINANCIACION } from '../../../data/sitio';
 import { imgMoto, imgGaleria } from '../../../lib/imagenes';
+import { cuotaMensual, capitalFinanciado } from '../../../lib/cuota';
 import { ETIQUETAS, precioTexto, nombreCompleto, descripcionMoto, urlMoto, tipoMoto, type Moto } from '../../../lib/formato';
 
 export async function getStaticPaths() {
@@ -32,12 +33,9 @@ const imgs = m.imagenes.map((i) => imgMoto(i.src));
 const variantes = m.imagenes.map((i) => i.color);
 const fotos = (m.galeria ?? []).map((r) => imgGaleria(r));
 // Cuota más baja posible (plazo máximo, sin entrada). Solo se enseña con las condiciones de la financiera confirmadas.
-const cuotaDesde = (() => {
-  if (m.precio == null) return null;
-  const n = Math.max(...FINANCIACION.plazos), r = FINANCIACION.tin / 100 / 12;
-  const capital = m.precio * (1 + FINANCIACION.comisionApertura / 100);
-  return Math.ceil(r === 0 ? capital / n : (capital * r) / (1 - Math.pow(1 + r, -n)));
-})();
+const cuotaDesde = m.precio == null ? null
+  : cuotaMensual(capitalFinanciado(m.precio, 0, FINANCIACION.comisionApertura), FINANCIACION.tin, Math.max(...FINANCIACION.plazos));
+const cuotaTxt = cuotaDesde?.toLocaleString('es-ES', { minimumFractionDigits: 2, maximumFractionDigits: 2 });
 const miniatura = imgs[0];
 const imgsSchema = await Promise.all(imgs.map(async (i) => new URL((await getImage({ src: i, width: 1200, format: 'jpg' })).src, Astro.site).toString()));
 
@@ -116,11 +114,11 @@ const producto: Record<string, unknown> = {
       <p class="resumen__desc">{descripcion}</p>
       {m.precio != null && (
         <a class="resumen__cuota" href="#financiacion" data-cuota-minima>
-          {cuotaDesde ? <>Elige tu cuota desde {cuotaDesde.toLocaleString('es-ES')} €/mes*</> : 'Elige tu cuota con financiación inmediata'}
+          {cuotaDesde ? <>Elige tu cuota desde {cuotaTxt} €/mes*</> : 'Elige tu cuota con financiación inmediata'}
           <svg viewBox="0 0 24 24" width="22" height="22" aria-hidden="true"><path d="M9 5l7 7-7 7" fill="none" stroke="currentColor" stroke-width="2.6"/></svg>
         </a>
       )}
-      {cuotaDesde && <p class="resumen__legal">*Cuota orientativa sin entrada a {Math.max(...FINANCIACION.plazos)} meses, TIN {FINANCIACION.tin.toLocaleString('es-ES')} %. Sujeta a estudio y aprobación de la entidad financiera.</p>}
+      {cuotaDesde && <p class="resumen__legal">*Cuota orientativa sin entrada a {Math.max(...FINANCIACION.plazos)} meses, TIN {FINANCIACION.tin.toLocaleString('es-ES')} %, TAE {FINANCIACION.tae.toLocaleString('es-ES')} % aprox. Sujeta a estudio y aprobación de la entidad financiera.</p>}
       <div class="resumen__ctas" data-ctas>
         <a class="btn" href="#contacto">Me interesa</a>
         <a class="btn btn--borde" href={`tel:${tel}`}>Llámanos</a>
@@ -181,7 +179,7 @@ const producto: Record<string, unknown> = {
     <div class="barra__in contenedor">
       <div class="barra__moto">
         {miniatura && <Image src={miniatura} format="avif" fit="contain" alt="" width={96} height={60} class="barra__img" />}
-        <div><p class="barra__nombre">{nombre}</p><p class="barra__precio">{precioTexto(m)}{cuotaDesde && <span> · desde {cuotaDesde.toLocaleString('es-ES')} €/mes*</span>}</p></div>
+        <div><p class="barra__nombre">{nombre}</p><p class="barra__precio">{precioTexto(m)}{cuotaDesde && <span> · desde {cuotaTxt} €/mes*</span>}</p></div>
       </div>
       <div class="barra__btns">
         <a class="btn" href="#contacto">Me interesa</a>

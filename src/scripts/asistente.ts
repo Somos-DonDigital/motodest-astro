@@ -1,3 +1,4 @@
+import { cuotaMensual, capitalFinanciado } from '../lib/cuota';
 // Asistente "Dest" de Motodest. Todo ocurre en el navegador: entiende preguntas habituales
 // (modelos, precios, carnet, financiación, horario, dirección, servicios) con reglas y el
 // catálogo de /asistente.json. Si no entiende algo, ofrece WhatsApp, teléfono o que le llamemos.
@@ -8,7 +9,7 @@ type Datos = {
   motos: Moto[];
   marcas: { s: string; n: string; cats: { s: string; n: string }[] }[];
   empresa: { tel: string; telv: string; wa: string; dir: string; horario: { dias: string; horas: string }[]; mapa: string };
-  fin: { tin: number; plazos: number[]; def: number; ok: boolean };
+  fin: { tin: number; tae: number; com: number; plazos: number[]; def: number; ok: boolean };
 };
 type Chip = { t: string; a?: string; url?: string; wa?: boolean };
 type Msg = { de: 'bot' | 'yo'; html: string; motos?: Moto[] };
@@ -37,7 +38,7 @@ function iniciar(raiz: HTMLElement) {
   const cargar = async () => { if (!datos) datos = await fetch('/asistente.json').then((r) => r.json()); return datos!; };
   const norm = (s: string) => s.normalize('NFD').replace(/[̀-ͯ]/g, '').toLowerCase().replace(/[^a-z0-9€ ]+/g, ' ').replace(/\s+/g, ' ').trim();
   const esc = (s: string) => s.replace(/[&<>"]/g, (c) => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' })[c]!);
-  const euros = (n: number, d = 0) => new Intl.NumberFormat('es-ES', { style: 'currency', currency: 'EUR', maximumFractionDigits: d, minimumFractionDigits: d }).format(n);
+  const euros = (n: number, d = 0) => new Intl.NumberFormat('es-ES', { style: 'currency', currency: 'EUR', maximumFractionDigits: d, minimumFractionDigits: d, useGrouping: 'always' } as Intl.NumberFormatOptions).format(n);
   const waUrl = (t: string) => `https://wa.me/${datos?.empresa.wa ?? ''}?text=${encodeURIComponent(t)}`;
 
   // ---------- Persistencia (solo en esta pestaña) ----------
@@ -52,7 +53,7 @@ function iniciar(raiz: HTMLElement) {
       if (m.i) { const im = document.createElement('img'); im.src = m.i; im.alt = ''; im.loading = 'lazy'; a.append(im); }
       const s = document.createElement('span'); s.textContent = `${m.m} · ${m.c}`;
       const n = document.createElement('strong'); n.textContent = m.n;
-      const b = document.createElement('b'); b.textContent = m.p && datos ? `Financiada desde ${euros(mesDesde(m.p))}/mes` : 'Te preparamos la financiación';
+      const b = document.createElement('b'); b.textContent = m.p && datos ? `Financiada desde ${euros(mesDesde(m.p), 2)}/mes` : 'Te preparamos la financiación';
       a.append(s, n, b); cont.append(a);
     });
     return cont;
@@ -156,15 +157,14 @@ function iniciar(raiz: HTMLElement) {
   // ---------- Financiación (al cliente le enseñamos cuota, no precio) ----------
   function mesDesde(precio: number) { const f = datos!.fin; return cuota(precio, 0, Math.max(...f.plazos), f.tin); }
   function cuota(precio: number, entrada: number, n: number, tin: number) {
-    const c = Math.max(0, precio - entrada), r = tin / 100 / 12;
-    return r === 0 ? c / n : (c * r) / (1 - Math.pow(1 + r, -n));
+    return cuotaMensual(capitalFinanciado(precio, entrada, datos?.fin.com ?? 0), tin, n);
   }
   async function responderCuota(precio: number, moto: string | undefined, entrada = 0, propio = false) {
     const d = await cargar();
     const plazos = [36, 48, 72, 96].filter((n) => d.fin.plazos.includes(n));
-    const filas = plazos.map((n) => `• ${n} meses: <b>${euros(cuota(precio, entrada, n, d.fin.tin), 0)}/mes</b>`).join('\n');
+    const filas = plazos.map((n) => `• ${n} meses: <b>${euros(cuota(precio, entrada, n, d.fin.tin), 2)}/mes</b>`).join('\n');
     const quien = moto ? `la ${esc(moto)}` : propio ? `una moto de ${euros(precio)}` : 'tu moto';
-    await bot(`Financiada ${entrada ? `con ${euros(entrada)} de entrada` : 'sin entrada'}, ${quien} te sale a:\n${filas}\n\n<small>Cuota orientativa, sujeta a estudio de la financiera.</small>`);
+    await bot(`Financiada ${entrada ? `con ${euros(entrada)} de entrada` : 'sin entrada'}, ${quien} te sale a:\n${filas}\n\n<small>TIN ${d.fin.tin.toLocaleString('es-ES')} %, TAE ${d.fin.tae.toLocaleString('es-ES')} % aprox. Sujeta a estudio de la financiera.</small>`);
     estado.fin = { precio, moto };
     chips([
       ...(entrada ? [{ t: 'Sin entrada', a: 'entrada 0' }] : []),

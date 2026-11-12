@@ -35,7 +35,8 @@ const tel = EMPRESA.telefono.replace(/\s/g, '');
       <div><dt>Importe financiado</dt><dd data-financiado>—</dd></div>
       <div><dt>Entrada</dt><dd data-entrada>—</dd></div>
       <div><dt>Total a plazos</dt><dd data-total>—</dd></div>
-      <div><dt>TIN</dt><dd>{F.tin.toLocaleString('es-ES')} %{!F.confirmado && <mark class="calc__pend">[PENDIENTE: TIN provisional]</mark>}</dd></div>
+      <div><dt>TIN</dt><dd>{F.tin.toLocaleString('es-ES')} %</dd></div>
+      <div><dt>TAE (aprox.)</dt><dd>{F.tae.toLocaleString('es-ES')} %</dd></div>
     </dl>
     <a class="btn calc__cta" href="#contacto" data-calc-cta>Solicitar esta financiación</a>
     <p class="calc__tel">o llámanos al <a href={`tel:${tel}`}>{EMPRESA.telefonoVisible}</a></p>
@@ -44,8 +45,9 @@ const tel = EMPRESA.telefono.replace(/\s/g, '');
 </div>
 
 <script>
-  const fmt = (n: number) => new Intl.NumberFormat('es-ES', { style: 'currency', currency: 'EUR', maximumFractionDigits: 2, minimumFractionDigits: 2 }).format(n);
-  const fmt0 = (n: number) => new Intl.NumberFormat('es-ES', { style: 'currency', currency: 'EUR', maximumFractionDigits: 0 }).format(n);
+  import { cuotaMensual, capitalFinanciado, centimos } from '../lib/cuota';
+  const fmt = (n: number) => new Intl.NumberFormat('es-ES', { style: 'currency', currency: 'EUR', maximumFractionDigits: 2, minimumFractionDigits: 2, useGrouping: 'always' } as Intl.NumberFormatOptions).format(n);
+  const fmt0 = (n: number) => new Intl.NumberFormat('es-ES', { style: 'currency', currency: 'EUR', maximumFractionDigits: 0, useGrouping: 'always' } as Intl.NumberFormatOptions).format(n);
   document.querySelectorAll<HTMLElement>('[data-calc]').forEach((c) => {
     const tin = Number(c.dataset.tin) / 100;
     const com = Number(c.dataset.comision) / 100;
@@ -57,14 +59,13 @@ const tel = EMPRESA.telefono.replace(/\s/g, '');
       entrada.max = String(Math.round((p * 0.5) / 100) * 100);
       const e = Math.min(Number(entrada.value), Number(entrada.max));
       const n = Number(q<HTMLInputElement>('[name=plazo]:checked').value);
-      const capital = Math.max(0, p - e) * (1 + com);
-      const r = tin / 12;
-      const cuota = capital === 0 ? 0 : r === 0 ? capital / n : (capital * r) / (1 - Math.pow(1 + r, -n));
+      const capital = capitalFinanciado(p, e, com * 100);
+      const cuota = cuotaMensual(capital, tin * 100, n);
       q('[data-cuota]').textContent = fmt(cuota);
-      q('[data-financiado]').textContent = fmt0(p - e);
-      q('[data-entrada]').textContent = fmt0(e);
+      q('[data-financiado]').textContent = fmt(capital);
+      q('[data-entrada]').textContent = fmt(e);
       q('[data-entrada-txt]').textContent = fmt0(e);
-      q('[data-total]').textContent = fmt0(cuota * n + e);
+      q('[data-total]').textContent = fmt(centimos(cuota * n + e));
       c.dataset.resumen = `Financiación: ${fmt0(p)} con ${fmt0(e)} de entrada a ${n} meses (cuota orientativa ${fmt(cuota)}/mes).`;
     };
     c.addEventListener('input', calc);

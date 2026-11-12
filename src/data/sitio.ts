@@ -31,11 +31,12 @@ export const EMPRESA = {
   redes: [] as { nombre: string; url: string }[],
 };
 
-// Financiación. PENDIENTE: confirmar con la financiera el TIN, los plazos, la entrada mínima
-// y si hay comisión de apertura. Mientras `confirmado` sea false la calculadora lo marca en rojo.
+// Financiación. TIN y TAE facilitados por Pablo (Motodest) el 12/11/2026.
+// PENDIENTE: confirmar plazos, entrada mínima y comisión de apertura con la financiera.
 export const FINANCIACION = {
-  confirmado: false,
-  tin: 9.99, // % anual, provisional
+  confirmado: true,
+  tin: 6.75, // % anual
+  tae: 7.9, // % (orientativa, la da la financiera)
   comisionApertura: 0, // % sobre el importe financiado
   plazos: [12, 24, 36, 48, 60, 72, 84, 96],
   plazoPorDefecto: 48,

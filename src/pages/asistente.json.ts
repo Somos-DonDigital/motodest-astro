@@ -26,7 +26,7 @@ export async function GET() {
     motos: lista,
     marcas: MARCAS.map((m) => ({ s: m.slug, n: m.nombre, cats: m.categorias.map((c) => ({ s: c.slug, n: c.nombre })) })),
     empresa: { tel: EMPRESA.telefono, telv: EMPRESA.telefonoVisible, wa: EMPRESA.whatsapp, dir: `${EMPRESA.direccion.calle}, ${EMPRESA.direccion.cp} ${EMPRESA.direccion.localidad} (${EMPRESA.direccion.provincia})`, horario: EMPRESA.horario, mapa: `https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(`Motodest ${EMPRESA.direccion.calle} ${EMPRESA.direccion.localidad}`)}` },
-    fin: { tin: FINANCIACION.tin, plazos: FINANCIACION.plazos, def: FINANCIACION.plazoPorDefecto, ok: FINANCIACION.confirmado },
+    fin: { tin: FINANCIACION.tin, tae: FINANCIACION.tae, com: FINANCIACION.comisionApertura, plazos: FINANCIACION.plazos, def: FINANCIACION.plazoPorDefecto, ok: FINANCIACION.confirmado },
   };
   return new Response(JSON.stringify(datos), { headers: { 'Content-Type': 'application/json; charset=utf-8' } });
 }
