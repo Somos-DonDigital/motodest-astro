@@ -11,6 +11,20 @@ import { MARCAS, EMPRESA } from '../data/sitio';
 import { imgSitio } from '../lib/imagenes';
 
 const motos = await getCollection('motos');
+// Selección variada por marca y gama para rotar en cada visita
+const conFoto = motos.filter((m) => m.data.imagenes.length && m.data.precio != null);
+const seleccion = (() => {
+  const porMarca = MARCAS.map((mk) => {
+    const delaMarca = conFoto.filter((m) => m.data.marca === mk.slug).sort((a, b) => Number(b.data.destacada) - Number(a.data.destacada) || a.data.orden - b.data.orden);
+    const cats = [...new Set(delaMarca.map((m) => m.data.categoria))];
+    const out: typeof delaMarca = [];
+    for (let r = 0; out.length < 8 && r < 10; r++) cats.forEach((c) => { const x = delaMarca.filter((m) => m.data.categoria === c)[r]; if (x && out.length < 8) out.push(x); });
+    return out;
+  });
+  const res: typeof conFoto = [];
+  for (let r = 0; r < 8; r++) porMarca.forEach((l) => l[r] && res.push(l[r]));
+  return res;
+})();
 const destacadas = motos.filter((m) => m.data.destacada).sort((a, b) => MARCAS.findIndex((x) => x.slug === a.data.marca) - MARCAS.findIndex((x) => x.slug === b.data.marca) || a.data.orden - b.data.orden);
 const contar = (marca: string) => motos.filter((m) => m.data.marca === marca).length;
 const tel = EMPRESA.telefono.replace(/\s/g, '');
@@ -45,9 +59,9 @@ const nombresAcc: Record<string, string> = { 'acc-ls2': 'LS2', 'acc-airoh': 'Air
 
   <section class="seccion" id="destacadas">
     <div class="contenedor">
-      <h2 class="tit-seccion">Motos destacadas</h2>
-      <div class="rejilla rejilla--motos">
-        {destacadas.map((m) => <TarjetaMoto moto={m} />)}
+      <h2 class="tit-seccion">Nuestras motos</h2>
+      <div class="rejilla rejilla--motos" data-rotar="8">
+        {seleccion.map((m, i) => <div class="rotar__item" data-marca={m.data.marca} hidden={i >= 8 ? true : undefined}><TarjetaMoto moto={m} /></div>)}
       </div>
       <div class="cta-linea cta-linea--centro">
         <a class="btn" href="#contacto">Pide información</a>
@@ -128,7 +142,25 @@ const nombresAcc: Record<string, string> = { 'acc-ls2': 'LS2', 'acc-airoh': 'Air
   <Formulario titulo="¿Necesitas que te asesoremos?" subtitulo="Cuéntanos qué buscas y te llamamos" />
 </Base>
 
+<script>
+  // «Nuestras motos»: en cada visita se muestran 8 distintas, dos de cada marca
+  document.querySelectorAll<HTMLElement>('[data-rotar]').forEach((rej) => {
+    const n = Number(rej.dataset.rotar) || 8;
+    const items = [...rej.querySelectorAll<HTMLElement>('.rotar__item')];
+    const azar = <T,>(a: T[]) => { for (let i = a.length - 1; i > 0; i--) { const j = Math.floor(Math.random() * (i + 1)); [a[i], a[j]] = [a[j], a[i]]; } return a; };
+    const marcas = [...new Set(items.map((x) => x.dataset.marca))];
+    const porMarca = Math.max(1, Math.floor(n / marcas.length));
+    let elegidos = marcas.flatMap((mk) => azar(items.filter((x) => x.dataset.marca === mk)).slice(0, porMarca));
+    if (elegidos.length < n) elegidos = elegidos.concat(azar(items.filter((x) => !elegidos.includes(x))).slice(0, n - elegidos.length));
+    elegidos = azar(elegidos);
+    items.forEach((x) => { x.hidden = true; });
+    elegidos.forEach((x) => { x.hidden = false; rej.appendChild(x); });
+  });
+</script>
+
 <style>
+  .rotar__item { display: contents; }
+  .rotar__item[hidden] { display: none; }
   .cta-linea--centro { justify-content: center; }
   .intro--centro { text-align: center; margin: -10px auto max(24px, 2.4vw); }
   .nmarcas { padding-top: var(--esp-seccion); }

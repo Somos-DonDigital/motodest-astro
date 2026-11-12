@@ -107,11 +107,15 @@ const producto: Record<string, unknown> = {
       {m.precio != null && <p class="resumen__nota">Precio con la moto matriculada, IVA incluido. Consulta promociones y financiación.</p>}
       <p class="resumen__desc">{descripcion}</p>
       <div class="resumen__ctas">
-        <a class="btn" href="#contacto">Pedir información</a>
-        <a class="btn btn--borde" href={wa} target="_blank" rel="noopener">WhatsApp</a>
+        {m.precio != null
+          ? <a class="btn btn--grande" href="#financiacion"><Icono nombre="euro" tam={22} /> Financiación inmediata</a>
+          : <a class="btn btn--grande" href="#contacto">Pedir información</a>}
+        <div class="resumen__sec">
+          {m.precio != null && <a class="btn btn--borde" href="#contacto">Pedir información</a>}
+          <a class="btn btn--borde" href={wa} target="_blank" rel="noopener">WhatsApp</a>
+        </div>
       </div>
       <p class="resumen__tel">o llámanos al <a href={`tel:${tel}`}>{EMPRESA.telefonoVisible}</a></p>
-      {m.precio != null && <a class="resumen__fin" href="#financiacion"><Icono nombre="euro" tam={22} /> Calcula tu cuota</a>}
     </div>
   </section>
 
@@ -186,6 +190,13 @@ const producto: Record<string, unknown> = {
   .galeria__principal :global(.galeria__img) { position: absolute; inset: 3%; width: 94%; height: 94%; max-width: none; object-fit: contain; opacity: 0; transition: opacity 0.25s; }
   .galeria__principal :global(.galeria__img.activa) { opacity: 1; }
   .galeria__sin { color: var(--gris); }
+  .resumen__inmediata { display: flex; align-items: center; gap: 8px; color: #1f8a3a; font-weight: 700; margin: 4px 0 14px; }
+  .resumen__inmediata span { width: 10px; height: 10px; border-radius: 50%; background: #2fb34f; box-shadow: 0 0 0 0 rgb(47 179 79 / 0.6); animation: latido 1.8s infinite; }
+  @keyframes latido { 70% { box-shadow: 0 0 0 8px rgb(47 179 79 / 0); } 100% { box-shadow: 0 0 0 0 rgb(47 179 79 / 0); } }
+  @media (prefers-reduced-motion: reduce) { .resumen__inmediata span { animation: none; } }
+  .resumen__ctas { display: flex; flex-direction: column; align-items: flex-start; gap: 10px; margin-top: 18px; }
+  .resumen__ctas :global(.btn--grande) { display: inline-flex; align-items: center; gap: 10px; font-size: 1.05rem; padding: 18px 30px; }
+  .resumen__sec { display: flex; flex-wrap: wrap; gap: 10px; }
   .galeria__verfotos { position: absolute; left: 12px; bottom: 12px; z-index: 2; display: inline-flex; align-items: center; gap: 8px; background: var(--azul); color: #fff; border: 0; padding: 10px 14px; font: inherit; font-weight: 700; font-size: 0.85rem; text-transform: uppercase; letter-spacing: 0.06em; cursor: pointer; transition: background 0.2s; }
   .galeria__verfotos:hover { background: var(--naranja); }
   .galeria__fotos { margin-top: 18px; }
@@ -209,7 +220,6 @@ const producto: Record<string, unknown> = {
   .resumen__precio { font-size: clamp(1.6rem, 2.4vw, 2.4rem); font-weight: 800; color: var(--azul); margin-bottom: 4px; }
   .resumen__nota { color: var(--gris); font-size: var(--fs-peq); }
   .resumen__desc { color: var(--gris); }
-  .resumen__ctas { display: flex; flex-wrap: wrap; gap: 12px; margin-top: 20px; }
   .resumen__tel { margin-top: 12px; font-weight: 700; }
   .resumen__tel a { color: var(--naranja); text-decoration: none; }
   .resumen__fin { display: inline-flex; align-items: center; gap: 8px; margin-top: 14px; color: var(--azul); font-weight: 700; text-decoration: none; border-bottom: 2px solid var(--naranja); }
