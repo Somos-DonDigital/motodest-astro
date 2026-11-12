@@ -11,6 +11,7 @@ const motos = defineCollection({
     slug: z.string(),
     precio: z.number().nullable(),
     precioDesde: z.boolean().default(false),
+    galeria: z.array(z.string()).default([]),
     imagenes: z.array(z.object({ src: z.string(), color: z.string(), hex: z.string() })),
     ficha: z.record(z.string(), z.string()),
     fuenteFicha: z.string().nullable().optional(),

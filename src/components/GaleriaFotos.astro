@@ -1,0 +1,178 @@
+---
+// Mosaico de fotos oficiales de la moto + visor a pantalla completa (GSAP).
+import { Image, getImage } from 'astro:assets';
+import type { ImageMetadata } from 'astro';
+
+interface Props { fotos: ImageMetadata[]; nombre: string }
+const { fotos, nombre } = Astro.props;
+
+// Versiones para el visor: grande (AVIF) y miniatura
+const visor = await Promise.all(
+  fotos.map(async (f) => {
+    const g = await getImage({ src: f, format: 'avif', widths: [1280, 1920, 2400], sizes: '100vw' });
+    const t = await getImage({ src: f, format: 'avif', width: 200 });
+    return { src: g.src, srcset: g.srcSet.attribute, mini: t.src, w: f.width, h: f.height };
+  }),
+);
+const mosaico = fotos.slice(0, 6);
+const resto = fotos.length - mosaico.length;
+---
+<section class="gf seccion" id="fotos" aria-label={`Fotos de la ${nombre}`}>
+  <div class="contenedor">
+    <span class="antetitulo">Galería</span>
+    <h2 class="tit-seccion">La {nombre} en detalle</h2>
+    <div class:list={['gf__mosaico', `gf__mosaico--${mosaico.length}`]}>
+      {mosaico.map((f, i) => (
+        <button type="button" class="gf__celda" data-abrir-foto={i} aria-label={`Ampliar foto ${i + 1} de ${fotos.length}`}>
+          <Image src={f} format="avif" alt={`${nombre}, foto ${i + 1}`} widths={[480, 800, 1200, 1600]} sizes={i === 0 ? '(max-width: 900px) 94vw, 60vw' : '(max-width: 900px) 47vw, 30vw'} loading="lazy" class="gf__img" />
+          {i === mosaico.length - 1 && resto > 0 && <span class="gf__mas">+{resto}</span>}
+        </button>
+      ))}
+    </div>
+    <button type="button" class="btn btn--borde gf__todas" data-abrir-foto="0">Ver las {fotos.length} fotos</button>
+  </div>
+</section>
+
+<dialog class="visor" aria-label={`Fotos de la ${nombre}`} data-visor data-fotos={JSON.stringify(visor)} data-nombre={nombre}>
+  <div class="visor__top">
+    <span class="visor__cont"><b data-visor-n>1</b> / {fotos.length}</span>
+    <button type="button" class="visor__cerrar" data-visor-cerrar aria-label="Cerrar">
+      <svg viewBox="0 0 24 24" width="28" height="28" aria-hidden="true"><path d="M5 5l14 14M19 5L5 19" stroke="currentColor" stroke-width="2.2" stroke-linecap="square"/></svg>
+    </button>
+  </div>
+  <div class="visor__escena" data-visor-escena>
+    <img class="visor__img" data-visor-img alt="" decoding="async" />
+  </div>
+  <button type="button" class="visor__flecha visor__flecha--ant" data-visor-ant aria-label="Foto anterior">
+    <svg viewBox="0 0 24 24" width="30" height="30" aria-hidden="true"><path d="M15 4l-8 8 8 8" fill="none" stroke="currentColor" stroke-width="2.4"/></svg>
+  </button>
+  <button type="button" class="visor__flecha visor__flecha--sig" data-visor-sig aria-label="Foto siguiente">
+    <svg viewBox="0 0 24 24" width="30" height="30" aria-hidden="true"><path d="M9 4l8 8-8 8" fill="none" stroke="currentColor" stroke-width="2.4"/></svg>
+  </button>
+  <div class="visor__tira" data-visor-tira>
+    {visor.map((v, i) => <button type="button" class="visor__mini" data-ir={i} aria-label={`Foto ${i + 1}`}><img src={v.mini} alt="" loading="lazy" /></button>)}
+  </div>
+</dialog>
+
+<script>
+  import { gsap } from 'gsap';
+
+  type Foto = { src: string; srcset: string; mini: string; w: number; h: number };
+  const dlg = document.querySelector<HTMLDialogElement>('[data-visor]');
+  if (dlg) {
+    const fotos: Foto[] = JSON.parse(dlg.dataset.fotos || '[]');
+    const nombre = dlg.dataset.nombre || '';
+    const img = dlg.querySelector<HTMLImageElement>('[data-visor-img]')!;
+    const nEl = dlg.querySelector<HTMLElement>('[data-visor-n]')!;
+    const minis = [...dlg.querySelectorAll<HTMLButtonElement>('.visor__mini')];
+    const reducir = matchMedia('(prefers-reduced-motion: reduce)').matches;
+    let actual = 0;
+
+    const precargar = (i: number) => { const f = fotos[(i + fotos.length) % fotos.length]; const p = new Image(); p.sizes = '100vw'; p.srcset = f.srcset; p.src = f.src; };
+
+    const pintar = (i: number, dir = 0) => {
+      actual = (i + fotos.length) % fotos.length;
+      const f = fotos[actual];
+      const poner = () => { img.sizes = '100vw'; img.srcset = f.srcset; img.src = f.src; img.alt = `${nombre}, foto ${actual + 1}`; };
+      if (reducir || !dir) { poner(); gsap.fromTo(img, { opacity: 0, scale: 0.97 }, { opacity: 1, scale: 1, duration: reducir ? 0 : 0.45, ease: 'power3.out' }); }
+      else {
+        gsap.to(img, { opacity: 0, x: -60 * dir, duration: 0.18, ease: 'power2.in', onComplete: () => {
+          poner();
+          gsap.fromTo(img, { opacity: 0, x: 60 * dir }, { opacity: 1, x: 0, duration: 0.4, ease: 'power3.out' });
+        } });
+      }
+      nEl.textContent = String(actual + 1);
+      minis.forEach((m, k) => m.classList.toggle('activa', k === actual));
+      minis[actual]?.scrollIntoView({ block: 'nearest', inline: 'center', behavior: reducir ? 'auto' : 'smooth' });
+      precargar(actual + 1); precargar(actual - 1);
+    };
+
+    const abrir = (i: number) => {
+      dlg.showModal();
+      document.documentElement.style.overflow = 'hidden';
+      if (!reducir) gsap.fromTo(dlg, { opacity: 0 }, { opacity: 1, duration: 0.3 });
+      pintar(i);
+    };
+    const cerrar = () => {
+      const fin = () => { dlg.close(); document.documentElement.style.overflow = ''; };
+      reducir ? fin() : gsap.to(dlg, { opacity: 0, duration: 0.2, onComplete: fin });
+    };
+
+    document.querySelectorAll<HTMLElement>('[data-abrir-foto]').forEach((b) => b.addEventListener('click', () => abrir(Number(b.dataset.abrirFoto) || 0)));
+    dlg.querySelector('[data-visor-cerrar]')!.addEventListener('click', cerrar);
+    dlg.querySelector('[data-visor-ant]')!.addEventListener('click', () => pintar(actual - 1, -1));
+    dlg.querySelector('[data-visor-sig]')!.addEventListener('click', () => pintar(actual + 1, 1));
+    minis.forEach((m) => m.addEventListener('click', () => pintar(Number(m.dataset.ir), Number(m.dataset.ir) > actual ? 1 : -1)));
+    dlg.addEventListener('cancel', (e) => { e.preventDefault(); cerrar(); });
+    dlg.addEventListener('keydown', (e) => {
+      if (e.key === 'ArrowRight') pintar(actual + 1, 1);
+      if (e.key === 'ArrowLeft') pintar(actual - 1, -1);
+    });
+    dlg.querySelector('[data-visor-escena]')!.addEventListener('click', (e) => { if (e.target === e.currentTarget) cerrar(); });
+
+    // Deslizar en móvil
+    let x0 = 0, y0 = 0;
+    dlg.addEventListener('touchstart', (e) => { x0 = e.touches[0].clientX; y0 = e.touches[0].clientY; }, { passive: true });
+    dlg.addEventListener('touchend', (e) => {
+      const dx = e.changedTouches[0].clientX - x0, dy = e.changedTouches[0].clientY - y0;
+      if (Math.abs(dx) > 50 && Math.abs(dx) > Math.abs(dy)) pintar(actual + (dx < 0 ? 1 : -1), dx < 0 ? 1 : -1);
+      else if (dy > 90 && Math.abs(dy) > Math.abs(dx)) cerrar();
+    }, { passive: true });
+  }
+</script>
+
+<style>
+  .gf { background: #0d0d10; color: #fff; overflow: hidden; text-align: center; }
+  .gf .antetitulo { display: block; }
+  .gf :global(.tit-seccion), .gf h2 { color: #fff; }
+  .gf .antetitulo { color: var(--naranja); }
+  .gf__mosaico { display: grid; gap: max(8px, 0.7vw); grid-template-columns: repeat(4, 1fr); grid-auto-rows: max(150px, 13vw); margin-top: max(20px, 2vw); }
+  .gf__celda { position: relative; padding: 0; border: 0; background: #1c1c22; cursor: zoom-in; overflow: hidden; display: block; }
+  .gf__celda :global(.gf__img) { position: absolute; inset: 0; width: 100%; height: 100%; max-width: none; object-fit: cover; transition: transform 0.7s cubic-bezier(0.2, 0.7, 0.2, 1), filter 0.4s; }
+  .gf__celda:hover :global(.gf__img) { transform: scale(1.06); }
+  .gf__celda::after { content: ''; position: absolute; inset: 0; border: 3px solid var(--naranja); opacity: 0; transition: opacity 0.3s; }
+  .gf__celda:hover::after, .gf__celda:focus-visible::after { opacity: 1; }
+  .gf__celda:first-child { grid-column: span 2; grid-row: span 2; }
+  .gf__mosaico--1 .gf__celda:first-child { grid-column: 1 / -1; }
+  .gf__mosaico--2 .gf__celda { grid-column: span 2; grid-row: span 2; }
+  .gf__mosaico--3 .gf__celda:not(:first-child) { grid-column: span 2; }
+  .gf__mosaico--4 .gf__celda:nth-child(2) { grid-column: span 2; }
+  .gf__mosaico--6 .gf__celda:nth-child(n + 6) { grid-column: span 2; }
+  .gf__mosaico--6 .gf__celda:nth-child(4), .gf__mosaico--6 .gf__celda:nth-child(5) { grid-column: span 2; }
+  .gf__mosaico--5 .gf__celda:nth-child(4) { grid-column: span 2; }
+  .gf__mosaico--5 .gf__celda:nth-child(5) { grid-column: 1 / -1; }
+  .gf__mas { position: absolute; inset: 0; display: grid; place-items: center; background: rgb(13 13 16 / 0.6); color: #fff; font-family: 'Cairo', sans-serif; font-weight: 800; font-size: clamp(2rem, 4vw, 3.6rem); z-index: 1; }
+  .gf__todas { margin-top: max(18px, 1.6vw); color: #fff; border-color: #fff; }
+  .gf__todas:hover { background: var(--naranja); border-color: var(--naranja); }
+  @media (max-width: 700px) {
+    .gf__mosaico { grid-template-columns: repeat(2, 1fr); grid-auto-rows: 38vw; }
+    .gf__celda:first-child, .gf__mosaico--6 .gf__celda:nth-child(n), .gf__mosaico--5 .gf__celda:nth-child(n), .gf__mosaico--4 .gf__celda:nth-child(n), .gf__mosaico--3 .gf__celda:nth-child(n) { grid-column: span 1; grid-row: span 1; }
+    .gf__mosaico .gf__celda:first-child { grid-column: 1 / -1; grid-row: span 2; }
+    .gf__mosaico--6 .gf__celda:last-child, .gf__mosaico--4 .gf__celda:last-child, .gf__mosaico--2 .gf__celda:last-child { grid-column: 1 / -1; }
+  }
+
+  .visor { position: fixed; inset: 0; width: 100vw; height: 100dvh; max-width: none; max-height: none; margin: 0; padding: 0; border: 0; background: #07012a; color: #fff; overflow: hidden; }
+  .visor::backdrop { background: #07012a; }
+  .visor[open] { display: grid; grid-template-rows: auto 1fr auto; }
+  .visor__top { display: flex; justify-content: space-between; align-items: center; padding: 14px max(16px, 2vw); z-index: 2; }
+  .visor__cont { font-size: 1rem; letter-spacing: 0.08em; color: #cfcce3; }
+  .visor__cont b { color: var(--naranja); font-size: 1.3rem; }
+  .visor__cerrar { background: none; border: 0; color: #fff; cursor: pointer; padding: 6px; }
+  .visor__cerrar:hover { color: var(--naranja); }
+  .visor__escena { position: relative; display: grid; place-items: center; min-height: 0; padding: 0 max(56px, 6vw); }
+  .visor__img { max-width: 100%; max-height: 100%; width: auto; height: auto; object-fit: contain; user-select: none; }
+  .visor__flecha { position: absolute; top: 50%; translate: 0 -50%; width: 56px; height: 56px; display: grid; place-items: center; background: rgb(255 255 255 / 0.08); color: #fff; border: 0; cursor: pointer; transition: background 0.2s; z-index: 2; }
+  .visor__flecha:hover { background: var(--naranja); }
+  .visor__flecha--ant { left: max(8px, 1vw); }
+  .visor__flecha--sig { right: max(8px, 1vw); }
+  .visor__tira { display: flex; gap: 8px; overflow-x: auto; padding: 12px max(16px, 2vw) 16px; justify-content: safe center; scrollbar-width: none; }
+  .visor__mini { flex: none; width: 92px; height: 60px; padding: 0; border: 2px solid transparent; background: none; cursor: pointer; opacity: 0.5; transition: opacity 0.2s, border-color 0.2s; }
+  .visor__mini img { width: 100%; height: 100%; object-fit: cover; display: block; }
+  .visor__mini:hover { opacity: 0.85; }
+  .visor__mini.activa { opacity: 1; border-color: var(--naranja); }
+  @media (max-width: 700px) {
+    .visor__escena { padding: 0; }
+    .visor__flecha { width: 44px; height: 44px; background: rgb(7 1 42 / 0.55); }
+    .visor__mini { width: 70px; height: 46px; }
+  }
+</style>

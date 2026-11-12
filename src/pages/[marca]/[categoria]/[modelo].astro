@@ -6,8 +6,9 @@ import TarjetaMoto from '../../../components/TarjetaMoto.astro';
 import Formulario from '../../../components/Formulario.astro';
 import Financiacion from '../../../components/Financiacion.astro';
 import Icono from '../../../components/Icono.astro';
+import GaleriaFotos from '../../../components/GaleriaFotos.astro';
 import { marcaPorSlug, categoriaDe, EMPRESA } from '../../../data/sitio';
-import { imgMoto } from '../../../lib/imagenes';
+import { imgMoto, imgGaleria } from '../../../lib/imagenes';
 import { ETIQUETAS, precioTexto, nombreCompleto, descripcionMoto, urlMoto, tipoMoto, type Moto } from '../../../lib/formato';
 
 export async function getStaticPaths() {
@@ -29,6 +30,7 @@ const tel = EMPRESA.telefono.replace(/\s/g, '');
 const wa = `https://wa.me/${EMPRESA.whatsapp}?text=${encodeURIComponent(`Hola, me interesa la ${nombre}.`)}`;
 const imgs = m.imagenes.map((i) => imgMoto(i.src));
 const variantes = m.imagenes.map((i) => i.color);
+const fotos = (m.galeria ?? []).map((r) => imgGaleria(r));
 const imgsSchema = await Promise.all(imgs.map(async (i) => new URL((await getImage({ src: i, width: 1200, format: 'jpg' })).src, Astro.site).toString()));
 
 const producto: Record<string, unknown> = {
@@ -63,6 +65,12 @@ const producto: Record<string, unknown> = {
               <Image format="avif" fit="contain" src={src} alt={`${nombre}${imgs.length > 1 ? ` en color ${m.imagenes[i].color.toLowerCase()}` : ''}`} widths={[480, 800, 1200]} sizes="(max-width: 900px) 92vw, 55vw" loading={i === 0 ? 'eager' : 'lazy'} fetchpriority={i === 0 ? 'high' : 'auto'} class:list={['galeria__img', { activa: i === 0 }]} data-i={i} />
             ))
           : <div class="galeria__sin">Foto próximamente</div>}
+        {fotos.length > 0 && (
+          <button type="button" class="galeria__verfotos" data-abrir-foto="0">
+            <svg viewBox="0 0 24 24" width="18" height="18" aria-hidden="true"><path d="M4 7h3l2-3h6l2 3h3v13H4z M12 17a4 4 0 1 0 0-8 4 4 0 0 0 0 8z" fill="none" stroke="currentColor" stroke-width="1.8"/></svg>
+            Ver {fotos.length} fotos
+          </button>
+        )}
       </div>
       {imgs.length > 1 && (
         <div class="galeria__colores">
@@ -72,6 +80,19 @@ const producto: Record<string, unknown> = {
               <button type="button" class:list={['galeria__mini', { activa: i === 0 }]} data-i={i} data-color={m.imagenes[i].color} aria-label={m.imagenes[i].color} aria-pressed={i === 0 ? 'true' : 'false'}>
                 <Image format="avif" fit="contain" src={src} alt="" width={120} layout="fixed" />
                 <span class="galeria__punto" style={`--c:${m.imagenes[i].hex}`}></span>
+              </button>
+            ))}
+          </div>
+        </div>
+      )}
+      {fotos.length > 0 && (
+        <div class="galeria__fotos">
+          <p class="galeria__etq">Fotos</p>
+          <div class="galeria__tira">
+            {fotos.slice(0, 5).map((f, i) => (
+              <button type="button" class="galeria__foto" data-abrir-foto={i} aria-label={`Ver foto ${i + 1}`}>
+                <Image src={f} format="avif" alt="" width={160} height={106} fit="cover" />
+                {i === 4 && fotos.length > 5 && <span>+{fotos.length - 5}</span>}
               </button>
             ))}
           </div>
@@ -103,6 +124,8 @@ const producto: Record<string, unknown> = {
       </div>
     </section>
   )}
+
+  {fotos.length > 0 && <GaleriaFotos fotos={fotos} nombre={nombre} />}
 
   {m.precio != null && (
     <section class="seccion">
@@ -163,6 +186,15 @@ const producto: Record<string, unknown> = {
   .galeria__principal :global(.galeria__img) { position: absolute; inset: 3%; width: 94%; height: 94%; max-width: none; object-fit: contain; opacity: 0; transition: opacity 0.25s; }
   .galeria__principal :global(.galeria__img.activa) { opacity: 1; }
   .galeria__sin { color: var(--gris); }
+  .galeria__verfotos { position: absolute; left: 12px; bottom: 12px; z-index: 2; display: inline-flex; align-items: center; gap: 8px; background: var(--azul); color: #fff; border: 0; padding: 10px 14px; font: inherit; font-weight: 700; font-size: 0.85rem; text-transform: uppercase; letter-spacing: 0.06em; cursor: pointer; transition: background 0.2s; }
+  .galeria__verfotos:hover { background: var(--naranja); }
+  .galeria__fotos { margin-top: 18px; }
+  .galeria__tira { display: grid; grid-template-columns: repeat(5, 1fr); gap: 8px; }
+  .galeria__foto { position: relative; padding: 0; border: 2px solid transparent; background: #eee; cursor: zoom-in; aspect-ratio: 3 / 2; overflow: hidden; transition: border-color 0.2s; }
+  .galeria__foto:hover { border-color: var(--naranja); }
+  .galeria__foto :global(img) { width: 100%; height: 100%; object-fit: cover; display: block; transition: transform 0.4s; }
+  .galeria__foto:hover :global(img) { transform: scale(1.08); }
+  .galeria__foto span { position: absolute; inset: 0; display: grid; place-items: center; background: rgb(11 1 62 / 0.6); color: #fff; font-weight: 800; font-size: 1.2rem; }
   .galeria__colores { margin-top: 14px; }
   .galeria__etq { margin-bottom: 8px; font-size: var(--fs-peq); }
   .galeria__minis { display: flex; flex-wrap: wrap; gap: 10px; }

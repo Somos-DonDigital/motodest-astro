@@ -44,6 +44,13 @@ function iniciar() {
     gsap.fromTo(fila, { '--desp': '6%' }, { '--desp': '-6%', ease: 'none', scrollTrigger: { trigger: fila, start: 'top bottom', end: 'bottom top', scrub: true } });
   });
 
+  // Galería de la ficha: las fotos se destapan con una cortinilla escalonada
+  document.querySelectorAll<HTMLElement>('.gf__mosaico').forEach((mos) => {
+    const celdas = mos.querySelectorAll<HTMLElement>('.gf__celda');
+    gsap.fromTo(celdas, { clipPath: 'inset(0 100% 0 0)' }, { clipPath: 'inset(0 0% 0 0)', duration: 1, ease: 'power4.inOut', stagger: 0.1, clearProps: 'clipPath', scrollTrigger: { trigger: mos, start: 'top 80%', once: true } });
+    gsap.from(mos.querySelectorAll('.gf__img'), { scale: 1.25, duration: 1.4, ease: 'power3.out', stagger: 0.1, clearProps: 'transform', scrollTrigger: { trigger: mos, start: 'top 80%', once: true } });
+  });
+
   // Bloques con imagen grande: ligero parallax
   gsap.utils.toArray<HTMLElement>('.historia__img, .banner__img').forEach((img) => {
     gsap.fromTo(img, { yPercent: -6, scale: 1.08 }, { yPercent: 6, ease: 'none', scrollTrigger: { trigger: img.parentElement!, start: 'top bottom', end: 'bottom top', scrub: true } });
