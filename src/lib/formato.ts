@@ -52,3 +52,12 @@ export function descripcionMoto(m: Moto['data']) {
 }
 
 export const tituloCategoria = (marca: string, cat: string) => categoriaDe(marca, cat).h1;
+
+// Distintivo ambiental C de la DGT: motos matriculables Euro 5. Gamas de calle siempre;
+// el resto, solo si la ficha lo indica. Nada en tractores (T3) ni eléctricas infantiles.
+const GAMAS_CALLE = ['fantic/caballero', 'fantic/stealth', 'mitt/scooters', 'mitt/sport-touring', 'mitt/adventure', 'mitt/garage', 'cfmoto/motos'];
+export function tieneEtiquetaC(m: Moto['data']): boolean {
+  const norma = `${m.ficha.homologacion ?? ''} ${m.ficha.motor ?? ''}`;
+  if (/T3|tractor/i.test(norma) || /el[eé]ctric/i.test(m.ficha.motor ?? '')) return false;
+  return /Euro\s?5/i.test(norma) || GAMAS_CALLE.includes(`${m.marca}/${m.categoria}`);
+}

@@ -10,7 +10,7 @@ import GaleriaFotos from '../../../components/GaleriaFotos.astro';
 import { marcaPorSlug, categoriaDe, EMPRESA, FINANCIACION } from '../../../data/sitio';
 import { imgMoto, imgGaleria } from '../../../lib/imagenes';
 import { cuotaMensual, capitalFinanciado } from '../../../lib/cuota';
-import { ETIQUETAS, precioTexto, nombreCompleto, descripcionMoto, urlMoto, tipoMoto, type Moto } from '../../../lib/formato';
+import { ETIQUETAS, tieneEtiquetaC, precioTexto, nombreCompleto, descripcionMoto, urlMoto, tipoMoto, type Moto } from '../../../lib/formato';
 
 export async function getStaticPaths() {
   const motos = await getCollection('motos');
@@ -37,11 +37,7 @@ const cuotaDesde = m.precio == null ? null
   : cuotaMensual(capitalFinanciado(m.precio, 0, FINANCIACION.comisionApertura), FINANCIACION.tin, Math.max(...FINANCIACION.plazos));
 const cuotaTxt = cuotaDesde?.toLocaleString('es-ES', { minimumFractionDigits: 2, maximumFractionDigits: 2 });
 const miniatura = imgs[0];
-// Distintivo ambiental DGT: solo cuando la moto se matricula y cumple Euro 5 (etiqueta C).
-// Se da por hecho en las gamas de calle (MITT, CFMOTO motos); en el resto, solo si la ficha lo dice.
-const CALLE = ['fantic/caballero', 'fantic/stealth', 'mitt/scooters', 'mitt/sport-touring', 'mitt/adventure', 'mitt/garage', 'cfmoto/motos'];
-const textoNorma = `${m.ficha.homologacion ?? ''} ${m.ficha.motor ?? ''}`;
-const etiquetaC = !/T3|tractor/i.test(textoNorma) && !/el[eé]ctric/i.test(m.ficha.motor ?? '') && (/Euro\s?5/i.test(textoNorma) || CALLE.includes(`${m.marca}/${m.categoria}`));
+const etiquetaC = tieneEtiquetaC(m);
 const imgsSchema = await Promise.all(imgs.map(async (i) => new URL((await getImage({ src: i, width: 1200, format: 'jpg' })).src, Astro.site).toString()));
 
 const producto: Record<string, unknown> = {

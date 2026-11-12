@@ -4,7 +4,7 @@
 import { Image } from 'astro:assets';
 import Icono from './Icono.astro';
 import { imgMoto } from '../lib/imagenes';
-import { precioTexto, urlMoto, nombreCompleto, type Moto } from '../lib/formato';
+import { precioTexto, urlMoto, nombreCompleto, tieneEtiquetaC, type Moto } from '../lib/formato';
 import { cuotaMensual, capitalFinanciado } from '../lib/cuota';
 import { FINANCIACION, EMPRESA } from '../data/sitio';
 interface Props { moto: Moto; palabra: string; cargaPrioritaria?: boolean }
@@ -35,6 +35,7 @@ const tel = EMPRESA.telefono.replace(/\s/g, '');
         ? <button type="button" class:list={['fc__color', { activa: i === 0 }]} data-i={i} style={`--c:${im.hex}`} title={im.color} aria-label={`Ver en ${im.color.toLowerCase()}`} aria-pressed={i === 0 ? 'true' : 'false'}></button>
         : <span class="fc__color activa" style={`--c:${im.hex}`} title={im.color}></span>)}
       <span class="fc__nomcolor">{m.imagenes[0]?.color}</span>
+      {tieneEtiquetaC(m) && <img class="fc__dgt" src="/img/distintivo-c.png" alt="Distintivo ambiental C" title="Distintivo ambiental C de la DGT" width="44" height="44" loading="lazy" />}
     </div>
     <h2 class="fc__nombre"><a href={urlMoto(m)}>{nombre}</a></h2>
     <p class="fc__precio">{precioTexto(m)}</p>
@@ -93,6 +94,7 @@ const tel = EMPRESA.telefono.replace(/\s/g, '');
   .fc__color { width: 28px; height: 28px; border-radius: 4px; background: var(--c); border: 2px solid #fff; box-shadow: 0 0 0 1px var(--borde); padding: 0; }
   button.fc__color { cursor: pointer; }
   .fc__color.activa { box-shadow: 0 0 0 2px var(--naranja); }
+  .fc__dgt { margin-left: auto; width: 44px; height: 44px; flex: none; }
   .fc__nomcolor { font-size: var(--fs-peq); color: var(--gris); margin-left: 4px; }
   .fc__nombre { font-size: clamp(1.4rem, 2.2vw, 2.2rem); margin: 0 0 0.25em; }
   .fc__nombre a { text-decoration: none; color: var(--azul); }

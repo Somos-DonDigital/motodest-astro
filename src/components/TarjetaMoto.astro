@@ -2,7 +2,7 @@
 import { Image } from 'astro:assets';
 import Icono from './Icono.astro';
 import { imgMoto } from '../lib/imagenes';
-import { precioTexto, urlMoto, nombreCompleto, type Moto } from '../lib/formato';
+import { precioTexto, urlMoto, nombreCompleto, tieneEtiquetaC, type Moto } from '../lib/formato';
 interface Props { moto: Moto; nivel?: 'h2' | 'h3'; cargaPrioritaria?: boolean }
 const { moto, nivel = 'h3', cargaPrioritaria = false } = Astro.props;
 const m = moto.data;
@@ -25,6 +25,7 @@ const destacados = ([
   </a>
     <div class="tm__colores" role={varios ? 'group' : undefined} aria-label={varios ? 'Colores disponibles' : undefined}>
       {varios && m.imagenes.map((im, i) => <button type="button" class:list={['tm__color', { activa: i === 0 }]} data-i={i} style={`--c:${im.hex}`} title={im.color} aria-label={`Ver en ${im.color.toLowerCase()}`} aria-pressed={i === 0 ? 'true' : 'false'}></button>)}
+      {tieneEtiquetaC(m) && <img class="tm__dgt" src="/img/distintivo-c.png" alt="Distintivo ambiental C" title="Distintivo ambiental C de la DGT" width="36" height="36" loading="lazy" />}
     </div>
   <a href={urlMoto(m)} class="tm__enlace">
     <div class="tm__cuerpo">
@@ -47,6 +48,7 @@ const destacados = ([
   });
 </script>
 <style>
+  .tm__dgt { margin-left: auto; width: 36px; height: 36px; flex: none; }
   .tm { display: flex; flex-direction: column; background: #fff; border: 1px solid var(--borde); border-radius: var(--radio); overflow: hidden; transition: box-shadow 0.2s, transform 0.2s; }
   .tm:hover { box-shadow: 0 18px 40px rgb(11 1 62 / 0.12); transform: translateY(-3px); }
   .tm__fin { display: flex; align-items: center; gap: 7px; color: var(--azul); font-size: var(--fs-peq); margin: 2px 0 8px; }
@@ -59,7 +61,7 @@ const destacados = ([
   .tm__img { position: relative; overflow: hidden; }
   .tm__img :global(img) { position: absolute; inset: 10px; width: calc(100% - 20px); height: calc(100% - 20px); max-width: none; object-fit: contain; transition: transform 0.3s, opacity 0.2s; }
   .tm__img :global(.tm__foto:not(.activa)) { opacity: 0; }
-  .tm__colores { display: flex; gap: 8px; padding: 12px 20px 0; min-height: 34px; }
+  .tm__colores { display: flex; align-items: center; gap: 8px; padding: 12px 20px 0; min-height: 34px; }
   .tm__color { width: 22px; height: 22px; border-radius: 50%; background: var(--c); border: 2px solid #fff; box-shadow: 0 0 0 1px var(--borde); cursor: pointer; padding: 0; }
   .tm__color.activa { box-shadow: 0 0 0 2px var(--naranja); }
   .tm:hover .tm__img :global(img) { transform: scale(1.04); }
