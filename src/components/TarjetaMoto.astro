@@ -3,11 +3,16 @@ import { Image } from 'astro:assets';
 import Icono from './Icono.astro';
 import { imgMoto } from '../lib/imagenes';
 import { precioTexto, urlMoto, nombreCompleto, tieneEtiquetaC, type Moto } from '../lib/formato';
+import { cuotaMensual, capitalFinanciado } from '../lib/cuota';
+import { FINANCIACION } from '../data/sitio';
 interface Props { moto: Moto; nivel?: 'h2' | 'h3'; cargaPrioritaria?: boolean }
 const { moto, nivel = 'h3', cargaPrioritaria = false } = Astro.props;
 const m = moto.data;
 const Tit = nivel;
 const varios = m.imagenes.length > 1;
+const cuota = m.precio != null && m.precio >= FINANCIACION.importeMinimo
+  ? cuotaMensual(capitalFinanciado(m.precio, 0, FINANCIACION.comisionApertura), FINANCIACION.tin, Math.max(...FINANCIACION.plazos)).toLocaleString('es-ES', { minimumFractionDigits: 2, maximumFractionDigits: 2 })
+  : null;
 const pot = m.ficha.potencia?.split(' a ')[0]?.replace(/^.*\((.*)\)$/, '$1');
 const destacados = ([
   ['cilindrada', m.ficha.cilindrada, 'Cilindrada'],
@@ -21,20 +26,25 @@ const destacados = ([
       {m.imagenes.length
         ? m.imagenes.map((im, i) => <Image format="avif" fit="contain" src={imgMoto(im.src)} alt={`${nombreCompleto(m)} en color ${im.color.toLowerCase()}`} widths={[360, 560, 720]} sizes="(max-width: 640px) 92vw, (max-width: 1100px) 45vw, 320px" loading={cargaPrioritaria && i === 0 ? 'eager' : 'lazy'} class:list={['tm__foto', { activa: i === 0 }]} data-i={i} />)
         : <div class="tm__sinfoto">Foto próximamente</div>}
+      {tieneEtiquetaC(m) && <img class="tm__dgt" src="/img/distintivo-c.png" alt="Distintivo ambiental C" title="Distintivo ambiental C de la DGT" width="40" height="40" loading="lazy" />}
     </div>
   </a>
     <div class="tm__colores" role={varios ? 'group' : undefined} aria-label={varios ? 'Colores disponibles' : undefined}>
       {varios && m.imagenes.map((im, i) => <button type="button" class:list={['tm__color', { activa: i === 0 }]} data-i={i} style={`--c:${im.hex}`} title={im.color} aria-label={`Ver en ${im.color.toLowerCase()}`} aria-pressed={i === 0 ? 'true' : 'false'}></button>)}
-      {tieneEtiquetaC(m) && <img class="tm__dgt" src="/img/distintivo-c.png" alt="Distintivo ambiental C" title="Distintivo ambiental C de la DGT" width="36" height="36" loading="lazy" />}
     </div>
   <a href={urlMoto(m)} class="tm__enlace">
     <div class="tm__cuerpo">
       <Tit class="tm__nombre">{nombreCompleto(m)}</Tit>
       {destacados.length > 0 && <ul class="tm__datos">{destacados.map(([k, v, t]) => <li title={t}><Icono nombre={k} tam={18} /><span class="sr-only">{t}: </span>{v}</li>)}</ul>}
-      <p class="tm__precio">{precioTexto(m)}</p>
-      {m.precio != null && <p class="tm__fin"><span></span>Financiación inmediata</p>}
-      <p class="tm__envio"><svg viewBox="0 0 24 24" width="15" height="15" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M2 6h11v10H2zM13 9h4.5l3.5 3.6V16h-8"/><circle cx="6" cy="17.5" r="1.8"/><circle cx="17" cy="17.5" r="1.8"/></svg>Envío a toda España</p>
-      <span class="tm__ver">Ver ficha <span aria-hidden="true">→</span></span>
+      <div class="tm__pie">
+        <p class="tm__precio">{precioTexto(m)}</p>
+        {cuota && <p class="tm__cuota" title={`*Cuota orientativa sin entrada a ${Math.max(...FINANCIACION.plazos)} meses, TIN ${FINANCIACION.tin.toLocaleString('es-ES')} %, TAE ${FINANCIACION.tae.toLocaleString('es-ES')} % aprox. Sujeta a aprobación.`}>o desde <strong>{cuota} €/mes*</strong></p>}
+        <ul class="tm__ventajas">
+          {m.precio != null && <li><span class="tm__punto"></span>Financiación inmediata</li>}
+          <li><svg viewBox="0 0 24 24" width="15" height="15" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M2 6h11v10H2zM13 9h4.5l3.5 3.6V16h-8"/><circle cx="6" cy="17.5" r="1.8"/><circle cx="17" cy="17.5" r="1.8"/></svg>Envío a toda España</li>
+        </ul>
+        <span class="tm__ver">Ver ficha</span>
+      </div>
     </div>
   </a>
 </article>
@@ -48,13 +58,8 @@ const destacados = ([
   });
 </script>
 <style>
-  .tm__dgt { margin-left: auto; width: 36px; height: 36px; flex: none; }
   .tm { display: flex; flex-direction: column; background: #fff; border: 1px solid var(--borde); border-radius: var(--radio); overflow: hidden; transition: box-shadow 0.2s, transform 0.2s; }
   .tm:hover { box-shadow: 0 18px 40px rgb(11 1 62 / 0.12); transform: translateY(-3px); }
-  .tm__fin { display: flex; align-items: center; gap: 7px; color: var(--azul); font-size: var(--fs-peq); margin: 2px 0 8px; }
-  .tm__envio { display: flex; align-items: center; gap: 7px; color: var(--azul); font-size: var(--fs-peq); margin: -4px 0 8px; white-space: nowrap; }
-  .tm__envio svg { color: var(--naranja); flex: none; margin-left: -3px; }
-  .tm__fin span { width: 8px; height: 8px; border-radius: 50%; background: #2fb34f; }
   .tm__enlace { display: flex; flex-direction: column; text-decoration: none; }
   .tm__enlace:not(.tm__enlace--img) { flex: 1; }
   .tm__img { aspect-ratio: 5 / 3; background: #fff; display: grid; place-items: center; padding: 10px; }
@@ -71,6 +76,15 @@ const destacados = ([
   .tm__datos { list-style: none; padding: 0; display: flex; flex-wrap: wrap; gap: 4px 16px; color: var(--gris); font-size: var(--fs-peq); margin: 0 0 8px; }
   .tm__datos li { display: inline-flex; align-items: center; gap: 6px; }
   .tm__datos :global(.icono) { color: var(--naranja); flex: none; }
-  .tm__precio { font-weight: 800; font-size: clamp(1.1rem, 1.3vw, 1.35rem); color: var(--azul); margin: auto 0 6px; }
-  .tm__ver { color: var(--naranja); font-weight: 700; font-size: var(--fs-peq); }
+  .tm__img :global(.tm__dgt) { position: absolute; inset: auto; top: 10px; right: 10px; width: 40px; height: 40px; z-index: 2; transform: none !important; }
+  .tm__pie { margin-top: auto; padding-top: 12px; border-top: 1px solid var(--borde); }
+  .tm__precio { font-weight: 800; font-size: clamp(1.2rem, 1.4vw, 1.45rem); color: var(--azul); margin: 0; line-height: 1.15; }
+  .tm__cuota { margin: 2px 0 12px; font-size: var(--fs-peq); color: var(--gris); }
+  .tm__cuota strong { color: var(--azul); font-weight: 700; text-decoration: underline; text-decoration-color: var(--naranja); text-decoration-thickness: 2px; text-underline-offset: 3px; white-space: nowrap; }
+  .tm__ventajas { list-style: none; padding: 0; margin: 0 0 14px; display: flex; flex-wrap: wrap; gap: 6px; }
+  .tm__ventajas li { display: inline-flex; align-items: center; gap: 6px; padding: 4px 8px; background: #f4f3f8; color: var(--azul); font-size: 0.74rem; font-weight: 600; line-height: 1.2; white-space: nowrap; }
+  .tm__ventajas svg { color: var(--naranja); flex: none; }
+  .tm__punto { width: 7px; height: 7px; border-radius: 50%; background: #2fb34f; flex: none; }
+  .tm__ver { display: block; text-align: center; padding: 10px 12px; border: 2px solid var(--azul); color: var(--azul); font-weight: 700; font-size: 0.82rem; text-transform: uppercase; letter-spacing: 0.06em; transition: background 0.2s, color 0.2s, border-color 0.2s; }
+  .tm:hover .tm__ver { background: var(--naranja); border-color: var(--naranja); color: #fff; }
 </style>
