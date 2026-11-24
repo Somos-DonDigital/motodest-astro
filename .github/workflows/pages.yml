@@ -1,0 +1,65 @@
+# Publica una copia de la web en GitHub Pages (con noindex) cada vez que se sube a main.
+# La versión de producción para cPanel se sigue compilando con «npm run build» sin base.
+name: GitHub Pages
+
+on:
+  push:
+    branches: [main]
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+concurrency:
+  group: pages
+  cancel-in-progress: true
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    timeout-minutes: 120
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: npm
+
+      - run: npm ci
+
+      # Caché de las imágenes ya optimizadas (AVIF) para no regenerarlas en cada despliegue
+      - uses: actions/cache@v4
+        with:
+          path: |
+            node_modules/.astro
+            public/galeria
+          key: imagenes-${{ hashFiles('src/assets/**', 'galeria-fuente/**') }}
+          restore-keys: imagenes-
+
+      - name: Galerías en AVIF
+        run: node scripts/galeria_avif.mjs
+
+      - name: Compilar para /motodest-astro/
+        run: npx astro build --site https://somos-dondigital.github.io --base /motodest-astro/
+
+      - name: Ajustar rutas, noindex y .nojekyll
+        run: node scripts/base_pages.mjs
+        env:
+          BASE_PATH: /motodest-astro/
+
+      - uses: actions/upload-pages-artifact@v3
+        with:
+          path: dist
+
+  deploy:
+    needs: build
+    runs-on: ubuntu-latest
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - id: deployment
+        uses: actions/deploy-pages@v4
